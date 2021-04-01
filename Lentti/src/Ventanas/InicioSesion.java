@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -173,35 +175,76 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
         
-        
+        //si inicia sesión un cliente
         if(this.jToggleBotonUsuarioCliente.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            PantallaInicialCliente nuevoCliente= new PantallaInicialCliente();
-            nuevoCliente.setVisible(true);
-            this.dispose();
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
+            {
+                PantallaInicialCliente nuevoCliente= new PantallaInicialCliente();
+                nuevoCliente.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+
         }
+        //si inicia sesión un administrador
         else if (this.jToggleBotonUsuarioAdmin.isSelected()&& !(this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador();
-            nuevoAdmin.setVisible(true);
-            this.dispose();
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A"))
+            {
+                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador();
+                nuevoAdmin.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+            
         }
+        //si inicia sesión un restaurante
         else if (this.jToggleBotonUsuarioRestaurante.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante();
-            nuevoResturante.setVisible(true);
-            this.dispose();
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
+            {
+                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante();
+                nuevoResturante.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+            
         }
+        //si inicia sesión un domiciliario
         else if (this.jToggleBotonUsuarioDomiciliario.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() ))
         {
-            PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario();
-            nuevoDomiciliario.setVisible(true);
-            this.dispose();
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
+            {
+                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario();
+                nuevoDomiciliario.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+            
         }
+        //si no selecciona algun tipo de usuario
         else if(!this.jToggleBotonUsuarioAdmin.isSelected() && !this.jToggleBotonUsuarioRestaurante.isSelected() && !this.jToggleBotonUsuarioCliente.isSelected() && !this.jToggleBotonUsuarioDomiciliario.isSelected() )
         {
             JOptionPane.showMessageDialog(null, "Seleccione algun tipo de usuario");
         }
+        //si selecciona mas de un tipo de usuario
         else
         {
             JOptionPane.showMessageDialog(null, "Seleccione un solo tipo de usuario");
