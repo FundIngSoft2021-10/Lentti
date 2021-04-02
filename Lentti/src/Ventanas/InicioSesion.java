@@ -174,11 +174,11 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
-        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
         //si inicia sesión un cliente
         if(this.jToggleBotonUsuarioCliente.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            consultasBaseDeDatos consulta = new BaseDeDatos();
+            
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
             {
                 PantallaInicialCliente nuevoCliente= new PantallaInicialCliente();
@@ -194,10 +194,10 @@ public class InicioSesion extends javax.swing.JFrame {
         //si inicia sesión un administrador
         else if (this.jToggleBotonUsuarioAdmin.isSelected()&& !(this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            consultasBaseDeDatos consulta = new BaseDeDatos();
+            
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A"))
             {
-                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador();
+                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(this.jTextFieldCampoUsuario.getText());
                 nuevoAdmin.setVisible(true);
                 this.dispose();
             }
@@ -210,7 +210,7 @@ public class InicioSesion extends javax.swing.JFrame {
         //si inicia sesión un restaurante
         else if (this.jToggleBotonUsuarioRestaurante.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
-            consultasBaseDeDatos consulta = new BaseDeDatos();
+           
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
             {
                 PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante();
@@ -226,7 +226,7 @@ public class InicioSesion extends javax.swing.JFrame {
         //si inicia sesión un domiciliario
         else if (this.jToggleBotonUsuarioDomiciliario.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() ))
         {
-            consultasBaseDeDatos consulta = new BaseDeDatos();
+            
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
             {
                 PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario();

@@ -7,18 +7,25 @@ package Ventanas;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author samyf
  */
 public class PantallaInicialAdministrador extends javax.swing.JFrame {
-
+    
+        String usuario="";
     /**
      * Creates new form PantallaInicialAdministrador
      */
     public PantallaInicialAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+        public PantallaInicialAdministrador(String pUsuario) {
+        initComponents();
+        usuario=pUsuario;
         this.setLocationRelativeTo(null);
     }
     public Image getIconImage()
