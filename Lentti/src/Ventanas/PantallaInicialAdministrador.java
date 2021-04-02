@@ -27,6 +27,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         initComponents();
         usuario=pUsuario;
         this.setLocationRelativeTo(null);
+        this.jLabelMensajeInicial.setText(this.jLabelMensajeInicial.getText()+"  "+ usuario);
     }
     public Image getIconImage()
     {
@@ -44,7 +45,9 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonCerrarSesion = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelMensajeInicial = new javax.swing.JLabel();
+        jButtonRegistrarAdmin = new javax.swing.JButton();
+        jButtonModificarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -57,7 +60,21 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Pantalla Inicial Administrador");
+        jLabelMensajeInicial.setText("Pantalla Inicial Administrador");
+
+        jButtonRegistrarAdmin.setText("Registrar Administrador");
+        jButtonRegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarAdminActionPerformed(evt);
+            }
+        });
+
+        jButtonModificarUsuario.setText("Modificar Usuario");
+        jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,8 +84,16 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion))
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabelMensajeInicial))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonRegistrarAdmin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonModificarUsuario)))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,8 +101,12 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButtonCerrarSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(0, 252, Short.MAX_VALUE))
+                .addComponent(jLabelMensajeInicial)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonRegistrarAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonModificarUsuario)
+                .addGap(0, 177, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,6 +118,19 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         InicioSesion iniciador= new InicioSesion();
         iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
+    private void jButtonRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarAdminActionPerformed
+        // TODO add your handling code here:
+        PantallaRegistroAdmin iniciador= new PantallaRegistroAdmin();
+        iniciador.setVisible(true);
+    }//GEN-LAST:event_jButtonRegistrarAdminActionPerformed
+
+    private void jButtonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarUsuarioActionPerformed
+        // TODO add your handling code here:
+        PantallaModificarAdmin iniciador = new PantallaModificarAdmin(usuario);
+        iniciador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonModificarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +169,8 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonModificarUsuario;
+    private javax.swing.JButton jButtonRegistrarAdmin;
+    private javax.swing.JLabel jLabelMensajeInicial;
     // End of variables declaration//GEN-END:variables
 }

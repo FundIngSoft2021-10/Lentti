@@ -25,7 +25,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     //Implementación de la interface consultasBaseDeDatos
 
     @Override
-    public boolean ValidarInicioSesion(String pUsuario, String pContrasena, String pTipo) {
+    public boolean ValidarInicioSesion(String pUsuario, String pContrasena, String pTipo) 
+    {
         boolean resultado=false;
         try 
         {
@@ -53,6 +54,73 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:"+exc.getMessage());
         }
         return resultado;
+    }
+
+    @Override
+    public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo) 
+    {
+       boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "insert into lenttiUsuario values ( '"+ pUsuario + "' , '"+pContrasena + "', '" + pTipo + "');";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+
+    @Override
+    public boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE lenttiusuario  SET usuario= '"+ nuevoUsuario + "' WHERE usuario='"+anteriorUsuario+"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+
+    @Override
+    public boolean ModificarContrasena(String pUsuario, String nuevaContrasena) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE lenttiusuario  SET contrasena= '"+ nuevaContrasena + "' WHERE usuario='"+pUsuario+"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
     }
     
 }

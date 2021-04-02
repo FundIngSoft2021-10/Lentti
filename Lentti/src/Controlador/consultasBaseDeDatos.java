@@ -11,4 +11,7 @@ package Controlador;
  */
 public interface consultasBaseDeDatos {
     public abstract boolean ValidarInicioSesion(String pUsuario,String pContrasena, String pTipo);
+    public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo);
+    public abstract boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario);
+    public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
 }
