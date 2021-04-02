@@ -13,13 +13,18 @@ import java.awt.Toolkit;
  * @author samyf
  */
 public class PantallaInicialRestaurante extends javax.swing.JFrame {
-
+    String usuario="";
     /**
      * Creates new form PantallaInicialRestaurante
      */
     public PantallaInicialRestaurante() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    public PantallaInicialRestaurante(String usuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.usuario=usuario;
     }
     
     public Image getIconImage()
@@ -39,6 +44,9 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonVerResenaDeUsuario = new javax.swing.JButton();
+        jButtonGestionarPlatos = new javax.swing.JButton();
+        jButtonVerPedidosDeClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -53,25 +61,49 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
         jLabel1.setText("Pantalla Inicial de Restaurante");
 
+        jButtonVerResenaDeUsuario.setText("Ver reseñas de usuario");
+
+        jButtonGestionarPlatos.setText("Gestionar platos");
+        jButtonGestionarPlatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarPlatosActionPerformed(evt);
+            }
+        });
+
+        jButtonVerPedidosDeClientes.setText("Ver pedidos de los clientes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonCerrarSesion))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel1)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonCerrarSesion))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(jButtonVerResenaDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonGestionarPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonVerPedidosDeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(0, 252, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCerrarSesion)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVerResenaDeUsuario)
+                    .addComponent(jButtonGestionarPlatos)
+                    .addComponent(jButtonVerPedidosDeClientes))
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -83,6 +115,12 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         InicioSesion iniciador= new InicioSesion();
         iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
+    private void jButtonGestionarPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarPlatosActionPerformed
+        PantallaGestionPlatos pantallaGestionar = new PantallaGestionPlatos(usuario);
+        pantallaGestionar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonGestionarPlatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,6 +159,9 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonGestionarPlatos;
+    private javax.swing.JButton jButtonVerPedidosDeClientes;
+    private javax.swing.JButton jButtonVerResenaDeUsuario;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,4 +14,5 @@ public interface consultasBaseDeDatos {
     public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo);
     public abstract boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario);
     public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
+    public abstract boolean CrearPlato(String restaurante, String nombrePlato,  String descripcion, float precio, String imagen );
 }

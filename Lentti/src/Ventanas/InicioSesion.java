@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  * @author samyf
  */
 public class InicioSesion extends javax.swing.JFrame {
-    
     /**
      * Creates new form InicioSecion
      */
@@ -213,7 +212,7 @@ public class InicioSesion extends javax.swing.JFrame {
            
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
             {
-                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante();
+                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(this.jTextFieldCampoUsuario.getText());
                 nuevoResturante.setVisible(true);
                 this.dispose();
             }

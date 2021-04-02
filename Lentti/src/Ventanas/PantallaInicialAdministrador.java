@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class PantallaInicialAdministrador extends javax.swing.JFrame {
     
-        String usuario="";
+    String usuario="";
     /**
      * Creates new form PantallaInicialAdministrador
      */
