@@ -144,5 +144,26 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
        return resultado;
     }
+    @Override
+    public boolean EliminarPlato( String nombrePlato) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "DELETE fROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
     
 }

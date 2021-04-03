@@ -62,6 +62,11 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
         });
 
         jButtonEliminarPlato.setText("Eliminar plato");
+        jButtonEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarPlatoActionPerformed(evt);
+            }
+        });
 
         jButtonAtras.setText("Atras");
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +120,12 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
         pantallaCrear.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCrearPlatoActionPerformed
+
+    private void jButtonEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarPlatoActionPerformed
+        PantallaEliminarPlato pantallaEliminar = new PantallaEliminarPlato();
+        pantallaEliminar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEliminarPlatoActionPerformed
 
     /**
      * @param args the command line arguments
