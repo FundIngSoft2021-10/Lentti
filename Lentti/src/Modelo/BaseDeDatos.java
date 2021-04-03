@@ -165,5 +165,89 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
        return resultado;
     }
-    
+    @Override
+    public boolean ModificarNombrePlato(String nombrePlato, String nuevoNombre) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE plato SET nombrePlato = '"+ nuevoNombre + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarPrecioPlato(String nombrePlato, String nuevoPrecio) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  Float precio = Float.parseFloat(nuevoPrecio);
+                  String consulta = "UPDATE plato SET precio = "+ nuevoPrecio + " WHERE nombrePlato = '"+ nombrePlato +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarDescripcionPlato(String nombrePlato, String nuevaDescripcion) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE plato SET descripcion = '"+ nuevaDescripcion + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarImagenPlato(String nombrePlato, String nuevaImagen) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE plato SET imagen = '"+ nuevaImagen + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
 }

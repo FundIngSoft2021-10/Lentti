@@ -179,7 +179,7 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
             resultado = consulta.CrearPlato(usuario, this.jTextFieldCampoNombre.getText(), this.jTextAreaCampoDescripcion.getText(), precio, this.jTextFieldCampoImagen.getText());
             
         }
-        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos();
+        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
         pantallaGestion.setVisible(true);
         this.dispose();
         

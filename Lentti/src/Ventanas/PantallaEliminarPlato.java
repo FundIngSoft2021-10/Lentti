@@ -14,13 +14,18 @@ import javax.swing.JOptionPane;
  * @author juank
  */
 public class PantallaEliminarPlato extends javax.swing.JFrame {
-
+    String usuario="";
     /**
      * Creates new form PantallaEliminarPlato
      */
     public PantallaEliminarPlato() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    public PantallaEliminarPlato(String usuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.usuario = usuario;
     }
 
     /**
@@ -108,7 +113,7 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombrePlatoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos();
+        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
         pantallaGestion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -116,9 +121,6 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado= false;
-        
-        
-        
         if(this.jTextFieldNombrePlato.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "No se ha indicado un nombre.");
@@ -126,7 +128,7 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
         else{
             resultado = consulta.EliminarPlato(this.jTextFieldNombrePlato.getText());
         }
-        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos();
+        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
         pantallaGestion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed

@@ -45,6 +45,7 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
         jButtonCrearPlato = new javax.swing.JButton();
         jButtonEliminarPlato = new javax.swing.JButton();
         jButtonAtras = new javax.swing.JButton();
+        jButtonModificarPlato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -75,6 +76,13 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
             }
         });
 
+        jButtonModificarPlato.setText("Modificar plato");
+        jButtonModificarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarPlatoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,10 +94,11 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonEliminarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCrearPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonVerPlatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCrearPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(jButtonEliminarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,20 +106,22 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButtonAtras))
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jButtonVerPlatos)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonCrearPlato)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonModificarPlato)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonEliminarPlato)
-                .addGap(0, 57, Short.MAX_VALUE))
+                .addGap(52, 52, 52))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-        PantallaInicialRestaurante pantallaInicial = new PantallaInicialRestaurante();
+        PantallaInicialRestaurante pantallaInicial = new PantallaInicialRestaurante(usuario);
         pantallaInicial.setVisible(true);
         this.dispose();  
     }//GEN-LAST:event_jButtonAtrasActionPerformed
@@ -122,10 +133,16 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCrearPlatoActionPerformed
 
     private void jButtonEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarPlatoActionPerformed
-        PantallaEliminarPlato pantallaEliminar = new PantallaEliminarPlato();
+        PantallaEliminarPlato pantallaEliminar = new PantallaEliminarPlato(usuario);
         pantallaEliminar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonEliminarPlatoActionPerformed
+
+    private void jButtonModificarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarPlatoActionPerformed
+        PantallaModificarPlato pantallaModificar = new PantallaModificarPlato(usuario);
+        pantallaModificar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonModificarPlatoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +183,7 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonCrearPlato;
     private javax.swing.JButton jButtonEliminarPlato;
+    private javax.swing.JButton jButtonModificarPlato;
     private javax.swing.JButton jButtonVerPlatos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
