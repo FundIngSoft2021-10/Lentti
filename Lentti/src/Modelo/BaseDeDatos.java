@@ -9,6 +9,7 @@ import Controlador.consultasBaseDeDatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -152,7 +153,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
                   Class.forName("org.postgresql.Driver");
                   Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
                   java.sql.Statement st = conexion.createStatement();
-                  String consulta = "DELETE fROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
+                  String consulta = "DELETE FROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
                   st.execute(consulta);
                   st.close();
                   conexion.close();
@@ -249,5 +250,61 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             resultado=false;
         }
        return resultado;
+    }
+
+    @Override
+    public boolean EliminarCuenta(String pUsuario, String pTipo) {
+       boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "DELETE FROM lenttiusuario WHERE usuario='"+ pUsuario + "'AND tipo='" + pTipo +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+
+    //Recibe un tipo de usario que quiere llenar la lista y el usuario actual para no listarlo
+    @Override
+    public DefaultListModel LlenarListaUsuarios(String pTipo,String pUsurioActual) {
+        DefaultListModel lista=new DefaultListModel();
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta =
+                      "SELECT usuario FROM lenttiusuario WHERE tipo='" + pTipo + "'";
+                  ResultSet result = st.executeQuery(consulta);
+                  while(result.next()) 
+                  {
+                      if(!result.getString("usuario").equals(pUsurioActual))
+                      {
+                          lista.addElement(result.getString("usuario"));
+                      }
+                      
+                      
+                  }
+                  result.close();
+                  st.close();
+                  conexion.close();
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return lista;
     }
 }

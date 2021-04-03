@@ -48,6 +48,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         jLabelMensajeInicial = new javax.swing.JLabel();
         jButtonRegistrarAdmin = new javax.swing.JButton();
         jButtonModificarUsuario = new javax.swing.JButton();
+        jButtonEliminarAdministracion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -76,6 +77,13 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminarAdministracion.setText("Eliminar Administrador");
+        jButtonEliminarAdministracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarAdministracionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,10 +98,10 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                         .addComponent(jLabelMensajeInicial))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonRegistrarAdmin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonModificarUsuario)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonRegistrarAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEliminarAdministracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,7 +114,9 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 .addComponent(jButtonRegistrarAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonModificarUsuario)
-                .addGap(0, 177, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEliminarAdministracion)
+                .addGap(0, 136, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,6 +141,13 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         iniciador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonModificarUsuarioActionPerformed
+
+    private void jButtonEliminarAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAdministracionActionPerformed
+        // TODO add your handling code here:
+        PantallaEliminarAdministrador iniciador = new PantallaEliminarAdministrador(usuario);
+        iniciador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEliminarAdministracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +186,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonEliminarAdministracion;
     private javax.swing.JButton jButtonModificarUsuario;
     private javax.swing.JButton jButtonRegistrarAdmin;
     private javax.swing.JLabel jLabelMensajeInicial;

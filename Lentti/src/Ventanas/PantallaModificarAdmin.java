@@ -156,6 +156,9 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Se modifico el usuario.");
                 Usuario=this.jTextFieldCampoUsuario.getText();
+                PantallaInicialAdministrador iniciador = new PantallaInicialAdministrador(Usuario);
+                iniciador.setVisible(true);
+                this.dispose();
             }
             else
             {

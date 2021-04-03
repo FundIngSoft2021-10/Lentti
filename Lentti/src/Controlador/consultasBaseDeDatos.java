@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author samyf
@@ -20,4 +22,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarPrecioPlato(String nombrePlato, String nuevoPrecio);
     public abstract boolean ModificarDescripcionPlato(String nombrePlato, String nuevaDescripcion);
     public abstract boolean ModificarImagenPlato(String nombrePlato, String nuevaImagen);
+    public abstract boolean EliminarCuenta(String pUsuario, String pTipo);
+    public abstract DefaultListModel LlenarListaUsuarios(String pTipo,String pUsurioActual);
 }
