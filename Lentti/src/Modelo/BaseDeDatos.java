@@ -307,4 +307,27 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return lista;
     }
+    
+    public boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion)
+    {
+        boolean sePudo = false;
+        try {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "INSERT INTO cliente VALUES ('"+ pUsuario +"','"+ pNombre + "','"+ pApellido +"', '" + pDireccion +"');";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  sePudo=true;
+            
+        } 
+        catch (Exception e) {
+             System.out.println("Errorx:"+e.getMessage());
+            sePudo = false;
+        }
+        
+        
+        return sePudo;
+    }
 }

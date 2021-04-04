@@ -288,7 +288,9 @@ public class InicioSesion extends javax.swing.JFrame {
     private void BotonCrearCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCliente
             // TODO add your handling code here:
             //crear cliente
-            JOptionPane.showMessageDialog(null, "Creando usuario");
+            PantallaCrearCliente crearCliente = new PantallaCrearCliente();
+            crearCliente.setVisible(true);
+            this.dispose();
 
             
             
