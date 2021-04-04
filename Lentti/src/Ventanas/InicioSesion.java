@@ -50,6 +50,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jTextFieldCampoUsuario = new javax.swing.JTextField();
         jButtonSalirApp = new javax.swing.JButton();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
+        jButtonSalirApp2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -101,6 +102,13 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalirApp2.setText("Crear cliente");
+        jButtonSalirApp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCrearCliente(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,6 +118,8 @@ public class InicioSesion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jButtonIniciarSesion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSalirApp2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -120,7 +130,7 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addComponent(jToggleBotonUsuarioAdmin)
                                 .addGap(35, 35, 35)
                                 .addComponent(jToggleBotonUsuarioRestaurante)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -164,7 +174,9 @@ public class InicioSesion extends javax.swing.JFrame {
                     .addComponent(jToggleBotonUsuarioRestaurante)
                     .addComponent(jToggleBotonUsuarioDomiciliario))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonIniciarSesion)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonIniciarSesion)
+                    .addComponent(jButtonSalirApp2))
                 .addGap(14, 14, 14))
         );
 
@@ -251,6 +263,8 @@ public class InicioSesion extends javax.swing.JFrame {
             
         
         
+        
+        
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
     private void jToggleBotonUsuarioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioClienteActionPerformed
@@ -270,6 +284,15 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jToggleBotonUsuarioRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioRestauranteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleBotonUsuarioRestauranteActionPerformed
+
+    private void BotonCrearCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCliente
+            // TODO add your handling code here:
+            //crear cliente
+            JOptionPane.showMessageDialog(null, "Creando usuario");
+
+            
+            
+    }//GEN-LAST:event_BotonCrearCliente
 
     /**
      * @param args the command line arguments
@@ -307,10 +330,13 @@ public class InicioSesion extends javax.swing.JFrame {
         });
         
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonSalirApp;
+    private javax.swing.JButton jButtonSalirApp2;
     private javax.swing.JLabel jLabelEtiquetaContrasena;
     private javax.swing.JLabel jLabelEtiquetaUsuario;
     private javax.swing.JLabel jLabelLogo;
