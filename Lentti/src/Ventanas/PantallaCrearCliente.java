@@ -7,6 +7,8 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,11 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
     public PantallaCrearCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+     public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
+        return retValue;
     }
 
     /**

@@ -192,7 +192,7 @@ public class InicioSesion extends javax.swing.JFrame {
             
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
             {
-                PantallaInicialCliente nuevoCliente= new PantallaInicialCliente();
+                PantallaInicialCliente nuevoCliente= new PantallaInicialCliente(this.jTextFieldCampoUsuario.getText());
                 nuevoCliente.setVisible(true);
                 this.dispose();
             }

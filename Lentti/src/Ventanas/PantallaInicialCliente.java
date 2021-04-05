@@ -21,6 +21,14 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    public PantallaInicialCliente(String pUsuario) {
+        initComponents();
+        String usuario = pUsuario;
+        L_bienvenidoNombreUsuario.setText(usuario);
+        this.setLocationRelativeTo(null);
+    }
+    
      public Image getIconImage()
     {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
@@ -38,12 +46,19 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
 
         jLabelMensajeIncialCliente = new javax.swing.JLabel();
         jButtonCerrarSesion = new javax.swing.JButton();
+        L_bienvenidoNombreUsuario = new javax.swing.JLabel();
+        BotonModificarCliente = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        TF_buscarPlatoRestaurante = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
 
-        jLabelMensajeIncialCliente.setText("Pantalla Inicial Cliente");
+        jLabelMensajeIncialCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelMensajeIncialCliente.setText("Bienvenido:");
 
         jButtonCerrarSesion.setText("Cerrar Sesión");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -52,25 +67,58 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
             }
         });
 
+        L_bienvenidoNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        L_bienvenidoNombreUsuario.setText("nombreUsuario");
+
+        BotonModificarCliente.setText("Modificar datos");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jLabel1.setText("Buscar plato o restaurante");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
-                .addComponent(jLabelMensajeIncialCliente)
-                .addGap(143, 143, 143))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonCerrarSesion))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelMensajeIncialCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(L_bienvenidoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotonModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TF_buscarPlatoRestaurante)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonCerrarSesion)
-                .addGap(20, 20, 20)
-                .addComponent(jLabelMensajeIncialCliente)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCerrarSesion)
+                    .addComponent(jLabelMensajeIncialCliente)
+                    .addComponent(L_bienvenidoNombreUsuario)
+                    .addComponent(BotonModificarCliente))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TF_buscarPlatoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -119,7 +167,13 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonModificarCliente;
+    private javax.swing.JLabel L_bienvenidoNombreUsuario;
+    private javax.swing.JTextField TF_buscarPlatoRestaurante;
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelMensajeIncialCliente;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
