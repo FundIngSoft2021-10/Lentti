@@ -53,6 +53,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         TF_nombreDelCliente = new javax.swing.JTextField();
         TF_apellidoCliente = new javax.swing.JTextField();
         TF_direccionCliente = new javax.swing.JTextField();
+        BotonRegresarAPantallaInico = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,6 +98,13 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Direccion:");
 
+        BotonRegresarAPantallaInico.setText("Atras");
+        BotonRegresarAPantallaInico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarAPantallaInicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,13 +133,17 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                             .addComponent(TF_nombreDelCliente)
                             .addComponent(TF_apellidoCliente)
                             .addComponent(TF_direccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BotonRegresarAPantallaInico))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(BotonRegresarAPantallaInico))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TF_nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,6 +210,14 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TF_nombreUsuarioActionPerformed
 
+    private void BotonRegresarAPantallaInicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarAPantallaInicoActionPerformed
+        // TODO add your handling code here:
+        
+        InicioSesion nuevaInicioSesion = new InicioSesion();
+                    nuevaInicioSesion.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_BotonRegresarAPantallaInicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,6 +255,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegistrarUsuario;
+    private javax.swing.JButton BotonRegresarAPantallaInico;
     private javax.swing.JTextField TF_apellidoCliente;
     private javax.swing.JTextField TF_contraseñaUsuario;
     private javax.swing.JTextField TF_direccionCliente;
