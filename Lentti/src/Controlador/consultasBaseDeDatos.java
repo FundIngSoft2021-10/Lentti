@@ -25,4 +25,5 @@ public interface consultasBaseDeDatos {
     public abstract boolean EliminarCuenta(String pUsuario, String pTipo);
     public abstract DefaultListModel LlenarListaUsuarios(String pTipo,String pUsurioActual);
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
+    public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);
 }

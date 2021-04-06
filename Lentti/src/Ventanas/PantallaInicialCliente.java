@@ -27,6 +27,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         String usuario = pUsuario;
         L_bienvenidoNombreUsuario.setText(usuario);
         this.setLocationRelativeTo(null);
+        mostrarInformacionCliente();
     }
     
      public Image getIconImage()
@@ -52,6 +53,9 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         TF_buscarPlatoRestaurante = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TA_informacionCliente = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -71,6 +75,11 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         L_bienvenidoNombreUsuario.setText("nombreUsuario");
 
         BotonModificarCliente.setText("Modificar datos");
+        BotonModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarClienteActionPerformed(evt);
+            }
+        });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -80,6 +89,15 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setText("Buscar plato o restaurante");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Mi información:");
+
+        TA_informacionCliente.setEditable(false);
+        TA_informacionCliente.setColumns(20);
+        TA_informacionCliente.setRows(5);
+        TA_informacionCliente.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(TA_informacionCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,12 +115,17 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TF_buscarPlatoRestaurante)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(69, 69, 69))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TF_buscarPlatoRestaurante)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,12 +136,20 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                     .addComponent(L_bienvenidoNombreUsuario)
                     .addComponent(BotonModificarCliente))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TF_buscarPlatoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TF_buscarPlatoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -131,6 +162,22 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
+    private void BotonModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        PantallaModificarCliente pantalla = new PantallaModificarCliente(L_bienvenidoNombreUsuario.getText());
+                    pantalla.setVisible(true);
+                    this.dispose();
+                    
+                    
+    }//GEN-LAST:event_BotonModificarClienteActionPerformed
+
+    private void mostrarInformacionCliente()
+    {
+        //revisar verificar usuario
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -169,11 +216,14 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonModificarCliente;
     private javax.swing.JLabel L_bienvenidoNombreUsuario;
+    private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JTextField TF_buscarPlatoRestaurante;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelMensajeIncialCliente;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
