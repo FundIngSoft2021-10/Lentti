@@ -484,6 +484,38 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
     
+    public boolean ValidarExistenciaRestaurante (String nombreRestaurante)
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "SELECT nombreRestaurante FROM restaurante";
+                  ResultSet result = st.executeQuery(consulta);
+                  
+                  while(result.next()) 
+                  {
+                      if(nombreRestaurante.equals(result.getString("nombreRestaurante")))
+                      {
+                          resultado = true;
+                      }  
+                  }
+                  
+                  result.close();
+                  st.close();
+                  conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return resultado;
+    }
+    
     public boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion)
     {
         boolean sePudo = false;
@@ -528,37 +560,5 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         
         return sePudo;
-    }
-    
-    public boolean ValidarExistenciaRestaurante (String nombreRestaurante)
-    {
-        boolean resultado = false;
-        
-        try 
-        {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "SELECT nombreRestaurante FROM restaurante";
-                  ResultSet result = st.executeQuery(consulta);
-                  
-                  while(result.next()) 
-                  {
-                      if(nombreRestaurante.equals(result.getString("nombreRestaurante")))
-                      {
-                          resultado = true;
-                      }  
-                  }
-                  
-                  result.close();
-                  st.close();
-                  conexion.close();
-        }
-        catch (Exception exc)
-        {
-            System.out.println("Errorx:"+exc.getMessage());
-        }
-        
-        return resultado;
     }
 }
