@@ -10,18 +10,22 @@ import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 /**
  *
  * @author Estefania
  */
 public class PantallaCarroCompras extends javax.swing.JFrame {
-    /**
-     * Creates new form InicioSecion
-     */
+ 
+     DefaultListModel restaurantes = new DefaultListModel();
+
     public PantallaCarroCompras() {
         initComponents();
         transparenciaDelBoton();
+        MostrarRestaurantes(); //BORRAR ESTO ES DE GUIA
+        
         this.setLocationRelativeTo(null);
         
     }
@@ -74,6 +78,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
         });
         ListaPedidosCC.setViewportView(jList1);
 
@@ -143,6 +152,30 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private void NombreRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreRestauranteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreRestauranteActionPerformed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+      
+        //A medida que se van seleccionando opciones de la lista se cambia la informacion
+        NombreRestaurante.setText(jList1.getSelectedValue().toString());
+        
+       
+        
+    }//GEN-LAST:event_jList1MouseClicked
+    
+    public void MostrarRestaurantes(){
+        
+        restaurantes.clear();
+        ArrayList<String> rest = new ArrayList<>();
+        
+        rest.add("Holi");
+        rest.add("Prueba2");
+        
+        for( String i: rest )
+            restaurantes.addElement(i);
+        
+        jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda
+    }
+    
     public void transparenciaDelBoton(){
         BotonRealizarPedido.setOpaque(false);
         BotonRealizarPedido.setBackground(new Color(0,0,0,0));
