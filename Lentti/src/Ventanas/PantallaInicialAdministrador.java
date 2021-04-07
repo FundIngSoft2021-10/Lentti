@@ -49,6 +49,9 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         jButtonRegistrarAdmin = new javax.swing.JButton();
         jButtonModificarUsuario = new javax.swing.JButton();
         jButtonEliminarAdministracion = new javax.swing.JButton();
+        jButtonCrearRestaurante = new javax.swing.JButton();
+        jButtonModificarRestaurante = new javax.swing.JButton();
+        jButtonEliminarRestaurante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -77,10 +80,31 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButtonEliminarAdministracion.setText("Eliminar Administrador");
+        jButtonEliminarAdministracion.setText("Buscar restaurante");
         jButtonEliminarAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarAdministracionActionPerformed(evt);
+            }
+        });
+
+        jButtonCrearRestaurante.setText("Crear restaurante");
+        jButtonCrearRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearRestauranteActionPerformed(evt);
+            }
+        });
+
+        jButtonModificarRestaurante.setText("Modificar restaurante");
+        jButtonModificarRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarRestauranteActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminarRestaurante.setText("Eliminar restaurante");
+        jButtonEliminarRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarRestauranteActionPerformed(evt);
             }
         });
 
@@ -91,18 +115,22 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonRegistrarAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabelMensajeInicial))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonRegistrarAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEliminarAdministracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addComponent(jButtonEliminarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCrearRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonModificarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEliminarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelMensajeInicial)
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,12 +139,18 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelMensajeInicial)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonRegistrarAdmin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRegistrarAdmin)
+                    .addComponent(jButtonCrearRestaurante))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonModificarUsuario)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonModificarUsuario)
+                    .addComponent(jButtonModificarRestaurante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEliminarRestaurante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEliminarAdministracion)
-                .addGap(0, 136, Short.MAX_VALUE))
+                .addGap(0, 109, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,9 +158,9 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         InicioSesion iniciador= new InicioSesion();
         iniciador.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void jButtonRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarAdminActionPerformed
@@ -144,10 +178,28 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
     private void jButtonEliminarAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAdministracionActionPerformed
         // TODO add your handling code here:
-        PantallaEliminarAdministrador iniciador = new PantallaEliminarAdministrador(usuario);
+        PantallaBuscarRestaurante iniciador = new PantallaBuscarRestaurante(usuario);
         iniciador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonEliminarAdministracionActionPerformed
+
+    private void jButtonCrearRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearRestauranteActionPerformed
+        PantallaCrearRestaurante iniciador = new PantallaCrearRestaurante();
+        iniciador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonCrearRestauranteActionPerformed
+
+    private void jButtonModificarRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarRestauranteActionPerformed
+        PantallaModificarRestaurante iniciador = new PantallaModificarRestaurante();
+        iniciador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonModificarRestauranteActionPerformed
+
+    private void jButtonEliminarRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarRestauranteActionPerformed
+        PantallaEliminarRestaurante iniciador = new PantallaEliminarRestaurante();
+        iniciador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEliminarRestauranteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +238,10 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonCrearRestaurante;
     private javax.swing.JButton jButtonEliminarAdministracion;
+    private javax.swing.JButton jButtonEliminarRestaurante;
+    private javax.swing.JButton jButtonModificarRestaurante;
     private javax.swing.JButton jButtonModificarUsuario;
     private javax.swing.JButton jButtonRegistrarAdmin;
     private javax.swing.JLabel jLabelMensajeInicial;

@@ -274,38 +274,213 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        return resultado;
     }
 
-    //Recibe un tipo de usario que quiere llenar la lista y el usuario actual para no listarlo
     @Override
-    public DefaultListModel LlenarListaUsuarios(String pTipo,String pUsurioActual) {
-        DefaultListModel lista=new DefaultListModel();
+    public boolean CrearRestaurante (String nombreRestaurante, String direccion, String descripcion, float costoDeEnvio, String imagen) 
+    {
+       boolean resultado = false;
+       boolean cuenta = CrearUsuario(nombreRestaurante, "a1b2", "R");
+       
+       try 
+       {
+           Class.forName("org.postgresql.Driver");
+           Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+           java.sql.Statement st = conexion.createStatement();
+           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"','"+ direccion + "','"+ descripcion +"', '" + costoDeEnvio +"', '"+ imagen +"');";
+           st.execute(consulta);
+           st.close();
+           conexion.close();
+           resultado = true;
+       }
+       catch (Exception exc)
+       {
+           System.out.println("Errorx:"+exc.getMessage());
+           resultado = false;
+       }
+       
+       return resultado;
+    }
+    
+    @Override
+    public boolean EliminarRestaurante (String nombreRestaurante) 
+    {
+        boolean resultado = false;
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta =
-                      "SELECT usuario FROM lenttiusuario WHERE tipo='" + pTipo + "'";
-                  ResultSet result = st.executeQuery(consulta);
-                  while(result.next()) 
-                  {
-                      if(!result.getString("usuario").equals(pUsurioActual))
-                      {
-                          lista.addElement(result.getString("usuario"));
-                      }
-                      
-                      
-                  }
-                  result.close();
-                  st.close();
-                  conexion.close();
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM restaurante WHERE nombreRestaurante = '"+ nombreRestaurante +"'; ";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+            boolean eliminado = EliminarCuenta(nombreRestaurante, "R");
         }
-        catch(Exception exc)
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    } 
+    
+    @Override
+    public DefaultListModel BuscarRestaurante (String pTipo, String pUsurioActual) 
+    {
+        DefaultListModel lista = new DefaultListModel();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT usuario FROM lenttiusuario WHERE tipo = '" + pTipo + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                lista.addElement(result.getString("usuario")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
         {
             System.out.println("Errorx:"+exc.getMessage());
         }
         
         return lista;
+    }
+    
+    @Override
+    public boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre) 
+    {
+        boolean resultado = false;
+        boolean modificado = ModificarUsuario(nombreRestaurante, nuevoNombre);
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE restaurante SET nombreRestaurante = '"+ nuevoNombre + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado = true;
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+    
+    @Override
+    public boolean ModificarDireccionRestaurante (String nombreRestaurante, String nuevaDireccion) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE restaurante SET direccion = '"+ nuevaDireccion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado = true;
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+    
+    @Override
+    public boolean ModificarDescripcionRestaurante (String nombreRestaurante, String nuevaDescripcion) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE restaurante SET descripcion = '"+ nuevaDescripcion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado = true;
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+    
+    @Override
+    public boolean ModificarCostoDeEnvioRestaurante (String nombreRestaurante, String nuevoCostoDeEnvio) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  Float costoDeEnvio = Float.parseFloat(nuevoCostoDeEnvio);
+                  String consulta = "UPDATE restaurante SET costoDeEnvio = "+ nuevoCostoDeEnvio + " WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado = true;
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+    
+    @Override
+    public boolean ModificarImagenRestaurante (String nombreRestaurante, String nuevaImagen) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE restaurante SET imagen = '"+ nuevaImagen + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado = true;
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
     }
     
     public boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion)

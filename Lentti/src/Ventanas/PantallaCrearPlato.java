@@ -163,7 +163,7 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCampoNombreActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos();
+        PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario); //Mendieta noob.
         pantallaGestion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
