@@ -275,7 +275,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearRestaurante (String nombreRestaurante, String password, String direccion, String descripcion, float costoDeEnvio, String imagen) 
+    public boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen) 
     {
        boolean resultado = false;
        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
@@ -285,7 +285,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
            Class.forName("org.postgresql.Driver");
            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
            java.sql.Statement st = conexion.createStatement();
-           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"','"+ password +"','"+ direccion + "','"+ descripcion +"', '" + costoDeEnvio +"', '"+ imagen +"');";
+           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"','"+ password +"','"+ NIT +"','"+ direccion + "','"+ descripcion +"', '" + costoDeEnvio +"', '"+ imagen +"');";
            st.execute(consulta);
            st.close();
            conexion.close();
