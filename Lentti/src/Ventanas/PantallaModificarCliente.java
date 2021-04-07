@@ -62,6 +62,8 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         BotonModificarDireccionCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Modifique su perfil: ");

@@ -42,7 +42,7 @@ public class PantallaMPerfilRest extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         FondoPerfilRestaurante = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setUndecorated(true);

@@ -50,7 +50,9 @@ public class PantallaModificarPlato extends javax.swing.JFrame {
         jTextFieldModDescripcion = new javax.swing.JTextField();
         jTextFieldModImagen = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
 
         jLabel1.setText("Modificar plato");
 

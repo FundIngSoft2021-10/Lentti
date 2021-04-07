@@ -7,6 +7,8 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,12 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
     }
+        /*funcion para agregar icono del programa*/
+    public Image getIconImage()
+    {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +51,9 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
         jTextFieldNombrePlato = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
 
         jLabel1.setText("Eliminar plato");
 

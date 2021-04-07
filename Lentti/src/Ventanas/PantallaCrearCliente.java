@@ -68,7 +68,8 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
 
         jButton1.setText("jButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(getIconImage());
 
         BotonRegistrarUsuario.setText("Registrarse");
         BotonRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {

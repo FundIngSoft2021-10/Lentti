@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -52,6 +54,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         jButtonCrearRestaurante = new javax.swing.JButton();
         jButtonModificarRestaurante = new javax.swing.JButton();
         jButtonEliminarRestaurante = new javax.swing.JButton();
+        jButtonEliminarAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -108,6 +111,13 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
             }
         });
 
+        jButtonEliminarAdmin.setText("Eliminiar perfíl");
+        jButtonEliminarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarAdminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,7 +129,8 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonRegistrarAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonEliminarAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonEliminarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +158,9 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                     .addComponent(jButtonModificarUsuario)
                     .addComponent(jButtonModificarRestaurante))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEliminarRestaurante)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEliminarRestaurante)
+                    .addComponent(jButtonEliminarAdmin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEliminarAdministracion)
                 .addGap(0, 109, Short.MAX_VALUE))
@@ -201,6 +214,24 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonEliminarRestauranteActionPerformed
 
+    private void jButtonEliminarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAdminActionPerformed
+        // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        InicioSesion iniciador = new InicioSesion();
+        if(consulta.EliminarCuenta(usuario, "A"))
+        {
+            JOptionPane.showMessageDialog(null, "Administrador eliminado.");
+            this.dispose();
+            iniciador.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "El administrador no se pudo eliminar.");
+        }
+        
+        
+    }//GEN-LAST:event_jButtonEliminarAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +270,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonCrearRestaurante;
+    private javax.swing.JButton jButtonEliminarAdmin;
     private javax.swing.JButton jButtonEliminarAdministracion;
     private javax.swing.JButton jButtonEliminarRestaurante;
     private javax.swing.JButton jButtonModificarRestaurante;
