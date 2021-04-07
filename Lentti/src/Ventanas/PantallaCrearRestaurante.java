@@ -64,9 +64,9 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         jTextFieldCampoNIT = new javax.swing.JTextField();
         jTextFieldCampoCostoDeEnvio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextFieldCampoContrasena = new javax.swing.JTextField();
+        jTextFieldCampoPassword = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldCampoDireccion1 = new javax.swing.JTextField();
+        jTextFieldCampoDireccion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -128,17 +128,17 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
         jLabel7.setText("Contraseña");
 
-        jTextFieldCampoContrasena.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCampoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCampoContrasenaActionPerformed(evt);
+                jTextFieldCampoPasswordActionPerformed(evt);
             }
         });
 
         jLabel8.setText("N.I.T");
 
-        jTextFieldCampoDireccion1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCampoDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCampoDireccion1ActionPerformed(evt);
+                jTextFieldCampoDireccionActionPerformed(evt);
             }
         });
 
@@ -172,8 +172,8 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldCampoNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCampoDireccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCampoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -205,14 +205,14 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldCampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCampoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jTextFieldCampoNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCampoDireccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,20 +250,25 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado = false;
         
-        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.jTextFieldCampoImagen.getText().isEmpty())
+        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.jTextFieldCampoImagen.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
+        }
+        else if (consulta.ValidarExistenciaRestaurante(this.jTextFieldCampoNombre.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "El restaurante ya existe.");
+            PantallaCrearRestaurante pantallaGestion = new PantallaCrearRestaurante(usuario);
+            pantallaGestion.setVisible(true);
+            this.dispose();
         }
         else
         {
             float costoDeEnvio = Float.parseFloat(this.jTextFieldCampoCostoDeEnvio.getText());
-            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoContrasena.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoNIT.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.jTextFieldCampoImagen.getText());
-            
+            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.jTextFieldCampoImagen.getText());
+            PantallaAgregarPlato pantallaGestion = new PantallaAgregarPlato(jTextFieldCampoNombre.getText());
+            pantallaGestion.setVisible(true);
+            this.dispose();
         }
-        
-        PantallaInicialAdministrador pantallaGestion = new PantallaInicialAdministrador(usuario);
-        pantallaGestion.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jTextFieldCampoNITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoNITActionPerformed
@@ -278,13 +283,13 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoImagenActionPerformed
 
-    private void jTextFieldCampoContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoContrasenaActionPerformed
+    private void jTextFieldCampoPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCampoContrasenaActionPerformed
+    }//GEN-LAST:event_jTextFieldCampoPasswordActionPerformed
 
-    private void jTextFieldCampoDireccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoDireccion1ActionPerformed
+    private void jTextFieldCampoDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCampoDireccion1ActionPerformed
+    }//GEN-LAST:event_jTextFieldCampoDireccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,11 +342,11 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaCampoDescripcion;
-    private javax.swing.JTextField jTextFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoCostoDeEnvio;
-    private javax.swing.JTextField jTextFieldCampoDireccion1;
+    private javax.swing.JTextField jTextFieldCampoDireccion;
     private javax.swing.JTextField jTextFieldCampoImagen;
     private javax.swing.JTextField jTextFieldCampoNIT;
     private javax.swing.JTextField jTextFieldCampoNombre;
+    private javax.swing.JTextField jTextFieldCampoPassword;
     // End of variables declaration//GEN-END:variables
 }

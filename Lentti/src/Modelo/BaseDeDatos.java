@@ -125,7 +125,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
     
     @Override
-    public boolean CrearPlato( String restaurante, String nombrePlato,  String descripcion,float precio, String imagen) {
+    public boolean CrearPlato( String restaurante, String nombrePlato, String descripcion, float precio, String imagen) {
         boolean resultado= false;
        try 
         {
@@ -279,13 +279,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     {
        boolean resultado = false;
        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
-       
+      
        try 
        {
            Class.forName("org.postgresql.Driver");
            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
            java.sql.Statement st = conexion.createStatement();
-           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"','"+ password +"','"+ NIT +"','"+ direccion + "','"+ descripcion +"', '" + costoDeEnvio +"', '"+ imagen +"');";
+           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"', '"+ NIT +"', '"+ direccion +"', '"+ descripcion +"', '"+ costoDeEnvio +"', '"+ imagen +"');";
            st.execute(consulta);
            st.close();
            conexion.close();
@@ -310,7 +310,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "DELETE FROM restaurante WHERE nombreRestaurante = '"+ nombreRestaurante +"'; ";
+            String consulta = "DELETE FROM restaurante WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            //Tal vez toque eliminar cada plato del restaurante a eliminar.
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -529,4 +530,35 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return sePudo;
     }
     
+    public boolean ValidarExistenciaRestaurante (String nombreRestaurante)
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "SELECT nombreRestaurante FROM restaurante";
+                  ResultSet result = st.executeQuery(consulta);
+                  
+                  while(result.next()) 
+                  {
+                      if(nombreRestaurante.equals(result.getString("nombreRestaurante")))
+                      {
+                          resultado = true;
+                      }  
+                  }
+                  
+                  result.close();
+                  st.close();
+                  conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return resultado;
+    }
 }

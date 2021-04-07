@@ -229,6 +229,10 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "El campo está vacio.");
         }
+        else if (!consulta.ValidarExistenciaRestaurante(this.jTextFieldNombreRestaurante.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "El restaurante dado no existe.");
+        }
         else
         {
             resultado = consulta.ModificarNombreRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModNombre.getText());

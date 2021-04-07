@@ -139,14 +139,22 @@ public class PantallaEliminarRestaurante extends javax.swing.JFrame
         {
             JOptionPane.showMessageDialog(null, "No se ha indicado un nombre.");
         }
+        else if (!consulta.ValidarExistenciaRestaurante(this.jTextFieldNombreRestaurante.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "El restaurante no existe.");
+            PantallaEliminarRestaurante pantallaGestion = new PantallaEliminarRestaurante(usuario);
+            pantallaGestion.setVisible(true);
+            this.dispose();
+        }
         else
         {
             resultado = consulta.EliminarRestaurante(this.jTextFieldNombreRestaurante.getText());
+            PantallaInicialAdministrador pantallaGestion = new PantallaInicialAdministrador(usuario);
+            pantallaGestion.setVisible(true);
+            this.dispose();
         }
         
-        PantallaInicialAdministrador pantallaGestion = new PantallaInicialAdministrador(usuario);
-        pantallaGestion.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
