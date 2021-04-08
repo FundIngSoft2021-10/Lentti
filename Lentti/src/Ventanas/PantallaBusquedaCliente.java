@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import Entidades.Restaurante;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -17,11 +18,11 @@ import javax.swing.DefaultListModel;
  *
  * @author Estefania
  */
-public class PantallaBusquedaPR extends javax.swing.JFrame {
+public class PantallaBusquedaCliente extends javax.swing.JFrame {
     
-     
+    ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
     
-    public PantallaBusquedaPR() {
+    public PantallaBusquedaCliente() {
         initComponents();
         transparenciaDelBoton();
         inicioVentana();
@@ -47,13 +48,29 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra.setVisible(false);
         BotonVerRestaurante.setVisible(false);
         BotonAtrasP2.setVisible(false);
+        FotoRestaurante.setVisible(false);
+        NombreRestaurante.setVisible(false);
+        DescripcionRestaurante.setVisible(false);
+        TiempoRestaurante.setVisible(false);
+        PrecioDRestaurante.setVisible(false);
+        Tapar.setVisible(false);
         
         //Se desabilita pantalla 3
         FondoAgregarCarrito.setVisible(false);
         BotonAtrasBusqAnt.setVisible(false);
         BotonAgregarPlatoCC.setVisible(false);
         Confirmacion.setVisible(false);
-        BotonOk.setVisible(false);   
+        BotonOk.setVisible(false); 
+        ListaDePlatos.setVisible(false);
+        TextListaPlatos.setVisible(false);
+        FotoPlato.setVisible(false);
+        TextPrecio.setVisible(false);
+        PrecioPlato.setVisible(false);
+        NombrePlato.setVisible(false);
+        DescripcionPlato.setVisible(false);
+        PrecioP3.setVisible(false);
+        NombreP3.setVisible(false);
+        TiempoP3.setVisible(false);
     }
     
     public void mostrarPantalla2(){
@@ -71,6 +88,12 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra.setVisible(true);
         BotonVerRestaurante.setVisible(true);
         BotonAtrasP2.setVisible(true);
+        FotoRestaurante.setVisible(true);
+        NombreRestaurante.setVisible(true);
+        DescripcionRestaurante.setVisible(true);
+        TiempoRestaurante.setVisible(true);
+        PrecioDRestaurante.setVisible(true);
+        Tapar.setVisible(true);
 
         
         //Se desabilita pantalla 3
@@ -79,6 +102,16 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonAgregarPlatoCC.setVisible(false);
         Confirmacion.setVisible(false);
         BotonOk.setVisible(false);
+        ListaDePlatos.setVisible(false);
+        TextListaPlatos.setVisible(false);
+        FotoPlato.setVisible(false);
+        TextPrecio.setVisible(false);
+        PrecioPlato.setVisible(false);
+        NombrePlato.setVisible(false);
+        DescripcionPlato.setVisible(false);
+        PrecioP3.setVisible(false);
+        NombreP3.setVisible(false);
+        TiempoP3.setVisible(false);
         
     }
     
@@ -96,6 +129,12 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra.setVisible(false);
         BotonVerRestaurante.setVisible(false);
         BotonAtrasP2.setVisible(false);
+        FotoRestaurante.setVisible(false);
+        NombreRestaurante.setVisible(false);
+        DescripcionRestaurante.setVisible(false);
+        TiempoRestaurante.setVisible(false);
+        PrecioDRestaurante.setVisible(false);
+        Tapar.setVisible(false);
         
         //PANTALLA 3: se activa
         FondoAgregarCarrito.setVisible(true);
@@ -103,6 +142,16 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonAgregarPlatoCC.setVisible(true);
         Confirmacion.setVisible(false);
         BotonOk.setVisible(false);
+        ListaDePlatos.setVisible(true);
+        TextListaPlatos.setVisible(true);
+        FotoPlato.setVisible(true);
+        TextPrecio.setVisible(true);
+        PrecioPlato.setVisible(true);
+        NombrePlato.setVisible(true);
+        DescripcionPlato.setVisible(true);
+        PrecioP3.setVisible(true);
+        NombreP3.setVisible(true);
+        TiempoP3.setVisible(true);
         
     }
     
@@ -116,6 +165,22 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Tapar = new javax.swing.JTextField();
+        NombreP3 = new javax.swing.JTextField();
+        TiempoP3 = new javax.swing.JTextField();
+        PrecioP3 = new javax.swing.JTextField();
+        NombrePlato = new javax.swing.JTextField();
+        DescripcionPlato = new javax.swing.JTextField();
+        PrecioPlato = new javax.swing.JTextField();
+        TextPrecio = new javax.swing.JTextField();
+        FotoPlato = new javax.swing.JLabel();
+        TextListaPlatos = new javax.swing.JTextField();
+        ListaDePlatos = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        NombreRestaurante = new javax.swing.JTextField();
+        DescripcionRestaurante = new javax.swing.JTextField();
+        TiempoRestaurante = new javax.swing.JTextField();
+        PrecioDRestaurante = new javax.swing.JTextField();
         BotonOk = new javax.swing.JButton();
         Confirmacion = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JButton();
@@ -129,8 +194,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonVerRestaurante = new javax.swing.JButton();
         InfoBusqueda = new javax.swing.JTextField();
         BotonRealizarOtra = new javax.swing.JButton();
-        FondoAgregarCarrito = new javax.swing.JLabel();
+        FotoRestaurante = new javax.swing.JLabel();
         FondoBuscador = new javax.swing.JLabel();
+        FondoAgregarCarrito = new javax.swing.JLabel();
         FondoMostrarOpciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -138,6 +204,102 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Tapar.setBackground(new java.awt.Color(235, 235, 235));
+        Tapar.setBorder(null);
+        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 230, 60));
+
+        NombreP3.setBackground(new java.awt.Color(38, 75, 109));
+        NombreP3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        NombreP3.setForeground(new java.awt.Color(255, 255, 255));
+        NombreP3.setBorder(null);
+        getContentPane().add(NombreP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 550, 40));
+
+        TiempoP3.setEditable(false);
+        TiempoP3.setBackground(new java.awt.Color(38, 75, 109));
+        TiempoP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        TiempoP3.setForeground(new java.awt.Color(255, 255, 255));
+        TiempoP3.setBorder(null);
+        getContentPane().add(TiempoP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 30));
+
+        PrecioP3.setEditable(false);
+        PrecioP3.setBackground(new java.awt.Color(38, 75, 109));
+        PrecioP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        PrecioP3.setForeground(new java.awt.Color(255, 255, 255));
+        PrecioP3.setBorder(null);
+        getContentPane().add(PrecioP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 250, 30));
+
+        NombrePlato.setEditable(false);
+        NombrePlato.setBackground(new java.awt.Color(246, 243, 243));
+        NombrePlato.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        NombrePlato.setBorder(null);
+        getContentPane().add(NombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 380, 30));
+
+        DescripcionPlato.setEditable(false);
+        DescripcionPlato.setBackground(new java.awt.Color(246, 243, 243));
+        DescripcionPlato.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        DescripcionPlato.setBorder(null);
+        getContentPane().add(DescripcionPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 480, 30));
+
+        PrecioPlato.setEditable(false);
+        PrecioPlato.setBackground(new java.awt.Color(246, 243, 243));
+        PrecioPlato.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        PrecioPlato.setBorder(null);
+        getContentPane().add(PrecioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+
+        TextPrecio.setEditable(false);
+        TextPrecio.setBackground(new java.awt.Color(246, 243, 243));
+        TextPrecio.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        TextPrecio.setText("Precio:");
+        TextPrecio.setBorder(null);
+        getContentPane().add(TextPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, -1));
+        getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
+
+        TextListaPlatos.setEditable(false);
+        TextListaPlatos.setBackground(new java.awt.Color(255, 254, 251));
+        TextListaPlatos.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        TextListaPlatos.setText("Lista de platos disponibles:");
+        TextListaPlatos.setBorder(null);
+        getContentPane().add(TextListaPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 440, -1));
+
+        jList2.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ListaDePlatos.setViewportView(jList2);
+
+        getContentPane().add(ListaDePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 660, 100));
+
+        NombreRestaurante.setEditable(false);
+        NombreRestaurante.setBackground(new java.awt.Color(235, 235, 235));
+        NombreRestaurante.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
+        NombreRestaurante.setBorder(null);
+        NombreRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreRestauranteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NombreRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 550, -1));
+
+        DescripcionRestaurante.setEditable(false);
+        DescripcionRestaurante.setBackground(new java.awt.Color(235, 235, 235));
+        DescripcionRestaurante.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        DescripcionRestaurante.setBorder(null);
+        getContentPane().add(DescripcionRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 490, 70));
+
+        TiempoRestaurante.setEditable(false);
+        TiempoRestaurante.setBackground(new java.awt.Color(235, 235, 235));
+        TiempoRestaurante.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        TiempoRestaurante.setBorder(null);
+        getContentPane().add(TiempoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 210, -1));
+
+        PrecioDRestaurante.setEditable(false);
+        PrecioDRestaurante.setBackground(new java.awt.Color(235, 235, 235));
+        PrecioDRestaurante.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        PrecioDRestaurante.setBorder(null);
+        getContentPane().add(PrecioDRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 210, -1));
 
         BotonOk.setBackground(new java.awt.Color(255, 255, 255));
         BotonOk.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
@@ -211,6 +373,12 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         EscribirConsulta.setBorder(null);
         getContentPane().add(EscribirConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 320, 40));
 
+        ListaBusquedaRestaurantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListaBusquedaRestaurantesMouseClicked(evt);
+            }
+        });
+
         jList1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -251,12 +419,13 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
-
-        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
-        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
 
         FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
         getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
+        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
         getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -266,17 +435,19 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         // TODO add your handling code here:
+        listaRestaurantes.clear();
          mostrarPantalla2(); 
          if(!EscribirConsulta.getText().equals(null))
            InfoBusqueda.setText(EscribirConsulta.getText());
          else 
              System.out.println("ERROR");
         
-        DefaultListModel restaurantes = new DefaultListModel();
+        DefaultListModel restaurantes = new DefaultListModel<>();
         restaurantes.clear();
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        restaurantes = consulta.BuscarPalabrasClave(EscribirConsulta.getText());
-
+        restaurantes= consulta.BuscarPalabrasClave(EscribirConsulta.getText());
+        
+        restaurantes.addElement("holaa");
         jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda*/
        
     }//GEN-LAST:event_BotonBuscarMouseClicked
@@ -284,12 +455,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private void InfoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InfoBusquedaActionPerformed
-
-    private void BotonRealizarOtraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRealizarOtraMouseClicked
-        // TODO add your handling code here:
-        //Boton realizar otra busqueda - MUESTRA PANTALLA 1
-        inicioVentana();
-    }//GEN-LAST:event_BotonRealizarOtraMouseClicked
    
     private void BotonVerRestauranteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVerRestauranteMouseClicked
         
@@ -300,6 +465,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private void BotonAtrasBusqAntMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAtrasBusqAntMouseClicked
         //BOTON ATRAS BUSQUEDA ANTERIOR CUANDO ESTA EN EL CARRITO
         mostrarPantalla2();
+        Tapar.setVisible(false);
     }//GEN-LAST:event_BotonAtrasBusqAntMouseClicked
 
     private void BotonAtrasP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAtrasP2MouseClicked
@@ -307,7 +473,14 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAtrasP2MouseClicked
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        
+       //A medida que se van seleccionando opciones de la lista se cambia la informacion
+       NombreRestaurante.setText(jList1.getSelectedValue().toString());
+       consultasBaseDeDatos consulta = new BaseDeDatos();
+       Restaurante R = new Restaurante();
+       R = consulta.darInformacionRestaurante(jList1.getSelectedValue().toString());
+       DescripcionRestaurante.setText(R.getDescripcion());
+       PrecioDRestaurante.setText(Float.toString(R.getCostoEnvio()));
+       Tapar.setVisible(false);
     }//GEN-LAST:event_jList1MouseClicked
 
     private void ConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmacionActionPerformed
@@ -326,6 +499,20 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         Confirmacion.setVisible(false);
         BotonOk.setVisible(false);
     }//GEN-LAST:event_BotonOkMouseClicked
+
+    private void ListaBusquedaRestaurantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaBusquedaRestaurantesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListaBusquedaRestaurantesMouseClicked
+
+    private void NombreRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreRestauranteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreRestauranteActionPerformed
+
+    private void BotonRealizarOtraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRealizarOtraMouseClicked
+        // TODO add your handling code here:
+        //Boton realizar otra busqueda - MUESTRA PANTALLA 1
+        inicioVentana();
+    }//GEN-LAST:event_BotonRealizarOtraMouseClicked
 
     
     public void transparenciaDelBoton(){
@@ -356,14 +543,22 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaPR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaPR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaPR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaPR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -376,7 +571,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaBusquedaPR().setVisible(true);
+                new PantallaBusquedaCliente().setVisible(true);
             }
         });
         
@@ -394,12 +589,29 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private javax.swing.JButton BotonRealizarOtra;
     private javax.swing.JButton BotonVerRestaurante;
     private javax.swing.JTextField Confirmacion;
+    private javax.swing.JTextField DescripcionPlato;
+    private javax.swing.JTextField DescripcionRestaurante;
     private javax.swing.JTextField EscribirConsulta;
     private javax.swing.JLabel FondoAgregarCarrito;
     private javax.swing.JLabel FondoBuscador;
     private javax.swing.JLabel FondoMostrarOpciones;
+    private javax.swing.JLabel FotoPlato;
+    private javax.swing.JLabel FotoRestaurante;
     private javax.swing.JTextField InfoBusqueda;
     private javax.swing.JScrollPane ListaBusquedaRestaurantes;
+    private javax.swing.JScrollPane ListaDePlatos;
+    private javax.swing.JTextField NombreP3;
+    private javax.swing.JTextField NombrePlato;
+    private javax.swing.JTextField NombreRestaurante;
+    private javax.swing.JTextField PrecioDRestaurante;
+    private javax.swing.JTextField PrecioP3;
+    private javax.swing.JTextField PrecioPlato;
+    private javax.swing.JTextField Tapar;
+    private javax.swing.JTextField TextListaPlatos;
+    private javax.swing.JTextField TextPrecio;
+    private javax.swing.JTextField TiempoP3;
+    private javax.swing.JTextField TiempoRestaurante;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     // End of variables declaration//GEN-END:variables
 }

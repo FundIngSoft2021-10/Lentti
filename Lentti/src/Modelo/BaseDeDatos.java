@@ -6,6 +6,7 @@
 package Modelo;
 
 import Controlador.consultasBaseDeDatos;
+import Entidades.Restaurante;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -694,7 +695,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public DefaultListModel BuscarPalabrasClave (String pClave) 
     {
         DefaultListModel listRestaurantes= new DefaultListModel();
-        /*
+        
         try 
         {
             Class.forName("org.postgresql.Driver");
@@ -715,9 +716,41 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         catch (Exception exc)
         {
             System.out.println("Errorx:"+exc.getMessage());
-        }*/
+        }
         
         return listRestaurantes;
+    }
+    
+    public Restaurante darInformacionRestaurante (String nRestaurante) 
+    {
+        Restaurante R = new Restaurante();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT direccion,descripcion,costoEnvio FROM restaurante WHERE nombreRestaurante = '" + nRestaurante+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                R.setNombre(result.getString("nombreRestaurante"));
+                R.setDireccion(result.getString("direccion"));
+                R.setDescripcion(result.getString("descripcion"));
+                R.setCostoEnvio(result.getFloat("costoEnvio"));
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return R;
     }
     
 }

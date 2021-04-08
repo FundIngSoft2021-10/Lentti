@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Entidades.Restaurante;
 import javax.swing.DefaultListModel;
 
 /**
@@ -41,5 +42,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarNombreDomiciliario(String documento, String nuevoNombre);
     public abstract boolean ModificarTelefonoDomiciliario(String documento, String nuevoTelefono);
     public abstract boolean ModificarPlacaVehiculoDomiciliario(String documento, String nuevaPlacaVehiculo);
+    public abstract Restaurante darInformacionRestaurante (String nRestaurante);
     
 }
