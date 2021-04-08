@@ -8,6 +8,7 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import Entidades.Restaurante;
+import Entidades.Plato;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -20,7 +21,9 @@ import javax.swing.DefaultListModel;
  */
 public class PantallaBusquedaCliente extends javax.swing.JFrame {
     
-    ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+    
+    Restaurante restSeleccionado = new Restaurante();
+    String platoSeleccionado;
     
     public PantallaBusquedaCliente() {
         initComponents();
@@ -71,6 +74,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         PrecioP3.setVisible(false);
         NombreP3.setVisible(false);
         TiempoP3.setVisible(false);
+        Tapar2.setVisible(false);
     }
     
     public void mostrarPantalla2(){
@@ -112,6 +116,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         PrecioP3.setVisible(false);
         NombreP3.setVisible(false);
         TiempoP3.setVisible(false);
+        Tapar2.setVisible(false);
         
     }
     
@@ -139,19 +144,20 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         //PANTALLA 3: se activa
         FondoAgregarCarrito.setVisible(true);
         BotonAtrasBusqAnt.setVisible(true);
-        BotonAgregarPlatoCC.setVisible(true);
+        BotonAgregarPlatoCC.setVisible(false);
         Confirmacion.setVisible(false);
         BotonOk.setVisible(false);
         ListaDePlatos.setVisible(true);
         TextListaPlatos.setVisible(true);
-        FotoPlato.setVisible(true);
-        TextPrecio.setVisible(true);
-        PrecioPlato.setVisible(true);
-        NombrePlato.setVisible(true);
-        DescripcionPlato.setVisible(true);
+        FotoPlato.setVisible(false);
+        TextPrecio.setVisible(false);
+        PrecioPlato.setVisible(false);
+        NombrePlato.setVisible(false);
+        DescripcionPlato.setVisible(false);
         PrecioP3.setVisible(true);
         NombreP3.setVisible(true);
         TiempoP3.setVisible(true);
+        Tapar2.setVisible(true);
         
     }
     
@@ -165,6 +171,9 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BotonOk = new javax.swing.JButton();
+        Confirmacion = new javax.swing.JTextField();
+        Tapar2 = new javax.swing.JTextField();
         Tapar = new javax.swing.JTextField();
         NombreP3 = new javax.swing.JTextField();
         TiempoP3 = new javax.swing.JTextField();
@@ -181,8 +190,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         DescripcionRestaurante = new javax.swing.JTextField();
         TiempoRestaurante = new javax.swing.JTextField();
         PrecioDRestaurante = new javax.swing.JTextField();
-        BotonOk = new javax.swing.JButton();
-        Confirmacion = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JButton();
         BotonAgregarPlatoCC = new javax.swing.JButton();
         BotonAtrasP2 = new javax.swing.JButton();
@@ -194,16 +201,45 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         BotonVerRestaurante = new javax.swing.JButton();
         InfoBusqueda = new javax.swing.JTextField();
         BotonRealizarOtra = new javax.swing.JButton();
-        FotoRestaurante = new javax.swing.JLabel();
-        FondoBuscador = new javax.swing.JLabel();
         FondoAgregarCarrito = new javax.swing.JLabel();
         FondoMostrarOpciones = new javax.swing.JLabel();
+        FotoRestaurante = new javax.swing.JLabel();
+        FondoBuscador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BotonOk.setBackground(new java.awt.Color(255, 255, 255));
+        BotonOk.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
+        BotonOk.setText("Ok");
+        BotonOk.setBorder(null);
+        BotonOk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonOkMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 140, 40));
+
+        Confirmacion.setBackground(new java.awt.Color(114, 203, 131));
+        Confirmacion.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
+        Confirmacion.setForeground(new java.awt.Color(255, 255, 255));
+        Confirmacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Confirmacion.setText("SE AGREGÓ CORRECTAMENTE");
+        Confirmacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Confirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 600, 150));
+
+        Tapar2.setEditable(false);
+        Tapar2.setBackground(new java.awt.Color(246, 243, 243));
+        Tapar2.setBorder(null);
+        getContentPane().add(Tapar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 280, 70));
 
         Tapar.setBackground(new java.awt.Color(235, 235, 235));
         Tapar.setBorder(null);
@@ -268,6 +304,11 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList2MouseClicked(evt);
+            }
+        });
         ListaDePlatos.setViewportView(jList2);
 
         getContentPane().add(ListaDePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 660, 100));
@@ -300,30 +341,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         PrecioDRestaurante.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         PrecioDRestaurante.setBorder(null);
         getContentPane().add(PrecioDRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 210, -1));
-
-        BotonOk.setBackground(new java.awt.Color(255, 255, 255));
-        BotonOk.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
-        BotonOk.setText("Ok");
-        BotonOk.setBorder(null);
-        BotonOk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonOkMouseClicked(evt);
-            }
-        });
-        getContentPane().add(BotonOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 140, 40));
-
-        Confirmacion.setBackground(new java.awt.Color(114, 203, 131));
-        Confirmacion.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
-        Confirmacion.setForeground(new java.awt.Color(255, 255, 255));
-        Confirmacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Confirmacion.setText("SE AGREGÓ CORRECTAMENTE");
-        Confirmacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        Confirmacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmacionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 600, 150));
 
         BotonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -419,22 +436,23 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
-        getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
-
-        FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
-        getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
         getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
         getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
+
+        FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
+        getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         // TODO add your handling code here:
+        ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
         listaRestaurantes.clear();
          mostrarPantalla2(); 
          if(!EscribirConsulta.getText().equals(null))
@@ -459,6 +477,16 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     private void BotonVerRestauranteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVerRestauranteMouseClicked
         
         mostrarPantalla3();
+        DefaultListModel platos = new DefaultListModel<>();
+        platos.clear();
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        platos= consulta.darNombrePlatos(restSeleccionado.getNombre());
+        platos.addElement("Pruebita");
+        jList2.setModel(platos); //Muestra los platos de un restaurante seleccionado 
+        //Muestra la informacion del restaurante en la pantalla3
+        
+        NombreP3.setText(restSeleccionado.getNombre());
+        //FALTA PRECIO Y TIEMPO EN RESTAURANTE
         
     }//GEN-LAST:event_BotonVerRestauranteMouseClicked
 
@@ -476,10 +504,9 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
        //A medida que se van seleccionando opciones de la lista se cambia la informacion
        NombreRestaurante.setText(jList1.getSelectedValue().toString());
        consultasBaseDeDatos consulta = new BaseDeDatos();
-       Restaurante R = new Restaurante();
-       R = consulta.darInformacionRestaurante(jList1.getSelectedValue().toString());
-       DescripcionRestaurante.setText(R.getDescripcion());
-       PrecioDRestaurante.setText(Float.toString(R.getCostoEnvio()));
+       restSeleccionado = consulta.darInformacionRestaurante(jList1.getSelectedValue().toString());
+       DescripcionRestaurante.setText(restSeleccionado.getDescripcion());
+       PrecioDRestaurante.setText(Float.toString(restSeleccionado.getCostoEnvio()));
        Tapar.setVisible(false);
     }//GEN-LAST:event_jList1MouseClicked
 
@@ -489,9 +516,13 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
     private void BotonAgregarPlatoCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAgregarPlatoCCMouseClicked
         // SI AGREGAN UN PEDIDO
-        
         Confirmacion.setVisible(true);
         BotonOk.setVisible(true);
+        
+        //TODAVIA NO PUEDO CREAR EL PEDIDO PORQUE NO SE COMO ACCEDER AL USUARIO ACTUAL XD
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        
+        //boolean seCreo = consulta.agregarPedidoCC(nUsuario, restSeleccionado.getNombre(), platoSeleccionado);
     }//GEN-LAST:event_BotonAgregarPlatoCCMouseClicked
 
     private void BotonOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonOkMouseClicked
@@ -513,6 +544,29 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         //Boton realizar otra busqueda - MUESTRA PANTALLA 1
         inicioVentana();
     }//GEN-LAST:event_BotonRealizarOtraMouseClicked
+
+    private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
+        //Hasta que le de click a algun plato no muestra la información
+        FotoPlato.setVisible(true);
+        TextPrecio.setVisible(true);
+        PrecioPlato.setVisible(true);
+        NombrePlato.setVisible(true);
+        DescripcionPlato.setVisible(true);
+        Tapar2.setVisible(false);
+        BotonAgregarPlatoCC.setVisible(true);
+        
+        //Tengo que mostrar la información del plato
+        platoSeleccionado = jList2.getSelectedValue().toString();       
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        Plato P = new Plato();
+        P = consulta.darInformacionPlato(restSeleccionado.getNombre(), platoSeleccionado);
+        NombrePlato.setText(platoSeleccionado);
+        DescripcionPlato.setText(P.getDescripcion());
+        PrecioPlato.setText(Float.toString(P.getPrecio()));
+        
+        //OJO: FALTA LA IMAGEN
+
+    }//GEN-LAST:event_jList2MouseClicked
 
     
     public void transparenciaDelBoton(){
@@ -607,6 +661,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioP3;
     private javax.swing.JTextField PrecioPlato;
     private javax.swing.JTextField Tapar;
+    private javax.swing.JTextField Tapar2;
     private javax.swing.JTextField TextListaPlatos;
     private javax.swing.JTextField TextPrecio;
     private javax.swing.JTextField TiempoP3;

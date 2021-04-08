@@ -6,6 +6,7 @@
 package Modelo;
 
 import Controlador.consultasBaseDeDatos;
+import Entidades.Plato;
 import Entidades.Restaurante;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -751,6 +752,90 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         
         return R;
+    }
+    
+     public DefaultListModel darNombrePlatos (String pRest) 
+    {
+        DefaultListModel listPlatos= new DefaultListModel();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombrePlato FROM plato WHERE restaurante = '" + pRest + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                listPlatos.addElement(result.getString("nombreRestaurante")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return listPlatos;
+    }
+     
+      public Plato darInformacionPlato(String nRest, String nPlato) 
+    {
+        Plato P = new Plato();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT precio,descripcion,imagen FROM plato WHERE restaurante = '" + nRest + "' and nombrePlato = '" + nPlato + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                P.setPrecio(result.getFloat("precio"));
+                P.setDescripcion(result.getString("descripcion"));
+                P.setImagen(result.getString("imagen"));
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return P;
+    }
+      
+      public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato) 
+    {
+       boolean resultado = false;
+      
+       try 
+       {
+           Class.forName("org.postgresql.Driver");
+           Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+           java.sql.Statement st = conexion.createStatement();
+           String consulta = "INSERT INTO carritoCompras VALUES ('"+ nUsuario +"', '"+ nRestaurante +"', '"+ nPlato +"');";
+           st.execute(consulta);
+           st.close();
+           conexion.close();
+           resultado = true;
+       }
+       catch (Exception exc)
+       {
+           System.out.println("Errorx:"+exc.getMessage());
+           resultado = false;
+       }
+       
+       return resultado;
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Entidades.Plato;
 import Entidades.Restaurante;
 import javax.swing.DefaultListModel;
 
@@ -43,5 +44,8 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarTelefonoDomiciliario(String documento, String nuevoTelefono);
     public abstract boolean ModificarPlacaVehiculoDomiciliario(String documento, String nuevaPlacaVehiculo);
     public abstract Restaurante darInformacionRestaurante (String nRestaurante);
+    public abstract DefaultListModel darNombrePlatos (String pRest);
+    public abstract Plato darInformacionPlato(String nRest, String nPlato); 
+    public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato); 
     
 }
