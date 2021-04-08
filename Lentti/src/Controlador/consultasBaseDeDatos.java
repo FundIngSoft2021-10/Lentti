@@ -34,5 +34,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean ValidarExistenciaRestaurante (String nombreRestaurante);
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
     public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);
+    public abstract DefaultListModel BuscarPalabrasClave (String pClave);
     
 }

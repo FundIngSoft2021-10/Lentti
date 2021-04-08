@@ -19,12 +19,10 @@ import javax.swing.DefaultListModel;
  */
 public class PantallaBusquedaPR extends javax.swing.JFrame {
     
-    DefaultListModel restaurantes;
-    
+     
     
     public PantallaBusquedaPR() {
         initComponents();
-        restaurantes = new DefaultListModel();
         transparenciaDelBoton();
         inicioVentana();
         this.setLocationRelativeTo(null);   
@@ -36,14 +34,75 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         return retValue;
     }
     public void inicioVentana(){
-        Fondo1.setVisible(true);
-        Fondo2.setVisible(false);
+        // PANTALLA 1: BUSCADOR DE PRODUCTOS/RESTAURANTES
+        FondoBuscador.setVisible(true);
         BotonBuscar.setVisible(true);
+        EscribirConsulta.setVisible(true);
+        BotonAtrasP1.setVisible(true);
+        
+        //Se desabilita pantalla 2
+        FondoMostrarOpciones.setVisible(false);
         InfoBusqueda.setVisible(false);
         ListaBusquedaRestaurantes.setVisible(false);
         BotonRealizarOtra.setVisible(false);
         BotonVerRestaurante.setVisible(false);
-        EscribirConsulta.setVisible(true);
+        BotonAtrasP2.setVisible(false);
+        
+        //Se desabilita pantalla 3
+        FondoAgregarCarrito.setVisible(false);
+        BotonAtrasBusqAnt.setVisible(false);
+        BotonAgregarPlatoCC.setVisible(false);
+        Confirmacion.setVisible(false);
+        BotonOk.setVisible(false);   
+    }
+    
+    public void mostrarPantalla2(){
+        
+        // PANTALLA 1: BUSCADOR DE PRODUCTOS/RESTAURANTES
+        FondoBuscador.setVisible(false);
+        BotonBuscar.setVisible(false);
+        EscribirConsulta.setVisible(false);
+        BotonAtrasP1.setVisible(false);
+        
+        //Se desabilita pantalla 2
+        FondoMostrarOpciones.setVisible(true);
+        InfoBusqueda.setVisible(true);
+        ListaBusquedaRestaurantes.setVisible(true);
+        BotonRealizarOtra.setVisible(true);
+        BotonVerRestaurante.setVisible(true);
+        BotonAtrasP2.setVisible(true);
+
+        
+        //Se desabilita pantalla 3
+        FondoAgregarCarrito.setVisible(false);
+        BotonAtrasBusqAnt.setVisible(false);
+        BotonAgregarPlatoCC.setVisible(false);
+        Confirmacion.setVisible(false);
+        BotonOk.setVisible(false);
+        
+    }
+    
+    public void mostrarPantalla3(){
+         // PANTALLA 1: se desabilita
+        FondoBuscador.setVisible(false);
+        BotonBuscar.setVisible(false);
+        EscribirConsulta.setVisible(false);
+        BotonAtrasP1.setVisible(false);
+        
+        //PANTALLA 2: se desabilita 
+        FondoMostrarOpciones.setVisible(false);
+        InfoBusqueda.setVisible(false);
+        ListaBusquedaRestaurantes.setVisible(false);
+        BotonRealizarOtra.setVisible(false);
+        BotonVerRestaurante.setVisible(false);
+        BotonAtrasP2.setVisible(false);
+        
+        //PANTALLA 3: se activa
+        FondoAgregarCarrito.setVisible(true);
+        BotonAtrasBusqAnt.setVisible(true);
+        BotonAgregarPlatoCC.setVisible(true);
+        Confirmacion.setVisible(false);
+        BotonOk.setVisible(false);
         
     }
     
@@ -57,16 +116,22 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        EscribirConsulta = new javax.swing.JTextField();
-        BotonAtrasBusqueda = new javax.swing.JButton();
+        BotonOk = new javax.swing.JButton();
+        Confirmacion = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JButton();
+        BotonAgregarPlatoCC = new javax.swing.JButton();
+        BotonAtrasP2 = new javax.swing.JButton();
+        BotonAtrasP1 = new javax.swing.JButton();
+        BotonAtrasBusqAnt = new javax.swing.JButton();
+        EscribirConsulta = new javax.swing.JTextField();
         ListaBusquedaRestaurantes = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         BotonVerRestaurante = new javax.swing.JButton();
-        BotonRealizarOtra = new javax.swing.JButton();
-        Fondo1 = new javax.swing.JLabel();
         InfoBusqueda = new javax.swing.JTextField();
-        Fondo2 = new javax.swing.JLabel();
+        BotonRealizarOtra = new javax.swing.JButton();
+        FondoAgregarCarrito = new javax.swing.JLabel();
+        FondoBuscador = new javax.swing.JLabel();
+        FondoMostrarOpciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -74,16 +139,29 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        EscribirConsulta.setBackground(new java.awt.Color(235, 235, 235));
-        EscribirConsulta.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        EscribirConsulta.setBorder(null);
-        getContentPane().add(EscribirConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 320, 40));
+        BotonOk.setBackground(new java.awt.Color(255, 255, 255));
+        BotonOk.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
+        BotonOk.setText("Ok");
+        BotonOk.setBorder(null);
+        BotonOk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonOkMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 140, 40));
 
-        BotonAtrasBusqueda.setBackground(new java.awt.Color(255, 255, 255));
-        BotonAtrasBusqueda.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        BotonAtrasBusqueda.setText("<<  Atrás");
-        BotonAtrasBusqueda.setBorder(null);
-        getContentPane().add(BotonAtrasBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, -1));
+        Confirmacion.setBackground(new java.awt.Color(114, 203, 131));
+        Confirmacion.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
+        Confirmacion.setForeground(new java.awt.Color(255, 255, 255));
+        Confirmacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Confirmacion.setText("SE AGREGÓ CORRECTAMENTE");
+        Confirmacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Confirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 600, 150));
 
         BotonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,11 +170,57 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         });
         getContentPane().add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 110, 40));
 
+        BotonAgregarPlatoCC.setBorder(null);
+        BotonAgregarPlatoCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonAgregarPlatoCCMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonAgregarPlatoCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, 260, 40));
+
+        BotonAtrasP2.setBackground(new java.awt.Color(255, 254, 251));
+        BotonAtrasP2.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        BotonAtrasP2.setText("<<  Atrás");
+        BotonAtrasP2.setBorder(null);
+        BotonAtrasP2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonAtrasP2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonAtrasP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, 30));
+
+        BotonAtrasP1.setBackground(new java.awt.Color(255, 255, 255));
+        BotonAtrasP1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        BotonAtrasP1.setText("<<  Atrás");
+        BotonAtrasP1.setBorder(null);
+        getContentPane().add(BotonAtrasP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, -1));
+
+        BotonAtrasBusqAnt.setBackground(new java.awt.Color(246, 243, 243));
+        BotonAtrasBusqAnt.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        BotonAtrasBusqAnt.setText("<< Atrás");
+        BotonAtrasBusqAnt.setBorder(null);
+        BotonAtrasBusqAnt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonAtrasBusqAntMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonAtrasBusqAnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, -1));
+
+        EscribirConsulta.setBackground(new java.awt.Color(235, 235, 235));
+        EscribirConsulta.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        EscribirConsulta.setBorder(null);
+        getContentPane().add(EscribirConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 320, 40));
+
         jList1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
         });
         ListaBusquedaRestaurantes.setViewportView(jList1);
 
@@ -108,16 +232,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonVerRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 230, 40));
-
-        BotonRealizarOtra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonRealizarOtraMouseClicked(evt);
-            }
-        });
-        getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
-
-        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
-        getContentPane().add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         InfoBusqueda.setEditable(false);
         InfoBusqueda.setBackground(new java.awt.Color(235, 235, 235));
@@ -131,24 +245,40 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         });
         getContentPane().add(InfoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 360, 40));
 
-        Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
-        getContentPane().add(Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BotonRealizarOtra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonRealizarOtraMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
+
+        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
+        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
+        getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
+        getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         // TODO add your handling code here:
-        Fondo1.setVisible(false);
-        Fondo2.setVisible(true);
-        ListaBusquedaRestaurantes.setVisible(true);
-        BotonBuscar.setVisible(false);
-        InfoBusqueda.setVisible(true);
-        BotonRealizarOtra.setVisible(true);
-        BotonVerRestaurante.setVisible(true);
-        EscribirConsulta.setVisible(false);
+         mostrarPantalla2(); 
+         if(!EscribirConsulta.getText().equals(null))
+           InfoBusqueda.setText(EscribirConsulta.getText());
+         else 
+             System.out.println("ERROR");
         
-        
+        DefaultListModel restaurantes = new DefaultListModel();
+        restaurantes.clear();
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        restaurantes = consulta.BuscarPalabrasClave(EscribirConsulta.getText());
+
+        jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda*/
+       
     }//GEN-LAST:event_BotonBuscarMouseClicked
 
     private void InfoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoBusquedaActionPerformed
@@ -157,42 +287,47 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
 
     private void BotonRealizarOtraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRealizarOtraMouseClicked
         // TODO add your handling code here:
-        //Boton realizar otra busqueda
-        
-        visibilidadPantalla2();
-        MostrarRestaurantes();
+        //Boton realizar otra busqueda - MUESTRA PANTALLA 1
+        inicioVentana();
     }//GEN-LAST:event_BotonRealizarOtraMouseClicked
-    
-    public void visibilidadPantalla2(){
-        Fondo1.setVisible(true);
-        Fondo2.setVisible(false);
-        BotonBuscar.setVisible(true);
-        InfoBusqueda.setVisible(false);
-        ListaBusquedaRestaurantes.setVisible(false);
-        BotonRealizarOtra.setVisible(false);
-        BotonVerRestaurante.setVisible(false);
-        
-    }
+   
     private void BotonVerRestauranteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVerRestauranteMouseClicked
-        // TODO add your handling code here:
-        PantallaMPerfilRest pantallaMPerfilRest = new PantallaMPerfilRest ();
-        pantallaMPerfilRest.setVisible(true);
-        this.dispose();   
         
+        mostrarPantalla3();
         
     }//GEN-LAST:event_BotonVerRestauranteMouseClicked
-    
-    public void MostrarRestaurantes(){
+
+    private void BotonAtrasBusqAntMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAtrasBusqAntMouseClicked
+        //BOTON ATRAS BUSQUEDA ANTERIOR CUANDO ESTA EN EL CARRITO
+        mostrarPantalla2();
+    }//GEN-LAST:event_BotonAtrasBusqAntMouseClicked
+
+    private void BotonAtrasP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAtrasP2MouseClicked
+        inicioVentana();
+    }//GEN-LAST:event_BotonAtrasP2MouseClicked
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         
-        restaurantes.clear();
-        ArrayList<String> rest = new ArrayList<>();
-        if( !EscribirConsulta.getText().equals(null) ){
-           //rest = BuscarCriterio( EscribirConsulta.getText()); (Tiene que retorar un string)
-        }
-        for( String i: rest )
-            restaurantes.addElement(i);
-        jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda
-    }
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void ConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ConfirmacionActionPerformed
+
+    private void BotonAgregarPlatoCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonAgregarPlatoCCMouseClicked
+        // SI AGREGAN UN PEDIDO
+        
+        Confirmacion.setVisible(true);
+        BotonOk.setVisible(true);
+    }//GEN-LAST:event_BotonAgregarPlatoCCMouseClicked
+
+    private void BotonOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonOkMouseClicked
+        // TODO add your handling code here:
+        Confirmacion.setVisible(false);
+        BotonOk.setVisible(false);
+    }//GEN-LAST:event_BotonOkMouseClicked
+
+    
     public void transparenciaDelBoton(){
         BotonBuscar.setOpaque(false);
         BotonBuscar.setBackground(new Color(0,0,0,0));
@@ -200,6 +335,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra.setBackground(new Color(0,0,0,0));
         BotonVerRestaurante.setOpaque(false);
         BotonVerRestaurante.setBackground(new Color(0,0,0,0));
+        BotonAgregarPlatoCC.setOpaque(false);
+        BotonAgregarPlatoCC.setBackground(new Color(0,0,0,0));
+    
     }
     /**
      * @param args the command line arguments
@@ -247,13 +385,19 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAtrasBusqueda;
+    private javax.swing.JButton BotonAgregarPlatoCC;
+    private javax.swing.JButton BotonAtrasBusqAnt;
+    private javax.swing.JButton BotonAtrasP1;
+    private javax.swing.JButton BotonAtrasP2;
     private javax.swing.JButton BotonBuscar;
+    private javax.swing.JButton BotonOk;
     private javax.swing.JButton BotonRealizarOtra;
     private javax.swing.JButton BotonVerRestaurante;
+    private javax.swing.JTextField Confirmacion;
     private javax.swing.JTextField EscribirConsulta;
-    private javax.swing.JLabel Fondo1;
-    private javax.swing.JLabel Fondo2;
+    private javax.swing.JLabel FondoAgregarCarrito;
+    private javax.swing.JLabel FondoBuscador;
+    private javax.swing.JLabel FondoMostrarOpciones;
     private javax.swing.JTextField InfoBusqueda;
     private javax.swing.JScrollPane ListaBusquedaRestaurantes;
     private javax.swing.JList<String> jList1;

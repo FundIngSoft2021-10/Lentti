@@ -561,4 +561,35 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return sePudo;
     }
+    
+ 
+    public DefaultListModel BuscarPalabrasClave (String pClave) 
+    {
+        DefaultListModel listRestaurantes= new DefaultListModel();
+        /*
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombreRestaurante FROM palabrasClave WHERE palabra = '" + pClave + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                listRestaurantes.addElement(result.getString("nombreRestaurante")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }*/
+        
+        return listRestaurantes;
+    }
+    
 }

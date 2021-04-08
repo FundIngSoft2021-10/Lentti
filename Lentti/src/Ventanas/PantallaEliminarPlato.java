@@ -137,6 +137,7 @@ public class PantallaEliminarPlato extends javax.swing.JFrame {
         }
         else{
             resultado = consulta.EliminarPlato(this.jTextFieldNombrePlato.getText());
+           
         }
         PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
         pantallaGestion.setVisible(true);
