@@ -13,7 +13,7 @@ import java.awt.Toolkit;
  * @author samyf
  */
 public class PantallaInicialRestaurante extends javax.swing.JFrame {
-    String usuario="";
+    String usuario=" ";
     /**
      * Creates new form PantallaInicialRestaurante
      */
@@ -47,6 +47,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         jButtonVerResenaDeUsuario = new javax.swing.JButton();
         jButtonGestionarPlatos = new javax.swing.JButton();
         jButtonVerPedidosDeClientes = new javax.swing.JButton();
+        jButtonGestionarDomiciliario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -59,7 +60,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Pantalla Inicial de Restaurante");
+        jLabel1.setText("Pantalla Inicial de Restaurante2");
 
         jButtonVerResenaDeUsuario.setText("Ver reseñas de usuario");
 
@@ -71,6 +72,13 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         });
 
         jButtonVerPedidosDeClientes.setText("Ver pedidos de los clientes");
+
+        jButtonGestionarDomiciliario.setText("Gestionar domiciliario");
+        jButtonGestionarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarDomiciliarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,13 +92,17 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonCerrarSesion))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 16, Short.MAX_VALUE)
-                        .addComponent(jButtonVerResenaDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonGestionarPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonVerPedidosDeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonGestionarDomiciliario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(224, 224, 224))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jButtonVerResenaDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonGestionarPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jButtonVerPedidosDeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,12 +110,14 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCerrarSesion)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jButtonGestionarDomiciliario)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVerResenaDeUsuario)
                     .addComponent(jButtonGestionarPlatos)
                     .addComponent(jButtonVerPedidosDeClientes))
-                .addGap(49, 49, 49))
+                .addGap(96, 96, 96))
         );
 
         pack();
@@ -121,6 +135,12 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         pantallaGestionar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonGestionarPlatosActionPerformed
+
+    private void jButtonGestionarDomiciliarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarDomiciliarioActionPerformed
+       PantallaGestionDomiciliarios pantallaGestionarDomiciliarios = new PantallaGestionDomiciliarios(usuario);
+       pantallaGestionarDomiciliarios.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButtonGestionarDomiciliarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +179,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonGestionarDomiciliario;
     private javax.swing.JButton jButtonGestionarPlatos;
     private javax.swing.JButton jButtonVerPedidosDeClientes;
     private javax.swing.JButton jButtonVerResenaDeUsuario;

@@ -145,6 +145,30 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
        return resultado;
     }
+    
+    
+    
+   @Override
+    public boolean CrearDomiciliario( String restaurante, String documento, String nombre, String telefono, String placaVehiculo , Float puntuacion, Float domiciliosEntregados) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "INSERT INTO domiciliario VALUES ('"+ restaurante +"','"+ documento + "','"+ nombre +"', '" + telefono +"', '"+ placaVehiculo +"', "+ puntuacion + ","+ domiciliosEntregados +");";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
     @Override
     public boolean EliminarPlato( String nombrePlato) {
         boolean resultado= false;
@@ -154,6 +178,27 @@ public class BaseDeDatos implements consultasBaseDeDatos {
                   Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
                   java.sql.Statement st = conexion.createStatement();
                   String consulta = "DELETE FROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean EliminarDomiciliario( String documento) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "DELETE FROM domiciliario WHERE documento = '"+ documento +"'; ";
                   st.execute(consulta);
                   st.close();
                   conexion.close();
@@ -483,7 +528,90 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return resultado;
     }
-    
+    @Override
+    public boolean ModificarDocumentoDomiciliario(String documento, String nuevoDocumento){
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE domiciliario SET documento = '"+ nuevoDocumento + "' WHERE documento = '"+ documento +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarNombreDomiciliario(String documento, String nuevoNombre) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE domiciliario SET Nombre = '"+ nuevoNombre + "' WHERE documento = '"+ documento +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarTelefonoDomiciliario(String documento, String nuevoTelefono) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE domiciliario SET telefono = '"+ nuevoTelefono + "' WHERE documento = '"+ documento +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    @Override
+    public boolean ModificarPlacaVehiculoDomiciliario(String documento, String nuevaPlacaVehiculo) {
+        boolean resultado= false;
+       try 
+        {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE domiciliario SET placaVehiculo = '"+ nuevaPlacaVehiculo + "' WHERE documento = '"+ documento +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }    
     public boolean ValidarExistenciaRestaurante (String nombreRestaurante)
     {
         boolean resultado = false;
