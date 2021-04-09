@@ -6,6 +6,7 @@
 package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
+import Entidades.CarroCompras;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
@@ -19,12 +20,12 @@ import javax.swing.JOptionPane;
  */
 public class PantallaCarroCompras extends javax.swing.JFrame {
  
-     DefaultListModel restaurantes = new DefaultListModel();
+    ArrayList<CarroCompras> carritoCompras = new ArrayList<>();
 
     public PantallaCarroCompras() {
         initComponents();
         transparenciaDelBoton();
-        MostrarRestaurantes(); //BORRAR ESTO ES DE GUIA
+        mostrarPedidos(); //BORRAR ESTO ES DE GUIA
         
         this.setLocationRelativeTo(null);
         
@@ -52,9 +53,9 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         NombreRestaurante = new javax.swing.JTextField();
         FotoRestaurante = new javax.swing.JLabel();
         FotoPedido = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nombrePlato = new javax.swing.JTextField();
+        descripcionPlato = new javax.swing.JTextField();
+        precioPlato = new javax.swing.JTextField();
         BotonRealizarPedido = new javax.swing.JButton();
         BotonBorrarUnid = new javax.swing.JButton();
         BotonSumUnid = new javax.swing.JButton();
@@ -97,7 +98,6 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         NombreRestaurante.setEditable(false);
         NombreRestaurante.setBackground(new java.awt.Color(255, 254, 251));
         NombreRestaurante.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
-        NombreRestaurante.setText("Nombre del restaurante");
         NombreRestaurante.setBorder(null);
         NombreRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,31 +105,24 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(NombreRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 600, 40));
-
-        FotoRestaurante.setText("Foto");
         getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 70, 40));
-
-        FotoPedido.setText("Foto pedido");
         getContentPane().add(FotoPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, 160));
 
-        jTextField1.setBackground(new java.awt.Color(255, 254, 251));
-        jTextField1.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
-        jTextField1.setText("Nombre del producto");
-        jTextField1.setBorder(null);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 470, 30));
+        nombrePlato.setBackground(new java.awt.Color(255, 254, 251));
+        nombrePlato.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
+        nombrePlato.setBorder(null);
+        getContentPane().add(nombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 470, 30));
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(255, 254, 251));
-        jTextField2.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jTextField2.setText("Descripcion del producto");
-        jTextField2.setBorder(null);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 520, 40));
+        descripcionPlato.setEditable(false);
+        descripcionPlato.setBackground(new java.awt.Color(255, 254, 251));
+        descripcionPlato.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        descripcionPlato.setBorder(null);
+        getContentPane().add(descripcionPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 520, 40));
 
-        jTextField3.setBackground(new java.awt.Color(255, 254, 251));
-        jTextField3.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jTextField3.setText("$$$$$");
-        jTextField3.setBorder(null);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        precioPlato.setBackground(new java.awt.Color(255, 254, 251));
+        precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        precioPlato.setBorder(null);
+        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
         getContentPane().add(BotonRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 700, 90));
         getContentPane().add(BotonBorrarUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 40, 30));
         getContentPane().add(BotonSumUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 40, 30));
@@ -162,18 +155,22 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jList1MouseClicked
     
-    public void MostrarRestaurantes(){
+    public void mostrarPedidos(){
+        DefaultListModel pedidos = new DefaultListModel<>();
+        pedidos.clear();
+        CarroCompras vCarroC;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        String nUsuario = "Lola"; //OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        carritoCompras= consulta.darCarroCompras(nUsuario);
+        for(int i=0; i < carritoCompras.size();i++ ){
+            vCarroC = carritoCompras.get(i);
+            pedidos.addElement(vCarroC.getNombrePlato());
+        }
+        pedidos.addElement("Pruebita");
         
-        restaurantes.clear();
-        ArrayList<String> rest = new ArrayList<>();
+        jList1.setModel(pedidos); //Muestra los nombres de los platos de un usuario
         
-        rest.add("Holi");
-        rest.add("Prueba2");
         
-        for( String i: rest )
-            restaurantes.addElement(i);
-        
-        jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda
     }
     
     public void transparenciaDelBoton(){
@@ -240,10 +237,10 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private javax.swing.JScrollPane ListaPedidosCC;
     private javax.swing.JTextField NombreRestaurante;
     private javax.swing.JButton VaciarCC;
+    private javax.swing.JTextField descripcionPlato;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField nombrePlato;
+    private javax.swing.JTextField precioPlato;
     // End of variables declaration//GEN-END:variables
 }

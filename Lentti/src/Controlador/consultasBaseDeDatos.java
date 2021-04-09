@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import Entidades.CarroCompras;
 import Entidades.Plato;
 import Entidades.Restaurante;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -47,5 +49,6 @@ public interface consultasBaseDeDatos {
     public abstract DefaultListModel darNombrePlatos (String pRest);
     public abstract Plato darInformacionPlato(String nRest, String nPlato); 
     public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato); 
+    public abstract ArrayList<CarroCompras> darCarroCompras(String nUsuario);
     
 }
