@@ -7,8 +7,6 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
-import Entidades.Restaurante;
-import Entidades.Plato;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -21,9 +19,9 @@ import javax.swing.DefaultListModel;
  */
 public class PantallaBusquedaPR extends javax.swing.JFrame {
     
-    
-    Restaurante restSeleccionado = new Restaurante();
-    String platoSeleccionado;
+ 
+    String nombrePlatoS, descripcionPlatoS,nombreRestS, descripcionRestS;
+    float costoEnvioRestS, precioPlatoS;
     
     public PantallaBusquedaPR() {
         initComponents();
@@ -73,8 +71,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         DescripcionPlato.setVisible(false);
         PrecioP3.setVisible(false);
         NombreP3.setVisible(false);
-        TiempoP3.setVisible(false);
+        DescripcionPlatoP3.setVisible(false);
         Tapar2.setVisible(false);
+        TextCostoE.setVisible(false);
     }
     
     public void mostrarPantalla2(){
@@ -98,6 +97,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         TiempoRestaurante.setVisible(true);
         PrecioDRestaurante.setVisible(true);
         Tapar.setVisible(true);
+        
 
         
         //Se desabilita pantalla 3
@@ -115,8 +115,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         DescripcionPlato.setVisible(false);
         PrecioP3.setVisible(false);
         NombreP3.setVisible(false);
-        TiempoP3.setVisible(false);
+        DescripcionPlatoP3.setVisible(false);
         Tapar2.setVisible(false);
+        TextCostoE.setVisible(false);
         
     }
     
@@ -156,8 +157,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         DescripcionPlato.setVisible(false);
         PrecioP3.setVisible(true);
         NombreP3.setVisible(true);
-        TiempoP3.setVisible(true);
+        DescripcionPlatoP3.setVisible(true);
         Tapar2.setVisible(true);
+        TextCostoE.setVisible(true);
         
     }
     
@@ -171,18 +173,18 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PrecioP3 = new javax.swing.JTextField();
+        NombreP3 = new javax.swing.JTextField();
+        TextCostoE = new javax.swing.JTextField();
+        DescripcionPlatoP3 = new javax.swing.JTextField();
         BotonOk = new javax.swing.JButton();
         Confirmacion = new javax.swing.JTextField();
         Tapar2 = new javax.swing.JTextField();
         Tapar = new javax.swing.JTextField();
-        NombreP3 = new javax.swing.JTextField();
-        TiempoP3 = new javax.swing.JTextField();
-        PrecioP3 = new javax.swing.JTextField();
         NombrePlato = new javax.swing.JTextField();
         DescripcionPlato = new javax.swing.JTextField();
         PrecioPlato = new javax.swing.JTextField();
         TextPrecio = new javax.swing.JTextField();
-        FotoPlato = new javax.swing.JLabel();
         TextListaPlatos = new javax.swing.JTextField();
         ListaDePlatos = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
@@ -201,9 +203,10 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonVerRestaurante = new javax.swing.JButton();
         InfoBusqueda = new javax.swing.JTextField();
         BotonRealizarOtra = new javax.swing.JButton();
-        FondoAgregarCarrito = new javax.swing.JLabel();
-        FondoMostrarOpciones = new javax.swing.JLabel();
+        FotoPlato = new javax.swing.JLabel();
         FotoRestaurante = new javax.swing.JLabel();
+        FondoMostrarOpciones = new javax.swing.JLabel();
+        FondoAgregarCarrito = new javax.swing.JLabel();
         FondoBuscador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -211,6 +214,34 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PrecioP3.setEditable(false);
+        PrecioP3.setBackground(new java.awt.Color(38, 75, 109));
+        PrecioP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        PrecioP3.setForeground(new java.awt.Color(255, 255, 255));
+        PrecioP3.setBorder(null);
+        getContentPane().add(PrecioP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 140, 30));
+
+        NombreP3.setEditable(false);
+        NombreP3.setBackground(new java.awt.Color(38, 75, 109));
+        NombreP3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        NombreP3.setForeground(new java.awt.Color(255, 255, 255));
+        NombreP3.setBorder(null);
+        getContentPane().add(NombreP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 550, 40));
+
+        TextCostoE.setBackground(new java.awt.Color(38, 75, 109));
+        TextCostoE.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        TextCostoE.setForeground(new java.awt.Color(255, 255, 255));
+        TextCostoE.setText("Costo envío:");
+        TextCostoE.setBorder(null);
+        getContentPane().add(TextCostoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, -1));
+
+        DescripcionPlatoP3.setEditable(false);
+        DescripcionPlatoP3.setBackground(new java.awt.Color(38, 75, 109));
+        DescripcionPlatoP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        DescripcionPlatoP3.setForeground(new java.awt.Color(255, 255, 255));
+        DescripcionPlatoP3.setBorder(null);
+        getContentPane().add(DescripcionPlatoP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 540, 30));
 
         BotonOk.setBackground(new java.awt.Color(255, 255, 255));
         BotonOk.setFont(new java.awt.Font("Yu Gothic", 0, 36)); // NOI18N
@@ -245,26 +276,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         Tapar.setBorder(null);
         getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 230, 60));
 
-        NombreP3.setBackground(new java.awt.Color(38, 75, 109));
-        NombreP3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
-        NombreP3.setForeground(new java.awt.Color(255, 255, 255));
-        NombreP3.setBorder(null);
-        getContentPane().add(NombreP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 550, 40));
-
-        TiempoP3.setEditable(false);
-        TiempoP3.setBackground(new java.awt.Color(38, 75, 109));
-        TiempoP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        TiempoP3.setForeground(new java.awt.Color(255, 255, 255));
-        TiempoP3.setBorder(null);
-        getContentPane().add(TiempoP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 30));
-
-        PrecioP3.setEditable(false);
-        PrecioP3.setBackground(new java.awt.Color(38, 75, 109));
-        PrecioP3.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        PrecioP3.setForeground(new java.awt.Color(255, 255, 255));
-        PrecioP3.setBorder(null);
-        getContentPane().add(PrecioP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 250, 30));
-
         NombrePlato.setEditable(false);
         NombrePlato.setBackground(new java.awt.Color(246, 243, 243));
         NombrePlato.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
@@ -289,7 +300,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         TextPrecio.setText("Precio:");
         TextPrecio.setBorder(null);
         getContentPane().add(TextPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 100, -1));
-        getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
 
         TextListaPlatos.setEditable(false);
         TextListaPlatos.setBackground(new java.awt.Color(255, 254, 251));
@@ -436,13 +446,14 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
-
-        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
-        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
+        getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
 
         FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
         getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
+
+        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
+        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
         getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -452,9 +463,13 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
 
     private void BotonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBuscarMouseClicked
         // TODO add your handling code here:
-        ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
-        listaRestaurantes.clear();
          mostrarPantalla2(); 
+         //Se limpian los textField
+         NombreRestaurante.setText(null);
+         DescripcionRestaurante.setText(null);
+         TiempoRestaurante.setText(null);
+         PrecioDRestaurante.setText(null);
+         
          if(!EscribirConsulta.getText().equals(null))
            InfoBusqueda.setText(EscribirConsulta.getText());
          else 
@@ -464,7 +479,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         restaurantes.clear();
         consultasBaseDeDatos consulta = new BaseDeDatos();
         restaurantes= consulta.BuscarPalabrasClave(EscribirConsulta.getText());
-        
         restaurantes.addElement("holaa");
         jList1.setModel(restaurantes); //Muestra los restaurantes que coinciden en la busqueda*/
        
@@ -480,12 +494,13 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         DefaultListModel platos = new DefaultListModel<>();
         platos.clear();
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        platos= consulta.darNombrePlatos(restSeleccionado.getNombre());
+        platos= consulta.darNombrePlatos(nombreRestS);
         platos.addElement("Pruebita");
         jList2.setModel(platos); //Muestra los platos de un restaurante seleccionado 
         //Muestra la informacion del restaurante en la pantalla3
         
-        NombreP3.setText(restSeleccionado.getNombre());
+        NombreP3.setText(nombreRestS);
+        PrecioP3.setText(Float.toString(costoEnvioRestS));
         //FALTA PRECIO Y TIEMPO EN RESTAURANTE
         
     }//GEN-LAST:event_BotonVerRestauranteMouseClicked
@@ -504,9 +519,12 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
        //A medida que se van seleccionando opciones de la lista se cambia la informacion
        NombreRestaurante.setText(jList1.getSelectedValue().toString());
        consultasBaseDeDatos consulta = new BaseDeDatos();
-       restSeleccionado = consulta.darInformacionRestaurante(jList1.getSelectedValue().toString());
-       DescripcionRestaurante.setText(restSeleccionado.getDescripcion());
-       PrecioDRestaurante.setText(Float.toString(restSeleccionado.getCostoEnvio()));
+       
+       nombreRestS = jList1.getSelectedValue().toString();
+       descripcionRestS = consulta.darDescripcionRest(nombreRestS);
+       costoEnvioRestS = consulta.darCostoEnvioRest(nombreRestS);
+       DescripcionRestaurante.setText(descripcionRestS);
+       PrecioDRestaurante.setText(Float.toString(costoEnvioRestS));
        Tapar.setVisible(false);
     }//GEN-LAST:event_jList1MouseClicked
 
@@ -556,13 +574,15 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonAgregarPlatoCC.setVisible(true);
         
         //Tengo que mostrar la información del plato
-        platoSeleccionado = jList2.getSelectedValue().toString();       
+        nombrePlatoS = jList2.getSelectedValue().toString();       
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        Plato P = new Plato();
-        P = consulta.darInformacionPlato(restSeleccionado.getNombre(), platoSeleccionado);
-        NombrePlato.setText(platoSeleccionado);
-        DescripcionPlato.setText(P.getDescripcion());
-        PrecioPlato.setText(Float.toString(P.getPrecio()));
+        //Se pide la informacion del plato
+        descripcionPlatoS = consulta.darDescripcionPlato(nombreRestS, nombrePlatoS);
+        precioPlatoS = consulta.darPrecioPlato(nombreRestS, nombrePlatoS);
+        //Se muestran los datos en la interfaz
+        NombrePlato.setText(nombrePlatoS);
+        DescripcionPlato.setText(descripcionPlatoS);
+        PrecioPlato.setText(Float.toString(precioPlatoS));
         
         //OJO: FALTA LA IMAGEN
 
@@ -660,6 +680,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private javax.swing.JButton BotonVerRestaurante;
     private javax.swing.JTextField Confirmacion;
     private javax.swing.JTextField DescripcionPlato;
+    private javax.swing.JTextField DescripcionPlatoP3;
     private javax.swing.JTextField DescripcionRestaurante;
     private javax.swing.JTextField EscribirConsulta;
     private javax.swing.JLabel FondoAgregarCarrito;
@@ -678,9 +699,9 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private javax.swing.JTextField PrecioPlato;
     private javax.swing.JTextField Tapar;
     private javax.swing.JTextField Tapar2;
+    private javax.swing.JTextField TextCostoE;
     private javax.swing.JTextField TextListaPlatos;
     private javax.swing.JTextField TextPrecio;
-    private javax.swing.JTextField TiempoP3;
     private javax.swing.JTextField TiempoRestaurante;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;

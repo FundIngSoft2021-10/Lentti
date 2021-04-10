@@ -6,8 +6,6 @@
 package Controlador;
 
 import Entidades.CarroCompras;
-import Entidades.Plato;
-import Entidades.Restaurante;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -45,10 +43,14 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarNombreDomiciliario(String documento, String nuevoNombre);
     public abstract boolean ModificarTelefonoDomiciliario(String documento, String nuevoTelefono);
     public abstract boolean ModificarPlacaVehiculoDomiciliario(String documento, String nuevaPlacaVehiculo);
-    public abstract Restaurante darInformacionRestaurante (String nRestaurante);
     public abstract DefaultListModel darNombrePlatos (String pRest);
-    public abstract Plato darInformacionPlato(String nRest, String nPlato); 
     public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato); 
     public abstract ArrayList<CarroCompras> darCarroCompras(String nUsuario);
+    public abstract String darDescripcionRest (String nRestaurante);
+    public abstract float darCostoEnvioRest (String nRestaurante);
+    public abstract String darDireccionRest (String nRestaurante);
+    public abstract String darDescripcionPlato(String nRest, String nPlato);
+    public abstract float darPrecioPlato(String nRest, String nPlato);
+    
     
 }

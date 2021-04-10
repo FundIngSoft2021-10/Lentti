@@ -7,8 +7,6 @@ package Modelo;
 
 import Controlador.consultasBaseDeDatos;
 import Entidades.CarroCompras;
-import Entidades.Plato;
-import Entidades.Restaurante;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -724,24 +722,20 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return listRestaurantes;
     }
     
-    public Restaurante darInformacionRestaurante (String nRestaurante) 
+    public String darDescripcionRest (String nRestaurante) 
     {
-        Restaurante R = new Restaurante();
-        
+        String descripcion = null;
+      
         try 
         {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT direccion,descripcion,costoEnvio FROM restaurante WHERE nombreRestaurante = '" + nRestaurante+ "'";
+            String consulta = "SELECT descripcion FROM restaurante WHERE nombreRestaurante = '" + nRestaurante+ "'";
             ResultSet result = st.executeQuery(consulta);
                   
-            while(result.next()) 
-            {
-                R.setNombre(result.getString("nombreRestaurante"));
-                R.setDireccion(result.getString("direccion"));
-                R.setDescripcion(result.getString("descripcion"));
-                R.setCostoEnvio(result.getFloat("costoEnvio"));
+            while(result.next()) {
+                descripcion = result.getString("descripcion");
             }
             
             result.close();
@@ -753,8 +747,63 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:"+exc.getMessage());
         }
         
-        return R;
+        return descripcion;
     }
+    public float darCostoEnvioRest (String nRestaurante) 
+    {
+        float costoEnvio = 0 ;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT costoEnvio FROM restaurante WHERE nombreRestaurante = '" + nRestaurante+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                costoEnvio = result.getFloat("costoEnvio");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return costoEnvio;
+    }
+    public String darDireccionRest (String nRestaurante) 
+    {
+        String direccion = null;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT direccion FROM restaurante WHERE nombreRestaurante = '" + nRestaurante+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                direccion = result.getString("direccion");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return direccion;
+    }
+    
     
      public DefaultListModel darNombrePlatos (String pRest) 
     {
@@ -785,23 +834,23 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return listPlatos;
     }
      
-      public Plato darInformacionPlato(String nRest, String nPlato) 
+     public float darPrecioPlato(String nRest, String nPlato) 
     {
-        Plato P = new Plato();
+        float precio = 0;
+        
         
         try 
         {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT precio,descripcion,imagen FROM plato WHERE restaurante = '" + nRest + "' and nombrePlato = '" + nPlato + "'";
+            String consulta = "SELECT precio FROM plato WHERE restaurante = '" + nRest + "' and nombrePlato = '" + nPlato + "'";
             ResultSet result = st.executeQuery(consulta);
                   
             while(result.next()) 
             {
-                P.setPrecio(result.getFloat("precio"));
-                P.setDescripcion(result.getString("descripcion"));
-                P.setImagen(result.getString("imagen"));
+                precio = result.getFloat("precio");
+                
             }
             
             result.close();
@@ -813,8 +862,40 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:"+exc.getMessage());
         }
         
-        return P;
+        return precio;
     }
+     
+     public String darDescripcionPlato(String nRest, String nPlato) 
+    {
+        String descripcion = null;
+        
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT descripcion FROM plato WHERE restaurante = '" + nRest + "' and nombrePlato = '" + nPlato + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                descripcion = result.getString("descripcion"); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return descripcion;
+    }
+     
+    
+    
       
       public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato) 
     {
