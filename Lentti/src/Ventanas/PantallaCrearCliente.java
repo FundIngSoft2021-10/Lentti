@@ -176,6 +176,25 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
     private void BotonRegistrarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarCliente
         // TODO add your handling code here:
         //agregar cliente a las tablas
+        
+        // validar que los espacios esten llenos
+       
+        if(TF_nombreUsuario.getText() == null || TF_nombreUsuario.getText().equals("") ||
+           TF_contraseñaUsuario.getText() == null || TF_contraseñaUsuario.getText().equals("") ||
+           TF_nombreDelCliente.getText() == null || TF_nombreDelCliente.getText().equals("") ||
+           TF_apellidoCliente.getText() == null || TF_apellidoCliente.getText().equals("") ||
+           TF_direccionCliente.getText() == null || TF_direccionCliente.getText().equals("")
+                
+               )
+        {
+            JOptionPane.showMessageDialog(null, "Tiene que llenar todos los espacios");
+            return;
+        }
+        else
+        {
+            
+            
+        
         consultasBaseDeDatos consulta = new BaseDeDatos();
             if( consulta.CrearUsuario(TF_nombreUsuario.getText(), TF_contraseñaUsuario.getText(), "C") == true )
             {
@@ -204,7 +223,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error al crear el usuario");
             }
             
-        
+        }
     }//GEN-LAST:event_BotonRegistrarCliente
 
     private void TF_nombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_nombreUsuarioActionPerformed
