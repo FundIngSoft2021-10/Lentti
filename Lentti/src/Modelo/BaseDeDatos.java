@@ -983,5 +983,95 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return cantidad;
     }
+       
+       
+    public boolean ModificarApellidoCliente(String pUsuario, String pApellido)
+    {
+        boolean sePudo = false;
+        try {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE cliente SET apellido = '"+ pApellido + "' WHERE usuario = '"+ pUsuario +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  sePudo=true;
+            
+        } 
+        catch (Exception e) {
+             System.out.println("Errorx:"+e.getMessage());
+            sePudo = false;
+        }
+        
+        
+        return sePudo;
+    }
+    
+    
+    public boolean ModificarDireccionCliente(String pUsuario, String pDireccion)
+    {
+        boolean sePudo = false;
+        try {
+                  Class.forName("org.postgresql.Driver");
+                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+                  java.sql.Statement st = conexion.createStatement();
+                  String consulta = "UPDATE cliente SET direccion = '"+ pDireccion + "' WHERE usuario = '"+ pUsuario +"';";
+                  st.execute(consulta);
+                  st.close();
+                  conexion.close();
+                  sePudo=true;
+            
+        } 
+        catch (Exception e) {
+             System.out.println("Errorx:"+e.getMessage());
+            sePudo = false;
+        }
+        
+        
+        return sePudo;
+    }
+    
+    
+    public ArrayList<String> darCliente(String nUsuario) 
+    {
+        ArrayList<String> InformacionCliente = new ArrayList<>();
+        String sNombre;
+        String sApellido;
+        String sDireccion;
+     
+                
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombre, apellido, direccion FROM cliente WHERE usuario = '" + nUsuario + "' ";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                sNombre = result.getString("nombre");
+                sApellido = result.getString("apellido");
+                sDireccion = result.getString("direccion");
+                InformacionCliente.add(sNombre);
+                InformacionCliente.add(sApellido);
+                InformacionCliente.add(sDireccion);
+       
+                // C.setCantidad(result.getInt("imagen"));
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return InformacionCliente;
+    }
     
 }

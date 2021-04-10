@@ -31,6 +31,15 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
+    
+    public PantallaCarroCompras(String pUsuario) {
+        initComponents();
+        transparenciaDelBoton();
+        mostrarPedidos(); //BORRAR ESTO ES DE GUIA
+        nUsuario = pUsuario;
+        this.setLocationRelativeTo(null);
+        
+    }
     /*funcion para agregar icono del programa*/
     public Image getIconImage()
     {
@@ -79,6 +88,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         BotonAtrasCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         BotonAtrasCC.setText("<<  Atrás");
         BotonAtrasCC.setBorder(null);
+        BotonAtrasCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAtrasCCActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonAtrasCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, -1));
 
         jList1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
@@ -174,6 +188,14 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         cantidadCC.setText(Float.toString(consulta.darCantidad(nUsuario, res, pla)));
        
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void BotonAtrasCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasCCActionPerformed
+        // TODO add your handling code here:
+        
+        PantallaInicialCliente pantalla = new PantallaInicialCliente(nUsuario);
+                    pantalla.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_BotonAtrasCCActionPerformed
     
     public void mostrarPedidos(){
         Tapar.setVisible(true);

@@ -20,7 +20,7 @@ import javax.swing.DefaultListModel;
 public class PantallaBusquedaPR extends javax.swing.JFrame {
     
  
-    String nombrePlatoS, descripcionPlatoS,nombreRestS, descripcionRestS;
+    String nombrePlatoS, descripcionPlatoS,nombreRestS, descripcionRestS, usuario;
     float costoEnvioRestS, precioPlatoS;
     
     public PantallaBusquedaPR() {
@@ -29,6 +29,14 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         inicioVentana();
         this.setLocationRelativeTo(null);   
     }
+     public PantallaBusquedaPR(String pUsuario) {
+        initComponents();
+        transparenciaDelBoton();
+        inicioVentana();
+        usuario = pUsuario;
+        this.setLocationRelativeTo(null);   
+    }
+    
     /*funcion para agregar icono del programa*/
     public Image getIconImage()
     {
@@ -382,6 +390,11 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonAtrasP1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         BotonAtrasP1.setText("<<  Atrás");
         BotonAtrasP1.setBorder(null);
+        BotonAtrasP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAtrasP1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonAtrasP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, -1));
 
         BotonAtrasBusqAnt.setBackground(new java.awt.Color(246, 243, 243));
@@ -587,6 +600,13 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         //OJO: FALTA LA IMAGEN
 
     }//GEN-LAST:event_jList2MouseClicked
+
+    private void BotonAtrasP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasP1ActionPerformed
+        // TODO add your handling code here:
+        PantallaInicialCliente pantalla = new PantallaInicialCliente(usuario);
+                    pantalla.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_BotonAtrasP1ActionPerformed
 
     
     public void transparenciaDelBoton(){

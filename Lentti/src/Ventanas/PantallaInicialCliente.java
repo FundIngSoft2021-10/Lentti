@@ -5,8 +5,11 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 /**
  *
@@ -49,13 +52,11 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         jButtonCerrarSesion = new javax.swing.JButton();
         L_bienvenidoNombreUsuario = new javax.swing.JLabel();
         BotonModificarCliente = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        TF_buscarPlatoRestaurante = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TA_informacionCliente = new javax.swing.JTextArea();
+        BotonBuscarAlgoParaPedir = new javax.swing.JButton();
+        BotonCaritoCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -81,15 +82,6 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jLabel1.setText("Buscar plato o restaurante");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Mi información:");
 
@@ -98,6 +90,20 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         TA_informacionCliente.setRows(5);
         TA_informacionCliente.setWrapStyleWord(true);
         jScrollPane2.setViewportView(TA_informacionCliente);
+
+        BotonBuscarAlgoParaPedir.setText("Buscar algo para pedir");
+        BotonBuscarAlgoParaPedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarAlgoParaPedirActionPerformed(evt);
+            }
+        });
+
+        BotonCaritoCompra.setText("Mi carrito de compras");
+        BotonCaritoCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCaritoCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,17 +121,16 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(69, 69, 69))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_buscarPlatoRestaurante)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                            .addComponent(BotonBuscarAlgoParaPedir, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(BotonCaritoCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,20 +141,17 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                     .addComponent(L_bienvenidoNombreUsuario)
                     .addComponent(BotonModificarCliente))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TF_buscarPlatoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(27, 27, 27)
+                        .addComponent(BotonBuscarAlgoParaPedir)
+                        .addGap(41, 41, 41)
+                        .addComponent(BotonCaritoCompra)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,9 +174,33 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                     
     }//GEN-LAST:event_BotonModificarClienteActionPerformed
 
+    private void BotonBuscarAlgoParaPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarAlgoParaPedirActionPerformed
+        // TODO add your handling code here:
+        PantallaBusquedaPR pantalla = new PantallaBusquedaPR(L_bienvenidoNombreUsuario.getText());
+                    pantalla.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_BotonBuscarAlgoParaPedirActionPerformed
+
+    private void BotonCaritoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCaritoCompraActionPerformed
+        // TODO add your handling code here:
+        PantallaCarroCompras pantalla = new PantallaCarroCompras(L_bienvenidoNombreUsuario.getText());
+                    pantalla.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_BotonCaritoCompraActionPerformed
+
     private void mostrarInformacionCliente()
     {
         //revisar verificar usuario
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<String> datosCliente = consulta.darCliente(L_bienvenidoNombreUsuario.getText());
+        int tam = datosCliente.size();
+        for(int i = 0; i < tam; i++)
+        {
+            TA_informacionCliente.append(datosCliente.get(i));
+            TA_informacionCliente.append("\n");
+            
+        }
+        
     }
     
     
@@ -214,16 +240,14 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBuscarAlgoParaPedir;
+    private javax.swing.JButton BotonCaritoCompra;
     private javax.swing.JButton BotonModificarCliente;
     private javax.swing.JLabel L_bienvenidoNombreUsuario;
     private javax.swing.JTextArea TA_informacionCliente;
-    private javax.swing.JTextField TF_buscarPlatoRestaurante;
     private javax.swing.JButton jButtonCerrarSesion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelMensajeIncialCliente;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

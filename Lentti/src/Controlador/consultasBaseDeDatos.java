@@ -50,6 +50,8 @@ public interface consultasBaseDeDatos {
     public abstract String darDescripcionPlato(String nRest, String nPlato);
     public abstract float darPrecioPlato(String nRest, String nPlato);
     public abstract float darCantidad(String nUsuario, String nRest, String nPlato);
-    
+    public abstract boolean ModificarApellidoCliente(String pUsuario, String pApellido);
+    public abstract boolean ModificarDireccionCliente(String pUsuario, String pDireccion);
+    public abstract ArrayList<String> darCliente(String nUsuario);
     
 }
