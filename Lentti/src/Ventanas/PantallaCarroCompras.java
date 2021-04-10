@@ -6,7 +6,6 @@
 package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
-import Entidades.CarroCompras;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
@@ -20,7 +19,9 @@ import javax.swing.JOptionPane;
  */
 public class PantallaCarroCompras extends javax.swing.JFrame {
  
-    ArrayList<CarroCompras> carritoCompras = new ArrayList<>();
+    ArrayList<String> restaurantesCC= new ArrayList<>();
+    ArrayList<String> platoCC= new ArrayList<>();
+    String nUsuario;
 
     public PantallaCarroCompras() {
         initComponents();
@@ -46,6 +47,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Tapar = new javax.swing.JTextField();
         BotonAtrasCC = new javax.swing.JButton();
         ListaPedidosCC = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
@@ -59,7 +61,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         BotonRealizarPedido = new javax.swing.JButton();
         BotonBorrarUnid = new javax.swing.JButton();
         BotonSumUnid = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        cantidadCC = new javax.swing.JTextField();
         FondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,6 +69,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Tapar.setEditable(false);
+        Tapar.setBackground(new java.awt.Color(255, 254, 251));
+        Tapar.setBorder(null);
+        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
 
         BotonAtrasCC.setBackground(new java.awt.Color(255, 255, 255));
         BotonAtrasCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
@@ -122,18 +129,18 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         precioPlato.setBackground(new java.awt.Color(255, 254, 251));
         precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         precioPlato.setBorder(null);
-        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 160, -1));
         getContentPane().add(BotonRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 700, 90));
         getContentPane().add(BotonBorrarUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 40, 30));
         getContentPane().add(BotonSumUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 40, 30));
 
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(235, 235, 235));
-        jTextField4.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("1");
-        jTextField4.setBorder(null);
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 70, 30));
+        cantidadCC.setEditable(false);
+        cantidadCC.setBackground(new java.awt.Color(235, 235, 235));
+        cantidadCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        cantidadCC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cantidadCC.setText("1");
+        cantidadCC.setBorder(null);
+        getContentPane().add(cantidadCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 70, 30));
 
         FondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarritoCompras.png"))); // NOI18N
         FondoPantalla.setText("dffdfdfd");
@@ -149,28 +156,48 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
       
         //A medida que se van seleccionando opciones de la lista se cambia la informacion
-        NombreRestaurante.setText(jList1.getSelectedValue().toString());
+        Tapar.setVisible(false);
+        nombrePlato.setText(jList1.getSelectedValue().toString());
+        String pla = jList1.getSelectedValue().toString();
+        String res = null; 
         
+        for(int i = 0; i < platoCC.size();i++){
+            if(platoCC.get(i) == pla){
+               NombreRestaurante.setText(restaurantesCC.get(i));
+               res = restaurantesCC.get(i);
+            }
+        }
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        descripcionPlato.setText(consulta.darDescripcionPlato(res, pla));
+        precioPlato.setText( Float.toString(consulta.darPrecioPlato(res, pla)));
+        cantidadCC.setText(Float.toString(consulta.darCantidad(nUsuario, res, pla)));
        
-        
     }//GEN-LAST:event_jList1MouseClicked
     
     public void mostrarPedidos(){
+        Tapar.setVisible(true);
         DefaultListModel pedidos = new DefaultListModel<>();
         pedidos.clear();
-        CarroCompras vCarroC;
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<String> carritoCompras= new ArrayList<>();
         String nUsuario = "Lola"; //OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         carritoCompras= consulta.darCarroCompras(nUsuario);
+        //Dividir
+        String respuesta;
+        String[] partes;
+
         for(int i=0; i < carritoCompras.size();i++ ){
-            vCarroC = carritoCompras.get(i);
-            pedidos.addElement(vCarroC.getNombrePlato());
+            //Divido lo que llega de la consulta
+            respuesta = carritoCompras.get(i);
+            partes= respuesta.split(",");
+            restaurantesCC.add(partes[0]);
+            platoCC.add(partes[1]);
+            pedidos.addElement(partes[1]);
         }
         pedidos.addElement("Pruebita");
-        
         jList1.setModel(pedidos); //Muestra los nombres de los platos de un usuario
-        
-        
+          
     }
     
     public void transparenciaDelBoton(){
@@ -236,10 +263,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private javax.swing.JLabel FotoRestaurante;
     private javax.swing.JScrollPane ListaPedidosCC;
     private javax.swing.JTextField NombreRestaurante;
+    private javax.swing.JTextField Tapar;
     private javax.swing.JButton VaciarCC;
+    private javax.swing.JTextField cantidadCC;
     private javax.swing.JTextField descripcionPlato;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField nombrePlato;
     private javax.swing.JTextField precioPlato;
     // End of variables declaration//GEN-END:variables

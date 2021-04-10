@@ -6,7 +6,6 @@
 package Modelo;
 
 import Controlador.consultasBaseDeDatos;
-import Entidades.CarroCompras;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -921,10 +920,11 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        return resultado;
     }
       
-      public ArrayList<CarroCompras> darCarroCompras(String nUsuario) 
+      public ArrayList<String> darCarroCompras(String nUsuario) 
     {
-        CarroCompras C = new CarroCompras();
-        ArrayList<CarroCompras> listPedidos = new ArrayList<CarroCompras>();
+        ArrayList<String> listPedidos = new ArrayList<>();
+        String var;
+     
                 
         
         try 
@@ -937,10 +937,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
                   
             while(result.next()) 
             {
-                C.setNombreRestaurante(result.getString("nombreRestaurante"));
-                C.setNombrePlato(result.getString("nombrePlato"));
+                var = result.getString("nombreRestaurante")+","+result.getString("nombrePlato");
+                listPedidos.add(var);
+       
                 // C.setCantidad(result.getInt("imagen"));
-                listPedidos.add(C);
             }
             
             result.close();
@@ -953,6 +953,35 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         
         return listPedidos;
+    }
+      
+       public float darCantidad(String nUsuario, String nRest, String nPlato) 
+    {
+        float cantidad = 0;
+
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT cantidad FROM carritoCompras WHERE usuario = '" + nUsuario + "' and nombreRestaurante = '" + nRest + "' and nombrePlato = '" + nPlato + "' ";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                cantidad = result.getFloat("cantidad");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return cantidad;
     }
     
 }
