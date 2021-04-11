@@ -32,24 +32,24 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado=false;
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta =
-                      "SELECT usuario,contrasena,tipo FROM lenttiusuario ";
-                  ResultSet result = st.executeQuery(consulta);
-                  while(result.next()) 
-                  {
-                       
-                      if(pUsuario.equals(result.getString("usuario")) && pContrasena.equals(result.getString("contrasena")) && pTipo.equals(result.getString("tipo")))
-                      {
-                          resultado=true;
-                      }
-                      
-                  }
-                  result.close();
-                  st.close();
-                  conexion.close();
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta =
+                "SELECT usuario,contrasena,tipo FROM lenttiusuario ";
+            ResultSet result = st.executeQuery(consulta);
+            while(result.next()) 
+            {
+
+                if(pUsuario.equals(result.getString("usuario")) && pContrasena.equals(result.getString("contrasena")) && pTipo.equals(result.getString("tipo")))
+                {
+                    resultado=true;
+                }
+
+            }
+            result.close();
+            st.close();
+            conexion.close();
         }
         catch(Exception exc)
         {
@@ -64,14 +64,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "insert into lenttiUsuario values ( '"+ pUsuario + "' , '"+pContrasena + "', '" + pTipo + "');";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "insert into lenttiUsuario values ( '"+ pUsuario + "' , '"+pContrasena + "', '" + pTipo + "');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -86,14 +86,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE lenttiusuario  SET usuario= '"+ nuevoUsuario + "' WHERE usuario='"+anteriorUsuario+"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE lenttiusuario  SET usuario= '"+ nuevoUsuario + "' WHERE usuario='"+anteriorUsuario+"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -108,14 +108,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE lenttiusuario  SET contrasena= '"+ nuevaContrasena + "' WHERE usuario='"+pUsuario+"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE lenttiusuario  SET contrasena= '"+ nuevaContrasena + "' WHERE usuario='"+pUsuario+"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -130,14 +130,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "INSERT INTO plato VALUES ('"+ restaurante +"','"+ nombrePlato + "',"+ precio +", '" + descripcion +"', '"+ imagen +"');";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO plato VALUES ('"+ restaurante +"','"+ nombrePlato + "',"+ precio +", '" + descripcion +"', '"+ imagen +"');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -154,14 +154,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "INSERT INTO domiciliario VALUES ('"+ restaurante +"','"+ documento + "','"+ nombre +"', '" + telefono +"', '"+ placaVehiculo +"', "+ puntuacion + ","+ domiciliosEntregados +");";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO domiciliario VALUES ('"+ restaurante +"','"+ documento + "','"+ nombre +"', '" + telefono +"', '"+ placaVehiculo +"', "+ puntuacion + ","+ domiciliosEntregados +");";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -175,14 +175,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "DELETE FROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM plato WHERE nombrePlato = '"+ nombrePlato +"'; ";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -196,14 +196,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "DELETE FROM domiciliario WHERE documento = '"+ documento +"'; ";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM domiciliario WHERE documento = '"+ documento +"'; ";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -217,14 +217,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE plato SET nombrePlato = '"+ nuevoNombre + "' WHERE nombrePlato = '"+ nombrePlato +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE plato SET nombrePlato = '"+ nuevoNombre + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -238,15 +238,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  Float precio = Float.parseFloat(nuevoPrecio);
-                  String consulta = "UPDATE plato SET precio = "+ nuevoPrecio + " WHERE nombrePlato = '"+ nombrePlato +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            Float precio = Float.parseFloat(nuevoPrecio);
+            String consulta = "UPDATE plato SET precio = "+ nuevoPrecio + " WHERE nombrePlato = '"+ nombrePlato +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -260,14 +260,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE plato SET descripcion = '"+ nuevaDescripcion + "' WHERE nombrePlato = '"+ nombrePlato +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE plato SET descripcion = '"+ nuevaDescripcion + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -281,14 +281,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE plato SET imagen = '"+ nuevaImagen + "' WHERE nombrePlato = '"+ nombrePlato +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE plato SET imagen = '"+ nuevaImagen + "' WHERE nombrePlato = '"+ nombrePlato +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -303,14 +303,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "DELETE FROM lenttiusuario WHERE usuario='"+ pUsuario + "'AND tipo='" + pTipo +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM lenttiusuario WHERE usuario='"+ pUsuario + "'AND tipo='" + pTipo +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -411,14 +411,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE restaurante SET nombreRestaurante = '"+ nuevoNombre + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado = true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET nombreRestaurante = '"+ nuevoNombre + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
         }
         catch (Exception exc)
         {
@@ -436,14 +436,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE restaurante SET direccion = '"+ nuevaDireccion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado = true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET direccion = '"+ nuevaDireccion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
         }
         catch (Exception exc)
         {
@@ -461,14 +461,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE restaurante SET descripcion = '"+ nuevaDescripcion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado = true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET descripcion = '"+ nuevaDescripcion + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
         }
         catch (Exception exc)
         {
@@ -486,15 +486,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  Float costoDeEnvio = Float.parseFloat(nuevoCostoDeEnvio);
-                  String consulta = "UPDATE restaurante SET costoDeEnvio = "+ nuevoCostoDeEnvio + " WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado = true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            Float costoDeEnvio = Float.parseFloat(nuevoCostoDeEnvio);
+            String consulta = "UPDATE restaurante SET costoDeEnvio = "+ nuevoCostoDeEnvio + " WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
         }
         catch (Exception exc)
         {
@@ -512,14 +512,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE restaurante SET imagen = '"+ nuevaImagen + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado = true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET imagen = '"+ nuevaImagen + "' WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
         }
         catch (Exception exc)
         {
@@ -534,14 +534,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE domiciliario SET documento = '"+ nuevoDocumento + "' WHERE documento = '"+ documento +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE domiciliario SET documento = '"+ nuevoDocumento + "' WHERE documento = '"+ documento +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -555,14 +555,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE domiciliario SET Nombre = '"+ nuevoNombre + "' WHERE documento = '"+ documento +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE domiciliario SET Nombre = '"+ nuevoNombre + "' WHERE documento = '"+ documento +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -576,14 +576,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE domiciliario SET telefono = '"+ nuevoTelefono + "' WHERE documento = '"+ documento +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE domiciliario SET telefono = '"+ nuevoTelefono + "' WHERE documento = '"+ documento +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -597,14 +597,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean resultado= false;
        try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE domiciliario SET placaVehiculo = '"+ nuevaPlacaVehiculo + "' WHERE documento = '"+ documento +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  resultado=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE domiciliario SET placaVehiculo = '"+ nuevaPlacaVehiculo + "' WHERE documento = '"+ documento +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
         }
         catch(Exception exc)
         {
@@ -619,23 +619,23 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         try 
         {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "SELECT nombreRestaurante FROM restaurante";
-                  ResultSet result = st.executeQuery(consulta);
-                  
-                  while(result.next()) 
-                  {
-                      if(nombreRestaurante.equals(result.getString("nombreRestaurante")))
-                      {
-                          resultado = true;
-                      }  
-                  }
-                  
-                  result.close();
-                  st.close();
-                  conexion.close();
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombreRestaurante FROM restaurante";
+            ResultSet result = st.executeQuery(consulta);
+
+            while(result.next()) 
+            {
+                if(nombreRestaurante.equals(result.getString("nombreRestaurante")))
+                {
+                    resultado = true;
+                }  
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
         }
         catch (Exception exc)
         {
@@ -649,14 +649,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     {
         boolean sePudo = false;
         try {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "INSERT INTO cliente VALUES ('"+ pUsuario +"','"+ pNombre + "','"+ pApellido +"', '" + pDireccion +"');";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  sePudo=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO cliente VALUES ('"+ pUsuario +"','"+ pNombre + "','"+ pApellido +"', '" + pDireccion +"');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo=true;
             
         } 
         catch (Exception e) {
@@ -672,14 +672,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     {
         boolean sePudo = false;
         try {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE cliente SET nombre = '"+ pNombre + "' WHERE usuario = '"+ pUsuario +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  sePudo=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE cliente SET nombre = '"+ pNombre + "' WHERE usuario = '"+ pUsuario +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo=true;
             
         } 
         catch (Exception e) {
@@ -989,14 +989,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     {
         boolean sePudo = false;
         try {
-                  Class.forName("org.postgresql.Driver");
-                  Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
-                  java.sql.Statement st = conexion.createStatement();
-                  String consulta = "UPDATE cliente SET apellido = '"+ pApellido + "' WHERE usuario = '"+ pUsuario +"';";
-                  st.execute(consulta);
-                  st.close();
-                  conexion.close();
-                  sePudo=true;
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE cliente SET apellido = '"+ pApellido + "' WHERE usuario = '"+ pUsuario +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo=true;
             
         } 
         catch (Exception e) {
@@ -1073,5 +1073,73 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return InformacionCliente;
     }
+    
+    public boolean ModificarCantidad(String pUsuario, String pRestaurante, String pPlato, float cantidad)
+    {
+        boolean sePudo = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE carritoCompras SET cantidad = '"+ cantidad+ "' WHERE usuario = '"+ pUsuario +"' and nombreRestaurante = '"+ pRestaurante +"' and nombrePlato = '"+ pPlato +"' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo=true;
+        } 
+        catch (Exception e) {
+            System.out.println("Errorx:"+e.getMessage());
+            sePudo = false;
+        }
+        
+        
+        return sePudo;
+    }
+    
+    
+    public boolean VaciarCarrito ( String nombreUsuario) {
+        boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM carritoCompras WHERE usuario = '"+ nombreUsuario +"'; ";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    
+    public boolean EliminarPedido( String pUsuario, String pRestaurante, String pPlato) {
+        boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM carritoCompras WHERE  usuario = '"+ pUsuario +"' and nombreRestaurante = '"+ pRestaurante +"' and nombrePlato = '"+ pPlato +"' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+    
+    
+    
     
 }

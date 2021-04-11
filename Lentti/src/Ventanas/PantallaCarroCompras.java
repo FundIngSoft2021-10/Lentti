@@ -25,8 +25,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
     public PantallaCarroCompras() {
         initComponents();
+        FondoCCVacio.setVisible(false);
+        textCarroV.setVisible(false);
         transparenciaDelBoton();
-        mostrarPedidos(); //BORRAR ESTO ES DE GUIA
+        
+        mostrarPedidos();
         
         this.setLocationRelativeTo(null);
         
@@ -56,8 +59,13 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Tapar = new javax.swing.JTextField();
+        TextRestUnid = new javax.swing.JTextField();
+        BotonRestUnid = new javax.swing.JButton();
+        FondoPantalla = new javax.swing.JLabel();
+        textCarroV = new javax.swing.JTextField();
+        precioPlato = new javax.swing.JTextField();
         BotonAtrasCC = new javax.swing.JButton();
+        Tapar = new javax.swing.JTextField();
         ListaPedidosCC = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         VaciarCC = new javax.swing.JButton();
@@ -66,12 +74,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         FotoPedido = new javax.swing.JLabel();
         nombrePlato = new javax.swing.JTextField();
         descripcionPlato = new javax.swing.JTextField();
-        precioPlato = new javax.swing.JTextField();
         BotonRealizarPedido = new javax.swing.JButton();
         BotonBorrarUnid = new javax.swing.JButton();
         BotonSumUnid = new javax.swing.JButton();
         cantidadCC = new javax.swing.JTextField();
-        FondoPantalla = new javax.swing.JLabel();
+        FondoCCVacio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -79,10 +86,41 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Tapar.setEditable(false);
-        Tapar.setBackground(new java.awt.Color(255, 254, 251));
-        Tapar.setBorder(null);
-        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
+        TextRestUnid.setBackground(new java.awt.Color(235, 235, 235));
+        TextRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
+        TextRestUnid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextRestUnid.setText("-");
+        TextRestUnid.setBorder(null);
+        TextRestUnid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextRestUnidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextRestUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 50, 30));
+
+        BotonRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
+        BotonRestUnid.setBorder(null);
+        BotonRestUnid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonRestUnidMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonRestUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 70, 30));
+
+        FondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarritoCompras.png"))); // NOI18N
+        FondoPantalla.setText("dffdfdfd");
+        getContentPane().add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        textCarroV.setBackground(new java.awt.Color(235, 235, 235));
+        textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
+        textCarroV.setText("Aún no tienes productos en tu carrito");
+        textCarroV.setBorder(null);
+        getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
+
+        precioPlato.setBackground(new java.awt.Color(255, 254, 251));
+        precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        precioPlato.setBorder(null);
+        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 160, -1));
 
         BotonAtrasCC.setBackground(new java.awt.Color(255, 255, 255));
         BotonAtrasCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
@@ -94,6 +132,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonAtrasCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, -1));
+
+        Tapar.setEditable(false);
+        Tapar.setBackground(new java.awt.Color(255, 254, 251));
+        Tapar.setBorder(null);
+        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
 
         jList1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -114,6 +157,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         VaciarCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         VaciarCC.setText("Vaciar carrito de compras ");
         VaciarCC.setBorder(null);
+        VaciarCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VaciarCCMouseClicked(evt);
+            }
+        });
         getContentPane().add(VaciarCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 520, 230, -1));
 
         NombreRestaurante.setEditable(false);
@@ -139,13 +187,20 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         descripcionPlato.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         descripcionPlato.setBorder(null);
         getContentPane().add(descripcionPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 520, 40));
-
-        precioPlato.setBackground(new java.awt.Color(255, 254, 251));
-        precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        precioPlato.setBorder(null);
-        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 160, -1));
         getContentPane().add(BotonRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 700, 90));
+
+        BotonBorrarUnid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonBorrarUnidMouseClicked(evt);
+            }
+        });
         getContentPane().add(BotonBorrarUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 40, 30));
+
+        BotonSumUnid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonSumUnidMouseClicked(evt);
+            }
+        });
         getContentPane().add(BotonSumUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 40, 30));
 
         cantidadCC.setEditable(false);
@@ -156,9 +211,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         cantidadCC.setBorder(null);
         getContentPane().add(cantidadCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 70, 30));
 
-        FondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarritoCompras.png"))); // NOI18N
-        FondoPantalla.setText("dffdfdfd");
-        getContentPane().add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CanastaVacia.png"))); // NOI18N
+        getContentPane().add(FondoCCVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +240,18 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         descripcionPlato.setText(consulta.darDescripcionPlato(res, pla));
         precioPlato.setText( Float.toString(consulta.darPrecioPlato(res, pla)));
         cantidadCC.setText(Float.toString(consulta.darCantidad(nUsuario, res, pla)));
+        if(consulta.darCantidad(nUsuario, res, pla)>1){
+            TextRestUnid.setVisible(true);
+            BotonRestUnid.setVisible(true);
+            BotonBorrarUnid.setVisible(false);            
+        }
+        else{
+            TextRestUnid.setVisible(false);
+            BotonRestUnid.setVisible(false);
+            BotonBorrarUnid.setVisible(true);
+            
+        }
+        
        
     }//GEN-LAST:event_jList1MouseClicked
 
@@ -193,32 +259,102 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         PantallaInicialCliente pantalla = new PantallaInicialCliente(nUsuario);
-                    pantalla.setVisible(true);
-                    this.dispose();
+        pantalla.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BotonAtrasCCActionPerformed
-    
+
+    private void BotonSumUnidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSumUnidMouseClicked
+        // TODO add your handling code here:
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        float cantidad = Float.parseFloat(cantidadCC.getText());
+        cantidad+=1;
+        boolean rest = consulta.ModificarCantidad(nUsuario, NombreRestaurante.getText(),nombrePlato.getText(), cantidad);
+        cantidadCC.setText(Float.toString(cantidad));
+    }//GEN-LAST:event_BotonSumUnidMouseClicked
+
+    private void VaciarCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciarCCMouseClicked
+        boolean res;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        res= consulta.VaciarCarrito(nUsuario);
+        PantallaVacia();
+    }//GEN-LAST:event_VaciarCCMouseClicked
+
+    private void TextRestUnidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRestUnidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextRestUnidActionPerformed
+
+    private void BotonRestUnidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRestUnidMouseClicked
+        // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        float cantidad = Float.parseFloat(cantidadCC.getText());
+        cantidad-=1;
+        boolean rest = consulta.ModificarCantidad(nUsuario, NombreRestaurante.getText(),nombrePlato.getText(), cantidad);
+            cantidadCC.setText(Float.toString(cantidad));
+        if(cantidad == 1){
+            TextRestUnid.setVisible(false);
+            BotonRestUnid.setVisible(false);
+            BotonBorrarUnid.setVisible(true);  
+        }  
+    }//GEN-LAST:event_BotonRestUnidMouseClicked
+
+    private void BotonBorrarUnidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBorrarUnidMouseClicked
+        // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean res = consulta.EliminarPedido(nUsuario, NombreRestaurante.getText(), nombrePlato.getText());
+        if(res == true){
+          mostrarPedidos();  
+        }
+        
+        
+    }//GEN-LAST:event_BotonBorrarUnidMouseClicked
+    public void PantallaVacia(){
+        precioPlato.setVisible(false);
+        Tapar.setVisible(false);
+        ListaPedidosCC.setVisible(false);
+        VaciarCC.setVisible(false);
+        NombreRestaurante.setVisible(false);
+        FotoRestaurante.setVisible(false);
+        FotoPedido.setVisible(false);
+        nombrePlato.setVisible(false);
+        descripcionPlato.setVisible(false);
+        BotonRealizarPedido.setVisible(false);
+        BotonBorrarUnid.setVisible(false);
+        BotonSumUnid.setVisible(false);
+        cantidadCC.setVisible(false);
+        FondoPantalla.setVisible(false);
+        FondoCCVacio.setVisible(true);
+        textCarroV.setVisible(true);
+        BotonRestUnid.setVisible(false);
+        TextRestUnid.setVisible(false);
+    }
     public void mostrarPedidos(){
         Tapar.setVisible(true);
         DefaultListModel pedidos = new DefaultListModel<>();
         pedidos.clear();
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<String> carritoCompras= new ArrayList<>();
-        String nUsuario = "Lola"; //OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         carritoCompras= consulta.darCarroCompras(nUsuario);
         //Dividir
         String respuesta;
         String[] partes;
-
-        for(int i=0; i < carritoCompras.size();i++ ){
+        
+        if(!carritoCompras.isEmpty()){
+          for(int i=0; i < carritoCompras.size();i++ ){
             //Divido lo que llega de la consulta
             respuesta = carritoCompras.get(i);
             partes= respuesta.split(",");
             restaurantesCC.add(partes[0]);
             platoCC.add(partes[1]);
             pedidos.addElement(partes[1]);
+          }
+          jList1.setModel(pedidos); //Muestra los nombres de los platos de un usuario  
         }
-        pedidos.addElement("Pruebita");
-        jList1.setModel(pedidos); //Muestra los nombres de los platos de un usuario
+        else{
+            PantallaVacia(); 
+        }
+
+        
           
     }
     
@@ -229,6 +365,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         BotonBorrarUnid.setBackground(new Color(0,0,0,0));
         BotonSumUnid.setOpaque(false);
         BotonSumUnid.setBackground(new Color(0,0,0,0));
+        BotonRestUnid.setOpaque(false);
+        BotonRestUnid.setBackground(new Color(0,0,0,0));
     }
     /**
      * @param args the command line arguments
@@ -279,18 +417,22 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private javax.swing.JButton BotonAtrasCC;
     private javax.swing.JButton BotonBorrarUnid;
     private javax.swing.JButton BotonRealizarPedido;
+    private javax.swing.JButton BotonRestUnid;
     private javax.swing.JButton BotonSumUnid;
+    private javax.swing.JLabel FondoCCVacio;
     private javax.swing.JLabel FondoPantalla;
     private javax.swing.JLabel FotoPedido;
     private javax.swing.JLabel FotoRestaurante;
     private javax.swing.JScrollPane ListaPedidosCC;
     private javax.swing.JTextField NombreRestaurante;
     private javax.swing.JTextField Tapar;
+    private javax.swing.JTextField TextRestUnid;
     private javax.swing.JButton VaciarCC;
     private javax.swing.JTextField cantidadCC;
     private javax.swing.JTextField descripcionPlato;
     private javax.swing.JList<String> jList1;
     private javax.swing.JTextField nombrePlato;
     private javax.swing.JTextField precioPlato;
+    private javax.swing.JTextField textCarroV;
     // End of variables declaration//GEN-END:variables
 }
