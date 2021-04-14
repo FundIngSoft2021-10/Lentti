@@ -44,141 +44,84 @@ public class InicioSesion extends javax.swing.JFrame {
         jToggleBotonUsuarioAdmin = new javax.swing.JToggleButton();
         jToggleBotonUsuarioRestaurante = new javax.swing.JToggleButton();
         jToggleBotonUsuarioDomiciliario = new javax.swing.JToggleButton();
-        jLabelLogo = new javax.swing.JLabel();
-        jLabelEtiquetaUsuario = new javax.swing.JLabel();
-        jLabelEtiquetaContrasena = new javax.swing.JLabel();
         jTextFieldCampoUsuario = new javax.swing.JTextField();
         jButtonSalirApp = new javax.swing.JButton();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jButtonSalirApp2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonIniciarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonIniciarSesion.setText("Iniciar sesión");
         jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIniciarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 650, -1, -1));
 
+        jToggleBotonUsuarioCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioCliente.setText("Cliente");
         jToggleBotonUsuarioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 120, -1));
 
+        jToggleBotonUsuarioAdmin.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioAdmin.setText("Administrador");
         jToggleBotonUsuarioAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioAdminActionPerformed(evt);
             }
         });
+        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, -1, -1));
 
+        jToggleBotonUsuarioRestaurante.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioRestaurante.setText("Restaurante");
         jToggleBotonUsuarioRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioRestauranteActionPerformed(evt);
             }
         });
+        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 580, 120, -1));
 
+        jToggleBotonUsuarioDomiciliario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioDomiciliario.setText("Domiciliario");
+        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 120, -1));
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lentti.png"))); // NOI18N
+        jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 170, 40));
 
-        jLabelEtiquetaUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelEtiquetaUsuario.setText("Usuario");
-
-        jLabelEtiquetaContrasena.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelEtiquetaContrasena.setText("Contraseña");
-
+        jButtonSalirApp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonSalirApp.setText("Salir");
         jButtonSalirApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirAppActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 110, -1));
 
+        jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 170, 40));
+
+        jButtonSalirApp2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonSalirApp2.setText("Crear cliente");
         jButtonSalirApp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearCliente(evt);
             }
         });
+        getContentPane().add(jButtonSalirApp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 120, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jButtonIniciarSesion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSalirApp2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jToggleBotonUsuarioCliente)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jToggleBotonUsuarioAdmin)
-                                .addGap(35, 35, 35)
-                                .addComponent(jToggleBotonUsuarioRestaurante)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordFieldCampoContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldCampoUsuario))
-                                .addGap(95, 95, 95)))
-                        .addComponent(jToggleBotonUsuarioDomiciliario)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelEtiquetaContrasena)
-                    .addComponent(jLabelEtiquetaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelLogo)
-                .addGap(38, 38, 38)
-                .addComponent(jButtonSalirApp))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelLogo))
-                    .addComponent(jButtonSalirApp))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEtiquetaUsuario)
-                    .addComponent(jTextFieldCampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEtiquetaContrasena)
-                    .addComponent(jPasswordFieldCampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleBotonUsuarioCliente)
-                    .addComponent(jToggleBotonUsuarioAdmin)
-                    .addComponent(jToggleBotonUsuarioRestaurante)
-                    .addComponent(jToggleBotonUsuarioDomiciliario))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonIniciarSesion)
-                    .addComponent(jButtonSalirApp2))
-                .addGap(14, 14, 14))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -339,9 +282,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonSalirApp;
     private javax.swing.JButton jButtonSalirApp2;
-    private javax.swing.JLabel jLabelEtiquetaContrasena;
-    private javax.swing.JLabel jLabelEtiquetaUsuario;
-    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;
     private javax.swing.JToggleButton jToggleBotonUsuarioAdmin;

@@ -29,7 +29,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         initComponents();
         usuario=pUsuario;
         this.setLocationRelativeTo(null);
-        this.jLabelMensajeInicial.setText(this.jLabelMensajeInicial.getText()+"  "+ usuario);
+        this.jLabelMensajeInicial.setText(usuario);
     }
     public Image getIconImage()
     {
@@ -48,40 +48,29 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
 
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelMensajeInicial = new javax.swing.JLabel();
-        jButtonRegistrarAdmin = new javax.swing.JButton();
-        jButtonModificarUsuario = new javax.swing.JButton();
         jButtonEliminarAdministracion = new javax.swing.JButton();
         jButtonCrearRestaurante = new javax.swing.JButton();
         jButtonModificarRestaurante = new javax.swing.JButton();
         jButtonEliminarRestaurante = new javax.swing.JButton();
-        jButtonEliminarAdmin = new javax.swing.JButton();
+        jButtonGestionarPerfil = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonCerrarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonCerrarSesion.setText("Cerrar Sesión");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 120, -1));
 
-        jLabelMensajeInicial.setText("Pantalla Inicial Administrador");
-
-        jButtonRegistrarAdmin.setText("Registrar Administrador");
-        jButtonRegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarAdminActionPerformed(evt);
-            }
-        });
-
-        jButtonModificarUsuario.setText("Modificar Usuario");
-        jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarUsuarioActionPerformed(evt);
-            }
-        });
+        jLabelMensajeInicial.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        getContentPane().add(jLabelMensajeInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 140, 30));
 
         jButtonEliminarAdministracion.setText("Buscar restaurante");
         jButtonEliminarAdministracion.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +78,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonEliminarAdministracionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonEliminarAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 186, 145, -1));
 
         jButtonCrearRestaurante.setText("Crear restaurante");
         jButtonCrearRestaurante.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +86,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonCrearRestauranteActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCrearRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 72, 145, -1));
 
         jButtonModificarRestaurante.setText("Modificar restaurante");
         jButtonModificarRestaurante.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +94,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonModificarRestauranteActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModificarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 110, 145, -1));
 
         jButtonEliminarRestaurante.setText("Eliminar restaurante");
         jButtonEliminarRestaurante.addActionListener(new java.awt.event.ActionListener() {
@@ -110,61 +102,19 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonEliminarRestauranteActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonEliminarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 148, 145, -1));
 
-        jButtonEliminarAdmin.setText("Eliminiar perfíl");
-        jButtonEliminarAdmin.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGestionarPerfil.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonGestionarPerfil.setText("Gestionar perfil");
+        jButtonGestionarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarAdminActionPerformed(evt);
+                jButtonGestionarPerfilActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonGestionarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 220, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonCerrarSesion))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonRegistrarAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModificarUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEliminarAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonEliminarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCrearRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonModificarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEliminarRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelMensajeInicial)
-                .addGap(128, 128, 128))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelMensajeInicial)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRegistrarAdmin)
-                    .addComponent(jButtonCrearRestaurante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModificarUsuario)
-                    .addComponent(jButtonModificarRestaurante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEliminarRestaurante)
-                    .addComponent(jButtonEliminarAdmin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonEliminarAdministracion)
-                .addGap(0, 109, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialAdministrador.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,19 +125,6 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         iniciador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
-
-    private void jButtonRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarAdminActionPerformed
-        // TODO add your handling code here:
-        PantallaRegistroAdmin iniciador= new PantallaRegistroAdmin();
-        iniciador.setVisible(true);
-    }//GEN-LAST:event_jButtonRegistrarAdminActionPerformed
-
-    private void jButtonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarUsuarioActionPerformed
-        // TODO add your handling code here:
-        PantallaModificarAdmin iniciador = new PantallaModificarAdmin(usuario);
-        iniciador.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonModificarUsuarioActionPerformed
 
     private void jButtonEliminarAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAdministracionActionPerformed
         // TODO add your handling code here:
@@ -214,23 +151,12 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonEliminarRestauranteActionPerformed
 
-    private void jButtonEliminarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarAdminActionPerformed
-        // TODO add your handling code here:
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        InicioSesion iniciador = new InicioSesion();
-        if(consulta.EliminarCuenta(usuario, "A"))
-        {
-            JOptionPane.showMessageDialog(null, "Administrador eliminado.");
-            this.dispose();
-            iniciador.setVisible(true);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "El administrador no se pudo eliminar.");
-        }
+    private void jButtonGestionarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarPerfilActionPerformed
+        PantallaGestionarAdmin iniciador = new PantallaGestionarAdmin(usuario);
+        iniciador.setVisible(true);
+        this.dispose();
         
-        
-    }//GEN-LAST:event_jButtonEliminarAdminActionPerformed
+    }//GEN-LAST:event_jButtonGestionarPerfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,12 +196,11 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonCrearRestaurante;
-    private javax.swing.JButton jButtonEliminarAdmin;
     private javax.swing.JButton jButtonEliminarAdministracion;
     private javax.swing.JButton jButtonEliminarRestaurante;
+    private javax.swing.JButton jButtonGestionarPerfil;
     private javax.swing.JButton jButtonModificarRestaurante;
-    private javax.swing.JButton jButtonModificarUsuario;
-    private javax.swing.JButton jButtonRegistrarAdmin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelMensajeInicial;
     // End of variables declaration//GEN-END:variables
 }

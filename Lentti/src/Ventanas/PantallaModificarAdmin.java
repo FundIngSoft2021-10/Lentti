@@ -48,88 +48,52 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonSalir = new javax.swing.JButton();
-        jLabelMensajeInicial = new javax.swing.JLabel();
-        jLabelEtiquetaUsuario = new javax.swing.JLabel();
-        jLabelEtiquetaContrasena = new javax.swing.JLabel();
         jTextFieldCampoUsuario = new javax.swing.JTextField();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jButtonModificarUsuario = new javax.swing.JButton();
         jButtonModificarContrasena = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 140, 40));
 
-        jLabelMensajeInicial.setText("Modificar Usuario");
+        jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 150, 30));
 
-        jLabelEtiquetaUsuario.setText("Usuario");
+        jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 150, 30));
 
-        jLabelEtiquetaContrasena.setText("Contraseña");
-
+        jButtonModificarUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonModificarUsuario.setText("Modificar");
         jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
 
+        jButtonModificarContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonModificarContrasena.setText("Modificar");
         jButtonModificarContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarContrasenaActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonSalir))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelEtiquetaUsuario)
-                    .addComponent(jLabelEtiquetaContrasena))
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldCampoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jLabelMensajeInicial)
-                    .addComponent(jPasswordFieldCampoContrasena))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonModificarUsuario)
-                    .addComponent(jButtonModificarContrasena))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonSalir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelMensajeInicial)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabelEtiquetaUsuario))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldCampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonModificarUsuario)))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEtiquetaContrasena)
-                    .addComponent(jPasswordFieldCampoContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonModificarContrasena))
-                .addGap(0, 138, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarAdmin.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,7 +120,7 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Se modifico el usuario.");
                 Usuario=this.jTextFieldCampoUsuario.getText();
-                PantallaInicialAdministrador iniciador = new PantallaInicialAdministrador(Usuario);
+                PantallaGestionarAdmin iniciador = new PantallaGestionarAdmin(Usuario);
                 iniciador.setVisible(true);
                 this.dispose();
             }
@@ -182,6 +146,9 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
             if(resultado)
             {
                 JOptionPane.showMessageDialog(null, "Se modifico la contraseña.");
+                PantallaGestionarAdmin iniciador = new PantallaGestionarAdmin(Usuario);
+                iniciador.setVisible(true);
+                this.dispose();
             }
             else
             {
@@ -236,9 +203,7 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModificarContrasena;
     private javax.swing.JButton jButtonModificarUsuario;
     private javax.swing.JButton jButtonSalir;
-    private javax.swing.JLabel jLabelEtiquetaContrasena;
-    private javax.swing.JLabel jLabelEtiquetaUsuario;
-    private javax.swing.JLabel jLabelMensajeInicial;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;
     // End of variables declaration//GEN-END:variables
