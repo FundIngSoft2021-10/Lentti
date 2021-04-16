@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     public PantallaInicialCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+        transparenciaDelBoton();
     }
     
     public PantallaInicialCliente(String pUsuario) {
@@ -31,6 +33,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         L_bienvenidoNombreUsuario.setText(usuario);
         this.setLocationRelativeTo(null);
         mostrarInformacionCliente();
+        transparenciaDelBoton();
     }
     
      public Image getIconImage()
@@ -48,111 +51,67 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelMensajeIncialCliente = new javax.swing.JLabel();
         jButtonCerrarSesion = new javax.swing.JButton();
         L_bienvenidoNombreUsuario = new javax.swing.JLabel();
         BotonModificarCliente = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TA_informacionCliente = new javax.swing.JTextArea();
         BotonBuscarAlgoParaPedir = new javax.swing.JButton();
         BotonCaritoCompra = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelMensajeIncialCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelMensajeIncialCliente.setText("Bienvenido:");
-
-        jButtonCerrarSesion.setText("Cerrar Sesión");
+        jButtonCerrarSesion.setBorder(null);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 23, 200, 60));
 
         L_bienvenidoNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         L_bienvenidoNombreUsuario.setText("nombreUsuario");
+        getContentPane().add(L_bienvenidoNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 170, 30));
 
-        BotonModificarCliente.setText("Modificar datos");
+        BotonModificarCliente.setBorder(null);
         BotonModificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarClienteActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Mi información:");
+        getContentPane().add(BotonModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 23, 200, 60));
 
         TA_informacionCliente.setEditable(false);
         TA_informacionCliente.setColumns(20);
         TA_informacionCliente.setRows(5);
         TA_informacionCliente.setWrapStyleWord(true);
+        TA_informacionCliente.setBorder(null);
         jScrollPane2.setViewportView(TA_informacionCliente);
 
-        BotonBuscarAlgoParaPedir.setText("Buscar algo para pedir");
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 250, 260));
+
+        BotonBuscarAlgoParaPedir.setBorder(null);
         BotonBuscarAlgoParaPedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonBuscarAlgoParaPedirActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonBuscarAlgoParaPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 283, 320, 70));
 
-        BotonCaritoCompra.setText("Mi carrito de compras");
+        BotonCaritoCompra.setBorder(null);
         BotonCaritoCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCaritoCompraActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonCaritoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 383, 320, 70));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelMensajeIncialCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(L_bienvenidoNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotonModificarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BotonBuscarAlgoParaPedir, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addComponent(BotonCaritoCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(49, 49, 49))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCerrarSesion)
-                    .addComponent(jLabelMensajeIncialCliente)
-                    .addComponent(L_bienvenidoNombreUsuario)
-                    .addComponent(BotonModificarCliente))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(BotonBuscarAlgoParaPedir)
-                        .addGap(41, 41, 41)
-                        .addComponent(BotonCaritoCompra)))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfilUsuario.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,6 +162,20 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         
     }
     
+    public void transparenciaDelBoton(){
+        BotonBuscarAlgoParaPedir.setOpaque(false);
+        BotonBuscarAlgoParaPedir.setBackground(new Color(0,0,0,0));
+        
+        BotonCaritoCompra.setOpaque(false);
+        BotonCaritoCompra.setBackground(new Color(0,0,0,0));
+        
+        BotonModificarCliente.setOpaque(false);
+        BotonModificarCliente.setBackground(new Color(0,0,0,0));
+        
+        jButtonCerrarSesion.setOpaque(false);
+        jButtonCerrarSesion.setBackground(new Color(0,0,0,0));
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -246,8 +219,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     private javax.swing.JLabel L_bienvenidoNombreUsuario;
     private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JButton jButtonCerrarSesion;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelMensajeIncialCliente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
     public PantallaCrearCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+        transparenciaDelBoton();
     }
      public Image getIconImage()
     {
@@ -42,18 +44,13 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         BotonRegistrarUsuario = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         TF_nombreUsuario = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         TF_contraseñaUsuario = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         TF_nombreDelCliente = new javax.swing.JTextField();
         TF_apellidoCliente = new javax.swing.JTextField();
         TF_direccionCliente = new javax.swing.JTextField();
         BotonRegresarAPantallaInico = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,16 +67,15 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotonRegistrarUsuario.setText("Registrarse");
+        BotonRegistrarUsuario.setBorder(null);
         BotonRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegistrarCliente(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Pantalla Registro Cliente");
+        getContentPane().add(BotonRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 593, 200, 60));
 
         TF_nombreUsuario.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         TF_nombreUsuario.setToolTipText("");
@@ -88,87 +84,22 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                 TF_nombreUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(TF_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 206, 30));
+        getContentPane().add(TF_contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 206, 30));
+        getContentPane().add(TF_nombreDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 206, 30));
+        getContentPane().add(TF_apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 206, 30));
+        getContentPane().add(TF_direccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 206, 30));
 
-        jLabel2.setText("Nombre de usuario:");
-
-        jLabel3.setText("Contraseña:");
-
-        jLabel4.setText("Nombre");
-
-        jLabel5.setText("Apellido");
-
-        jLabel6.setText("Direccion:");
-
-        BotonRegresarAPantallaInico.setText("Atras");
+        BotonRegresarAPantallaInico.setBorder(null);
         BotonRegresarAPantallaInico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegresarAPantallaInicoActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonRegresarAPantallaInico, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 23, 120, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(70, 70, 70)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(152, 152, 152)
-                            .addComponent(BotonRegistrarUsuario)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_nombreUsuario)
-                            .addComponent(TF_contraseñaUsuario)
-                            .addComponent(TF_nombreDelCliente)
-                            .addComponent(TF_apellidoCliente)
-                            .addComponent(TF_direccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
-                .addComponent(BotonRegresarAPantallaInico))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addComponent(BotonRegresarAPantallaInico))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TF_nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TF_contraseñaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TF_nombreDelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(TF_apellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(TF_direccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(BotonRegistrarUsuario)
-                .addContainerGap())
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registroCliente.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,6 +169,18 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                     this.dispose();
     }//GEN-LAST:event_BotonRegresarAPantallaInicoActionPerformed
 
+    public void transparenciaDelBoton(){
+        BotonRegistrarUsuario.setOpaque(false);
+        BotonRegistrarUsuario.setBackground(new Color(0,0,0,0));
+        
+        BotonRegresarAPantallaInico.setOpaque(false);
+        BotonRegresarAPantallaInico.setBackground(new Color(0,0,0,0));
+        
+     
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -282,12 +225,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TF_nombreDelCliente;
     private javax.swing.JTextField TF_nombreUsuario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
