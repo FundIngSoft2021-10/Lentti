@@ -121,7 +121,7 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().add(jButtonSalirApp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 120, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
