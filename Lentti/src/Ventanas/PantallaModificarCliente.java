@@ -194,7 +194,35 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
 
     private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
         // TODO add your handling code here:
-        
+         consultasBaseDeDatos consulta = new BaseDeDatos();
+         
+         if(consulta.VaciarCarrito(LabelNombreUsuario.getText()))
+         {
+             if(consulta.EliminarCliente(LabelNombreUsuario.getText()))
+             {
+                 if(consulta.EliminarCuenta(LabelNombreUsuario.getText(), "C"))
+                 {
+                     JOptionPane.showMessageDialog(null, "Se elimino la cuenta con exito");
+                     
+                    InicioSesion pantalla = new InicioSesion();
+                    pantalla.setVisible(true);
+                    this.dispose();
+                     
+                 }
+                 else
+                 {
+                     JOptionPane.showMessageDialog(null, "Error al eliminar cuenta");
+                 }
+             }
+             else
+             {
+                 JOptionPane.showMessageDialog(null, "Error al eliminar el cliente");
+             }
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(null, "Error al eliminar el carrito de compras");
+         }
         
         
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed

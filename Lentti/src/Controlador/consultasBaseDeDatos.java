@@ -58,5 +58,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarCantidad(String pUsuario, String pRestaurante, String pPlato, float cantidad);
     public abstract boolean VaciarCarrito ( String nombreUsuario);
     public abstract boolean EliminarPedido( String pUsuario, String pRestaurante, String pPlato);
+    public abstract boolean EliminarCliente( String pUsuario);
     
 }
