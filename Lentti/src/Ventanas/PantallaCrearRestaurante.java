@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     public PantallaCrearRestaurante() 
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     
@@ -49,215 +51,98 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonAceptar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextFieldCampoNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaCampoDescripcion = new javax.swing.JTextArea();
         jTextFieldCampoImagen = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jTextFieldCampoNIT = new javax.swing.JTextField();
         jTextFieldCampoCostoDeEnvio = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jTextFieldCampoPassword = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jTextFieldCampoDireccion = new javax.swing.JTextField();
         jTextFieldCampoPalabrasClave = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jTextFieldCampoNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(800, 690));
+        setMinimumSize(new java.awt.Dimension(800, 690));
         setUndecorated(true);
-
-        jLabel1.setText("Creación de nuevo resturante");
-
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Nombre");
-
-        jLabel3.setText("Descripción");
-
-        jLabel4.setText("Costo de envío");
-
-        jLabel5.setText("Imagen");
-
-        jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCampoNombreActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextAreaCampoDescripcion.setColumns(20);
         jTextAreaCampoDescripcion.setRows(5);
         jScrollPane1.setViewportView(jTextAreaCampoDescripcion);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 450, 60));
 
         jTextFieldCampoImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoImagenActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("Dirección");
+        getContentPane().add(jTextFieldCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 255, -1));
 
         jTextFieldCampoNIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNITActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldCampoNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 190, -1));
 
         jTextFieldCampoCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoCostoDeEnvioActionPerformed(evt);
             }
         });
-
-        jLabel7.setText("Contraseña");
+        getContentPane().add(jTextFieldCampoCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 190, -1));
 
         jTextFieldCampoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoPasswordActionPerformed(evt);
             }
         });
-
-        jLabel8.setText("N.I.T");
+        getContentPane().add(jTextFieldCampoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
 
         jTextFieldCampoDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoDireccionActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldCampoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 190, -1));
 
         jTextFieldCampoPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoPalabrasClaveActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 450, -1));
 
-        jLabel9.setText("Palabras clave ");
+        jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCampoNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 20));
 
-        jLabel10.setText("(Separar por comas)");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
+        jLabel2.setText("Nombre");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jTextFieldCampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addComponent(jButtonCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAceptar)
-                .addGap(74, 74, 74))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(269, 269, 269))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldCampoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldCampoCostoDeEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCampoNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCampoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(123, 123, 123))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldCampoPalabrasClave, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldCampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextFieldCampoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldCampoNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCampoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldCampoCostoDeEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldCampoImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10))
-                    .addComponent(jTextFieldCampoPalabrasClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelar)
-                    .addComponent(jButtonAceptar))
-                .addGap(31, 31, 31))
-        );
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 50, 50));
+
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 60, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,7 +175,8 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         else
         {
             float costoDeEnvio = Float.parseFloat(this.jTextFieldCampoCostoDeEnvio.getText());
-            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.jTextFieldCampoImagen.getText(), this.jTextFieldCampoPalabrasClave.getText());
+            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.jTextFieldCampoImagen.getText());
+            consulta.AlmacenarPalabrasClave (this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPalabrasClave.getText());
             PantallaAgregarPlato pantallaGestion = new PantallaAgregarPlato(jTextFieldCampoNombre.getText());
             pantallaGestion.setVisible(true);
             this.dispose();
@@ -324,6 +210,28 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
+    
+    public void Transparencia ()
+    {
+        jTextFieldCampoNombre.setOpaque(false);
+        jTextFieldCampoNombre.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldCampoPassword.setOpaque(false);
+        jTextFieldCampoPassword.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldCampoNIT.setOpaque(false);
+        jTextFieldCampoNIT.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldCampoDireccion.setOpaque(false);
+        jTextFieldCampoDireccion.setBackground(new Color(0, 0, 0, 0));
+        jTextAreaCampoDescripcion.setOpaque(false);
+        jTextAreaCampoDescripcion.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldCampoCostoDeEnvio.setOpaque(false);
+        jTextFieldCampoCostoDeEnvio.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldCampoPalabrasClave.setOpaque(false);
+        jTextFieldCampoPalabrasClave.setBackground(new Color(0, 0, 0, 0));
+        jButtonAceptar.setOpaque(false);
+        jButtonAceptar.setBackground(new Color(0, 0, 0, 0));
+        jButtonCancelar.setOpaque(false);
+        jButtonCancelar.setBackground(new Color(0, 0, 0, 0));
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -362,16 +270,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaCampoDescripcion;
     private javax.swing.JTextField jTextFieldCampoCostoDeEnvio;

@@ -321,8 +321,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        return resultado;
     }
 
-    @Override
-    public boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen, String palabrasClave) 
+    public boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen) 
     {
        boolean resultado = false;
        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
@@ -332,9 +331,40 @@ public class BaseDeDatos implements consultasBaseDeDatos {
            Class.forName("org.postgresql.Driver");
            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
            java.sql.Statement st = conexion.createStatement();
-           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"', '"+ NIT +"', '"+ direccion +"', '"+ descripcion +"', '"+ costoDeEnvio +"', '"+ imagen +"', '"+ palabrasClave +"');";
+           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"', '"+ NIT +"', '"+ direccion +"', '"+ descripcion +"', '"+ costoDeEnvio +"', '"+ imagen +"');";
            st.execute(consulta);
            st.close();
+           conexion.close();
+           resultado = true;
+       }
+       catch (Exception exc)
+       {
+           System.out.println("Errorx:"+exc.getMessage());
+           resultado = false;
+       }
+       
+       return resultado;
+    }
+    
+    @Override
+    public boolean AlmacenarPalabrasClave (String nombreRestaurante, String palabrasClave)
+    {
+       boolean resultado = false;
+      
+       try 
+       {
+           Class.forName("org.postgresql.Driver");
+           Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+           StringTokenizer palabra = new StringTokenizer(palabrasClave);
+          
+           while (palabra.hasMoreTokens())
+           {
+               java.sql.Statement st = conexion.createStatement();
+               String consulta = "INSERT INTO palabrasClave VALUES ('"+ nombreRestaurante +"', '"+ palabra.nextToken() +"');";
+               st.execute(consulta);
+               st.close();
+           }
+           
            conexion.close();
            resultado = true;
        }
@@ -361,9 +391,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             //Tal vez toque eliminar cada plato del restaurante a eliminar.
             st.execute(consulta);
             st.close();
+            java.sql.Statement st2 = conexion.createStatement();
+            String consulta2 = "DELETE FROM palabrasClave WHERE nombreRestaurante = '"+ nombreRestaurante +"';";
+            st2.execute(consulta2);
+            st2.close();
             conexion.close();
             resultado = true;
             boolean eliminado = EliminarCuenta(nombreRestaurante, "R");
+            
         }
         catch (Exception exc)
         {

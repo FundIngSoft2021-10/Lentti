@@ -23,7 +23,8 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarDescripcionPlato(String nombrePlato, String nuevaDescripcion);
     public abstract boolean ModificarImagenPlato(String nombrePlato, String nuevaImagen);
     public abstract boolean EliminarCuenta(String pUsuario, String pTipo);
-    public abstract boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen, String palabrasClave);
+    public abstract boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen);
+    public abstract boolean AlmacenarPalabrasClave (String nombreRestaurante, String palabrasClave);
     public abstract boolean EliminarRestaurante (String nombreRestaurante);
     public abstract DefaultListModel BuscarRestaurante (String pTipo,String pUsurioActual);
     public abstract DefaultListModel BuscarPlatosRestaurante (String usuario);
