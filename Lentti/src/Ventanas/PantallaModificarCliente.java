@@ -8,6 +8,7 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Image;
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     public PantallaModificarCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
+        transparenciaDelBoton();
         
     }
     
@@ -30,6 +32,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         LabelNombreUsuario.setText(usuario);
+        transparenciaDelBoton();
         
     }
 
@@ -48,126 +51,68 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         LabelNombreUsuario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         TF_ModificarNombreCliente = new javax.swing.JTextField();
         BotonModificarNombreCliente = new javax.swing.JButton();
         TF_ModificarApellidoCliente = new javax.swing.JTextField();
         BotonModificarApellidoCliente = new javax.swing.JButton();
         TF_ModificarDireccionCliente = new javax.swing.JTextField();
         BotonModificarDireccionCliente = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Modifique su perfil: ");
-
-        LabelNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LabelNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelNombreUsuario.setText("Nombre de usuario");
+        getContentPane().add(LabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 400, 30));
 
-        jButton1.setText("Regresar");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegresarPantallaInicialCliente(evt);
             }
         });
-
-        jLabel3.setText("Nombre");
-
-        jLabel4.setText("Apellido");
-
-        jLabel5.setText("Dirección");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 623, 110, 60));
 
         TF_ModificarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TF_ModificarNombreClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(TF_ModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 180, 450, 50));
 
-        BotonModificarNombreCliente.setText("Cambiar");
+        BotonModificarNombreCliente.setBorder(null);
         BotonModificarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarNombreClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 173, 120, 60));
+        getContentPane().add(TF_ModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 270, 450, 60));
 
-        BotonModificarApellidoCliente.setText("Cambiar");
+        BotonModificarApellidoCliente.setBorder(null);
         BotonModificarApellidoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarApellidoClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 273, 120, 60));
+        getContentPane().add(TF_ModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 370, 450, 60));
 
-        BotonModificarDireccionCliente.setText("Cambiar");
+        BotonModificarDireccionCliente.setBorder(null);
         BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 373, 120, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabelNombreUsuario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TF_ModificarNombreCliente)
-                            .addComponent(TF_ModificarApellidoCliente)
-                            .addComponent(TF_ModificarDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BotonModificarNombreCliente)
-                            .addComponent(BotonModificarApellidoCliente)
-                            .addComponent(BotonModificarDireccionCliente))))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(LabelNombreUsuario))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TF_ModificarNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonModificarNombreCliente))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TF_ModificarApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonModificarApellidoCliente))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(TF_ModificarDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonModificarDireccionCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addComponent(jButton1))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarCliente.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -211,6 +156,23 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonModificarDireccionClienteActionPerformed
 
+    public void transparenciaDelBoton(){
+        BotonModificarNombreCliente.setOpaque(false);
+        BotonModificarNombreCliente.setBackground(new Color(0,0,0,0));
+        
+        BotonModificarApellidoCliente.setOpaque(false);
+        BotonModificarApellidoCliente.setBackground(new Color(0,0,0,0));
+        
+        BotonModificarDireccionCliente.setOpaque(false);
+        BotonModificarDireccionCliente.setBackground(new Color(0,0,0,0));
+        
+        jButton1.setOpaque(false);
+        jButton1.setBackground(new Color(0,0,0,0));
+        
+     
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -255,9 +217,6 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TF_ModificarDireccionCliente;
     private javax.swing.JTextField TF_ModificarNombreCliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
