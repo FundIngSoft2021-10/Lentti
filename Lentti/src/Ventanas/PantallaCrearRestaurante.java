@@ -32,6 +32,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     public PantallaCrearRestaurante(String usuario) 
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
     }
@@ -232,6 +233,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         jButtonCancelar.setOpaque(false);
         jButtonCancelar.setBackground(new Color(0, 0, 0, 0));
     }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

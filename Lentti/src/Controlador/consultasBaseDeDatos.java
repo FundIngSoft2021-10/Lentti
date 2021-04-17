@@ -34,6 +34,8 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarDescripcionRestaurante (String nombreRestaurante, String nuevaDescripcion);
     public abstract boolean ModificarCostoDeEnvioRestaurante (String nombreRestaurante, String nuevoCostoDeEnvio);
     public abstract boolean ModificarImagenRestaurante (String nombreRestaurante, String nuevaImagen);
+    public abstract boolean ModificarNITRestaurante (String nombreRestaurante, String nuevoNIT);
+    public abstract boolean ModificarPalabrasClaveRestaurante (String nombreRestaurante, String nuevasPalabrasClave);
     public abstract boolean ValidarExistenciaRestaurante (String nombreRestaurante);
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
     public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);

@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,18 +16,18 @@ import javax.swing.JOptionPane;
  */
 public class PantallaModificarRestaurante extends javax.swing.JFrame {
     String usuario = "";
-    /**
-     * Creates new form PantallaModificarPlato
-     */
+    
     public PantallaModificarRestaurante() 
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     
     public PantallaModificarRestaurante(String usuario)
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
     }
@@ -41,20 +42,23 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonModImagen1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jTextFieldNombreRestaurante = new javax.swing.JTextField();
-        jButtonModNombre = new javax.swing.JButton();
-        jButtonModDireccion = new javax.swing.JButton();
-        jButtonModDescripcion = new javax.swing.JButton();
-        jButtonModCostoDeEnvio = new javax.swing.JButton();
-        jButtonAtras = new javax.swing.JButton();
         jTextFieldModNombre = new javax.swing.JTextField();
         jTextFieldModDireccion = new javax.swing.JTextField();
         jTextFieldModDescripcion = new javax.swing.JTextField();
         jTextFieldModCostoDeEnvio = new javax.swing.JTextField();
-        jButtonModImagen = new javax.swing.JButton();
         jTextFieldModImagen = new javax.swing.JTextField();
+        jTextFieldModNIT = new javax.swing.JTextField();
+        jTextFieldModPalabrasClave = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonModDireccion = new javax.swing.JButton();
+        jButtonModDescripcion = new javax.swing.JButton();
+        jButtonModCostoDeEnvio = new javax.swing.JButton();
+        jButtonModImagen = new javax.swing.JButton();
+        jButtonModNIT = new javax.swing.JButton();
+        jButtonModPalabrasClave = new javax.swing.JButton();
+        jButtonModNombre = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
 
         jButtonModImagen1.setText("Modificar costo de envío");
         jButtonModImagen1.setToolTipText("");
@@ -67,143 +71,106 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
-
-        jLabel1.setText("Modificar restaurante");
-
-        jLabel2.setText("Nombre del restaurante");
-
-        jButtonModNombre.setText("Modificar nombre");
-        jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModNombreActionPerformed(evt);
-            }
-        });
-
-        jButtonModDireccion.setText("Modificar dirección");
-        jButtonModDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModDireccionActionPerformed(evt);
-            }
-        });
-
-        jButtonModDescripcion.setText("Modificar descripción");
-        jButtonModDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModDescripcionActionPerformed(evt);
-            }
-        });
-
-        jButtonModCostoDeEnvio.setText("Modificar costo de envío");
-        jButtonModCostoDeEnvio.setToolTipText("");
-        jButtonModCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModCostoDeEnvioActionPerformed(evt);
-            }
-        });
-
-        jButtonAtras.setText("Atras");
-        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtrasActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextFieldNombreRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 200, 30));
 
         jTextFieldModNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 190, 20));
+        getContentPane().add(jTextFieldModDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 190, 20));
+        getContentPane().add(jTextFieldModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 460, 50));
 
-        jButtonModImagen.setText("Modificar imagen");
-        jButtonModImagen.setToolTipText("");
-        jButtonModImagen.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldModCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModImagenActionPerformed(evt);
+                jTextFieldModCostoDeEnvioActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldModCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 200, 20));
 
         jTextFieldModImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModImagenActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldModImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 280, 20));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTextFieldNombreRestaurante))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonModCostoDeEnvio, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                    .addComponent(jButtonModDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldModCostoDeEnvio))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldModDescripcion))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonModDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldModNombre)
-                                    .addComponent(jTextFieldModDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonModImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModImagen)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonAtras))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldNombreRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModNombre)
-                    .addComponent(jTextFieldModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModDireccion)
-                    .addComponent(jTextFieldModDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModDescripcion)
-                    .addComponent(jTextFieldModDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModCostoDeEnvio)
-                    .addComponent(jTextFieldModCostoDeEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldModImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonModImagen))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        jTextFieldModNIT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldModNITActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldModNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 190, 20));
+
+        jTextFieldModPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldModPalabrasClaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldModPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 460, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaModificarRestaurante.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButtonModDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModDireccionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 250, 100, 40));
+
+        jButtonModDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModDescripcionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 100, 40));
+
+        jButtonModCostoDeEnvio.setToolTipText("");
+        jButtonModCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModCostoDeEnvioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 100, 40));
+
+        jButtonModImagen.setToolTipText("");
+        jButtonModImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 100, 40));
+
+        jButtonModNIT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModNITActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 100, 40));
+
+        jButtonModPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModPalabrasClaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 580, 100, 50));
+
+        jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 100, 40));
+
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 50, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,6 +185,11 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         else
         {
             resultado = consulta.ModificarDireccionRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModDireccion.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Dirección modificada satisfactoriamente.");
+            }
         } 
     }//GEN-LAST:event_jButtonModDireccionActionPerformed
 
@@ -236,6 +208,11 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         else
         {
             resultado = consulta.ModificarNombreRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModNombre.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Nombre modificado satisfactoriamente.");
+            }
         } 
     }//GEN-LAST:event_jButtonModNombreActionPerformed
 
@@ -256,7 +233,13 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         }
         else
         {
-            resultado = consulta.ModificarDescripcionPlato(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModDescripcion.getText());
+            
+            resultado = consulta.ModificarDescripcionRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModDescripcion.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Descripción modificada satisfactoriamente.");
+            }
         }        
     }//GEN-LAST:event_jButtonModDescripcionActionPerformed
 
@@ -270,7 +253,12 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         }
         else
         {
-            resultado = consulta.ModificarImagenPlato(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModCostoDeEnvio.getText());
+            resultado = consulta.ModificarCostoDeEnvioRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModCostoDeEnvio.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Costo de envío modificado satisfactoriamente.");
+            }
         }       
     }//GEN-LAST:event_jButtonModCostoDeEnvioActionPerformed
 
@@ -289,6 +277,11 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         else
         {
             resultado = consulta.ModificarImagenRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModImagen.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Imagen modificada satisfactoriamente.");
+            }
         }      
     }//GEN-LAST:event_jButtonModImagenActionPerformed
 
@@ -300,9 +293,94 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldModImagenActionPerformed
 
+    private void jTextFieldModCostoDeEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModCostoDeEnvioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldModCostoDeEnvioActionPerformed
+
+    private void jTextFieldModNITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModNITActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldModNITActionPerformed
+
+    private void jButtonModNITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModNITActionPerformed
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado = false;
+        
+        if(this.jTextFieldModNIT.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "El campo está vacio.");
+        }
+        else
+        {
+            resultado = consulta.ModificarNITRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModNIT.getText());
+            
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "N.I.T modificado satisfactoriamente.");
+            }
+        }   
+    }//GEN-LAST:event_jButtonModNITActionPerformed
+
+    private void jButtonModPalabrasClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModPalabrasClaveActionPerformed
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado = false;
+        
+        if(this.jTextFieldModNIT.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "El campo está vacio.");
+        }
+        else
+        {
+            resultado = consulta.ModificarPalabrasClaveRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModPalabrasClave.getText());
+           
+            if (resultado = true)
+            {
+                JOptionPane.showMessageDialog(null, "Palabras clave modificadas satisfactoriamente.");
+            }
+        }
+    }//GEN-LAST:event_jButtonModPalabrasClaveActionPerformed
+
+    private void jTextFieldModPalabrasClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModPalabrasClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldModPalabrasClaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        jButtonModCostoDeEnvio.setOpaque(false);
+        jButtonModCostoDeEnvio.setBackground(new Color(0, 0, 0, 0));
+        jButtonModDescripcion.setOpaque(false);
+        jButtonModDescripcion.setBackground(new Color(0, 0, 0, 0));
+        jButtonModDireccion.setOpaque(false);
+        jButtonModDireccion.setBackground(new Color(0, 0, 0, 0));
+        jButtonModImagen.setOpaque(false);
+        jButtonModImagen.setBackground(new Color(0, 0, 0, 0));
+        jButtonModNombre.setOpaque(false);
+        jButtonModNombre.setBackground(new Color(0, 0, 0, 0));
+        jButtonModNIT.setOpaque(false);
+        jButtonModNIT.setBackground(new Color(0, 0, 0, 0));
+        jButtonModPalabrasClave.setOpaque(false);
+        jButtonModPalabrasClave.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModCostoDeEnvio.setOpaque(false);
+        jTextFieldModCostoDeEnvio.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModDescripcion.setOpaque(false);
+        jTextFieldModDescripcion.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModDireccion.setOpaque(false);
+        jTextFieldModDireccion.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModNombre.setOpaque(false);
+        jTextFieldModNombre.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldNombreRestaurante.setOpaque(false);
+        jTextFieldNombreRestaurante.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModNIT.setOpaque(false);
+        jTextFieldModNIT.setBackground(new Color(0, 0, 0, 0));
+        jTextFieldModPalabrasClave.setOpaque(false);
+        jTextFieldModPalabrasClave.setBackground(new Color(0, 0, 0, 0));
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -343,14 +421,17 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModDireccion;
     private javax.swing.JButton jButtonModImagen;
     private javax.swing.JButton jButtonModImagen1;
+    private javax.swing.JButton jButtonModNIT;
     private javax.swing.JButton jButtonModNombre;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonModPalabrasClave;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextFieldModCostoDeEnvio;
     private javax.swing.JTextField jTextFieldModDescripcion;
     private javax.swing.JTextField jTextFieldModDireccion;
     private javax.swing.JTextField jTextFieldModImagen;
+    private javax.swing.JTextField jTextFieldModNIT;
     private javax.swing.JTextField jTextFieldModNombre;
+    private javax.swing.JTextField jTextFieldModPalabrasClave;
     private javax.swing.JTextField jTextFieldNombreRestaurante;
     // End of variables declaration//GEN-END:variables
 }
