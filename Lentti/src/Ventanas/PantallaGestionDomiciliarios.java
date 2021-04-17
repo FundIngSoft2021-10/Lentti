@@ -35,6 +35,7 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
         jButtonCrearDomiciliario = new javax.swing.JButton();
         jButtonEliminarDomiciliario = new javax.swing.JButton();
         jButtonModificarDomiciliario = new javax.swing.JButton();
+        jButtonVerDomiciliarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,8 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerDomiciliarios.setText("Ver domiciliarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +84,8 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonModificarDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonEliminarDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCrearDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCrearDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonVerDomiciliarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,7 +100,9 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
                 .addComponent(jButtonEliminarDomiciliario)
                 .addGap(28, 28, 28)
                 .addComponent(jButtonModificarDomiciliario)
-                .addGap(0, 74, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVerDomiciliarios)
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +172,7 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCrearDomiciliario;
     private javax.swing.JButton jButtonEliminarDomiciliario;
     private javax.swing.JButton jButtonModificarDomiciliario;
+    private javax.swing.JButton jButtonVerDomiciliarios;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
