@@ -60,6 +60,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         TF_ModificarDireccionCliente = new javax.swing.JTextField();
         BotonModificarDireccionCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        BotonEliminarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -114,12 +115,20 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarCliente.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        BotonEliminarCliente.setBorder(null);
+        BotonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 613, 180, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonRegresarPantallaInicialCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarPantallaInicialCliente
         // TODO add your handling code here:
-        PantallaInicialCliente pantalla = new PantallaInicialCliente();
+        PantallaInicialCliente pantalla = new PantallaInicialCliente(LabelNombreUsuario.getText());
                     pantalla.setVisible(true);
                     this.dispose();
         
@@ -136,6 +145,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         if(consulta.ModificarNombreCliente(LabelNombreUsuario.getText(), TF_ModificarNombreCliente.getText()))
         {
                     JOptionPane.showMessageDialog(null, "Se modifico el nombre del cliente con exito");
+                    TF_ModificarNombreCliente.setText("");
         }
         else
         {
@@ -150,11 +160,44 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
 
     private void BotonModificarApellidoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarApellidoClienteActionPerformed
         // TODO add your handling code here:
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        if(consulta.ModificarApellidoCliente(LabelNombreUsuario.getText(), TF_ModificarApellidoCliente.getText()))
+        {
+                    JOptionPane.showMessageDialog(null, "Se modifico el apellido del cliente con exito");
+                    TF_ModificarApellidoCliente.setText("");
+        }
+        else
+        {
+            TF_ModificarNombreCliente.setText("");
+            JOptionPane.showMessageDialog(null, "Error al Modificar el apellido del cliente");
+        }
+        
+        
     }//GEN-LAST:event_BotonModificarApellidoClienteActionPerformed
 
     private void BotonModificarDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarDireccionClienteActionPerformed
         // TODO add your handling code here:
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        if(consulta.ModificarDireccionCliente(LabelNombreUsuario.getText(), TF_ModificarDireccionCliente.getText()))
+        {
+                    JOptionPane.showMessageDialog(null, "Se modifico la dirección del cliente con exito");
+                    TF_ModificarDireccionCliente.setText("");
+        }
+        else
+        {
+            TF_ModificarNombreCliente.setText("");
+            JOptionPane.showMessageDialog(null, "Error al Modificar la dirección del cliente");
+        }
     }//GEN-LAST:event_BotonModificarDireccionClienteActionPerformed
+
+    private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_BotonEliminarClienteActionPerformed
 
     public void transparenciaDelBoton(){
         BotonModificarNombreCliente.setOpaque(false);
@@ -168,6 +211,9 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         
         jButton1.setOpaque(false);
         jButton1.setBackground(new Color(0,0,0,0));
+        
+        BotonEliminarCliente.setOpaque(false);
+        BotonEliminarCliente.setBackground(new Color(0,0,0,0));
         
      
     }
@@ -209,6 +255,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonEliminarCliente;
     private javax.swing.JButton BotonModificarApellidoCliente;
     private javax.swing.JButton BotonModificarDireccionCliente;
     private javax.swing.JButton BotonModificarNombreCliente;
