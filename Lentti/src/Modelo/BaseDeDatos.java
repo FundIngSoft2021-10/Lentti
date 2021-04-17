@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import javax.swing.DefaultListModel;
 
 /**
@@ -321,7 +322,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen) 
+    public boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen, String palabrasClave) 
     {
        boolean resultado = false;
        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
@@ -331,7 +332,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
            Class.forName("org.postgresql.Driver");
            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
            java.sql.Statement st = conexion.createStatement();
-           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"', '"+ NIT +"', '"+ direccion +"', '"+ descripcion +"', '"+ costoDeEnvio +"', '"+ imagen +"');";
+           String consulta = "INSERT INTO restaurante VALUES ('"+ nombreRestaurante +"', '"+ NIT +"', '"+ direccion +"', '"+ descripcion +"', '"+ costoDeEnvio +"', '"+ imagen +"', '"+ palabrasClave +"');";
            st.execute(consulta);
            st.close();
            conexion.close();
