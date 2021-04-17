@@ -70,6 +70,11 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
         });
 
         jButtonVerDomiciliarios.setText("Ver domiciliarios");
+        jButtonVerDomiciliarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerDomiciliariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +136,12 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonModificarDomiciliarioActionPerformed
+
+    private void jButtonVerDomiciliariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerDomiciliariosActionPerformed
+        PantallaVerDomiciliarios pantalla = new PantallaVerDomiciliarios(usuario);
+        pantalla.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVerDomiciliariosActionPerformed
 
     /**
      * @param args the command line arguments

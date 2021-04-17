@@ -431,7 +431,35 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return lista;
     }
-    
+    @Override
+    public DefaultListModel BuscarDomiciliariosRestaurante (String rUsuario) 
+    {
+        DefaultListModel lista = new DefaultListModel();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT Nombre FROM domiciliario WHERE nombreRestaurante = '" + rUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                lista.addElement(result.getString("Nombre")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return lista;
+    }
     @Override
     public boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre) 
     {
