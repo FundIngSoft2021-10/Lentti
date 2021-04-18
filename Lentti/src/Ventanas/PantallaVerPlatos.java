@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 
 /**
@@ -19,10 +20,12 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
     
     public PantallaVerPlatos() {
         initComponents();
+        Transparencia();
     }
     public PantallaVerPlatos(String usuario) {
         consultasBaseDeDatos consulta = new BaseDeDatos();
         initComponents();
+        Transparencia();
         this.usuario = usuario;
         listaPlatos = consulta.BuscarPlatosRestaurante(usuario);
         this.jListPlatos.setModel(listaPlatos);
@@ -38,23 +41,14 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButtonAtras = new javax.swing.JButton();
         scrollPanePlatos = new java.awt.ScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListPlatos = new javax.swing.JList<>();
-        label1 = new java.awt.Label();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Ver platos");
-
-        jButtonAtras.setText("Atras");
-        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtrasActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jListPlatos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -65,38 +59,17 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
 
         scrollPanePlatos.add(jScrollPane1);
 
-        label1.setText("Lista de platos");
+        getContentPane().add(scrollPanePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 97, 460, 460));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(486, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(scrollPanePlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(134, 134, 134))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonAtras))
-                .addGap(22, 22, 22)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPanePlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IpantallaVerPlatos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 860, -1));
+
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,6 +83,11 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -147,7 +125,6 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jListPlatos;
     private javax.swing.JScrollPane jScrollPane1;
-    private java.awt.Label label1;
     private java.awt.ScrollPane scrollPanePlatos;
     // End of variables declaration//GEN-END:variables
 }
