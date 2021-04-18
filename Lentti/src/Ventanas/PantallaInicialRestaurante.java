@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -19,10 +20,12 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
      */
     public PantallaInicialRestaurante() {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     public PantallaInicialRestaurante(String usuario) {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario=usuario;
     }
@@ -42,9 +45,9 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonVerResenaDeUsuario = new javax.swing.JButton();
+        jButtonCerrarSesion = new javax.swing.JButton();
         jButtonGestionarPlatos = new javax.swing.JButton();
         jButtonVerPedidosDeClientes = new javax.swing.JButton();
         jButtonGestionarDomiciliario = new javax.swing.JButton();
@@ -52,73 +55,34 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonCerrarSesion.setText("Cerrar Sesión");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialRestaurante.png"))); // NOI18N
+        jLabel1.setText("Pantalla Inicial de Restaurante2");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 70));
+
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 200, 60));
 
-        jLabel1.setText("Pantalla Inicial de Restaurante2");
-
-        jButtonVerResenaDeUsuario.setText("Ver reseñas de usuario");
-
-        jButtonGestionarPlatos.setText("Gestionar platos");
         jButtonGestionarPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarPlatosActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 220, 60));
+        getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 220, 70));
 
-        jButtonVerPedidosDeClientes.setText("Ver pedidos de los clientes");
-
-        jButtonGestionarDomiciliario.setText("Gestionar domiciliario");
         jButtonGestionarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarDomiciliarioActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCerrarSesion))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonGestionarDomiciliario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(224, 224, 224))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jButtonVerResenaDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonGestionarPlatos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jButtonVerPedidosDeClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCerrarSesion)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jButtonGestionarDomiciliario)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVerResenaDeUsuario)
-                    .addComponent(jButtonGestionarPlatos)
-                    .addComponent(jButtonVerPedidosDeClientes))
-                .addGap(96, 96, 96))
-        );
+        getContentPane().add(jButtonGestionarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 220, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,6 +109,21 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonCerrarSesion.setOpaque(false);
+        jButtonCerrarSesion.setBackground(new Color(0, 0, 0, 0));
+        jButtonGestionarDomiciliario.setOpaque(false);
+        jButtonGestionarDomiciliario.setBackground(new Color(0, 0, 0, 0));
+        jButtonGestionarPlatos.setOpaque(false);
+        jButtonGestionarPlatos.setBackground(new Color(0, 0, 0, 0));
+        jButtonVerPedidosDeClientes.setOpaque(false);
+        jButtonVerPedidosDeClientes.setBackground(new Color(0, 0, 0, 0));
+        jButtonVerResenaDeUsuario.setOpaque(false);        
+        jButtonVerResenaDeUsuario.setBackground(new Color(0, 0, 0, 0));      
+        
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
