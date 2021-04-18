@@ -32,6 +32,21 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="BotonVerCC">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BotonVerCCMouseClicked"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="689" y="70" width="80" height="70"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JTextField" name="DireccionRestaurante">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
@@ -720,10 +735,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="FondoAgregarCarrito">
+    <Component class="javax.swing.JLabel" name="FondoMostrarOpciones">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/MostrarPedidos.png"/>
+          <Image iconType="3" name="/Imagenes/BusquedaPR2.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -732,10 +747,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="FondoMostrarOpciones">
+    <Component class="javax.swing.JLabel" name="FondoAgregarCarrito">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/BusquedaPR2.png"/>
+          <Image iconType="3" name="/Imagenes/AgregarCarrito.png"/>
         </Property>
       </Properties>
       <Constraints>

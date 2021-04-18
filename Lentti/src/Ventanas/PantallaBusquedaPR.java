@@ -86,6 +86,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         TextCostoE.setVisible(false);
         MensajeError.setVisible(false);
         BotonOk2.setVisible(false);
+        BotonVerCC.setVisible(false);
     }
     
     public void mostrarPantalla2(){
@@ -134,6 +135,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         TextCostoE.setVisible(false);
         MensajeError.setVisible(false);
         BotonOk2.setVisible(false);
+        BotonVerCC.setVisible(false);
         
     }
     
@@ -180,6 +182,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         TextCostoE.setVisible(true);
         MensajeError.setVisible(false);
         BotonOk2.setVisible(false);
+        BotonVerCC.setVisible(true);
         
     }
     
@@ -193,6 +196,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BotonVerCC = new javax.swing.JButton();
         DireccionRestaurante = new javax.swing.JTextField();
         NombreP3 = new javax.swing.JTextField();
         PrecioP3 = new javax.swing.JTextField();
@@ -229,8 +233,8 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra = new javax.swing.JButton();
         FotoPlato = new javax.swing.JLabel();
         FotoRestaurante = new javax.swing.JLabel();
-        FondoAgregarCarrito = new javax.swing.JLabel();
         FondoMostrarOpciones = new javax.swing.JLabel();
+        FondoAgregarCarrito = new javax.swing.JLabel();
         FondoBuscador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -238,6 +242,14 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BotonVerCC.setBorder(null);
+        BotonVerCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonVerCCMouseClicked(evt);
+            }
+        });
+        getContentPane().add(BotonVerCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 70, 80, 70));
 
         DireccionRestaurante.setEditable(false);
         DireccionRestaurante.setBackground(new java.awt.Color(235, 235, 235));
@@ -520,11 +532,11 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
         getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
 
-        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MostrarPedidos.png"))); // NOI18N
-        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
         getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AgregarCarrito.png"))); // NOI18N
+        getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
         getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -684,6 +696,13 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textCostoEnvioActionPerformed
 
+    private void BotonVerCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVerCCMouseClicked
+        // TODO add your handling code here:
+        PantallaCarroCompras pantalla = new PantallaCarroCompras(usuario);
+        pantalla.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BotonVerCCMouseClicked
+
     
     public void transparenciaDelBoton(){
         BotonBuscar.setOpaque(false);
@@ -694,6 +713,8 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonVerRestaurante.setBackground(new Color(0,0,0,0));
         BotonAgregarPlatoCC.setOpaque(false);
         BotonAgregarPlatoCC.setBackground(new Color(0,0,0,0));
+        BotonVerCC.setOpaque(false);
+        BotonVerCC.setBackground(new Color(0,0,0,0));
     
     }
     /**
@@ -774,6 +795,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private javax.swing.JButton BotonOk;
     private javax.swing.JButton BotonOk2;
     private javax.swing.JButton BotonRealizarOtra;
+    private javax.swing.JButton BotonVerCC;
     private javax.swing.JButton BotonVerRestaurante;
     private javax.swing.JTextField Confirmacion;
     private javax.swing.JTextField DescripcionPlato;
