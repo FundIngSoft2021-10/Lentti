@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,10 +21,12 @@ public class PantallaModificarPlato extends javax.swing.JFrame {
      */
     public PantallaModificarPlato() {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     public PantallaModificarPlato(String usuario) {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario=usuario;
     }
@@ -37,124 +40,76 @@ public class PantallaModificarPlato extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jTextFieldNombrePlato = new javax.swing.JTextField();
-        jButtonModNombre = new javax.swing.JButton();
-        jButtonModPrecio = new javax.swing.JButton();
-        jButtonModDescripcion = new javax.swing.JButton();
-        jButtonModImagen = new javax.swing.JButton();
-        jButtonAtras = new javax.swing.JButton();
         jTextFieldModNombre = new javax.swing.JTextField();
         jTextFieldModPrecio = new javax.swing.JTextField();
         jTextFieldModDescripcion = new javax.swing.JTextField();
         jTextFieldModImagen = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButtonModNombre = new javax.swing.JButton();
+        jButtonModPrecio = new javax.swing.JButton();
+        jButtonModImagen = new javax.swing.JButton();
+        jButtonModDescripcion = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Modificar plato");
+        jTextFieldNombrePlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombrePlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldNombrePlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 270, 50));
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 192, 260, 40));
+        getContentPane().add(jTextFieldModPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 270, 40));
+        getContentPane().add(jTextFieldModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 382, 270, 40));
+        getContentPane().add(jTextFieldModImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 482, 260, 40));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarPlato.png"))); // NOI18N
         jLabel2.setText("Nombre del plato");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
-        jButtonModNombre.setText("Modificar nombre");
         jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 110, 40));
 
-        jButtonModPrecio.setText("Modificar precio");
         jButtonModPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModPrecioActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 110, 40));
 
-        jButtonModDescripcion.setText("Modificar descripción");
-        jButtonModDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModDescripcionActionPerformed(evt);
-            }
-        });
-
-        jButtonModImagen.setText("Modificar imagen");
         jButtonModImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModImagenActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 480, 110, 40));
 
-        jButtonAtras.setText("Atras");
+        jButtonModDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModDescripcionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 110, 40));
+
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jTextFieldNombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModNombre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonModPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModPrecio))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonModImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModImagen))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonModDescripcion)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModDescripcion)))
-                .addGap(12, 12, 12))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonAtras))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldNombrePlato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModNombre)
-                    .addComponent(jTextFieldModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModPrecio)
-                    .addComponent(jTextFieldModPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModDescripcion)
-                    .addComponent(jTextFieldModDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModImagen)
-                    .addComponent(jTextFieldModImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
-        );
+        jLabel1.setText("Modificar plato");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,9 +165,26 @@ public class PantallaModificarPlato extends javax.swing.JFrame {
         }       
     }//GEN-LAST:event_jButtonModImagenActionPerformed
 
+    private void jTextFieldNombrePlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombrePlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombrePlatoActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        jButtonModDescripcion.setOpaque(false);
+        jButtonModDescripcion.setBackground(new Color(0, 0, 0, 0));  
+        jButtonModImagen.setOpaque(false);
+        jButtonModImagen.setBackground(new Color(0, 0, 0, 0));
+        jButtonModNombre.setOpaque(false);
+        jButtonModNombre.setBackground(new Color(0, 0, 0, 0)); 
+        jButtonModPrecio.setOpaque(false);
+        jButtonModPrecio.setBackground(new Color(0, 0, 0, 0)); 
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
