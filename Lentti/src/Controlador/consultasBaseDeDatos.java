@@ -40,7 +40,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
     public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);
     public abstract DefaultListModel BuscarPalabrasClave (String pClave);
-    public abstract boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo , Float puntuacion, Float domiciliosEntregados );
+    public abstract boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo , Float puntuacion, Float domiciliosEntregados, String contrasenau );
     public abstract boolean EliminarDomiciliario(String documento);
     public abstract boolean ModificarDocumentoDomiciliario(String documento, String nuevoDocumento);
     public abstract boolean ModificarNombreDomiciliario(String documento, String nuevoNombre);

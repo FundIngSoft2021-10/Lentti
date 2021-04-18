@@ -46,6 +46,8 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
         jTextFieldNombre = new javax.swing.JTextField();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldContrasena = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +75,14 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Contraseña");
+
+        jTextFieldContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldContrasenaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,13 +100,15 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextFieldPlacaVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                                     .addComponent(jTextFieldDocumento)
                                     .addComponent(jTextFieldTelefono)
-                                    .addComponent(jTextFieldNombre)))))
+                                    .addComponent(jTextFieldNombre)
+                                    .addComponent(jTextFieldContrasena)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(jButtonCancelar)
@@ -126,7 +138,11 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jLabel5))
                     .addComponent(jTextFieldPlacaVehiculo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAceptar))
@@ -157,7 +173,8 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
             String telefono = this.jTextFieldTelefono.getText();
             Float puntuacion = Float.parseFloat("0");
             Float numDomiciliosEntregados = Float.parseFloat("0");
-            resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, placa, puntuacion, numDomiciliosEntregados);
+            String contrasena = this.jTextFieldContrasena.getText();
+            resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, placa, puntuacion, numDomiciliosEntregados, contrasena);
         }
         PantallaGestionDomiciliarios pantalla = new PantallaGestionDomiciliarios(usuario);
         pantalla.setVisible(true);
@@ -165,6 +182,10 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jTextFieldContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +230,8 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldDocumento;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPlacaVehiculo;

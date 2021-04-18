@@ -8,6 +8,7 @@ package Modelo;
 import Controlador.consultasBaseDeDatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -151,12 +152,16 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     
     
    @Override
-    public boolean CrearDomiciliario( String restaurante, String documento, String nombre, String telefono, String placaVehiculo , Float puntuacion, Float domiciliosEntregados) {
+    public boolean CrearDomiciliario( String restaurante, String documento, String nombre, String telefono, String placaVehiculo , Float puntuacion, Float domiciliosEntregados, String contrasenau) {
         boolean resultado= false;
        try 
         {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st1 = conexion.createStatement();
+            String consulta1 = "INSERT INTO lenttiusuario VALUES ('"+ nombre +"', '" + contrasenau + "',"+ "'D'" +");";
+            st1.execute(consulta1);
+            st1.close();
             java.sql.Statement st = conexion.createStatement();
             String consulta = "INSERT INTO domiciliario VALUES ('"+ restaurante +"','"+ documento + "','"+ nombre +"', '" + telefono +"', '"+ placaVehiculo +"', "+ puntuacion + ","+ domiciliosEntregados +");";
             st.execute(consulta);
@@ -195,14 +200,31 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public boolean EliminarDomiciliario( String documento) {
         boolean resultado= false;
+        String nombre="";
        try 
         {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st1 = conexion.createStatement();
+            String consulta1 = "SELECT Nombre FROM domiciliario WHERE documento = '"+ documento +"'; ";
+            ResultSet rs = st1.executeQuery(consulta1);
+            System.out.println("llegue1");
+            if(rs.next())
+            {
+                System.out.println("entra");
+                
+                nombre = rs.getString("Nombre");
+                System.out.println(nombre);
+            }
+            st1.close();
             java.sql.Statement st = conexion.createStatement();
             String consulta = "DELETE FROM domiciliario WHERE documento = '"+ documento +"'; ";
             st.execute(consulta);
             st.close();
+            java.sql.Statement st2 = conexion.createStatement();
+            String consulta2 = "DELETE FROM lenttiusuario WHERE usuario = '"+ nombre +"'; ";
+            st2.execute(consulta2);
+            st2.close();
             conexion.close();
             resultado=true;
         }
