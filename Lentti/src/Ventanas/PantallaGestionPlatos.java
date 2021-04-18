@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -19,10 +20,12 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
      */
     public PantallaGestionPlatos() {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     public PantallaGestionPlatos(String usuario) {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario=usuario;
     }
@@ -50,77 +53,45 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Gestión de platos");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaGestionPlatos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jButtonVerPlatos.setText("Ver platos");
         jButtonVerPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPlatosActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonVerPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 60));
 
-        jButtonCrearPlato.setText("Crear plato");
         jButtonCrearPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearPlatoActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCrearPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 210, 60));
 
-        jButtonEliminarPlato.setText("Eliminar plato");
         jButtonEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarPlatoActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonEliminarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 60));
 
-        jButtonAtras.setText("Atras");
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
 
-        jButtonModificarPlato.setText("Modificar plato");
         jButtonModificarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarPlatoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonModificarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCrearPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonVerPlatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEliminarPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(134, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonAtras))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(jButtonVerPlatos)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCrearPlato)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonModificarPlato)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEliminarPlato)
-                .addGap(52, 52, 52))
-        );
+        getContentPane().add(jButtonModificarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 220, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +129,20 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        jButtonCrearPlato.setOpaque(false);
+        jButtonCrearPlato.setBackground(new Color(0, 0, 0, 0));
+        jButtonEliminarPlato.setOpaque(false);
+        jButtonEliminarPlato.setBackground(new Color(0, 0, 0, 0));
+        jButtonModificarPlato.setOpaque(false);
+        jButtonModificarPlato.setBackground(new Color(0, 0, 0, 0));
+        jButtonVerPlatos.setOpaque(false);        
+        jButtonVerPlatos.setBackground(new Color(0, 0, 0, 0));      
+        
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

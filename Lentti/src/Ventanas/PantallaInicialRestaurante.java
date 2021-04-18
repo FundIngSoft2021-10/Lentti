@@ -58,7 +58,6 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialRestaurante.png"))); // NOI18N
-        jLabel1.setText("Pantalla Inicial de Restaurante2");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 70));
 
