@@ -47,7 +47,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarTelefonoDomiciliario(String documento, String nuevoTelefono);
     public abstract boolean ModificarPlacaVehiculoDomiciliario(String documento, String nuevaPlacaVehiculo);
     public abstract DefaultListModel darNombrePlatos (String pRest);
-    public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato); 
+    public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad);
     public abstract ArrayList<String> darCarroCompras(String nUsuario);
     public abstract String darDescripcionRest (String nRestaurante);
     public abstract float darCostoEnvioRest (String nRestaurante);

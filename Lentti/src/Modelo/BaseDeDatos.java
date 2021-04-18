@@ -869,7 +869,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT nombreRestaurante FROM palabrasClave WHERE palabra = '" + pClave + "'";
+            String consulta = "SELECT nombreRestaurante FROM palabrasClave WHERE palabra like '%" + pClave + "%'";
             ResultSet result = st.executeQuery(consulta);
                   
             while(result.next()) 
@@ -981,12 +981,12 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT nombrePlato FROM plato WHERE restaurante = '" + pRest + "'";
+            String consulta = "SELECT nombreplato FROM plato WHERE restaurante = '" + pRest + "'";
             ResultSet result = st.executeQuery(consulta);
                   
             while(result.next()) 
             {
-                listPlatos.addElement(result.getString("nombreRestaurante")); 
+                listPlatos.addElement(result.getString("nombreplato")); 
             }
             
             result.close();
@@ -1064,16 +1064,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     
     
       
-      public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato) 
+      public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad) 
     {
-       boolean resultado = false;
-      
+       boolean resultado = false;    
        try 
        {
            Class.forName("org.postgresql.Driver");
            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
            java.sql.Statement st = conexion.createStatement();
-           String consulta = "INSERT INTO carritoCompras VALUES ('"+ nUsuario +"', '"+ nRestaurante +"', '"+ nPlato +"');";
+           String consulta = "INSERT INTO carritoCompras VALUES ('"+ nUsuario +"', '"+ nRestaurante +"', '"+ nPlato +"', '"+ nCantidad +"');";
            st.execute(consulta);
            st.close();
            conexion.close();
@@ -1086,29 +1085,32 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        }
        
        return resultado;
+       
+   
     }
       
-      public ArrayList<String> darCarroCompras(String nUsuario) 
-    {
-        ArrayList<String> listPedidos = new ArrayList<>();
-        String var;
      
-                
+   public ArrayList<String> darCarroCompras(String nUsuario)
+    {
+          
+        ArrayList<String> listPedidos = new ArrayList<>();
+        String var,rest,plat;
         
+        System.out.println("JUEPTDFJNVDF "+nUsuario);
+       
         try 
         {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT nombreRestaurante, nombrePlato FROM carritoCompras WHERE usuario = '" + nUsuario + "' ";
+            String consulta = "SELECT nombreRestaurante,nombrePlato FROM carritoCompras WHERE usuario = '" + nUsuario + "'";
             ResultSet result = st.executeQuery(consulta);
                   
-            while(result.next()) 
-            {
-                var = result.getString("nombreRestaurante")+","+result.getString("nombrePlato");
+            while(result.next()) {
+                rest = result.getString("nombreRestaurante"); 
+                plat = result.getString("nombrePlato"); 
+                var = rest+","+plat;
                 listPedidos.add(var);
-       
-                // C.setCantidad(result.getInt("imagen"));
             }
             
             result.close();
@@ -1122,6 +1124,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return listPedidos;
     }
+      
+
       
        public float darCantidad(String nUsuario, String nRest, String nPlato) 
     {

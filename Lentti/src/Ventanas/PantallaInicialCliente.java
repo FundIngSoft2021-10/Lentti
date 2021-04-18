@@ -136,15 +136,15 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     private void BotonBuscarAlgoParaPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarAlgoParaPedirActionPerformed
         // TODO add your handling code here:
         PantallaBusquedaPR pantalla = new PantallaBusquedaPR(L_bienvenidoNombreUsuario.getText());
-                    pantalla.setVisible(true);
-                    this.dispose();
+        pantalla.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BotonBuscarAlgoParaPedirActionPerformed
 
     private void BotonCaritoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCaritoCompraActionPerformed
         // TODO add your handling code here:
         PantallaCarroCompras pantalla = new PantallaCarroCompras(L_bienvenidoNombreUsuario.getText());
-                    pantalla.setVisible(true);
-                    this.dispose();
+        pantalla.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BotonCaritoCompraActionPerformed
 
     private void mostrarInformacionCliente()
