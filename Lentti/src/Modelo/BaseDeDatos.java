@@ -1332,7 +1332,48 @@ public class BaseDeDatos implements consultasBaseDeDatos {
        return resultado;
     }
     
+    @Override
+    public boolean calificarRestaurante(String pUsuario, int calif, String comentario) 
+    {
+        boolean resultado=false;
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta =
+                "insert into resenharestaurante values('" + pUsuario + "' , " + calif + ", '" + comentario + "')";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        return resultado;
+    }    
     
-    
+    @Override
+    public boolean calificarDomiciliario(String pUsuario, int calif, String comentario) 
+    {
+        boolean resultado=false;
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta =
+                "insert into resenhadomiciliario values('" + pUsuario + "' , " + calif + ", '" + comentario + "')";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        return resultado;
+    }    
     
 }
