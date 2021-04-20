@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -24,12 +25,14 @@ public class PantallaAgregarPlato extends javax.swing.JFrame
     public PantallaAgregarPlato() 
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
     }
     
     public PantallaAgregarPlato(String usuario) 
     {
         initComponents();
+        Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
     }
@@ -49,50 +52,32 @@ public class PantallaAgregarPlato extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAgregarPlato = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButtonFinalizar = new javax.swing.JButton();
+        jButtonAgregarPlato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonAgregarPlato.setText("Agregar plato");
-        jButtonAgregarPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAgregarPlatoActionPerformed(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaAgregarPlato.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        jButtonFinalizar.setText("Terminar creación de restaurante");
         jButtonFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFinalizarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 180, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jButtonFinalizar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jButtonAgregarPlato)))
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAgregarPlato)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonFinalizar)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        jButtonAgregarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAgregarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 293, 360, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,6 +97,15 @@ public class PantallaAgregarPlato extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
+    
+    public void Transparencia ()
+    {
+        jButtonAgregarPlato.setOpaque(false);
+        jButtonAgregarPlato.setBackground(new Color(0, 0, 0, 0));
+        jButtonFinalizar.setOpaque(false);
+        jButtonFinalizar.setBackground(new Color(0, 0, 0, 0));
+    }
+        
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -154,5 +148,6 @@ public class PantallaAgregarPlato extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregarPlato;
     private javax.swing.JButton jButtonFinalizar;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

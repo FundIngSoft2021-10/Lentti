@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
@@ -28,11 +29,13 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
     
     public PantallaBuscarRestaurante() {
         initComponents();
+        Transparencia();
     }
     public PantallaBuscarRestaurante(String pUsuario) 
     {
        consultasBaseDeDatos consulta = new BaseDeDatos();
        initComponents();
+       Transparencia();
        usuario = pUsuario;
        this.setLocationRelativeTo(null);
        listaRestaurantes = consulta.BuscarRestaurante("R", usuario);
@@ -55,54 +58,30 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListListaRestaurantes = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
-
-        jLabel1.setText("Lista de restaurantes");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setViewportView(jListListaRestaurantes);
 
-        jButtonSalir.setText("Salir");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 300, 420));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaBuscarRestaurante.png"))); // NOI18N
+        jLabel1.setText("Lista de restaurantes");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButtonSalir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSalir)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 50, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,6 +96,15 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    public void Transparencia ()
+    {
+        jListListaRestaurantes.setOpaque(false);
+        jListListaRestaurantes.setBackground(new Color(0, 0, 0, 0));
+        jButtonSalir.setOpaque(false);
+        jButtonSalir.setBackground(new Color(0, 0, 0, 0));
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
