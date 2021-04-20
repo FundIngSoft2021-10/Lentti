@@ -1375,5 +1375,24 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }    
-    
+    public boolean CrearPedido(int serial, String cliente, String domiciliario, float total, String estado ){
+    boolean sePudo = false;
+    try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO pedido VALUES ('"+ serial +"','"+ cliente + "','"+ domiciliario +"', '" + total + "', '" + estado +"');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo=true;
+            
+        } 
+        catch (Exception e) {
+             System.out.println("Errorx:"+e.getMessage());
+            sePudo = false;
+        }
+        
+        return sePudo;
+    }
 }

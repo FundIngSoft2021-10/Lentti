@@ -109,6 +109,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         getContentPane().add(VaciarCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 520, 230, -1));
 
         BotonRealizarPedido.setBorder(null);
+        BotonRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRealizarPedidoActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonRealizarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 700, 90));
 
         BotonBorrarUnid.setBorder(null);
@@ -316,6 +321,13 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_BotonBorrarUnidMouseClicked
+
+    private void BotonRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRealizarPedidoActionPerformed
+        // TODO add your handling code here:
+        PantallaPedido p = new PantallaPedido(nUsuario);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BotonRealizarPedidoActionPerformed
     public void PantallaVacia(){
         precioPlato.setVisible(false);
         Tapar.setVisible(false);
