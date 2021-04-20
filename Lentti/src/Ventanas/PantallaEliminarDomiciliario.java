@@ -74,7 +74,7 @@ public class PantallaEliminarDomiciliario extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jTextFieldDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addGap(0, 466, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jButtonCancelar)
@@ -94,7 +94,7 @@ public class PantallaEliminarDomiciliario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonAceptar))
-                .addGap(0, 94, Short.MAX_VALUE))
+                .addGap(0, 484, Short.MAX_VALUE))
         );
 
         pack();

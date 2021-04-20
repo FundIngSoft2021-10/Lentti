@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+
 /**
  *
  * @author juank
@@ -16,9 +18,11 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
      */
     public PantallaGestionDomiciliarios() {
         initComponents();
+        Transparencia();
     }
     public PantallaGestionDomiciliarios(String usuario) {
         initComponents();
+        Transparencia();
         this.usuario=usuario;
     }
     /**
@@ -30,85 +34,53 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButtonCrearDomiciliario = new javax.swing.JButton();
-        jButtonEliminarDomiciliario = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
         jButtonModificarDomiciliario = new javax.swing.JButton();
+        jButtonEliminarDomiciliario = new javax.swing.JButton();
+        jButtonCrearDomiciliario = new javax.swing.JButton();
         jButtonVerDomiciliarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonAtras.setText("Atras");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaGestionDomiciliarios.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, -1, -1));
+
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
 
-        jLabel1.setText("Gestion domiciliario");
-
-        jButtonCrearDomiciliario.setText("Crear domiciliario");
-        jButtonCrearDomiciliario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCrearDomiciliarioActionPerformed(evt);
-            }
-        });
-
-        jButtonEliminarDomiciliario.setText("Eliminar domiciliario");
-        jButtonEliminarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarDomiciliarioActionPerformed(evt);
-            }
-        });
-
-        jButtonModificarDomiciliario.setText("Modificar domiciliario");
         jButtonModificarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarDomiciliarioActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModificarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 260, 60));
 
-        jButtonVerDomiciliarios.setText("Ver domiciliarios");
+        jButtonEliminarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarDomiciliarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 260, 60));
+
+        jButtonCrearDomiciliario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearDomiciliarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCrearDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 260, 60));
+
         jButtonVerDomiciliarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerDomiciliariosActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonModificarDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonEliminarDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCrearDomiciliario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonVerDomiciliarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAtras)
-                    .addComponent(jLabel1))
-                .addGap(69, 69, 69)
-                .addComponent(jButtonCrearDomiciliario)
-                .addGap(29, 29, 29)
-                .addComponent(jButtonEliminarDomiciliario)
-                .addGap(28, 28, 28)
-                .addComponent(jButtonModificarDomiciliario)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVerDomiciliarios)
-                .addGap(0, 31, Short.MAX_VALUE))
-        );
+        getContentPane().add(jButtonVerDomiciliarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 230, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,6 +118,19 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        jButtonCrearDomiciliario.setOpaque(false);
+        jButtonCrearDomiciliario.setBackground(new Color(0, 0, 0, 0));     
+        jButtonEliminarDomiciliario.setOpaque(false);
+        jButtonEliminarDomiciliario.setBackground(new Color(0, 0, 0, 0));
+        jButtonModificarDomiciliario.setOpaque(false);
+        jButtonModificarDomiciliario.setBackground(new Color(0, 0, 0, 0));
+        jButtonVerDomiciliarios.setOpaque(false);
+        jButtonVerDomiciliarios.setBackground(new Color(0, 0, 0, 0));
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

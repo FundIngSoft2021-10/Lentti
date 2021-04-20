@@ -115,7 +115,7 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
                             .addComponent(jTextFieldModNombre)
                             .addComponent(jTextFieldModTelefono)
                             .addComponent(jTextFieldModPlacaVehiculo))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +143,7 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonModPlacaVehiculo)
                     .addComponent(jTextFieldModPlacaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 55, Short.MAX_VALUE))
+                .addGap(0, 445, Short.MAX_VALUE))
         );
 
         pack();
