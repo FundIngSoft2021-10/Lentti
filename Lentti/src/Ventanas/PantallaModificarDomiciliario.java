@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,9 +21,11 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
      */
     public PantallaModificarDomiciliario() {
         initComponents();
+        Transparencia();
     }
     public PantallaModificarDomiciliario(String usuario) {
         initComponents();
+        Transparencia();
         this.usuario=usuario;
     }
     /**
@@ -34,117 +37,65 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButtonAtras = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldDocumentoDomiciliario = new javax.swing.JTextField();
-        jButtonModDocumento = new javax.swing.JButton();
-        jButtonModNombre = new javax.swing.JButton();
-        jButtonModTelefono = new javax.swing.JButton();
-        jButtonModPlacaVehiculo = new javax.swing.JButton();
         jTextFieldModDocumento = new javax.swing.JTextField();
         jTextFieldModNombre = new javax.swing.JTextField();
         jTextFieldModTelefono = new javax.swing.JTextField();
         jTextFieldModPlacaVehiculo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonModPlacaVehiculo = new javax.swing.JButton();
+        jButtonModTelefono = new javax.swing.JButton();
+        jButtonModNombre = new javax.swing.JButton();
+        jButtonModDocumento = new javax.swing.JButton();
+        jButtonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+        getContentPane().add(jTextFieldDocumentoDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 260, 40));
+        getContentPane().add(jTextFieldModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 270, 50));
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 270, 50));
+        getContentPane().add(jTextFieldModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 270, 50));
+        getContentPane().add(jTextFieldModPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 270, 50));
 
-        jLabel1.setText("Modificar domiciliario");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarDomiciliario.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
 
-        jButtonAtras.setText("Atras");
-        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtrasActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Documento del domiciliario");
-
-        jButtonModDocumento.setText("Modificar documento");
-        jButtonModDocumento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModDocumentoActionPerformed(evt);
-            }
-        });
-
-        jButtonModNombre.setText("Modificar nombre");
-        jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModNombreActionPerformed(evt);
-            }
-        });
-
-        jButtonModTelefono.setText("Modificar telefono");
-        jButtonModTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModTelefonoActionPerformed(evt);
-            }
-        });
-
-        jButtonModPlacaVehiculo.setText("Modificar placa vehiculo");
         jButtonModPlacaVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModPlacaVehiculoActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonModPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 490, 100, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAtras))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextFieldDocumentoDomiciliario, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButtonModDocumento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonModPlacaVehiculo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldModDocumento)
-                            .addComponent(jTextFieldModNombre)
-                            .addComponent(jTextFieldModTelefono)
-                            .addComponent(jTextFieldModPlacaVehiculo))))
-                .addContainerGap(441, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonAtras))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldDocumentoDomiciliario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModDocumento)
-                    .addComponent(jTextFieldModDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModNombre)
-                    .addComponent(jTextFieldModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModTelefono)
-                    .addComponent(jTextFieldModTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonModPlacaVehiculo)
-                    .addComponent(jTextFieldModPlacaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 445, Short.MAX_VALUE))
-        );
+        jButtonModTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModTelefonoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 400, 110, 30));
+
+        jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 305, 110, 30));
+
+        jButtonModDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModDocumentoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 110, 40));
+
+        jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 140, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,6 +161,19 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public void Transparencia ()
+    {
+        jButtonAtras.setOpaque(false);
+        jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        jButtonModDocumento.setOpaque(false);
+        jButtonModDocumento.setBackground(new Color(0, 0, 0, 0));     
+        jButtonModNombre.setOpaque(false);
+        jButtonModNombre.setBackground(new Color(0, 0, 0, 0));
+        jButtonModPlacaVehiculo.setOpaque(false);
+        jButtonModPlacaVehiculo.setBackground(new Color(0, 0, 0, 0));
+        jButtonModTelefono.setOpaque(false);
+        jButtonModTelefono.setBackground(new Color(0, 0, 0, 0));
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
