@@ -33,8 +33,9 @@ public class EstadoPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ID = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
         MetodoPago = new javax.swing.JLabel();
         Domiciliario = new javax.swing.JLabel();
         Estado = new javax.swing.JLabel();
@@ -47,15 +48,16 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 150, 20));
 
-        jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("Cancelar");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 100, 30));
+        Cancelar.setForeground(new java.awt.Color(255, 0, 0));
+        Cancelar.setText("Cancelar");
+        Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 100, 30));
 
-        jButton2.setText("Volver");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 100, 30));
+        Atras.setText("Volver");
+        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 100, 30));
 
         MetodoPago.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
         getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 200, 50));
@@ -128,7 +130,7 @@ public class EstadoPedido extends javax.swing.JFrame {
         String usuarioa = pUsuario;
         user.setText(usuarioa);
         this.setLocationRelativeTo(null);
-        
+        mostrarInformacionPedido();
         
             
     }
@@ -136,7 +138,7 @@ public class EstadoPedido extends javax.swing.JFrame {
     private void mostrarInformacionPedido()
     {
         consultasBaseDeDatos consulta = new BaseDeDatos();
-      
+       //ID.setText(String.valueOf(consulta.darSerialPedido(user.getText())));
                  
    
         
@@ -144,16 +146,17 @@ public class EstadoPedido extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Cantidad;
     private javax.swing.JLabel Domiciliario;
     private javax.swing.JLabel Estado;
+    private javax.swing.JLabel ID;
     private javax.swing.JLabel MetodoPago;
     private javax.swing.JLabel Producto;
     private javax.swing.JLabel Restaurante;
     private javax.swing.JLabel Tiempo;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }

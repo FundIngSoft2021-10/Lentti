@@ -66,6 +66,7 @@ public class PantallaPedido extends javax.swing.JFrame {
         costo = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         BotonModificarDireccionCliente = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,6 +142,13 @@ public class PantallaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 20, 20));
 
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 20, 20));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoFondo.jpeg"))); // NOI18N
         Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,10 +164,9 @@ public class PantallaPedido extends javax.swing.JFrame {
 //Confirmar pedido
  consultasBaseDeDatos consulta = new BaseDeDatos();
  float precio = Float.parseFloat(costo.getText());  
-int serial = new Random().nextInt(1000);
 
 
- if ( consulta.CrearPedido(serial, nusuario.getText(), "0", precio , "en curso"))
+ if ( consulta.CrearPedido(nusuario.getText(), "1000900800", precio , "en curso"))
          {
             JOptionPane.showMessageDialog(null, "Se recibió tu pedido");
             EstadoPedido ep = new EstadoPedido(nusuario.getText());
@@ -221,6 +228,11 @@ int serial = new Random().nextInt(1000);
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+                System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
   public void transparenciaDelBoton(){
        atras.setOpaque(false);
        atras.setBackground(new Color(0,0,0,0));
@@ -228,6 +240,10 @@ int serial = new Random().nextInt(1000);
        confirmar.setBackground(new Color(0,0,0,0));
        carrito.setOpaque(false);
        carrito.setBackground(new Color(0,0,0,0));
+       salir.setOpaque(false);
+       salir.setBackground(new Color(0,0,0,0));
+       
+       
   }
   private void mostrarInformacionCliente()
     {
@@ -242,14 +258,31 @@ int serial = new Random().nextInt(1000);
     }
   private void mostrarInformacionPedido()
     {
-        consultasBaseDeDatos consulta = new BaseDeDatos();
+               consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
+        
         String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
         restaurante.setText(nrestaurante[0]);
+        float presio = consulta.darCostoEnvioRest(restaurante.getText());
         inforest.setText(consulta.darDireccionRest(restaurante.getText()));
         descripcion.append(consulta.darDescripcionPlato(nrestaurante[0], nrestaurante[1]));
-        costo.setText(String.valueOf(calcularCosto(nrestaurante[0], nrestaurante[1])));
+        String cantidad = String.valueOf(consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]));
+        descripcion.append(" cantidad " + cantidad + "\n");
+        presio += calcularCosto(nrestaurante[0], nrestaurante[1]);
                  
+     
+for(int i=1;i<datosCarrito.size();i++){
+String[] nr = datosCarrito.get(i).split(",");
+if(nrestaurante[0].equals(nr[0])){
+        descripcion.append( consulta.darDescripcionPlato(nr[0], nr[1]));
+        descripcion.append(" cantidad " + String.valueOf(consulta.darCantidad(nusuario.getText(), nr[0], nr[1])) + "\n" );
+        presio += calcularCosto(nr[0],nr[1]);
+}
+    
+}
+
+        costo.setText(String.valueOf(presio));
+
         restaurante.setEditable(false);
         descripcion.setEditable(false);
         direccion.setEditable(true);
@@ -258,10 +291,11 @@ int serial = new Random().nextInt(1000);
    
   
   private float calcularCosto(String rest, String plato){
+      
           consultasBaseDeDatos consulta = new BaseDeDatos();
+       float cantidad = consulta.darCantidad(nusuario.getText(), rest, plato);
        float pPlato = consulta.darPrecioPlato(rest, plato);
-        float pEnvio = consulta.darCostoEnvioRest(rest);
-        float pTotal = pPlato + pEnvio;
+        float pTotal = (pPlato*cantidad);// Cantidad de items * Precio.
         return pTotal;
   }
 
@@ -316,6 +350,7 @@ int serial = new Random().nextInt(1000);
     private javax.swing.JLabel nusuario;
     private java.awt.TextArea restaurante;
     private javax.swing.JScrollPane resumen;
+    private javax.swing.JButton salir;
     private javax.swing.JLabel total;
     private javax.swing.JLabel user;
     private javax.swing.JTextField usuario;
