@@ -61,16 +61,17 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        subTotal = new javax.swing.JTextField();
+        Tapar = new javax.swing.JTextField();
+        TextRestUnid = new javax.swing.JTextField();
+        textCarroV = new javax.swing.JTextField();
+        precioPlato = new javax.swing.JTextField();
         BotonRestUnid = new javax.swing.JButton();
         VaciarCC = new javax.swing.JButton();
         BotonRealizarPedido = new javax.swing.JButton();
         BotonBorrarUnid = new javax.swing.JButton();
         BotonSumUnid = new javax.swing.JButton();
         BotonAtrasCC = new javax.swing.JButton();
-        Tapar = new javax.swing.JTextField();
-        TextRestUnid = new javax.swing.JTextField();
-        textCarroV = new javax.swing.JTextField();
-        precioPlato = new javax.swing.JTextField();
         ListaPedidosCC = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         NombreRestaurante = new javax.swing.JTextField();
@@ -87,6 +88,46 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        subTotal.setEditable(false);
+        subTotal.setBackground(new java.awt.Color(114, 203, 131));
+        subTotal.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        subTotal.setForeground(new java.awt.Color(255, 255, 255));
+        subTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subTotalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(subTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, 160, -1));
+
+        Tapar.setEditable(false);
+        Tapar.setBackground(new java.awt.Color(255, 254, 251));
+        Tapar.setBorder(null);
+        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
+
+        TextRestUnid.setEditable(false);
+        TextRestUnid.setBackground(new java.awt.Color(235, 235, 235));
+        TextRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
+        TextRestUnid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextRestUnid.setText("-");
+        TextRestUnid.setBorder(null);
+        TextRestUnid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextRestUnidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextRestUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 50, 30));
+
+        textCarroV.setBackground(new java.awt.Color(235, 235, 235));
+        textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
+        textCarroV.setText("Aún no tienes productos en tu carrito");
+        textCarroV.setBorder(null);
+        getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
+
+        precioPlato.setBackground(new java.awt.Color(255, 254, 251));
+        precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        precioPlato.setBorder(null);
+        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 160, -1));
 
         BotonRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
         BotonRestUnid.setBorder(null);
@@ -142,35 +183,6 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonAtrasCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, -1));
-
-        Tapar.setEditable(false);
-        Tapar.setBackground(new java.awt.Color(255, 254, 251));
-        Tapar.setBorder(null);
-        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
-
-        TextRestUnid.setEditable(false);
-        TextRestUnid.setBackground(new java.awt.Color(235, 235, 235));
-        TextRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
-        TextRestUnid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextRestUnid.setText("-");
-        TextRestUnid.setBorder(null);
-        TextRestUnid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextRestUnidActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TextRestUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 50, 30));
-
-        textCarroV.setBackground(new java.awt.Color(235, 235, 235));
-        textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
-        textCarroV.setText("Aún no tienes productos en tu carrito");
-        textCarroV.setBorder(null);
-        getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
-
-        precioPlato.setBackground(new java.awt.Color(255, 254, 251));
-        precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        precioPlato.setBorder(null);
-        getContentPane().add(precioPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 160, -1));
 
         jList1.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -328,6 +340,10 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonRealizarPedidoActionPerformed
+
+    private void subTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subTotalActionPerformed
     public void PantallaVacia(){
         precioPlato.setVisible(false);
         Tapar.setVisible(false);
@@ -347,6 +363,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         textCarroV.setVisible(true);
         BotonRestUnid.setVisible(false);
         TextRestUnid.setVisible(false);
+        subTotal.setVisible(false);
     }
     
      
@@ -359,6 +376,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         DefaultListModel pedidos = new DefaultListModel<>();
         pedidos.clear();
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        
         ArrayList<String> carritoCompras= new ArrayList<String>();
         carritoCompras= consulta.darCarroCompras(nUsuario);
                
@@ -379,6 +397,16 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         else{
             PantallaVacia(); 
         }
+        
+        float subT =0, precioPA;
+        
+        for(int i = 0; i < platoCC.size();i++){
+          precioPA = consulta.darPrecioPlato(restaurantesCC.get(i), platoCC.get(i));
+          subT+=precioPA; 
+        }
+        
+        subTotal.setText(Float.toString(subT));
+        
         
           
     }
@@ -458,6 +486,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JTextField nombrePlato;
     private javax.swing.JTextField precioPlato;
+    private javax.swing.JTextField subTotal;
     private javax.swing.JTextField textCarroV;
     // End of variables declaration//GEN-END:variables
 }

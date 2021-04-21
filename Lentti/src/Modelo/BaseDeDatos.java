@@ -939,7 +939,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         ArrayList<String> listPedidos = new ArrayList<>();
         String var, rest, plat;
 
-        System.out.println("JUEPTDFJNVDF " + nUsuario);
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -1535,5 +1534,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return nombre;
     }
+    
+    
 
 }

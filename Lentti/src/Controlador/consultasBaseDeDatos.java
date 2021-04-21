@@ -81,6 +81,5 @@ public interface consultasBaseDeDatos {
     public String DarRestPedido(int id);
     public abstract String ObternerRestauranteDomicilio(int domid);
     public abstract String ObternerDomiciliarioDomicilio(int domid);
-
     //public abstract ArrayList<String> darPedido(int serial);
 }
