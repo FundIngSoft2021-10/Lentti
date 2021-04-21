@@ -166,7 +166,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
 
     private void jButtonEstadoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoPedidoActionPerformed
         
-        EstadoPedido p = new EstadoPedido(cliente);
+        EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente);
         p.setVisible(true);
         this.dispose();
         

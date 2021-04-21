@@ -125,10 +125,10 @@ public class EstadoPedido extends javax.swing.JFrame {
         });
     }
 
-    public EstadoPedido(String pUsuario) {
+    public EstadoPedido(int idpedido, String usuario) {
        initComponents();
-        String usuarioa = pUsuario;
-        user.setText(usuarioa);
+        int id = idpedido;
+        user.setText(usuario);
         this.setLocationRelativeTo(null);
         mostrarInformacionPedido();
         
