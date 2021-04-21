@@ -59,6 +59,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         TA_informacionCliente = new javax.swing.JTextArea();
         BotonBuscarAlgoParaPedir = new javax.swing.JButton();
         BotonCaritoCompra = new javax.swing.JButton();
+        jButtonVerPedidos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -123,6 +124,14 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         });
         getContentPane().add(BotonCaritoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 383, 320, 70));
 
+        jButtonVerPedidos.setText("Ver pedidos");
+        jButtonVerPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPedidosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonVerPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfilUsuario.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
 
@@ -166,6 +175,15 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_PedidosActionPerformed
+
+    private void jButtonVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosActionPerformed
+        
+        PantallaVerPedidos p = new PantallaVerPedidos(L_bienvenidoNombreUsuario.getText());
+        p.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButtonVerPedidosActionPerformed
+
 
     private void mostrarInformacionCliente()
     {
@@ -240,6 +258,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     private javax.swing.JButton Pedidos;
     private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonVerPedidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

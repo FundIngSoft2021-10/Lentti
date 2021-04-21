@@ -78,13 +78,8 @@ public interface consultasBaseDeDatos {
     public boolean CrearPxP2(String restaurante, String plato, int cantidad, float total);
     public boolean ModificarPxP(int id);
     public String DarRestPedido(int id);
+    public abstract String ObternerRestauranteDomicilio(int domid);
+    public abstract String ObternerDomiciliarioDomicilio(int domid);
 
-
-    
-
-    
-
-
-    
     //public abstract ArrayList<String> darPedido(int serial);
 }

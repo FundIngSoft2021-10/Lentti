@@ -15,8 +15,9 @@ import Modelo.BaseDeDatos;
  */
 public class PantallaSatisfacción extends javax.swing.JFrame {
 
-    String prestaurante = "Dominos";
-    String pdomiciliario = "1";
+    String prestaurante;
+    String pdomiciliario;
+    String clientep;
 
     /**
      * Creates new form PantallaSatisfacción
@@ -26,11 +27,12 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public PantallaSatisfacción(String restaurante, String domiDoc) {
+    public PantallaSatisfacción(String restaurante, String domiDoc, String cliente) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.prestaurante = restaurante;
         this.pdomiciliario = domiDoc;
+        this.clientep = cliente;
     }
 
     /**
@@ -54,6 +56,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jComboBox3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         jComboBox3.setMaximumRowCount(5);
@@ -131,14 +134,21 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
 
         jLabel4.setText("Añadir comentario (opcional)");
 
+        jButton2.setBackground(new java.awt.Color(240, 0, 0));
+        jButton2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Cancelar");
+        jButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(346, 346, 346))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +175,12 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(329, 329, 329))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jButton1)
+                .addGap(54, 54, 54)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +201,11 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -221,9 +239,20 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             consulta.calificarRestaurante(this.prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()), this.jTextArea2.getText());
             consulta.calificarDomiciliario(this.pdomiciliario, Integer.parseInt(this.jComboBox4.getSelectedItem().toString()), this.jTextArea1.getText());
             JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
+            PantallaVerPedidos p = new PantallaVerPedidos(clientep);
+            p.setVisible(true);
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        PantallaVerPedidos p = new PantallaVerPedidos(clientep);
+        p.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +292,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;

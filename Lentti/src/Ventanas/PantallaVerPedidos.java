@@ -8,6 +8,7 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +16,9 @@ import javax.swing.DefaultListModel;
  */
 public class PantallaVerPedidos extends javax.swing.JFrame {
 
-    String cliente = "carlos";
+    String cliente;
+    String rest;
+    String domdoc;
     DefaultListModel listaPedidosActivos = new DefaultListModel();
     DefaultListModel listaPedidosAnteriores = new DefaultListModel();
     /**
@@ -25,11 +28,6 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        this.listaPedidosActivos = consulta.BuscarPedidosEnCurso(cliente);
-        this.jListPedidosEnCurso.setModel(listaPedidosActivos);
-        this.listaPedidosAnteriores = consulta.BuscarPedidosAnteriores(cliente);
-        this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
         
     }
     public PantallaVerPedidos(String Usuario) {
@@ -180,9 +178,14 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
 
     private void jButtonEstadoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoPedidoActionPerformed
         
+        if(this.jListPedidosEnCurso.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        }
+        else {
         EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente, res.getText());
         p.setVisible(true);
         this.dispose();
+        }
         
     }//GEN-LAST:event_jButtonEstadoPedidoActionPerformed
 
@@ -196,7 +199,17 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
 
     private void jButtonCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalificarActionPerformed
         
-        
+        if(this.jListPedidosEntregados.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        }
+        else {
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        rest = consulta.ObternerRestauranteDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
+        domdoc = consulta.ObternerDomiciliarioDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
+        PantallaSatisfacción p = new PantallaSatisfacción(rest, domdoc, cliente);
+        p.setVisible(true);
+        this.dispose();
+        }
         
     }//GEN-LAST:event_jButtonCalificarActionPerformed
 
