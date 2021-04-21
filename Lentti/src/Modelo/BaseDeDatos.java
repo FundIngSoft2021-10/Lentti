@@ -1244,14 +1244,34 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return lista;
     }
 
-    public boolean EliminarPedido(int id, String usuario) {
+    public boolean EliminarPedido(int id, String Pusuario) {
 
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "DELETE FROM pedido WHERE  pedido_id = '" + id + "' and cliente = '" + usuario + "' ;";
+            String consulta = "DELETE FROM pedido WHERE  pedido_id = '" + id + "' and cliente = '" + Pusuario + "' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        return resultado;
+
+    }
+    
+    public boolean EliminarPedido(String Pusuario) {
+
+        boolean resultado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM pedido WHERE  cliente = '" + Pusuario + "' ;";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1415,14 +1435,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
 
-    public int DarIdPedido(String usuario, String estado, float total, String domiciliario) {
+    public int DarIdPedido(String Pusuario, String estado, float total, String domiciliario) {
         int id = 0;
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT pedido_id FROM pedido WHERE cliente = '" + usuario + "' and domiciliario_documento = '" + domiciliario + "' and total = '" + total + "' and estado = '" + estado + "' ;";
+            String consulta = "SELECT pedido_id FROM pedido WHERE cliente = '" + Pusuario + "' and domiciliario_documento = '" + domiciliario + "' and total = '" + total + "' and estado = '" + estado + "' ;";
             ResultSet result = st.executeQuery(consulta);
 
             id = result.getInt("pedido_id");

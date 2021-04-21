@@ -137,6 +137,12 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     private void BotonModificarNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarNombreClienteActionPerformed
         // TODO add your handling code here:
         
+        if(TF_ModificarNombreCliente.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Error al Modificar la dirección del cliente");
+            return;
+        }
+        
         consultasBaseDeDatos consulta = new BaseDeDatos();
         if(consulta.ModificarNombreCliente(LabelNombreUsuario.getText(), TF_ModificarNombreCliente.getText()))
         {
@@ -157,6 +163,12 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     private void BotonModificarApellidoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarApellidoClienteActionPerformed
         // TODO add your handling code here:
         
+        if(TF_ModificarApellidoCliente.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Error al Modificar la dirección del cliente");
+            return;
+        }
+        
         consultasBaseDeDatos consulta = new BaseDeDatos();
         if(consulta.ModificarApellidoCliente(LabelNombreUsuario.getText(), TF_ModificarApellidoCliente.getText()))
         {
@@ -175,7 +187,15 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     private void BotonModificarDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarDireccionClienteActionPerformed
         // TODO add your handling code here:
         
+        if(TF_ModificarDireccionCliente.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Error al Modificar la dirección del cliente");
+            return;
+        }
+        
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        
+        
         if(consulta.ModificarDireccionCliente(LabelNombreUsuario.getText(), TF_ModificarDireccionCliente.getText()))
         {
                     JOptionPane.showMessageDialog(null, "Se modifico la dirección del cliente con exito");
@@ -194,26 +214,35 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
          
          if(consulta.VaciarCarrito(LabelNombreUsuario.getText()))
          {
-             if(consulta.EliminarCliente(LabelNombreUsuario.getText()))
+             
+             if(consulta.EliminarPedido(LabelNombreUsuario.getText()))
              {
-                 if(consulta.EliminarCuenta(LabelNombreUsuario.getText(), "C"))
+                 if(consulta.EliminarCliente(LabelNombreUsuario.getText()))
                  {
-                     JOptionPane.showMessageDialog(null, "Se elimino la cuenta con exito");
+                     if(consulta.EliminarCuenta(LabelNombreUsuario.getText(), "C"))
+                       {
+                          JOptionPane.showMessageDialog(null, "Se elimino la cuenta con exito");
                      
-                    InicioSesion pantalla = new InicioSesion();
-                    pantalla.setVisible(true);
-                    this.dispose();
-                     
-                 }
-                 else
-                 {
-                     JOptionPane.showMessageDialog(null, "Error al eliminar cuenta");
-                 }
+                            InicioSesion pantalla = new InicioSesion();
+                            pantalla.setVisible(true);
+                            this.dispose();
+
+                         }
+                         else
+                         {
+                             JOptionPane.showMessageDialog(null, "Error al eliminar cuenta");
+                         }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Error al eliminar el cliente");
+                }
              }
              else
              {
-                 JOptionPane.showMessageDialog(null, "Error al eliminar el cliente");
+                 JOptionPane.showMessageDialog(null, "Error al eliminar los pedidos");
              }
+             
          }
          else
          {
