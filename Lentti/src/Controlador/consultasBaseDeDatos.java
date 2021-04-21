@@ -65,5 +65,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean calificarRestaurante(String pUsuario, int calif, String comentario);
     public abstract boolean calificarDomiciliario(String pUsuario, int calif, String comentario);
     public abstract boolean CrearPedido(String cliente, String domiciliario, float Total, String estado);
-    
+    public abstract DefaultListModel BuscarPedidosEnCurso(String Usuario);
+    public abstract DefaultListModel BuscarPedidosAnteriores(String Usuario);
+    //public abstract ArrayList<String> darPedido(int serial);
 }

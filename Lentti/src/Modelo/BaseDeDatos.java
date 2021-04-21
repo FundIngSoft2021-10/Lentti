@@ -1375,7 +1375,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }    
+    
     public boolean CrearPedido(String cliente, String domiciliario, float total, String estado ){
+        
     boolean sePudo = false;
 
     try {
@@ -1396,6 +1398,65 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return sePudo;
     }
-       
-
+    
+    @Override
+    public DefaultListModel BuscarPedidosEnCurso(String Usuario) 
+    {
+        DefaultListModel lista = new DefaultListModel();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT pedido_id FROM pedido WHERE cliente = '" + Usuario + "' and estado = 'en curso'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                lista.addElement(result.getString("pedido_id")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return lista;
+    }
+    
+    @Override
+    public DefaultListModel BuscarPedidosAnteriores(String Usuario) 
+    {
+        DefaultListModel lista = new DefaultListModel();
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT pedido_id FROM pedido WHERE cliente = '" + Usuario + "' and estado = 'entregado'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) 
+            {
+                lista.addElement(result.getString("pedido_id")); 
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return lista;
+    }
+   
 }

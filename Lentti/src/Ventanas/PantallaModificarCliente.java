@@ -36,11 +36,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         
     }
 
-    public Image getIconImage()
-    {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
-        return retValue;
-    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
