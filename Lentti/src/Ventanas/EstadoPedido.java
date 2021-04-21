@@ -10,6 +10,8 @@ import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,11 +35,13 @@ public class EstadoPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        infop = new javax.swing.JLabel();
         ID = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         MetodoPago = new javax.swing.JLabel();
         Domiciliario = new javax.swing.JLabel();
+        dom = new javax.swing.JLabel();
         Estado = new javax.swing.JLabel();
         Tiempo = new javax.swing.JLabel();
         Restaurante = new javax.swing.JLabel();
@@ -48,31 +52,51 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 150, 20));
+
+        infop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(infop, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 190, 30));
+
+        ID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 40, 30));
 
         Cancelar.setForeground(new java.awt.Color(255, 0, 0));
         Cancelar.setText("Cancelar");
         Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 100, 30));
 
         Atras.setText("Volver");
         Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
         getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 100, 30));
 
         MetodoPago.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 200, 50));
+        getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 250, 50));
 
         Domiciliario.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(Domiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 200, 70));
+        getContentPane().add(Domiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 260, 40));
+
+        dom.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
+        dom.setText("Domiciliario que entregará su pedido:");
+        getContentPane().add(dom, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 260, 40));
 
         Estado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 110, 30));
 
         Tiempo.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(Tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 190, 20));
+        Tiempo.setText("Tiempo de espera: 30-45 Minutos");
+        getContentPane().add(Tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 210, 20));
 
         Restaurante.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(Restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 130, 30));
+        getContentPane().add(Restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 210, 30));
 
         Cantidad.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
         Cantidad.setForeground(new java.awt.Color(51, 0, 204));
@@ -80,7 +104,9 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         Producto.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
         Producto.setForeground(new java.awt.Color(51, 0, 204));
-        getContentPane().add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 130, 30));
+        Producto.setText("*IMAGEN del producto BACKLOG 2*");
+        Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 220, 60));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, 20));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/output-onlinepngtools (1).png"))); // NOI18N
@@ -88,6 +114,26 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        // TODO add your handling code here:
+        PantallaVerPedidos vp = new PantallaVerPedidos(user.getText(),Restaurante.getText());
+            vp.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+                consultasBaseDeDatos consulta = new BaseDeDatos();
+        int i=Integer.parseInt(ID.getText());  
+        if(consulta.ModificarEstadoPedido("cancelado", i)){
+        JOptionPane.showMessageDialog(null, "Se ha cancelado tu pedido");
+        }
+        PantallaInicialCliente vp = new PantallaInicialCliente(user.getText());
+            vp.setVisible(true);
+            this.dispose();
+            
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,22 +171,33 @@ public class EstadoPedido extends javax.swing.JFrame {
         });
     }
 
-    public EstadoPedido(int idpedido, String usuario) {
+
+    
+    public EstadoPedido(int idpedido, String usuario, String restaurante) {
        initComponents();
         int id = idpedido;
         user.setText(usuario);
+        infop.setText("Este es el código de su pedido: " );
+        ID.setText(String.valueOf(id));
+         Restaurante.setText(restaurante);
         this.setLocationRelativeTo(null);
         mostrarInformacionPedido();
-        
+
             
     }
     
     private void mostrarInformacionPedido()
     {
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        int id=Integer.parseInt(ID.getText());  
        //ID.setText(String.valueOf(consulta.darSerialPedido(user.getText())));
-                 
-   
+       Estado.setText(consulta.DarEstado(id));
+       Domiciliario.setText(consulta.DarNombreDomiciliario(consulta.DarDomiciliario(id)));
+      
+       
+    
+
+    
         
     }
 
@@ -156,7 +213,9 @@ public class EstadoPedido extends javax.swing.JFrame {
     private javax.swing.JLabel Producto;
     private javax.swing.JLabel Restaurante;
     private javax.swing.JLabel Tiempo;
+    private javax.swing.JLabel dom;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel infop;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }

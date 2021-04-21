@@ -67,5 +67,24 @@ public interface consultasBaseDeDatos {
     public abstract boolean CrearPedido(String cliente, String domiciliario, float Total, String estado);
     public abstract DefaultListModel BuscarPedidosEnCurso(String Usuario);
     public abstract DefaultListModel BuscarPedidosAnteriores(String Usuario);
+    public abstract boolean EliminarPedido(int id, String usuario);
+    public boolean ModificarEstadoPedido(String estado, int id);
+    public abstract String DarDomiciliario(int id);
+    public abstract String DarEstado(int id);
+    public abstract String DarNombreDomiciliario(String documento);
+    public abstract float DarTotalPedido(int id);
+    public abstract boolean CrearPxP(int id,String restaurante, String plato, int cantidad, float total);
+    public abstract int DarIdPedido(String usuario, String estado, float total, String domiciliario);
+    public boolean CrearPxP2(String restaurante, String plato, int cantidad, float total);
+    public boolean ModificarPxP(int id);
+    public String DarRestPedido(int id);
+
+
+    
+
+    
+
+
+    
     //public abstract ArrayList<String> darPedido(int serial);
 }

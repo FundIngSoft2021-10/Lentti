@@ -1458,5 +1458,263 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return lista;
     }
-   
+    public boolean EliminarPedido(int id, String usuario) {
+      
+        boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM pedido WHERE  pedido_id = '"+ id +"' and cliente = '"+ usuario +"' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+        
+    }
+     public boolean ModificarEstadoPedido(String estado, int id) {
+        boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE pedido SET estado = '"+ estado + "' WHERE pedido_id = '"+ id +"';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+     }
+     public String DarDomiciliario(int id){
+     String documento = null;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT domiciliario_documento FROM pedido WHERE pedido_id = '" + id+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                documento = result.getString("domiciliario_documento");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return documento;
+     }
+     
+    public String DarEstado(int id){
+    String estado = null;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT estado FROM pedido WHERE pedido_id = '" + id+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                estado = result.getString("estado");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return estado;
+    }
+        public String DarNombreDomiciliario(String documento){
+        String nombre = null;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT Nombre FROM domiciliario WHERE documento = '" + documento+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                nombre = result.getString("nombre");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return nombre;
+        }
+public float DarTotalPedido(int id){
+    float total = 0;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT total FROM pedido WHERE pedido_id = '" + id+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                total = result.getFloat("total");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return total;
+    }
+public boolean CrearPxP(int id,String restaurante, String plato, int cantidad, float total){
+boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO pedidoxplato VALUES ('"+ id +"','"+ restaurante + "','"+ plato +"', '" + cantidad +"', '"+ total +"');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+}
+public int DarIdPedido(String usuario, String estado, float total, String domiciliario){
+    int id = 0;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT pedido_id FROM pedido WHERE cliente = '"+ usuario +"' and domiciliario_documento = '"+ domiciliario +"' and total = '"+ total +"' and estado = '"+ estado + "' ;";
+            ResultSet result = st.executeQuery(consulta);
+                  
+          
+            id = result.getInt("pedido_id");
+            
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return id;
+}
+public boolean CrearPxP2(String restaurante, String plato, int cantidad, float total){
+boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO pedidoxplato (restaurante,plato,cantidad,totalplato) VALUES ('"+ restaurante + "','"+ plato +"', '" + cantidad +"', '"+ total +"');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+}
+    public boolean ModificarPxP(int id){
+    boolean resultado= false;
+       try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host,usuario,contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO pedidoxplato (pedido_id) VALUES ('"+ id + "');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado=true;
+        }
+        catch(Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+            resultado=false;
+        }
+       return resultado;
+    }
+public String DarRestPedido(int id){
+        String nombre = null;
+      
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT restaurante FROM pedidoxplato WHERE pedido_id = '" + id+ "'";
+            ResultSet result = st.executeQuery(consulta);
+                  
+            while(result.next()) {
+                nombre = result.getString("restaurante");
+            }
+            
+            result.close();
+            st.close();
+            conexion.close();
+        }
+        catch (Exception exc)
+        {
+            System.out.println("Errorx:"+exc.getMessage());
+        }
+        
+        return nombre;
+        }
 }

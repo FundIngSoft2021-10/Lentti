@@ -68,6 +68,7 @@ public class PantallaPedido extends javax.swing.JFrame {
         BotonModificarDireccionCliente = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
+        platos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -80,20 +81,21 @@ public class PantallaPedido extends javax.swing.JFrame {
                 confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 90, 30));
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 100, 30));
 
         descripcion.setColumns(20);
+        descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         descripcion.setRows(5);
         resumen.setViewportView(descripcion);
 
-        getContentPane().add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 70, 200, 70));
+        getContentPane().add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 390, 130));
 
         direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 direccionActionPerformed(evt);
             }
         });
-        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 110, 20));
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 240, 30));
 
         efectivo.setText("Efectivo");
         efectivo.addActionListener(new java.awt.event.ActionListener() {
@@ -101,38 +103,49 @@ public class PantallaPedido extends javax.swing.JFrame {
                 efectivoActionPerformed(evt);
             }
         });
-        getContentPane().add(efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 70, 20));
-        getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 180, 20));
+        getContentPane().add(efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 70, 20));
+
+        restaurante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 300, 30));
 
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
-        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 30, 30));
+        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 40, 50));
 
+        usuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, -1));
-        getContentPane().add(inforest, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 94, 170, 20));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 330, 30));
 
+        inforest.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(inforest, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 240, 20));
+
+        user.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         user.setText("Usuario:");
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 50, 20));
-        getContentPane().add(nusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 110, 20));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 90, 30));
+
+        nusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(nusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 250, 30));
 
         carrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carritoActionPerformed(evt);
             }
         });
-        getContentPane().add(carrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 33, 120, 30));
-        getContentPane().add(costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 100, 20));
+        getContentPane().add(carrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 190, 50));
 
+        costo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 160, 30));
+
+        total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         total.setText("Total del pedido:");
-        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 494, 210, 20));
 
         BotonModificarDireccionCliente.setText("...");
         BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -140,22 +153,23 @@ public class PantallaPedido extends javax.swing.JFrame {
                 BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 20, 20));
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 40, 30));
 
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 20, 20));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoFondo.jpeg"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoPedido800x600.png"))); // NOI18N
         Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FondoMouseClicked(evt);
             }
         });
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(platos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,13 +178,15 @@ public class PantallaPedido extends javax.swing.JFrame {
 //Confirmar pedido
  consultasBaseDeDatos consulta = new BaseDeDatos();
  float precio = Float.parseFloat(costo.getText());  
-
+int id=0;
 
  if ( consulta.CrearPedido(nusuario.getText(), "1000900800", precio , "en curso"))
          {
             JOptionPane.showMessageDialog(null, "Se recibió tu pedido");
-            EstadoPedido ep = new EstadoPedido(nusuario.getText());
-            ep.setVisible(true);
+          /*  id = consulta.DarIdPedido(nusuario.getText(), "en curso", precio , "1000900800");
+            relacionarpxp(id); */
+            PantallaVerPedidos vp = new PantallaVerPedidos(nusuario.getText(),restaurante.getText()); 
+            vp.setVisible(true);
             this.dispose();
 
          } else {
@@ -263,12 +279,16 @@ public class PantallaPedido extends javax.swing.JFrame {
         
         String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
         restaurante.setText(nrestaurante[0]);
+        platos.setText(nrestaurante[1]);
         float presio = consulta.darCostoEnvioRest(restaurante.getText());
         inforest.setText(consulta.darDireccionRest(restaurante.getText()));
         descripcion.append(consulta.darDescripcionPlato(nrestaurante[0], nrestaurante[1]));
         String cantidad = String.valueOf(consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]));
+      /* float f= consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]);
+       int quantity = (int)f;*/
         descripcion.append(" cantidad " + cantidad + "\n");
         presio += calcularCosto(nrestaurante[0], nrestaurante[1]);
+      
                  
      
 for(int i=1;i<datosCarrito.size();i++){
@@ -288,6 +308,36 @@ if(nrestaurante[0].equals(nr[0])){
         direccion.setEditable(true);
         
     }
+   
+   private void relacionarpxp(int id)
+    {
+        int serial = id;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
+        
+        String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
+    
+      
+        
+       float f= consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]);
+       int quantity = (int)f;
+    
+       System.out.println(serial + nrestaurante[0] + nrestaurante[1] + quantity + calcularCosto(nrestaurante[0], nrestaurante[1]));
+       System.out.println(consulta.CrearPxP(serial, nrestaurante[0], nrestaurante[1], quantity, calcularCosto(nrestaurante[0], nrestaurante[1]))); //pedidoxplato
+                 
+     
+for(int i=1;i<datosCarrito.size();i++){
+String[] nr = datosCarrito.get(i).split(",");
+if(nrestaurante[0].equals(nr[0])){
+        platos.setText(nr[1]);
+       int q= (int)consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);  
+       consulta.CrearPxP(serial, nr[0], nr[1], q, calcularCosto(nr[0], nr[1])); //Pedidoxplato
+
+}
+    
+}
+
+}
    
   
   private float calcularCosto(String rest, String plato){
@@ -348,6 +398,7 @@ if(nrestaurante[0].equals(nr[0])){
     private javax.swing.JCheckBox efectivo;
     private javax.swing.JLabel inforest;
     private javax.swing.JLabel nusuario;
+    private javax.swing.JLabel platos;
     private java.awt.TextArea restaurante;
     private javax.swing.JScrollPane resumen;
     private javax.swing.JButton salir;

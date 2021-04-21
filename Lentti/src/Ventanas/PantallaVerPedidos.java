@@ -32,7 +32,6 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
         
     }
-    
     public PantallaVerPedidos(String Usuario) {
         
         initComponents();
@@ -43,6 +42,20 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         this.jListPedidosEnCurso.setModel(listaPedidosActivos);
         this.listaPedidosAnteriores = consulta.BuscarPedidosAnteriores(cliente);
         this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
+        
+        
+    }
+    public PantallaVerPedidos(String Usuario, String rest) {
+        
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.cliente = Usuario;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        this.listaPedidosActivos = consulta.BuscarPedidosEnCurso(Usuario);
+        this.jListPedidosEnCurso.setModel(listaPedidosActivos);
+        this.listaPedidosAnteriores = consulta.BuscarPedidosAnteriores(cliente);
+        this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
+        res.setText(rest);
         
     }
 
@@ -55,6 +68,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        res = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListPedidosEnCurso = new javax.swing.JList();
         jButtonEstadoPedido = new javax.swing.JButton();
@@ -166,7 +180,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
 
     private void jButtonEstadoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoPedidoActionPerformed
         
-        EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente);
+        EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente, res.getText());
         p.setVisible(true);
         this.dispose();
         
@@ -231,5 +245,6 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     private javax.swing.JList jListPedidosEntregados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel res;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,6 +51,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Pedidos = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
         L_bienvenidoNombreUsuario = new javax.swing.JLabel();
         BotonModificarCliente = new javax.swing.JButton();
@@ -64,6 +65,18 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Pedidos.setBackground(new java.awt.Color(102, 102, 255));
+        Pedidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Pedidos.setForeground(new java.awt.Color(255, 255, 255));
+        Pedidos.setText("Mis Pedidos");
+        Pedidos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Pedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PedidosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, 180, 50));
 
         jButtonCerrarSesion.setBorder(null);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +160,13 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BotonCaritoCompraActionPerformed
 
+    private void PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidosActionPerformed
+        // TODO add your handling code here:
+        PantallaVerPedidos p = new PantallaVerPedidos(L_bienvenidoNombreUsuario.getText());
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_PedidosActionPerformed
+
     private void mostrarInformacionCliente()
     {
         //revisar verificar usuario
@@ -217,6 +237,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     private javax.swing.JButton BotonCaritoCompra;
     private javax.swing.JButton BotonModificarCliente;
     private javax.swing.JLabel L_bienvenidoNombreUsuario;
+    private javax.swing.JButton Pedidos;
     private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JLabel jLabel1;
