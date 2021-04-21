@@ -22,6 +22,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     ArrayList<String> restaurantesCC= new ArrayList<>();
     ArrayList<String> platoCC= new ArrayList<>();
     String nUsuario;
+    float subtotalF;
 
     public PantallaCarroCompras() {
       
@@ -296,6 +297,12 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         cantidad+=1;
         boolean rest = consulta.ModificarCantidad(nUsuario, NombreRestaurante.getText(),nombrePlato.getText(), cantidad);
         cantidadCC.setText(Float.toString(cantidad));
+        
+        float valor = 0;
+        valor = consulta.darPrecioPlato(NombreRestaurante.getText(), nombrePlato.getText());
+        float lol = subtotalF + valor;
+        subTotal.setText(Float.toString(lol));
+        
     }//GEN-LAST:event_BotonSumUnidMouseClicked
 
     private void VaciarCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VaciarCCMouseClicked
@@ -325,12 +332,17 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
     private void BotonBorrarUnidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonBorrarUnidMouseClicked
         // TODO add your handling code here:
+        
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean res = consulta.EliminarPedido(nUsuario, NombreRestaurante.getText(), nombrePlato.getText());
         if(res == true){
           mostrarPedidos();  
         }
         
+        float valor = 0;
+        valor = consulta.darPrecioPlato(NombreRestaurante.getText(), nombrePlato.getText());
+        float lol = subtotalF - valor;
+        subTotal.setText(Float.toString(lol));
         
     }//GEN-LAST:event_BotonBorrarUnidMouseClicked
 
@@ -399,12 +411,13 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         }
         
         float subT =0, precioPA;
-        
+        float cantidad = 0;
         for(int i = 0; i < platoCC.size();i++){
           precioPA = consulta.darPrecioPlato(restaurantesCC.get(i), platoCC.get(i));
-          subT+=precioPA; 
+          cantidad = consulta.darCantidad(nUsuario, restaurantesCC.get(i), platoCC.get(i));
+          subT+=precioPA * cantidad; 
         }
-        
+        subtotalF = subT;
         subTotal.setText(Float.toString(subT));
         
         
