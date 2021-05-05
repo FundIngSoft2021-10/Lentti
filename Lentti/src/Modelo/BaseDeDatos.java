@@ -317,16 +317,28 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
 
-    public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, String imagen) {
+    public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo) {
         boolean resultado = false;
         boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
+        FileInputStream imagen=null;
+        try {
+            imagen= new FileInputStream(archivo.getSelectedFile());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO restaurante VALUES ('" + nombreRestaurante + "', '" + NIT + "', '" + direccion + "', '" + descripcion + "', '" + costoDeEnvio + "', '" + imagen + "');";
-            st.execute(consulta);
+            String consulta = "INSERT INTO restaurante (nombreRestaurante,NIT,direccion,descripcion,costoEnvio,imagen)  VALUES (?,?,?,?,?,?);";
+            PreparedStatement st= conexion.prepareStatement(consulta);
+            st.setString(1, nombreRestaurante);
+            st.setString(2, NIT);
+            st.setString(3, direccion);
+            st.setString(4, descripcion);
+            st.setFloat(5, costoDeEnvio);
+            st.setBinaryStream(6, imagen, archivo.getSelectedFile().length());
+            st.execute();
             st.close();
             conexion.close();
             resultado = true;
@@ -1588,7 +1600,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT imagen FROM imagenTabla WHERE numero = '" + id + "'";
+            String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = 'hola'";
             //PreparedStatement st=conexion.prepareStatement(consulta);
             
             ResultSet result = st.executeQuery(consulta);

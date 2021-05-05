@@ -10,7 +10,15 @@ import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,6 +27,8 @@ import javax.swing.JOptionPane;
 public class PantallaCrearRestaurante extends javax.swing.JFrame 
 {
     String usuario = "";
+    File Imagen;
+    JFileChooser buscador;
     /**
      * Creates new form CrearRestaurante
      */
@@ -54,16 +64,17 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaCampoDescripcion = new javax.swing.JTextArea();
-        jTextFieldCampoImagen = new javax.swing.JTextField();
         jTextFieldCampoNIT = new javax.swing.JTextField();
         jTextFieldCampoCostoDeEnvio = new javax.swing.JTextField();
         jTextFieldCampoPassword = new javax.swing.JTextField();
         jTextFieldCampoDireccion = new javax.swing.JTextField();
         jTextFieldCampoPalabrasClave = new javax.swing.JTextField();
         jTextFieldCampoNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
+        jLabelCampoImagen = new javax.swing.JLabel();
+        jButtonAgregarImagen = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -78,26 +89,19 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 450, 60));
 
-        jTextFieldCampoImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCampoImagenActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 255, -1));
-
         jTextFieldCampoNIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNITActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 190, -1));
+        getContentPane().add(jTextFieldCampoNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 202, 190, 30));
 
         jTextFieldCampoCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoCostoDeEnvioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 190, -1));
+        getContentPane().add(jTextFieldCampoCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 382, 190, 30));
 
         jTextFieldCampoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,25 +115,21 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
                 jTextFieldCampoDireccionActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 190, -1));
+        getContentPane().add(jTextFieldCampoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 252, 190, 30));
 
         jTextFieldCampoPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoPalabrasClaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 450, -1));
+        getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 602, 450, 30));
 
         jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 20));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 30));
 
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +144,18 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
             }
         });
         getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 60, 60));
+        getContentPane().add(jLabelCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
+
+        jButtonAgregarImagen.setText("Agregar Imagen");
+        jButtonAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 160, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,7 +174,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado = false;
         
-        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.jTextFieldCampoImagen.getText().isEmpty())
+        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.Imagen==null)
         {
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
         }
@@ -176,7 +188,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         else
         {
             float costoDeEnvio = Float.parseFloat(this.jTextFieldCampoCostoDeEnvio.getText());
-            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.jTextFieldCampoImagen.getText());
+            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.buscador);
             consulta.AlmacenarPalabrasClave (this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPalabrasClave.getText());
             PantallaAgregarPlato pantallaGestion = new PantallaAgregarPlato(jTextFieldCampoNombre.getText());
             pantallaGestion.setVisible(true);
@@ -192,10 +204,6 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoCostoDeEnvioActionPerformed
 
-    private void jTextFieldCampoImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoImagenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCampoImagenActionPerformed
-
     private void jTextFieldCampoPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoPasswordActionPerformed
@@ -207,6 +215,29 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     private void jTextFieldCampoPalabrasClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCampoPalabrasClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoPalabrasClaveActionPerformed
+
+    private void jButtonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarImagenActionPerformed
+        buscador =new JFileChooser();
+        buscador.setMultiSelectionEnabled(false);
+        buscador.setDialogTitle("Buscar Imagen restaurante");
+        if(buscador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !buscador.isDirectorySelectionEnabled())
+        {   
+            if(buscador.getSelectedFile().toString().endsWith(".jpg") ||buscador.getSelectedFile().toString().endsWith(".png") )
+            {
+                this.Imagen = new File ( buscador.getSelectedFile().toString());
+                ImageIcon imagenPoner = new ImageIcon( buscador.getSelectedFile().toString());
+                Icon Etiqueta = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelCampoImagen.getWidth(), this.jLabelCampoImagen.getHeight(), Image.SCALE_SMOOTH));
+                this.jLabelCampoImagen.setIcon(Etiqueta);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No es un formato aceptado, debe ser jpg o png");
+            }
+            
+             
+            //this.jLabel1.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_jButtonAgregarImagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,19 +296,26 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PantallaCrearRestaurante().setVisible(true);
+                
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(PantallaCrearRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonAgregarImagen;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelCampoImagen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaCampoDescripcion;
     private javax.swing.JTextField jTextFieldCampoCostoDeEnvio;
     private javax.swing.JTextField jTextFieldCampoDireccion;
-    private javax.swing.JTextField jTextFieldCampoImagen;
     private javax.swing.JTextField jTextFieldCampoNIT;
     private javax.swing.JTextField jTextFieldCampoNombre;
     private javax.swing.JTextField jTextFieldCampoPalabrasClave;
