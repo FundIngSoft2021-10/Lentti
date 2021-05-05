@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package Controlador;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -82,4 +86,9 @@ public interface consultasBaseDeDatos {
     public abstract String ObternerRestauranteDomicilio(int domid);
     public abstract String ObternerDomiciliarioDomicilio(int domid);
     //public abstract ArrayList<String> darPedido(int serial);
+    
+    //prueba imagen
+    public abstract boolean GuardarImagen(int id, JFileChooser Imagen);
+    public abstract ImageIcon PedirImagen(int id);
+    //
 }

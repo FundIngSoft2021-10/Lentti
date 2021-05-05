@@ -6,13 +6,27 @@
 package Modelo;
 
 import Controlador.consultasBaseDeDatos;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -1534,6 +1548,67 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return nombre;
     }
+
+    @Override
+    public boolean GuardarImagen(int id, JFileChooser Imagen) {
+        boolean resultado=false;
+        FileInputStream archivo=null;
+        try {
+            archivo= new FileInputStream(Imagen.getSelectedFile());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            //java.sql.Statement st = conexion.createStatement();
+            
+            String consulta = "INSERT INTO imagenTabla (numero,imagen) VALUES (?,?);";
+            PreparedStatement st= conexion.prepareStatement(consulta);
+            st.setInt(1, 1);
+            st.setBinaryStream(2, archivo, Imagen.getSelectedFile().length());
+            st.execute();
+            st.close();
+            conexion.close();
+            resultado = true;
+            
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+
+    @Override
+    public ImageIcon PedirImagen(int id) {
+        ImageIcon archivo=null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT imagen FROM imagenTabla WHERE numero = '" + id + "'";
+            //PreparedStatement st=conexion.prepareStatement(consulta);
+            
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
+                InputStream is= result.getBinaryStream("imagen");
+                BufferedImage img = ImageIO.read(is);
+                archivo = new ImageIcon(img) ;
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return archivo;
+    }
+    
     
     
 
