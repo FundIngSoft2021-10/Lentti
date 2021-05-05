@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,7 +27,7 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
     
     String usuario = "";
     DefaultListModel listaRestaurantes = new DefaultListModel();
-    
+
     public PantallaBuscarRestaurante() {
         initComponents();
         Transparencia();
@@ -38,7 +39,10 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
        Transparencia();
        usuario = pUsuario;
        this.setLocationRelativeTo(null);
-       listaRestaurantes = consulta.BuscarRestaurante("R", usuario);
+        for (String nombre :consulta.BuscarRestaurante("R", usuario)) {
+            listaRestaurantes.addElement(nombre);
+        }
+       
        this.jListListaRestaurantes.setModel(listaRestaurantes);
 
     }
@@ -104,6 +108,7 @@ public class PantallaBuscarRestaurante extends javax.swing.JFrame {
         jButtonSalir.setOpaque(false);
         jButtonSalir.setBackground(new Color(0, 0, 0, 0));
     }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -30,14 +30,14 @@ public interface consultasBaseDeDatos {
     public abstract boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo);
     public abstract boolean AlmacenarPalabrasClave (String nombreRestaurante, String palabrasClave);
     public abstract boolean EliminarRestaurante (String nombreRestaurante);
-    public abstract DefaultListModel BuscarRestaurante (String pTipo,String pUsurioActual);
+    public abstract ArrayList<String>  BuscarRestaurante (String pTipo,String pUsurioActual);
     public abstract DefaultListModel BuscarPlatosRestaurante (String usuario);
     public abstract DefaultListModel BuscarDomiciliariosRestaurante (String usuario);
     public abstract boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre);
     public abstract boolean ModificarDireccionRestaurante (String nombreRestaurante, String nuevaDireccion);
     public abstract boolean ModificarDescripcionRestaurante (String nombreRestaurante, String nuevaDescripcion);
     public abstract boolean ModificarCostoDeEnvioRestaurante (String nombreRestaurante, String nuevoCostoDeEnvio);
-    public abstract boolean ModificarImagenRestaurante (String nombreRestaurante, String nuevaImagen);
+    public abstract boolean ModificarImagenRestaurante (String nombreRestaurante, JFileChooser nuevaImagen);
     public abstract boolean ModificarNITRestaurante (String nombreRestaurante, String nuevoNIT);
     public abstract boolean ModificarPalabrasClaveRestaurante (String nombreRestaurante, String nuevasPalabrasClave);
     public abstract boolean ValidarExistenciaRestaurante (String nombreRestaurante);
@@ -85,6 +85,7 @@ public interface consultasBaseDeDatos {
     public String DarRestPedido(int id);
     public abstract String ObternerRestauranteDomicilio(int domid);
     public abstract String ObternerDomiciliarioDomicilio(int domid);
+    public abstract ImageIcon ImagenRestaurante (String nombreRestaurante);
     //public abstract ArrayList<String> darPedido(int serial);
     
     //prueba imagen

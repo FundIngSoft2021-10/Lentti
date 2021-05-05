@@ -405,8 +405,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public DefaultListModel BuscarRestaurante(String pTipo, String pUsurioActual) {
-        DefaultListModel lista = new DefaultListModel();
+    public ArrayList<String> BuscarRestaurante(String pTipo, String pUsurioActual) {
+        //DefaultListModel lista = new DefaultListModel();
+        ArrayList<String>lista = new ArrayList<>();
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -416,7 +417,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
-                lista.addElement(result.getString("usuario"));
+                lista.add(result.getString("usuario"));
             }
 
             result.close();
@@ -566,15 +567,23 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean ModificarImagenRestaurante(String nombreRestaurante, String nuevaImagen) {
+    public boolean ModificarImagenRestaurante(String nombreRestaurante, JFileChooser nuevaImagen) {
         boolean resultado = false;
+        FileInputStream archivo=null;
+        try {
+            archivo= new FileInputStream(nuevaImagen.getSelectedFile());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "UPDATE restaurante SET imagen = '" + nuevaImagen + "' WHERE nombreRestaurante = '" + nombreRestaurante + "';";
-            st.execute(consulta);
+            //java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET imagen = ? WHERE nombreRestaurante = '" + nombreRestaurante + "';";
+            PreparedStatement st= conexion.prepareStatement(consulta);
+            st.setBinaryStream(1, archivo, nuevaImagen.getSelectedFile().length());
+            st.execute();
             st.close();
             conexion.close();
             resultado = true;
@@ -1601,6 +1610,34 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
             String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = 'hola'";
+            //PreparedStatement st=conexion.prepareStatement(consulta);
+            
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
+                InputStream is= result.getBinaryStream("imagen");
+                BufferedImage img = ImageIO.read(is);
+                archivo = new ImageIcon(img) ;
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return archivo;
+    }
+
+    @Override
+    public ImageIcon ImagenRestaurante(String nombreRestaurante) {
+        ImageIcon archivo=null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = '"+nombreRestaurante+"';";
             //PreparedStatement st=conexion.prepareStatement(consulta);
             
             ResultSet result = st.executeQuery(consulta);

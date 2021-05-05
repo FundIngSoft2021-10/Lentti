@@ -8,7 +8,16 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -16,6 +25,8 @@ import javax.swing.JOptionPane;
  */
 public class PantallaModificarRestaurante extends javax.swing.JFrame {
     String usuario = "";
+    File Imagen;
+    JFileChooser buscador;
     
     public PantallaModificarRestaurante() 
     {
@@ -30,6 +41,10 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario = usuario;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ImageIcon imagenPoner = consulta.ImagenRestaurante(usuario);
+        Icon imagen = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagen.getWidth(), this.jLabelImagen.getHeight(), Image.SCALE_SMOOTH));
+        this.jLabelImagen.setIcon(imagen);
     }
 
     /**
@@ -47,9 +62,10 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         jTextFieldModDireccion = new javax.swing.JTextField();
         jTextFieldModDescripcion = new javax.swing.JTextField();
         jTextFieldModCostoDeEnvio = new javax.swing.JTextField();
-        jTextFieldModImagen = new javax.swing.JTextField();
         jTextFieldModNIT = new javax.swing.JTextField();
         jTextFieldModPalabrasClave = new javax.swing.JTextField();
+        jButtonCargarImagen = new javax.swing.JButton();
+        jLabelImagen = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonModDireccion = new javax.swing.JButton();
         jButtonModDescripcion = new javax.swing.JButton();
@@ -90,13 +106,6 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldModCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 200, 20));
 
-        jTextFieldModImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldModImagenActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldModImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 280, 20));
-
         jTextFieldModNIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModNITActionPerformed(evt);
@@ -110,6 +119,15 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldModPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 460, 30));
+
+        jButtonCargarImagen.setText("Cargar Imagen");
+        jButtonCargarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCargarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
+        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 110, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaModificarRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -209,7 +227,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         {
             resultado = consulta.ModificarNombreRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModNombre.getText());
             
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "Nombre modificado satisfactoriamente.");
             }
@@ -236,7 +254,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
             
             resultado = consulta.ModificarDescripcionRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModDescripcion.getText());
             
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "Descripción modificada satisfactoriamente.");
             }
@@ -255,7 +273,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         {
             resultado = consulta.ModificarCostoDeEnvioRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModCostoDeEnvio.getText());
             
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "Costo de envío modificado satisfactoriamente.");
             }
@@ -270,15 +288,15 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado = false;
         
-        if(this.jTextFieldModImagen.getText().isEmpty())
+        if(this.buscador.getSelectedFile() == null)
         {
             JOptionPane.showMessageDialog(null, "El campo está vacio.");
         }
         else
         {
-            resultado = consulta.ModificarImagenRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModImagen.getText());
+            resultado = consulta.ModificarImagenRestaurante(this.jTextFieldNombreRestaurante.getText(), this.buscador);
             
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "Imagen modificada satisfactoriamente.");
             }
@@ -288,10 +306,6 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     private void jTextFieldModNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldModNombreActionPerformed
-
-    private void jTextFieldModImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModImagenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldModImagenActionPerformed
 
     private void jTextFieldModCostoDeEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModCostoDeEnvioActionPerformed
         // TODO add your handling code here:
@@ -313,7 +327,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         {
             resultado = consulta.ModificarNITRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModNIT.getText());
             
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "N.I.T modificado satisfactoriamente.");
             }
@@ -332,7 +346,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         {
             resultado = consulta.ModificarPalabrasClaveRestaurante(this.jTextFieldNombreRestaurante.getText(), this.jTextFieldModPalabrasClave.getText());
            
-            if (resultado = true)
+            if (resultado == true)
             {
                 JOptionPane.showMessageDialog(null, "Palabras clave modificadas satisfactoriamente.");
             }
@@ -342,6 +356,31 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     private void jTextFieldModPalabrasClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldModPalabrasClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldModPalabrasClaveActionPerformed
+
+    private void jButtonCargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarImagenActionPerformed
+        // TODO add your handling code here:
+        buscador =new JFileChooser();
+        buscador.setMultiSelectionEnabled(false);
+        buscador.setDialogTitle("Buscar Imagen restaurante");
+        if(buscador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !buscador.isDirectorySelectionEnabled())
+        {   
+            if(buscador.getSelectedFile().toString().endsWith(".jpg") ||buscador.getSelectedFile().toString().endsWith(".png") )
+            {
+                System.out.println("archivo -> "+ buscador.getSelectedFile().toString());
+                this.Imagen = new File ( buscador.getSelectedFile().toString());
+                ImageIcon imagenPoner = new ImageIcon( buscador.getSelectedFile().toString());
+                Icon Etiqueta = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagen.getWidth(), this.jLabelImagen.getHeight(), Image.SCALE_SMOOTH));
+                this.jLabelImagen.setIcon(Etiqueta);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No es un formato aceptado, debe ser jpg o png");
+            }
+            
+             
+            //this.jLabel1.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_jButtonCargarImagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,12 +449,18 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PantallaModificarRestaurante().setVisible(true);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(PantallaCrearRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonCargarImagen;
     private javax.swing.JButton jButtonModCostoDeEnvio;
     private javax.swing.JButton jButtonModDescripcion;
     private javax.swing.JButton jButtonModDireccion;
@@ -425,10 +470,10 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModNombre;
     private javax.swing.JButton jButtonModPalabrasClave;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelImagen;
     private javax.swing.JTextField jTextFieldModCostoDeEnvio;
     private javax.swing.JTextField jTextFieldModDescripcion;
     private javax.swing.JTextField jTextFieldModDireccion;
-    private javax.swing.JTextField jTextFieldModImagen;
     private javax.swing.JTextField jTextFieldModNIT;
     private javax.swing.JTextField jTextFieldModNombre;
     private javax.swing.JTextField jTextFieldModPalabrasClave;

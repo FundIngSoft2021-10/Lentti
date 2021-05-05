@@ -5,9 +5,13 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,12 +26,17 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         initComponents();
         Transparencia();
         this.setLocationRelativeTo(null);
+        
     }
     public PantallaInicialRestaurante(String usuario) {
         initComponents();
         Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario=usuario;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ImageIcon imagenPoner = consulta.ImagenRestaurante(usuario);
+        Icon imagen = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagenRestaurante.getWidth(), this.jLabelImagenRestaurante.getHeight(), Image.SCALE_SMOOTH));
+        this.jLabelImagenRestaurante.setIcon(imagen);
     }
     
     public Image getIconImage()
@@ -45,6 +54,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelImagenRestaurante = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonVerResenaDeUsuario = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
@@ -56,6 +66,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 490, 150));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -162,5 +173,6 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerPedidosDeClientes;
     private javax.swing.JButton jButtonVerResenaDeUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelImagenRestaurante;
     // End of variables declaration//GEN-END:variables
 }
