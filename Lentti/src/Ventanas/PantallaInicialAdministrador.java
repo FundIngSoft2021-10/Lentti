@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -24,12 +25,14 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
     public PantallaInicialAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Transparencia();
     }
         public PantallaInicialAdministrador(String pUsuario) {
         initComponents();
         usuario=pUsuario;
         this.setLocationRelativeTo(null);
         this.jLabelMensajeInicial.setText(usuario);
+        this.Transparencia();
     }
     public Image getIconImage()
     {
@@ -61,60 +64,54 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonCerrarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonCerrarSesion.setText("Cerrar Sesión");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 120, -1));
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jLabelMensajeInicial.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         getContentPane().add(jLabelMensajeInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 140, 30));
 
-        jButtonEliminarAdministracion.setText("Buscar restaurante");
         jButtonEliminarAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarAdministracionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 186, 145, -1));
+        getContentPane().add(jButtonEliminarAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 415, 200, 50));
 
-        jButtonCrearRestaurante.setText("Crear restaurante");
         jButtonCrearRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCrearRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 72, 145, -1));
+        getContentPane().add(jButtonCrearRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 200, 50));
 
-        jButtonModificarRestaurante.setText("Modificar restaurante");
         jButtonModificarRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 110, 145, -1));
+        getContentPane().add(jButtonModificarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 275, 200, 50));
 
-        jButtonEliminarRestaurante.setText("Eliminar restaurante");
         jButtonEliminarRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 148, 145, -1));
+        getContentPane().add(jButtonEliminarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 200, 50));
 
         jButtonGestionarPerfil.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonGestionarPerfil.setText("Gestionar perfil");
         jButtonGestionarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarPerfilActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 220, 50));
+        getContentPane().add(jButtonGestionarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 190, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialAdministrador.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialAdministrador_1.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,6 +155,27 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonGestionarPerfilActionPerformed
 
+    private void Transparencia()
+    {
+        this.jButtonCerrarSesion.setOpaque(false);
+        this.jButtonCerrarSesion.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonCerrarSesion.setBorderPainted(false);
+        this.jButtonCrearRestaurante.setOpaque(false);
+        this.jButtonCrearRestaurante.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonCrearRestaurante.setBorderPainted(false);
+        this.jButtonEliminarAdministracion.setOpaque(false);
+        this.jButtonEliminarAdministracion.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonEliminarAdministracion.setBorderPainted(false);
+        this.jButtonEliminarRestaurante.setOpaque(false);
+        this.jButtonEliminarRestaurante.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonEliminarRestaurante.setBorderPainted(false);
+        this.jButtonGestionarPerfil.setOpaque(false);
+        this.jButtonGestionarPerfil.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonGestionarPerfil.setBorderPainted(false);
+        this.jButtonModificarRestaurante.setOpaque(false);
+        this.jButtonModificarRestaurante.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonModificarRestaurante.setBorderPainted(false);
+    }
     /**
      * @param args the command line arguments
      */

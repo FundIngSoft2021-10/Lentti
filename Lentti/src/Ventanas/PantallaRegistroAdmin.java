@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
     public PantallaRegistroAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Transparencia();
     }
     public Image getIconImage()
     {
@@ -51,22 +53,20 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 0, 140, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jButtonRegistrar.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonRegistrar.setText("Registrar");
         jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 610, 180, 40));
+        getContentPane().add(jButtonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 580, 190, 50));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jTextFieldCampoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 160, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRegistroAdmin.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRegistroAdmin_1.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         pack();
@@ -118,6 +118,15 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoUsuarioActionPerformed
 
+    private void Transparencia()
+    {
+        this.jButtonRegistrar.setOpaque(false);
+        this.jButtonRegistrar.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonRegistrar.setBorderPainted(false);
+        this.jButtonSalir.setOpaque(false);
+        this.jButtonSalir.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSalir.setBorderPainted(false);
+    }
     /**
      * @param args the command line arguments
      */

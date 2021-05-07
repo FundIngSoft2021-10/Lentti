@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ public class InicioSesion extends javax.swing.JFrame {
     public InicioSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Transparencia();
         
     }
     /*funcion para agregar icono del programa*/
@@ -47,7 +49,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jTextFieldCampoUsuario = new javax.swing.JTextField();
         jButtonSalirApp = new javax.swing.JButton();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
-        jButtonSalirApp2 = new javax.swing.JButton();
+        jButtonCrearCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,70 +59,70 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonIniciarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonIniciarSesion.setText("Iniciar sesión");
         jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 650, -1, -1));
+        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 617, 150, 40));
 
         jToggleBotonUsuarioCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioCliente.setText("Cliente");
         jToggleBotonUsuarioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 120, -1));
+        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 567, 170, 30));
 
         jToggleBotonUsuarioAdmin.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioAdmin.setText("Administrador");
         jToggleBotonUsuarioAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, -1, -1));
+        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 567, 160, 30));
 
         jToggleBotonUsuarioRestaurante.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioRestaurante.setText("Restaurante");
         jToggleBotonUsuarioRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleBotonUsuarioRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 580, 120, -1));
+        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 160, 40));
 
         jToggleBotonUsuarioDomiciliario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioDomiciliario.setText("Domiciliario");
-        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 120, -1));
+        jToggleBotonUsuarioDomiciliario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleBotonUsuarioDomiciliarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 560, 160, 40));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 170, 40));
 
         jButtonSalirApp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonSalirApp.setText("Salir");
+        jButtonSalirApp.setBorderPainted(false);
         jButtonSalirApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirAppActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 110, -1));
+        getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 170, 40));
 
-        jButtonSalirApp2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonSalirApp2.setText("Crear cliente");
-        jButtonSalirApp2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCrearCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonCrearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearCliente(evt);
             }
         });
-        getContentPane().add(jButtonSalirApp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 120, -1));
+        getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 617, 160, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion_1.png"))); // NOI18N
+        jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
@@ -239,6 +241,34 @@ public class InicioSesion extends javax.swing.JFrame {
             
     }//GEN-LAST:event_BotonCrearCliente
 
+    private void jToggleBotonUsuarioDomiciliarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioDomiciliarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleBotonUsuarioDomiciliarioActionPerformed
+
+    private void Transparencia()
+    {
+        this.jButtonIniciarSesion.setOpaque(false);
+        this.jButtonIniciarSesion.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonIniciarSesion.setBorderPainted(false);
+        this.jButtonCrearCliente.setOpaque(false);
+        this.jButtonCrearCliente.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonCrearCliente.setBorderPainted(false);
+        this.jButtonSalirApp.setOpaque(false);
+        this.jButtonSalirApp.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSalirApp.setBorderPainted(false);
+        this.jToggleBotonUsuarioAdmin.setOpaque(false);
+        this.jToggleBotonUsuarioAdmin.setBackground(new Color(0, 0, 0, 0));
+        this.jToggleBotonUsuarioAdmin.setBorderPainted(false);
+        this.jToggleBotonUsuarioCliente.setOpaque(false);
+        this.jToggleBotonUsuarioCliente.setBackground(new Color(0, 0, 0, 0));
+        this.jToggleBotonUsuarioCliente.setBorderPainted(false);
+        this.jToggleBotonUsuarioDomiciliario.setOpaque(false);
+        this.jToggleBotonUsuarioDomiciliario.setBackground(new Color(0, 0, 0, 0));
+        this.jToggleBotonUsuarioDomiciliario.setBorderPainted(false);
+        this.jToggleBotonUsuarioRestaurante.setOpaque(false);
+        this.jToggleBotonUsuarioRestaurante.setBackground(new Color(0, 0, 0, 0));
+        this.jToggleBotonUsuarioRestaurante.setBorderPainted(false);
+    }
     /**
      * @param args the command line arguments
      */
@@ -279,9 +309,9 @@ public class InicioSesion extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCrearCliente;
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonSalirApp;
-    private javax.swing.JButton jButtonSalirApp2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;

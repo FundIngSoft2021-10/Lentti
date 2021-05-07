@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -26,11 +27,13 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.jTextFieldCampoUsuario.setText(Usuario);
+        this.Transparencia();
     }
         public PantallaModificarAdmin(String pUsuario) {
         initComponents();
         this.setLocationRelativeTo(null);
         Usuario=pUsuario;
+        this.Transparencia();
     }
     public Image getIconImage()
     {
@@ -60,13 +63,12 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 140, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 150, 30));
@@ -75,24 +77,22 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 150, 30));
 
         jButtonModificarUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonModificarUsuario.setText("Modificar");
         jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
+        getContentPane().add(jButtonModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 150, 40));
 
         jButtonModificarContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonModificarContrasena.setText("Modificar");
         jButtonModificarContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarContrasenaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, -1, -1));
+        getContentPane().add(jButtonModificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 160, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarAdmin.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarAdmin_1.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         pack();
@@ -163,6 +163,18 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonModificarContrasenaActionPerformed
 
+    private void Transparencia()
+    {
+        this.jButtonModificarContrasena.setOpaque(false);
+        this.jButtonModificarContrasena.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonModificarContrasena.setBorderPainted(false);
+        this.jButtonModificarUsuario.setOpaque(false);
+        this.jButtonModificarUsuario.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonModificarUsuario.setBorderPainted(false);
+        this.jButtonSalir.setOpaque(false);
+        this.jButtonSalir.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSalir.setBorderPainted(false);
+    }
     /**
      * @param args the command line arguments
      */

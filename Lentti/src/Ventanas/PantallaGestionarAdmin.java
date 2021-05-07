@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class PantallaGestionarAdmin extends javax.swing.JFrame {
     public PantallaGestionarAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Transparencia();
     }
     
     public PantallaGestionarAdmin(String pUsuario) {
@@ -32,6 +34,7 @@ public class PantallaGestionarAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.usuario=pUsuario;
         this.jLabelMensajeInicial.setText(usuario);
+        this.Transparencia();
         
     }
     public Image getIconImage()
@@ -61,45 +64,41 @@ public class PantallaGestionarAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonRegistrarAdmin.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonRegistrarAdmin.setText("Registrar Administrador");
         jButtonRegistrarAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 220, 50));
+        getContentPane().add(jButtonRegistrarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 190, 50));
 
         jButtonModificarUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonModificarUsuario.setText("Modificar Usuario");
         jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 220, 50));
+        getContentPane().add(jButtonModificarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 190, 50));
 
         jButtonEliminarPerfil.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonEliminarPerfil.setText("Eliminar perfil");
         jButtonEliminarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarPerfilActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 220, 50));
+        getContentPane().add(jButtonEliminarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 190, 50));
 
         jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 110, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jLabelMensajeInicial.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         getContentPane().add(jLabelMensajeInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 100, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaGestionarAdmin.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaGestionarAdmin_1.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
@@ -137,7 +136,22 @@ public class PantallaGestionarAdmin extends javax.swing.JFrame {
         iniciador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
-
+    
+    private void Transparencia()
+    {
+        this.jButtonEliminarPerfil.setOpaque(false);
+        this.jButtonEliminarPerfil.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonEliminarPerfil.setBorderPainted(false);
+        this.jButtonModificarUsuario.setOpaque(false);
+        this.jButtonModificarUsuario.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonModificarUsuario.setBorderPainted(false);
+        this.jButtonRegistrarAdmin.setOpaque(false);
+        this.jButtonRegistrarAdmin.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonRegistrarAdmin.setBorderPainted(false);
+        this.jButtonSalir.setOpaque(false);
+        this.jButtonSalir.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSalir.setBorderPainted(false);
+    }
     /**
      * @param args the command line arguments
      */
