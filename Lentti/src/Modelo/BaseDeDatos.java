@@ -69,13 +69,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo) {
+    public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo, String pCorreo) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "');";
+            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '"+ pCorreo +"' );";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -121,6 +121,47 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
+        }
+        return resultado;
+    }
+    @Override
+    public boolean ModificarCorreo(String pUsuario, String nuevoCorreo)
+    {
+        boolean resultado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE lenttiusuario  SET correo= '" + nuevoCorreo + "' WHERE usuario='" + pUsuario + "';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        return resultado;
+    }
+    public String ObtenerCorreo(String pUsuario)
+    {
+        String resultado="";
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta= "SELECT correo FROM lenttiusuario WHERE usuario='"+ pUsuario +"';";
+            ResultSet result = st.executeQuery(consulta);
+            while (result.next()) {
+
+                resultado=result.getString("correo");
+
+            }
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
         }
         return resultado;
     }
@@ -319,7 +360,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo) {
         boolean resultado = false;
-        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R");
+        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com");
         FileInputStream imagen=null;
         try {
             imagen= new FileInputStream(archivo.getSelectedFile());

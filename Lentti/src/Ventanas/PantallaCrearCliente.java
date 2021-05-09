@@ -127,7 +127,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
             
         
         consultasBaseDeDatos consulta = new BaseDeDatos();
-            if( consulta.CrearUsuario(TF_nombreUsuario.getText(), TF_contraseñaUsuario.getText(), "C") == true )
+            if( consulta.CrearUsuario(TF_nombreUsuario.getText(), TF_contraseñaUsuario.getText(), "C", "correoparacambiar@hotmail.com") == true )
             {
                 if(consulta.CrearCliente(TF_nombreUsuario.getText(), TF_nombreDelCliente.getText(), TF_apellidoCliente.getText(), TF_direccionCliente.getText()) == true)
                 {

@@ -7,9 +7,13 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import Modelo.CorreoElectronico;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 /**
  *
@@ -50,6 +54,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jButtonSalirApp = new javax.swing.JButton();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jButtonCrearCliente = new javax.swing.JButton();
+        jButtonOlvidoContra = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,7 +69,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jButtonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 617, 150, 40));
+        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, 150, 40));
 
         jToggleBotonUsuarioCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -119,9 +124,16 @@ public class InicioSesion extends javax.swing.JFrame {
                 BotonCrearCliente(evt);
             }
         });
-        getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 617, 160, 40));
+        getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, 160, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion_1.png"))); // NOI18N
+        jButtonOlvidoContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOlvidoContraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonOlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 625, 160, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion.png"))); // NOI18N
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
@@ -245,6 +257,13 @@ public class InicioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleBotonUsuarioDomiciliarioActionPerformed
 
+    private void jButtonOlvidoContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOlvidoContraActionPerformed
+        // TODO add your handling code here:
+        PantallaRecuperarContrasena iniciador =new PantallaRecuperarContrasena();
+        iniciador.setVisible(true);
+        this.dispose();  
+    }//GEN-LAST:event_jButtonOlvidoContraActionPerformed
+
     private void Transparencia()
     {
         this.jButtonIniciarSesion.setOpaque(false);
@@ -256,6 +275,9 @@ public class InicioSesion extends javax.swing.JFrame {
         this.jButtonSalirApp.setOpaque(false);
         this.jButtonSalirApp.setBackground(new Color(0, 0, 0, 0));
         this.jButtonSalirApp.setBorderPainted(false);
+        this.jButtonOlvidoContra.setOpaque(false);
+        this.jButtonOlvidoContra.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonOlvidoContra.setBorderPainted(false);
         this.jToggleBotonUsuarioAdmin.setOpaque(false);
         this.jToggleBotonUsuarioAdmin.setBackground(new Color(0, 0, 0, 0));
         this.jToggleBotonUsuarioAdmin.setBorderPainted(false);
@@ -311,6 +333,7 @@ public class InicioSesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrearCliente;
     private javax.swing.JButton jButtonIniciarSesion;
+    private javax.swing.JButton jButtonOlvidoContra;
     private javax.swing.JButton jButtonSalirApp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;

@@ -25,6 +25,7 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.Transparencia();
+        this.jTextCorreo.setText("");
     }
     public Image getIconImage()
     {
@@ -44,6 +45,7 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         jButtonSalir = new javax.swing.JButton();
         jButtonRegistrar = new javax.swing.JButton();
         jTextFieldCampoUsuario = new javax.swing.JTextField();
+        jTextCorreo = new javax.swing.JTextField();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
 
@@ -74,13 +76,16 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
                 jTextFieldCampoUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 160, 40));
+        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 210, 40));
+
+        jTextCorreo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        getContentPane().add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 210, 40));
 
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 160, 40));
+        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 210, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRegistroAdmin_1.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRegistroAdmin.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,10 +98,10 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         // TODO add your handling code here:
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado;
-        if(!this.jTextFieldCampoUsuario.getText().isEmpty() && !this.jPasswordFieldCampoContrasena.getText().isEmpty())
+        boolean resultado=false;
+        if((!this.jTextFieldCampoUsuario.getText().isEmpty() && !this.jPasswordFieldCampoContrasena.getText().isEmpty()) && !this.jTextCorreo.getText().isEmpty() )
         {
-            resultado=consulta.CrearUsuario(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A");
+            resultado=consulta.CrearUsuario(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A", this.jTextCorreo.getText());
             if(resultado)
             {
                 JOptionPane.showMessageDialog(null, "Usuario se registro correctamente.");
@@ -167,6 +172,7 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
+    private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextFieldCampoUsuario;
     // End of variables declaration//GEN-END:variables
 }

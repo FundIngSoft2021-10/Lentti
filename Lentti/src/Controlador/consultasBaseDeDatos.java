@@ -17,9 +17,10 @@ import javax.swing.JFileChooser;
  */
 public interface consultasBaseDeDatos {
     public abstract boolean ValidarInicioSesion(String pUsuario,String pContrasena, String pTipo);
-    public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo);
+    public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo,String pCorreo);
     public abstract boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario);
     public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
+    public abstract boolean ModificarCorreo(String pUsuario,String nuevoCorreo);
     public abstract boolean CrearPlato(String restaurante, String nombrePlato,  String descripcion, float precio, String imagen );
     public abstract boolean EliminarPlato(String nombrePlato);
     public abstract boolean ModificarNombrePlato(String nombrePlato, String nuevoNombre);
@@ -86,6 +87,7 @@ public interface consultasBaseDeDatos {
     public abstract String ObternerRestauranteDomicilio(int domid);
     public abstract String ObternerDomiciliarioDomicilio(int domid);
     public abstract ImageIcon ImagenRestaurante (String nombreRestaurante);
+    public abstract String ObtenerCorreo(String pUsuario);
     //public abstract ArrayList<String> darPedido(int serial);
     
     //prueba imagen

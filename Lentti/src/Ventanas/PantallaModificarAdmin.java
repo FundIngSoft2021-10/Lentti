@@ -52,9 +52,11 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
 
         jButtonSalir = new javax.swing.JButton();
         jTextFieldCampoUsuario = new javax.swing.JTextField();
+        jTextFieldCorreo = new javax.swing.JTextField();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jButtonModificarUsuario = new javax.swing.JButton();
         jButtonModificarContrasena = new javax.swing.JButton();
+        jButtonCambiarCorreo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -71,10 +73,13 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 150, 30));
+        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 190, 30));
+
+        jTextFieldCorreo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        getContentPane().add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 190, 30));
 
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 150, 30));
+        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 190, 30));
 
         jButtonModificarUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +97,14 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonModificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 160, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarAdmin_1.png"))); // NOI18N
+        jButtonCambiarCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCambiarCorreoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCambiarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 445, 150, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarAdmin.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         pack();
@@ -163,6 +175,32 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonModificarContrasenaActionPerformed
 
+    private void jButtonCambiarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCambiarCorreoActionPerformed
+        // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado= false;
+
+        if(!this.jTextFieldCorreo.getText().isEmpty())
+        {
+            resultado=consulta.ModificarCorreo(Usuario, this.jTextFieldCorreo.getText());
+            if(resultado)
+            {
+                JOptionPane.showMessageDialog(null, "Se modifico el correo electrónico.");
+                PantallaGestionarAdmin iniciador = new PantallaGestionarAdmin(Usuario);
+                iniciador.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No se pudo modificar el correo electrónico.");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Campo Correo Electrónico vacio.");
+        }
+    }//GEN-LAST:event_jButtonCambiarCorreoActionPerformed
+
     private void Transparencia()
     {
         this.jButtonModificarContrasena.setOpaque(false);
@@ -171,6 +209,9 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         this.jButtonModificarUsuario.setOpaque(false);
         this.jButtonModificarUsuario.setBackground(new Color(0, 0, 0, 0));
         this.jButtonModificarUsuario.setBorderPainted(false);
+        this.jButtonCambiarCorreo.setOpaque(false);
+        this.jButtonCambiarCorreo.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonCambiarCorreo.setBorderPainted(false);
         this.jButtonSalir.setOpaque(false);
         this.jButtonSalir.setBackground(new Color(0, 0, 0, 0));
         this.jButtonSalir.setBorderPainted(false);
@@ -212,11 +253,13 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCambiarCorreo;
     private javax.swing.JButton jButtonModificarContrasena;
     private javax.swing.JButton jButtonModificarUsuario;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;
+    private javax.swing.JTextField jTextFieldCorreo;
     // End of variables declaration//GEN-END:variables
 }
