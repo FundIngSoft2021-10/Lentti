@@ -51,6 +51,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         TF_direccionCliente = new javax.swing.JTextField();
         BotonRegresarAPantallaInico = new javax.swing.JButton();
         TF_correoCliente = new javax.swing.JTextField();
+        TF_tarjetaCliente = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -85,11 +86,11 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                 TF_nombreUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(TF_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 206, 30));
-        getContentPane().add(TF_contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 206, 30));
-        getContentPane().add(TF_nombreDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 206, 30));
-        getContentPane().add(TF_apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 206, 30));
-        getContentPane().add(TF_direccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 206, 30));
+        getContentPane().add(TF_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 206, 30));
+        getContentPane().add(TF_contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 206, 30));
+        getContentPane().add(TF_nombreDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 206, 30));
+        getContentPane().add(TF_apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 206, 30));
+        getContentPane().add(TF_direccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 206, 30));
 
         BotonRegresarAPantallaInico.setBorder(null);
         BotonRegresarAPantallaInico.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +99,8 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BotonRegresarAPantallaInico, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 23, 120, 60));
-        getContentPane().add(TF_correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 206, 30));
+        getContentPane().add(TF_correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 206, 30));
+        getContentPane().add(TF_tarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 206, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registroCliente.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -117,7 +119,8 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
            TF_nombreDelCliente.getText() == null || TF_nombreDelCliente.getText().equals("") ||
            TF_apellidoCliente.getText() == null || TF_apellidoCliente.getText().equals("") ||
            TF_direccionCliente.getText() == null || TF_direccionCliente.getText().equals("") ||
-           TF_correoCliente.getText() == null || TF_correoCliente.getText().equals("")
+           TF_correoCliente.getText() == null || TF_correoCliente.getText().equals("") ||
+           TF_tarjetaCliente.getText() == null || TF_tarjetaCliente.getText().equals("")
                 
                )
         {
@@ -126,6 +129,24 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         }
         else
         {
+            
+            
+            
+            //verificar tarjeta tamaño
+            if(TF_tarjetaCliente.getText().length() < 13 || TF_tarjetaCliente.getText().length() > 19){
+                JOptionPane.showMessageDialog(null, "la tarjeta no es valida (min 13 digitos)");
+            return;
+            }
+            
+            
+                    
+             //
+            //verificar tarjeta digitos
+            if(!tarjetaCorrecta()){
+                JOptionPane.showMessageDialog(null, "la tarjeta no es valida");
+            return;
+            }
+            
             
             //
             //verificar correo
@@ -207,6 +228,29 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         return correcto;
     }
     
+    public boolean tarjetaCorrecta(){
+     //verificar tarjeta digitos
+            
+            String str = TF_tarjetaCliente.getText();
+            String reg = "\\s*([0-9])*";
+            String[] res = str.split(reg);
+            Boolean bien =true;
+            for (String out : res) {
+                if (!"".equals(out)) {
+                   // System.out.print(out);
+                   // System.out.println("");
+                    bien =false;
+                    
+                }
+            }
+            if(!bien)
+            {
+                JOptionPane.showMessageDialog(null, "la tarjeta no es valida (solo numeros)");
+                return bien;
+            }
+            return bien;
+    }
+    
     
     
     /**
@@ -253,6 +297,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TF_direccionCliente;
     private javax.swing.JTextField TF_nombreDelCliente;
     private javax.swing.JTextField TF_nombreUsuario;
+    private javax.swing.JTextField TF_tarjetaCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
