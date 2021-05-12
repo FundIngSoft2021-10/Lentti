@@ -174,7 +174,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado = false;
         
-        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.Imagen==null)
+        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.Imagen==null)//AAAAAAAAAAAAAAAAAAAAAAAAAA
         {
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
         }
@@ -216,8 +216,9 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCampoPalabrasClaveActionPerformed
 
+    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     private void jButtonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarImagenActionPerformed
-        buscador =new JFileChooser();
+        buscador =new JFileChooser(); 
         buscador.setMultiSelectionEnabled(false);
         buscador.setDialogTitle("Buscar Imagen restaurante");
         if(buscador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !buscador.isDirectorySelectionEnabled())

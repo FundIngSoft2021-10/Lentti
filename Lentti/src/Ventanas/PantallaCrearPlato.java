@@ -10,6 +10,10 @@ import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class PantallaCrearPlato extends javax.swing.JFrame {
     String usuario="";
+    File imagen;
+    JFileChooser buscador;
     /**
      * Creates new form CrearPlato
      */
@@ -50,12 +56,13 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldCampoNombre = new javax.swing.JTextField();
         jTextFieldCampoPrecio = new javax.swing.JTextField();
-        jTextFieldCampoImagen = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaCampoDescripcion = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
+        jButtonAgregarImagen = new javax.swing.JButton();
+        jLabelCampoImagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -71,18 +78,11 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
         getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 200, 40));
         getContentPane().add(jTextFieldCampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 210, 40));
 
-        jTextFieldCampoImagen.setBorder(null);
-        getContentPane().add(jTextFieldCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 120, 120));
-
         jTextAreaCampoDescripcion.setColumns(20);
         jTextAreaCampoDescripcion.setRows(5);
         jScrollPane1.setViewportView(jTextAreaCampoDescripcion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 440, 69));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearPlato.png"))); // NOI18N
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +97,21 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 60, 60));
+
+        jButtonAgregarImagen.setText("Agregar imagen");
+        jButtonAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+
+        jLabelCampoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearPlato.png"))); // NOI18N
+        jLabelCampoImagen.setText("Nombre");
+        getContentPane().add(jLabelCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,12 +129,12 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado= false;
-        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoPrecio.getText().isEmpty() || this.jTextFieldCampoImagen.getText().isEmpty() ){
+        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoPrecio.getText().isEmpty() || this.imagen==null){
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
         }
         else{
             float precio= Float.parseFloat(this.jTextFieldCampoPrecio.getText());
-            resultado = consulta.CrearPlato(usuario, this.jTextFieldCampoNombre.getText(), this.jTextAreaCampoDescripcion.getText(), precio, this.jTextFieldCampoImagen.getText());
+            resultado = consulta.CrearPlato(usuario, this.jTextFieldCampoNombre.getText(), this.jTextAreaCampoDescripcion.getText(), precio, this.buscador);
             
         }
         PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
@@ -127,6 +142,29 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jButtonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarImagenActionPerformed
+        buscador =new JFileChooser(); 
+        buscador.setMultiSelectionEnabled(false);
+        buscador.setDialogTitle("Buscar imagen plato");
+        if(buscador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !buscador.isDirectorySelectionEnabled())
+        {   
+            if(buscador.getSelectedFile().toString().endsWith(".jpg") ||buscador.getSelectedFile().toString().endsWith(".png") )
+            {
+                this.imagen = new File ( buscador.getSelectedFile().toString());
+                ImageIcon imagenPoner = new ImageIcon( buscador.getSelectedFile().toString());
+                Icon Etiqueta = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelCampoImagen.getWidth(), this.jLabelCampoImagen.getHeight(), Image.SCALE_SMOOTH));
+                this.jLabelCampoImagen.setIcon(Etiqueta);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No es un formato aceptado, debe ser jpg o png");
+            }
+            
+             
+            //this.jLabel1.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_jButtonAgregarImagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,12 +211,13 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonAgregarImagen;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelCampoImagen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaCampoDescripcion;
-    private javax.swing.JTextField jTextFieldCampoImagen;
     private javax.swing.JTextField jTextFieldCampoNombre;
     private javax.swing.JTextField jTextFieldCampoPrecio;
     // End of variables declaration//GEN-END:variables

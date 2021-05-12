@@ -9,6 +9,7 @@ import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,8 +45,9 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
         scrollPanePlatos = new java.awt.ScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListPlatos = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
         jButtonAtras = new javax.swing.JButton();
+        jButtonVerPlato = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,15 +63,23 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
 
         getContentPane().add(scrollPanePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 97, 460, 460));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IpantallaVerPlatos.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 860, -1));
-
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
+
+        jButtonVerPlato.setText("Ver plato");
+        jButtonVerPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonVerPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IpantallaVerPlatos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 860, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,6 +89,17 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonAtrasActionPerformed
+
+    private void jButtonVerPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPlatoActionPerformed
+        if(this.jListPlatos.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un plato");
+        }
+        else {
+        PantallaVerPlatoSeleccionado p = new PantallaVerPlatoSeleccionado(this.jListPlatos.getSelectedValue().toString(), usuario);
+        p.setVisible(true);
+        this.dispose();
+        }
+    }//GEN-LAST:event_jButtonVerPlatoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,6 +143,7 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtras;
+    private javax.swing.JButton jButtonVerPlato;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jListPlatos;
     private javax.swing.JScrollPane jScrollPane1;

@@ -35,8 +35,8 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         this.usuario=usuario;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ImageIcon imagenPoner = consulta.ImagenRestaurante(usuario);
-        Icon imagen = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagenRestaurante.getWidth(), this.jLabelImagenRestaurante.getHeight(), Image.SCALE_SMOOTH));
-        this.jLabelImagenRestaurante.setIcon(imagen);
+        Icon imagen = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagenRestaurante.getWidth(), this.jLabelImagenRestaurante.getHeight(), Image.SCALE_SMOOTH));//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        this.jLabelImagenRestaurante.setIcon(imagen);//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     }
     
     public Image getIconImage()
@@ -69,7 +69,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 490, 150));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialRestaurante.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
         getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 70));
 
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {

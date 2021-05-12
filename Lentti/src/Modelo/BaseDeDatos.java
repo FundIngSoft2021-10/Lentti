@@ -167,14 +167,29 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearPlato(String restaurante, String nombrePlato, String descripcion, float precio, String imagen) {
+    public boolean CrearPlato(String restaurante, String nombrePlato, String descripcion, float precio, JFileChooser archivo) {
         boolean resultado = false;
+        FileInputStream imagen=null;
         try {
+            imagen= new FileInputStream(archivo.getSelectedFile());
+            
+        } catch (FileNotFoundException ex){
+             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+        
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO plato VALUES ('" + restaurante + "','" + nombrePlato + "'," + precio + ", '" + descripcion + "', '" + imagen + "');";
-            st.execute(consulta);
+            
+            String consulta ="INSERT INTO plato (restaurante ,nombrePlato ,precio,descripcion, imagen)  VALUES (?,?,?,?,?);";
+            PreparedStatement st = conexion.prepareStatement(consulta);
+            
+            st.setString(1, restaurante);
+            st.setString(2, nombrePlato);
+            st.setFloat(3, precio);
+            st.setString(4, descripcion);
+            st.setBinaryStream(5, imagen, archivo.getSelectedFile().length());
+            st.execute();
             st.close();
             conexion.close();
             resultado = true;
@@ -184,6 +199,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
+    
+ 
 
     @Override
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
