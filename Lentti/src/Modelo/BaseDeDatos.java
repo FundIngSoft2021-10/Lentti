@@ -512,7 +512,81 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+    @Override
+    public DefaultListModel BuscarNombrePlato (String nombre,String rusuario) {
+        DefaultListModel lista = new DefaultListModel();
+        System.out.println(usuario + nombre);
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombrePlato FROM plato WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + nombre + "' ";
+            System.out.println(usuario + nombre);
+            ResultSet result = st.executeQuery(consulta);
 
+            while (result.next()) {
+                lista.addElement(result.getString("nombrePlato"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return lista;
+    }
+    @Override
+    public DefaultListModel BuscarPrecioPlato (String nombre,String rusuario) {
+        DefaultListModel lista = new DefaultListModel();
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT precio FROM plato WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + nombre + "' ";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                lista.addElement(result.getString("precio"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return lista;
+    }
+    @Override
+    public DefaultListModel BuscarDescripcionPlato (String nombre,String rusuario) {
+        DefaultListModel lista = new DefaultListModel();
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT descripcion FROM plato WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + nombre + "' ";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                lista.addElement(result.getString("descripcion"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return lista;
+    }
+    
+    
     @Override
     public DefaultListModel BuscarDomiciliariosRestaurante(String rUsuario) {
         DefaultListModel lista = new DefaultListModel();

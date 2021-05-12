@@ -28,9 +28,9 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
         initComponents();
         consultasBaseDeDatos consulta = new BaseDeDatos();
         this.usuario = usuario;
-        this.nombrePlato = consulta.BuscarPlatosRestaurante(usuario);
-        this.precioPlato = consulta.BuscarPlatosRestaurante(usuario);
-        this.descripcionPlato = consulta.BuscarPlatosRestaurante(usuario);
+        this.nombrePlato = consulta.BuscarNombrePlato(nombrePlato ,usuario);
+        this.precioPlato = consulta.BuscarPrecioPlato(nombrePlato ,usuario);
+        this.descripcionPlato = consulta.BuscarDescripcionPlato(nombrePlato ,usuario);
         this.jListNombrePlato.setModel(this.nombrePlato);
         this.jListPrecio.setModel(precioPlato);
         this.jListDescripcion.setModel(descripcionPlato);

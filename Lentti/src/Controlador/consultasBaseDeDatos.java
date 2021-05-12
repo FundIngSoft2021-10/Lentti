@@ -33,6 +33,10 @@ public interface consultasBaseDeDatos {
     public abstract boolean EliminarRestaurante (String nombreRestaurante);
     public abstract ArrayList<String>  BuscarRestaurante (String pTipo,String pUsurioActual);
     public abstract DefaultListModel BuscarPlatosRestaurante (String usuario);
+    public abstract DefaultListModel BuscarNombrePlato (String nombre,String usuario);
+    public abstract DefaultListModel BuscarPrecioPlato (String nombre,String usuario);
+    public abstract DefaultListModel BuscarDescripcionPlato (String nombre,String usuario);
+    
     public abstract DefaultListModel BuscarDomiciliariosRestaurante (String usuario);
     public abstract boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre);
     public abstract boolean ModificarDireccionRestaurante (String nombreRestaurante, String nuevaDireccion);
