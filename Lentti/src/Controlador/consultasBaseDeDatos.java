@@ -91,6 +91,7 @@ public interface consultasBaseDeDatos {
     public abstract String ObternerRestauranteDomicilio(int domid);
     public abstract String ObternerDomiciliarioDomicilio(int domid);
     public abstract ImageIcon ImagenRestaurante (String nombreRestaurante);
+    public abstract ImageIcon ImagenPlato (String plato, String nombreRestaurante);
     public abstract String ObtenerCorreo(String pUsuario);
     //public abstract ArrayList<String> darPedido(int serial);
     

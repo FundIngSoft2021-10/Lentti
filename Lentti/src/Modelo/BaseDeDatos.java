@@ -1790,7 +1790,34 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return archivo;
     }
     
-    
+        @Override
+    public ImageIcon ImagenPlato(String plato ,String rusuario) {
+        ImageIcon archivo=null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT imagen FROM plato WHERE restaurante = '"+ rusuario +"' AND nombreplato = '" + plato +"' ";
+            //WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + plato + "' ";
+            //PreparedStatement st=conexion.prepareStatement(consulta);
+            
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
+                InputStream is= result.getBinaryStream("imagen");
+                BufferedImage img = ImageIO.read(is);
+                archivo = new ImageIcon(img) ;
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return archivo;
+    }
     
 
 }
