@@ -12,6 +12,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
  *
@@ -232,11 +234,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         cantidadCC.setBorder(null);
         getContentPane().add(cantidadCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 310, 70, 30));
 
-        FondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarritoCompras.png"))); // NOI18N
+        FondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PrincipalCarro.png"))); // NOI18N
         FondoPantalla.setText("dffdfdfd");
         getContentPane().add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CanastaVacia.png"))); // NOI18N
+        FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarroVacio2.png"))); // NOI18N
         getContentPane().add(FondoCCVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -277,6 +279,20 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             BotonBorrarUnid.setVisible(true);
             
         }
+        
+       ImageIcon imagenRest = consulta.ImagenRestaurante(res);
+       if(imagenRest != null){
+           FotoRestaurante.setVisible(true);
+           Icon Etiqueta = new ImageIcon(imagenRest.getImage().getScaledInstance(this.FotoRestaurante.getWidth(), this.FotoRestaurante.getHeight(), Image.SCALE_SMOOTH));
+           this.FotoRestaurante.setIcon(Etiqueta);
+       }
+       
+       ImageIcon imagenPlat= consulta.ImagenPlato(pla, res);
+       if(imagenPlat != null){
+           FotoPedido.setVisible(true);
+           Icon EtiquetaP = new ImageIcon(imagenPlat.getImage().getScaledInstance(this.FotoPedido.getWidth(), this.FotoPedido.getHeight(), Image.SCALE_SMOOTH));
+           this.FotoPedido.setIcon(EtiquetaP);
+       }
         
        
     }//GEN-LAST:event_jList1MouseClicked
