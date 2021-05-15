@@ -450,9 +450,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             String consulta2 = "DELETE FROM palabrasClave WHERE nombreRestaurante = '" + nombreRestaurante + "';";
             st2.execute(consulta2);
             st2.close();
+            java.sql.Statement st3 = conexion.createStatement();
+            String consulta3 = "DELETE FROM restaurantesFavoritos WHERE restaurante = '" + nombreRestaurante + "';";
+            st3.execute(consulta3);
+            st3.close();
             conexion.close();
-            resultado = true;
             boolean eliminado = EliminarCuenta(nombreRestaurante, "R");
+            resultado = true;
 
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
@@ -1885,5 +1889,79 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return listPedidos;
     */
+    @Override
+    public boolean AgregarRestauranteFavorito (String cliente, String restaurante) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            String consulta = "INSERT INTO restaurantesFavoritos (cliente, restaurante)  VALUES (?, ?);";
+            PreparedStatement st = conexion.prepareStatement(consulta);
+            st.setString(1, cliente);
+            st.setString(2, restaurante);
+            st.execute();
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
 
+    @Override
+    public boolean EliminarRestauranteFavorito (String cliente, String restaurante) 
+    {
+        boolean resultado = false;
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM restaurantesFavoritos WHERE restaurante = '" + restaurante + "'; ";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        
+        return resultado;
+    }
+    
+    @Override
+    public ArrayList <String> MostrarRestaurantesFavoritos (String cliente) 
+    {
+        ArrayList <String> lista = new ArrayList<>();
+
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT restaurante FROM restaurantesFavoritos WHERE cliente = '" + cliente + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) 
+            {
+                lista.add(result.getString("restaurante"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return lista;
+    }
 }

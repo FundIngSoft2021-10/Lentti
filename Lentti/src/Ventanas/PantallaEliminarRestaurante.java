@@ -116,6 +116,7 @@ public class PantallaEliminarRestaurante extends javax.swing.JFrame
         else
         {
             resultado = consulta.EliminarRestaurante(this.jTextFieldNombreRestaurante.getText());
+            JOptionPane.showMessageDialog(null, "Restaurante eliminado exitosamente.");
             PantallaInicialAdministrador pantallaGestion = new PantallaInicialAdministrador(usuario);
             pantallaGestion.setVisible(true);
             this.dispose();

@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author samyf
+ * @author Camilo Hernández Guerrero
  */
 public class PantallaBuscarRestaurante extends javax.swing.JFrame {
 

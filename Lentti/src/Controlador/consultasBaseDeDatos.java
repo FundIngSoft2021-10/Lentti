@@ -100,4 +100,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean GuardarImagen(int id, JFileChooser Imagen);
     public abstract ImageIcon PedirImagen(int id);
     //
+    public abstract boolean AgregarRestauranteFavorito (String cliente, String restaurante);
+    public abstract boolean EliminarRestauranteFavorito (String cliente, String restaurante);
+    public abstract ArrayList <String> MostrarRestaurantesFavoritos (String cliente);
 }

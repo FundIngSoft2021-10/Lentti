@@ -57,8 +57,9 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         BotonModificarCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TA_informacionCliente = new javax.swing.JTextArea();
-        BotonBuscarAlgoParaPedir = new javax.swing.JButton();
         BotonCaritoCompra = new javax.swing.JButton();
+        BotonBuscarAlgoParaPedir = new javax.swing.JButton();
+        jButtonVerRestaurantesFavoritos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -76,7 +77,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                 PedidosActionPerformed(evt);
             }
         });
-        getContentPane().add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 520, 180, 50));
+        getContentPane().add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 180, 50));
 
         jButtonCerrarSesion.setBorder(null);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -105,15 +106,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         TA_informacionCliente.setBorder(null);
         jScrollPane2.setViewportView(TA_informacionCliente);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 250, 260));
-
-        BotonBuscarAlgoParaPedir.setBorder(null);
-        BotonBuscarAlgoParaPedir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonBuscarAlgoParaPedirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotonBuscarAlgoParaPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 283, 320, 70));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 250, 260));
 
         BotonCaritoCompra.setBorder(null);
         BotonCaritoCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +114,23 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
                 BotonCaritoCompraActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonCaritoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 383, 320, 70));
+        getContentPane().add(BotonCaritoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 310, 60));
+
+        BotonBuscarAlgoParaPedir.setBorder(null);
+        BotonBuscarAlgoParaPedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarAlgoParaPedirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonBuscarAlgoParaPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 310, 60));
+
+        jButtonVerRestaurantesFavoritos.setBorder(null);
+        jButtonVerRestaurantesFavoritos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerRestaurantesFavoritosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonVerRestaurantesFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 310, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/perfilUsuario.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
@@ -167,6 +176,13 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_PedidosActionPerformed
 
+    private void jButtonVerRestaurantesFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerRestaurantesFavoritosActionPerformed
+        // TODO add your handling code here:
+        ListaDeRestaurantesFavoritos lrf = new ListaDeRestaurantesFavoritos(L_bienvenidoNombreUsuario.getText());
+        lrf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVerRestaurantesFavoritosActionPerformed
+
 
     private void mostrarInformacionCliente()
     {
@@ -183,7 +199,8 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         
     }
     
-    public void transparenciaDelBoton(){
+    public void transparenciaDelBoton()
+    {
         BotonBuscarAlgoParaPedir.setOpaque(false);
         BotonBuscarAlgoParaPedir.setBackground(new Color(0,0,0,0));
         
@@ -192,6 +209,9 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
         
         BotonModificarCliente.setOpaque(false);
         BotonModificarCliente.setBackground(new Color(0,0,0,0));
+        
+        jButtonVerRestaurantesFavoritos.setOpaque(false);
+        jButtonVerRestaurantesFavoritos.setBackground(new Color(0,0,0,0));
         
         jButtonCerrarSesion.setOpaque(false);
         jButtonCerrarSesion.setBackground(new Color(0,0,0,0));
@@ -224,6 +244,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PantallaInicialCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -241,6 +262,7 @@ public class PantallaInicialCliente extends javax.swing.JFrame {
     private javax.swing.JButton Pedidos;
     private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonVerRestaurantesFavoritos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
