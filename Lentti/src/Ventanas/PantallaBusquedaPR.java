@@ -680,7 +680,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
            Icon Etiqueta = new ImageIcon(imagenPlat.getImage().getScaledInstance(this.FotoPlato.getWidth(), this.FotoPlato.getHeight(), Image.SCALE_SMOOTH));
            this.FotoRestaurante.setIcon(Etiqueta);
        }
-        
+                
         //Se pide la informacion del plato
         descripcionPlatoS = consulta.darDescripcionPlato(nombreRestS, nombrePlatoS);
         precioPlatoS = consulta.darPrecioPlato(nombreRestS, nombrePlatoS);

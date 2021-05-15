@@ -1819,5 +1819,71 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return archivo;
     }
     
+    public boolean ValidarDifRest(String nUsuario) {
+        ArrayList<String> listP= new ArrayList<>();
+        boolean respuesta = false;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombreRestaurante FROM carritoCompras WHERE usuario = '" + nUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                listP.add(result.getString("nombreRestaurante"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        String nombreR = null;
+        for(int i = 0; i < listP.size();i++){
+            if(i == 0) {
+                nombreR = listP.get(0);
+            }
+            else{
+              if(nombreR != listP.get(i)){
+                respuesta = true;
+              }  
+            }
+        }
+
+        return respuesta;
+    }
+    
+    
+    /*
+    
+    ArrayList<String> listPedidos = new ArrayList<>();
+        String var, rest, plat;
+
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombreRestaurante,nombrePlato FROM carritoCompras WHERE usuario = '" + nUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                rest = result.getString("nombreRestaurante");
+                plat = result.getString("nombrePlato");
+                var = rest + "," + plat;
+                listPedidos.add(var);
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return listPedidos;
+    */
 
 }

@@ -67,7 +67,6 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         subTotal = new javax.swing.JTextField();
         Tapar = new javax.swing.JTextField();
         TextRestUnid = new javax.swing.JTextField();
-        textCarroV = new javax.swing.JTextField();
         precioPlato = new javax.swing.JTextField();
         BotonRestUnid = new javax.swing.JButton();
         VaciarCC = new javax.swing.JButton();
@@ -85,6 +84,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         cantidadCC = new javax.swing.JTextField();
         FondoPantalla = new javax.swing.JLabel();
         FondoCCVacio = new javax.swing.JLabel();
+        textCarroV = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -120,12 +120,6 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TextRestUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 50, 30));
-
-        textCarroV.setBackground(new java.awt.Color(235, 235, 235));
-        textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
-        textCarroV.setText("Aún no tienes productos en tu carrito");
-        textCarroV.setBorder(null);
-        getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
 
         precioPlato.setBackground(new java.awt.Color(255, 254, 251));
         precioPlato.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
@@ -240,6 +234,12 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
         FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarroVacio2.png"))); // NOI18N
         getContentPane().add(FondoCCVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        textCarroV.setBackground(new java.awt.Color(235, 235, 235));
+        textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
+        textCarroV.setText("Aún no tienes productos en tu carrito");
+        textCarroV.setBorder(null);
+        getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -364,9 +364,19 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
     private void BotonRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRealizarPedidoActionPerformed
         // TODO add your handling code here:
-        PantallaPedido p = new PantallaPedido(nUsuario);
-        p.setVisible(true);
-        this.dispose();
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resp = consulta.ValidarDifRest(nUsuario);
+        if(resp == true){ // Si el carro de compras tiene muchos pedidos de varios restaurantes
+            JOptionPane.showMessageDialog(null, "No se puede realizar el pedido porque hay más de un restaurante");
+            
+        }
+        else{
+          PantallaPedido p = new PantallaPedido(nUsuario);
+          p.setVisible(true);
+          this.dispose();  
+        }
+        
     }//GEN-LAST:event_BotonRealizarPedidoActionPerformed
 
     private void subTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subTotalActionPerformed

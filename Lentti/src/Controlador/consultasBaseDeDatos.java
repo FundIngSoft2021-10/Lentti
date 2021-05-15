@@ -93,6 +93,7 @@ public interface consultasBaseDeDatos {
     public abstract ImageIcon ImagenRestaurante (String nombreRestaurante);
     public abstract ImageIcon ImagenPlato (String plato, String nombreRestaurante);
     public abstract String ObtenerCorreo(String pUsuario);
+    public abstract boolean ValidarDifRest(String nUsuario);
     //public abstract ArrayList<String> darPedido(int serial);
     
     //prueba imagen
