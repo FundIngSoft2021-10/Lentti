@@ -119,8 +119,8 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
            TF_nombreDelCliente.getText() == null || TF_nombreDelCliente.getText().equals("") ||
            TF_apellidoCliente.getText() == null || TF_apellidoCliente.getText().equals("") ||
            TF_direccionCliente.getText() == null || TF_direccionCliente.getText().equals("") ||
-           TF_correoCliente.getText() == null || TF_correoCliente.getText().equals("") ||
-           TF_tarjetaCliente.getText() == null || TF_tarjetaCliente.getText().equals("")
+           TF_correoCliente.getText() == null || TF_correoCliente.getText().equals("")
+           
                 
                )
         {
@@ -131,21 +131,27 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         {
             
             
-            
-            //verificar tarjeta tamaño
-            if(TF_tarjetaCliente.getText().length() < 13 || TF_tarjetaCliente.getText().length() > 19){
-                JOptionPane.showMessageDialog(null, "la tarjeta no es valida (min 13 digitos)");
-            return;
+            if(!TF_tarjetaCliente.getText().equals(""))
+            {
+                if(TF_tarjetaCliente.getText().length() < 13 || TF_tarjetaCliente.getText().length() > 19){
+                     JOptionPane.showMessageDialog(null, "la tarjeta no es valida (min 13 digitos)");
+                     return;
+                }
+                
+                if(!tarjetaCorrecta()){
+                    JOptionPane.showMessageDialog(null, "la tarjeta no es valida");
+                    return;
+                }
+                
             }
+            //verificar tarjeta tamaño
+            
             
             
                     
              //
             //verificar tarjeta digitos
-            if(!tarjetaCorrecta()){
-                JOptionPane.showMessageDialog(null, "la tarjeta no es valida");
-            return;
-            }
+            
             
             
             //
