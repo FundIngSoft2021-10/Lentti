@@ -124,10 +124,15 @@ public class EstadoPedido extends javax.swing.JFrame {
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // TODO add your handling code here:
-                consultasBaseDeDatos consulta = new BaseDeDatos();
-        int i=Integer.parseInt(ID.getText());  
-        if(consulta.ModificarEstadoPedido("cancelado", i)){
-        JOptionPane.showMessageDialog(null, "Se ha cancelado tu pedido");
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        int i=Integer.parseInt(ID.getText()); 
+        if(consulta.ModificarEstadoPedido("cancelado", i))
+        {
+            JOptionPane.showMessageDialog(null, "Se ha cancelado tu pedido.");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Han pasado más de cinco minutos, el pedido ya no es cancelable.");
         }
         PantallaInicialCliente vp = new PantallaInicialCliente(user.getText());
             vp.setVisible(true);

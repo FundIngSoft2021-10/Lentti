@@ -19,7 +19,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -1345,12 +1349,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearPedido(String cliente, String domiciliario, float total, String estado) {
 
         boolean sePudo = false;
-
+        Date date = new Date();
+        int hora = date.getMinutes();
+        
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO pedido VALUES ( default ,'" + cliente + "','" + domiciliario + "', '" + total + "', '" + estado + "');";
+            String consulta = "INSERT INTO pedido VALUES ( default ,'" + cliente + "','" + domiciliario + "', '" + total + "', '" + estado + "', '" + hora + "');";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1456,15 +1462,47 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     public boolean ModificarEstadoPedido(String estado, int id) {
         boolean resultado = false;
+        boolean cancelable = false;
+        Date date = new Date();
+        int horaActual = date.getMinutes();
+        int horaAlmacenada;
+        
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
-            st.execute(consulta);
-            st.close();
-            conexion.close();
-            resultado = true;
+            
+            if (estado == "cancelado")
+            {
+                java.sql.Statement s = conexion.createStatement();
+                String c = "SELECT hora FROM pedido WHERE pedido_id = '" + id + "'";
+                ResultSet result = s.executeQuery(c);
+                
+                while (result.next()) 
+                {
+                    horaAlmacenada = result.getInt("hora");
+                    System.out.println(horaAlmacenada);
+                    if (horaActual - horaAlmacenada <= 1)
+                    {
+                        cancelable = true;
+                    }
+                }
+         
+                s.close();
+            }
+            else
+            {
+                cancelable = true;
+            }
+            
+            if (cancelable == true)
+            {
+                java.sql.Statement st = conexion.createStatement();
+                String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
+                st.execute(consulta);
+                st.close();
+                conexion.close();
+                resultado = true;  
+            } 
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
@@ -1964,4 +2002,46 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+    
+        /*public boolean EliminarPedido(int id, String Pusuario) {
+
+        boolean resultado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM pedido WHERE  pedido_id = '" + id + "' and cliente = '" + Pusuario + "' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        return resultado;
+
+    }
+    
+    public boolean EliminarPedido(String Pusuario) {
+
+        boolean resultado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "DELETE FROM pedido WHERE  cliente = '" + Pusuario + "' ;";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        return resultado;
+
+    }*/
+    
+    
 }
