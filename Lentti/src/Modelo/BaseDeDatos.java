@@ -1460,9 +1460,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     }
 
-    public boolean ModificarEstadoPedido(String estado, int id) {
+    public boolean ModificarEstadoPedido(String estado, int id) 
+    {
         boolean resultado = false;
-        boolean cancelable = false;
         Date date = new Date();
         int horaActual = date.getMinutes();
         int horaAlmacenada;
@@ -1470,6 +1470,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
+            st.execute(consulta);
+            st.close();
             
             if (estado == "cancelado")
             {
@@ -1480,10 +1484,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
                 while (result.next()) 
                 {
                     horaAlmacenada = result.getInt("hora");
-                    System.out.println(horaAlmacenada);
+                    
                     if (horaActual - horaAlmacenada <= 1)
                     {
-                        cancelable = true;
+                        resultado = true;
                     }
                 }
          
@@ -1491,18 +1495,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             }
             else
             {
-                cancelable = true;
+                resultado = true;
             }
             
-            if (cancelable == true)
-            {
-                java.sql.Statement st = conexion.createStatement();
-                String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
-                st.execute(consulta);
-                st.close();
-                conexion.close();
-                resultado = true;  
-            } 
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
@@ -2062,6 +2057,56 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
          return listaNombres;
     }
-    
-    
+
+    public boolean flagearCliente (String cliente, String restaurante)
+    {
+        boolean flageado = false;
+        int cancelados = 0;
+        boolean primerPedido = true;
+        
+        try 
+        {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT cancelados FROM bandera WHERE cliente = '" + cliente + "' AND restaurante = '" + restaurante + "'";
+            ResultSet result = st.executeQuery(consulta);
+            
+            while (result.next()) 
+            {
+                 cancelados = result.getInt("cancelados");
+                 primerPedido = false;
+                 System.out.println("Cancelados si si encontro datos en la tabla bandera pero antes de sumar: " + cancelados);
+            }
+            
+            result.close();
+            st.close();
+            
+            if (primerPedido == true)
+            {
+                java.sql.Statement s = conexion.createStatement();
+                System.out.println("Cancelados si no encontro datos en la tabla bandera: " + cancelados);
+                String c = "INSERT INTO bandera VALUES ('" + cliente + "' , '" + restaurante + "', '" + cancelados + "');";
+                s.execute(c);
+                s.close();
+                flageado = true;
+            }
+            else
+            {
+                cancelados = cancelados + 1;
+                System.out.println("Cancelados si si encontro datos en la tabla bandera pero despues de sumar: " + cancelados);
+                java.sql.Statement s2 = conexion.createStatement();
+                String co = "UPDATE bandera SET cancelados = '" + cancelados + "';";
+                s2.execute(co);
+                s2.close();
+                flageado = true;
+            }
+            
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        
+        return flageado;
+    }   
 }

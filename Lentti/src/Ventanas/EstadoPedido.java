@@ -129,6 +129,7 @@ public class EstadoPedido extends javax.swing.JFrame {
         if(consulta.ModificarEstadoPedido("cancelado", i))
         {
             JOptionPane.showMessageDialog(null, "Se ha cancelado tu pedido.");
+            consulta.flagearCliente(user.getText(), Restaurante.getText());
         }
         else
         {
