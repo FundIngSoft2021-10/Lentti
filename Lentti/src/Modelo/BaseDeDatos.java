@@ -379,7 +379,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
 
-    public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo) {
+    public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario) {
         boolean resultado = false;
         boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com");
         FileInputStream imagen=null;
@@ -392,7 +392,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            String consulta = "INSERT INTO restaurante (nombreRestaurante,NIT,direccion,descripcion,costoEnvio,imagen)  VALUES (?,?,?,?,?,?);";
+            String consulta = "INSERT INTO restaurante (nombreRestaurante,NIT,direccion,descripcion,costoEnvio,imagen, Horario)  VALUES (?,?,?,?,?,?,?);";
             PreparedStatement st= conexion.prepareStatement(consulta);
             st.setString(1, nombreRestaurante);
             st.setString(2, NIT);
@@ -400,6 +400,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             st.setString(4, descripcion);
             st.setFloat(5, costoDeEnvio);
             st.setBinaryStream(6, imagen, archivo.getSelectedFile().length());
+            st.setString(7, horario);
             st.execute();
             st.close();
             conexion.close();
@@ -744,6 +745,26 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
             String consulta = "UPDATE restaurante SET NIT = '" + nuevoNIT + "' WHERE nombreRestaurante = '" + nombreRestaurante + "';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+
+        return resultado;
+    }
+    
+    public boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevoHorario) {
+        boolean resultado = false;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE restaurante SET Horario = '" + nuevoHorario + "' WHERE nombreRestaurante = '" + nombreRestaurante + "';";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1878,15 +1899,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
         }
         String nombreR = null;
-        for(int i = 0; i < listP.size();i++){
-            if(i == 0) {
-                nombreR = listP.get(0);
-            }
-            else{
-              if(nombreR != listP.get(i)){
-                respuesta = true;
-              }  
-            }
+        if(listP.size()>0) nombreR = listP.get(0);
+            
+        
+        for(int i = 1; i < listP.size();i++){
+ 
+            if(!(nombreR.equals(listP.get(i)))){
+              respuesta = true;
+            }  
+            
         }
 
         return respuesta;
@@ -2108,5 +2129,55 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         
         return flageado;
-    }   
+    }  
+    
+    
+    public String darHorarioRest(String nRestaurante) {
+        String horario = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT Horario FROM restaurante WHERE nombreRestaurante = '" + nRestaurante + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                horario = result.getString("Horario");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return horario;
+    }
+    
+    
+    public String darRestaurantePedido(String nUsuario) {
+        
+        String nRest = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombreRestaurante FROM carritoCompras WHERE usuario = '" + nUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                nRest = result.getString("nombreRestaurante");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        
+        return nRest;
+    }
 }

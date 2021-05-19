@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -364,18 +366,44 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
     private void BotonRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRealizarPedidoActionPerformed
         // TODO add your handling code here:
-        
+        Calendar calendario = Calendar.getInstance();
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        int hora, minutos;
+        hora = calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        
+        System.out.println("Mira estefania"+hora+"/"+minutos);
         boolean resp = consulta.ValidarDifRest(nUsuario);
         if(resp == true){ // Si el carro de compras tiene muchos pedidos de varios restaurantes
             JOptionPane.showMessageDialog(null, "No se puede realizar el pedido porque hay más de un restaurante");
             
         }
-        else{
-          PantallaPedido p = new PantallaPedido(nUsuario);
-          p.setVisible(true);
-          this.dispose();  
+        else{ //Revisa los horarios 
+            String nRestaurante = consulta.darRestaurantePedido(nUsuario);
+            String horario = consulta.darHorarioRest(nRestaurante);
+            int horaRA, minRA, horaRC, minRC;
+            String[] partes;
+            String apertura, cierre;
+            partes = horario.split("/");
+            apertura = partes[0];
+            cierre = partes[1];
+            partes = apertura.split(":");
+            horaRA = Integer.parseInt(partes[0]);
+            minRA = Integer.parseInt(partes[1]);
+            partes = cierre.split(":");
+            horaRC = Integer.parseInt(partes[0]);
+            minRC = Integer.parseInt(partes[1]);
+                        
+            if(horaRA <= hora && horaRC >= hora ){
+                PantallaPedido p = new PantallaPedido(nUsuario);
+                p.setVisible(true);
+                this.dispose(); 
+            }
+            else{
+                 JOptionPane.showMessageDialog(null, "El restaurante no esta disponible en este momento, intenta despues!");
+            }
         }
+    
         
     }//GEN-LAST:event_BotonRealizarPedidoActionPerformed
 

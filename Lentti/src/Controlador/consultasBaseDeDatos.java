@@ -28,7 +28,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarDescripcionPlato(String nombrePlato, String nuevaDescripcion);
     public abstract boolean ModificarImagenPlato(String nombrePlato, String nuevaImagen);
     public abstract boolean EliminarCuenta(String pUsuario, String pTipo);
-    public abstract boolean CrearRestaurante (String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo);
+    public abstract boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario);
     public abstract boolean AlmacenarPalabrasClave (String nombreRestaurante, String palabrasClave);
     public abstract boolean EliminarRestaurante (String nombreRestaurante);
     public abstract ArrayList<String>  BuscarRestaurante (String pTipo,String pUsurioActual);
@@ -45,6 +45,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarImagenRestaurante (String nombreRestaurante, JFileChooser nuevaImagen);
     public abstract boolean ModificarNITRestaurante (String nombreRestaurante, String nuevoNIT);
     public abstract boolean ModificarPalabrasClaveRestaurante (String nombreRestaurante, String nuevasPalabrasClave);
+    public abstract boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevoHorario);
     public abstract boolean ValidarExistenciaRestaurante (String nombreRestaurante);
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
     public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);
@@ -94,6 +95,9 @@ public interface consultasBaseDeDatos {
     public abstract ImageIcon ImagenPlato (String plato, String nombreRestaurante);
     public abstract String ObtenerCorreo(String pUsuario);
     public abstract boolean ValidarDifRest(String nUsuario);
+    public abstract String darRestaurantePedido(String nUsuario);
+    
+    public abstract String darHorarioRest(String nRestaurante);
     //public abstract ArrayList<String> darPedido(int serial);
     
     //prueba imagen

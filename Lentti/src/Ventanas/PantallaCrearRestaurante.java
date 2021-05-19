@@ -28,7 +28,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 {
     String usuario = "";
     File Imagen;
-    String apertura, cierre;
+    String apertura = "", cierre = "";
     JFileChooser buscador;
     /**
      * Creates new form CrearRestaurante
@@ -88,10 +88,12 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
         jTextAreaCampoDescripcion.setColumns(20);
         jTextAreaCampoDescripcion.setRows(5);
+        jTextAreaCampoDescripcion.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaCampoDescripcion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 450, 60));
 
+        jTextFieldCampoNIT.setBorder(null);
         jTextFieldCampoNIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNITActionPerformed(evt);
@@ -99,6 +101,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jTextFieldCampoNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 202, 190, 30));
 
+        jTextFieldCampoCostoDeEnvio.setBorder(null);
         jTextFieldCampoCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoCostoDeEnvioActionPerformed(evt);
@@ -106,13 +109,15 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jTextFieldCampoCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 382, 190, 30));
 
+        jTextFieldCampoPassword.setBorder(null);
         jTextFieldCampoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 190, -1));
+        getContentPane().add(jTextFieldCampoPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 152, 190, 30));
 
+        jTextFieldCampoDireccion.setBorder(null);
         jTextFieldCampoDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoDireccionActionPerformed(evt);
@@ -120,6 +125,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jTextFieldCampoDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 252, 190, 30));
 
+        jTextFieldCampoPalabrasClave.setBorder(null);
         jTextFieldCampoPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoPalabrasClaveActionPerformed(evt);
@@ -127,12 +133,13 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 602, 450, 30));
 
+        jTextFieldCampoNombre.setBorder(null);
         jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 30));
+        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 190, 40));
 
         Cierre.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
         Cierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
@@ -193,6 +200,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        String horario = apertura+"/"+cierre;
         boolean resultado = false;
         
         if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextFieldCampoPassword.getText().isEmpty()|| this.jTextFieldCampoNIT.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoCostoDeEnvio.getText().isEmpty() || this.Imagen==null)//AAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -209,7 +217,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         else
         {
             float costoDeEnvio = Float.parseFloat(this.jTextFieldCampoCostoDeEnvio.getText());
-            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.buscador);
+            resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.buscador, horario);
             consulta.AlmacenarPalabrasClave (this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPalabrasClave.getText());
             PantallaAgregarPlato pantallaGestion = new PantallaAgregarPlato(jTextFieldCampoNombre.getText());
             pantallaGestion.setVisible(true);
