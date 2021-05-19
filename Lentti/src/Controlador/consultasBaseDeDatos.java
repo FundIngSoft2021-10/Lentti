@@ -103,4 +103,5 @@ public interface consultasBaseDeDatos {
     public abstract boolean AgregarRestauranteFavorito (String cliente, String restaurante);
     public abstract boolean EliminarRestauranteFavorito (String cliente, String restaurante);
     public abstract ArrayList <String> MostrarRestaurantesFavoritos (String cliente);
+    public abstract ArrayList<String> darClientesActivos(String nRestaurante);
 }

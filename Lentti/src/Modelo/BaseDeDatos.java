@@ -1898,35 +1898,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
     
     
-    /*
-    
-    ArrayList<String> listPedidos = new ArrayList<>();
-        String var, rest, plat;
-
-
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT nombreRestaurante,nombrePlato FROM carritoCompras WHERE usuario = '" + nUsuario + "'";
-            ResultSet result = st.executeQuery(consulta);
-
-            while (result.next()) {
-                rest = result.getString("nombreRestaurante");
-                plat = result.getString("nombrePlato");
-                var = rest + "," + plat;
-                listPedidos.add(var);
-            }
-
-            result.close();
-            st.close();
-            conexion.close();
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-        }
-
-        return listPedidos;
-    */
     @Override
     public boolean AgregarRestauranteFavorito (String cliente, String restaurante) 
     {
@@ -2042,6 +2013,55 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
 
     }*/
+    
+    
+    public ArrayList<String> darClientesActivos(String nRestaurante) {
+        
+        
+        ArrayList listaClientes = new ArrayList();
+        ArrayList <String> listaNombres = new ArrayList<>();
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT pedido_id FROM pedidoxplato WHERE restaurante = '" + nRestaurante + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                listaClientes.add(result.getInt("pedido_id"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        
+        for(int i=0;i<listaClientes.size();i++){
+           try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT cliente FROM pedido WHERE pedido_id = '" + listaClientes.get(i) + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                listaNombres.add(result.getString("cliente"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+            } catch (Exception exc) {
+                System.out.println("Errorx:" + exc.getMessage());
+            }
+         
+        }
+        
+         return listaNombres;
+    }
     
     
 }
