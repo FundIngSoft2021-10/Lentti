@@ -43,55 +43,55 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButtonVerPlatos = new javax.swing.JButton();
         jButtonCrearPlato = new javax.swing.JButton();
         jButtonEliminarPlato = new javax.swing.JButton();
         jButtonAtras = new javax.swing.JButton();
         jButtonModificarPlato = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaGestionPlatos.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jButtonVerPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPlatosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVerPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 60));
+        getContentPane().add(jButtonVerPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 280, 80));
 
         jButtonCrearPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearPlatoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCrearPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 210, 60));
+        getContentPane().add(jButtonCrearPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 280, 80));
 
         jButtonEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarPlatoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 60));
+        getContentPane().add(jButtonEliminarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 290, 80));
 
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, 60));
 
         jButtonModificarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarPlatoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 220, 60));
+        getContentPane().add(jButtonModificarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 280, 90));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaGestionPlatos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

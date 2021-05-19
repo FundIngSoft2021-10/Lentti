@@ -33,6 +33,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         Transparencia();
         this.setLocationRelativeTo(null);
         this.usuario=usuario;
+        nombreRest.setText(usuario);
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ImageIcon imagenPoner = consulta.ImagenRestaurante(usuario);
         Icon imagen = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelImagenRestaurante.getWidth(), this.jLabelImagenRestaurante.getHeight(), Image.SCALE_SMOOTH));//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -55,6 +56,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelImagenRestaurante = new javax.swing.JLabel();
+        nombreRest = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonVerResenaDeUsuario = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
@@ -66,33 +68,38 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 490, 150));
+        getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 110));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialRestaurante.png"))); // NOI18N
+        nombreRest.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        nombreRest.setForeground(new java.awt.Color(255, 255, 255));
+        nombreRest.setText("jLabel2");
+        getContentPane().add(nombreRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 370, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicioRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
-        getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 210, 70));
+        getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 170));
 
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 200, 60));
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 90, 70));
 
         jButtonGestionarPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarPlatosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 220, 60));
-        getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 220, 70));
+        getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 190, 180));
+        getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 180));
 
         jButtonGestionarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarDomiciliarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 220, 70));
+        getContentPane().add(jButtonGestionarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 190, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,5 +181,6 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerResenaDeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelImagenRestaurante;
+    private javax.swing.JLabel nombreRest;
     // End of variables declaration//GEN-END:variables
 }
