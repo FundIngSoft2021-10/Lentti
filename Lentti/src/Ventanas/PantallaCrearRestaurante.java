@@ -28,6 +28,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 {
     String usuario = "";
     File Imagen;
+    String apertura, cierre;
     JFileChooser buscador;
     /**
      * Creates new form CrearRestaurante
@@ -70,6 +71,8 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         jTextFieldCampoDireccion = new javax.swing.JTextField();
         jTextFieldCampoPalabrasClave = new javax.swing.JTextField();
         jTextFieldCampoNombre = new javax.swing.JTextField();
+        Cierre = new javax.swing.JComboBox<>();
+        Apertura = new javax.swing.JComboBox<>();
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
         jLabelCampoImagen = new javax.swing.JLabel();
@@ -131,6 +134,24 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 30));
 
+        Cierre.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        Cierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Cierre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CierreMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Cierre, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 110, 30));
+
+        Apertura.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        Apertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Apertura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AperturaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Apertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 110, 30));
+
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -154,7 +175,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 160, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaRestauranteCreacion.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
@@ -240,6 +261,18 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         }
     }//GEN-LAST:event_jButtonAgregarImagenActionPerformed
 
+    private void AperturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AperturaMouseClicked
+        // TODO add your handling code here:
+        //Almacenar apertura
+        apertura = Apertura.getSelectedItem().toString();
+
+    }//GEN-LAST:event_AperturaMouseClicked
+
+    private void CierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CierreMouseClicked
+        // TODO add your handling code here:
+        cierre = Cierre.getSelectedItem().toString();
+    }//GEN-LAST:event_CierreMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -308,6 +341,8 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Apertura;
+    private javax.swing.JComboBox<String> Cierre;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonAgregarImagen;
     private javax.swing.JButton jButtonCancelar;
