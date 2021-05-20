@@ -79,6 +79,7 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         getContentPane().add(B_VolverPantallaInicioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 100, 90));
 
         TA_informacionCliente.setColumns(20);
+        TA_informacionCliente.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         TA_informacionCliente.setRows(5);
         jScrollPane1.setViewportView(TA_informacionCliente);
 
@@ -168,12 +169,18 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<String> datosCliente = consulta.darCliente(usuarioCliente);
         int tam = datosCliente.size();
-        for(int i = 0; i < tam; i++)
-        {
-            TA_informacionCliente.append(datosCliente.get(i));
-            TA_informacionCliente.append("\n");
-            
-        }
+        
+        TA_informacionCliente.append("Nombre: ");
+        TA_informacionCliente.append(datosCliente.get(0));
+        TA_informacionCliente.append("\n");
+        
+        TA_informacionCliente.append("Apellido: ");
+        TA_informacionCliente.append(datosCliente.get(1));
+        TA_informacionCliente.append("\n");
+        
+        TA_informacionCliente.append("Direccion: ");
+        TA_informacionCliente.append(datosCliente.get(2));
+        TA_informacionCliente.append("\n");
         
     }
 
