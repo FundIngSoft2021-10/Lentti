@@ -85,8 +85,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         descripcionPlato = new javax.swing.JTextField();
         cantidadCC = new javax.swing.JTextField();
         FondoPantalla = new javax.swing.JLabel();
-        FondoCCVacio = new javax.swing.JLabel();
         textCarroV = new javax.swing.JTextField();
+        FondoCCVacio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -98,6 +98,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         subTotal.setBackground(new java.awt.Color(114, 203, 131));
         subTotal.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         subTotal.setForeground(new java.awt.Color(255, 255, 255));
+        subTotal.setBorder(null);
         subTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subTotalActionPerformed(evt);
@@ -130,6 +131,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
 
         BotonRestUnid.setFont(new java.awt.Font("Yu Gothic", 1, 48)); // NOI18N
         BotonRestUnid.setBorder(null);
+        BotonRestUnid.setBorderPainted(false);
+        BotonRestUnid.setContentAreaFilled(false);
         BotonRestUnid.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonRestUnidMouseClicked(evt);
@@ -146,9 +149,16 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
                 VaciarCCMouseClicked(evt);
             }
         });
+        VaciarCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VaciarCCActionPerformed(evt);
+            }
+        });
         getContentPane().add(VaciarCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 520, 230, -1));
 
         BotonRealizarPedido.setBorder(null);
+        BotonRealizarPedido.setBorderPainted(false);
+        BotonRealizarPedido.setContentAreaFilled(false);
         BotonRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRealizarPedidoActionPerformed(evt);
@@ -165,6 +175,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         getContentPane().add(BotonBorrarUnid, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 40, 30));
 
         BotonSumUnid.setBorder(null);
+        BotonSumUnid.setBorderPainted(false);
         BotonSumUnid.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonSumUnidMouseClicked(evt);
@@ -176,6 +187,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         BotonAtrasCC.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         BotonAtrasCC.setText("<<  Atrás");
         BotonAtrasCC.setBorder(null);
+        BotonAtrasCC.setBorderPainted(false);
         BotonAtrasCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAtrasCCActionPerformed(evt);
@@ -234,14 +246,14 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         FondoPantalla.setText("dffdfdfd");
         getContentPane().add(FondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
-        FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarroVacio2.png"))); // NOI18N
-        getContentPane().add(FondoCCVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         textCarroV.setBackground(new java.awt.Color(235, 235, 235));
         textCarroV.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
         textCarroV.setText("Aún no tienes productos en tu carrito");
         textCarroV.setBorder(null);
         getContentPane().add(textCarroV, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 660, 60));
+
+        FondoCCVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CarroVacio2.png"))); // NOI18N
+        getContentPane().add(FondoCCVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,37 +383,47 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         int hora, minutos;
         hora = calendario.get(Calendar.HOUR_OF_DAY);
         minutos = calendario.get(Calendar.MINUTE);
-        
-        System.out.println("Mira estefania"+hora+"/"+minutos);
+
         boolean resp = consulta.ValidarDifRest(nUsuario);
         if(resp == true){ // Si el carro de compras tiene muchos pedidos de varios restaurantes
-            JOptionPane.showMessageDialog(null, "No se puede realizar el pedido porque hay más de un restaurante");
-            
+           JOptionPane.showMessageDialog(null, "No se puede realizar el pedido porque hay más de un restaurante");  
         }
         else{ //Revisa los horarios 
+           
+            
             String nRestaurante = consulta.darRestaurantePedido(nUsuario);
             String horario = consulta.darHorarioRest(nRestaurante);
-            int horaRA, minRA, horaRC, minRC;
-            String[] partes;
-            String apertura, cierre;
-            partes = horario.split("/");
-            apertura = partes[0];
-            cierre = partes[1];
-            partes = apertura.split(":");
-            horaRA = Integer.parseInt(partes[0]);
-            minRA = Integer.parseInt(partes[1]);
-            partes = cierre.split(":");
-            horaRC = Integer.parseInt(partes[0]);
-            minRC = Integer.parseInt(partes[1]);
-                        
-            if(horaRA <= hora && horaRC >= hora ){
-                PantallaPedido p = new PantallaPedido(nUsuario);
-                p.setVisible(true);
-                this.dispose(); 
+            
+            if(horario!=null){
+                int horaRA, minRA, horaRC, minRC;
+              String[] partes;
+              String apertura, cierre;
+              partes = horario.split("/");
+              apertura = partes[0];
+              cierre = partes[1];
+              partes = apertura.split(":");
+              horaRA = Integer.parseInt(partes[0]);
+              minRA = Integer.parseInt(partes[1]);
+              partes = cierre.split(":");
+              horaRC = Integer.parseInt(partes[0]);
+              minRC = Integer.parseInt(partes[1]);
+
+              if(horaRA <= hora && horaRC >= hora ){
+                  PantallaPedido p = new PantallaPedido(nUsuario);
+                  p.setVisible(true);
+                  this.dispose(); 
+              }
+              else{
+                   JOptionPane.showMessageDialog(null, "El restaurante no esta disponible en este momento, intenta despues!");
+              } 
+              
             }
-            else{
-                 JOptionPane.showMessageDialog(null, "El restaurante no esta disponible en este momento, intenta despues!");
-            }
+            
+            //BORRARRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+            PantallaPedido p = new PantallaPedido(nUsuario);
+            p.setVisible(true);
+            this.dispose();
+            
         }
     
         
@@ -410,6 +432,10 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private void subTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subTotalActionPerformed
+
+    private void VaciarCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaciarCCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VaciarCCActionPerformed
     public void PantallaVacia(){
         precioPlato.setVisible(false);
         Tapar.setVisible(false);

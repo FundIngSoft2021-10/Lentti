@@ -235,8 +235,8 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonRealizarOtra = new javax.swing.JButton();
         FotoRestaurante = new javax.swing.JLabel();
         FotoPlato = new javax.swing.JLabel();
-        FondoMostrarOpciones = new javax.swing.JLabel();
         FondoAgregarCarrito = new javax.swing.JLabel();
+        FondoMostrarOpciones = new javax.swing.JLabel();
         FondoBuscador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -463,6 +463,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(ListaDePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 660, 100));
 
         BotonBuscar.setBorder(null);
+        BotonBuscar.setContentAreaFilled(false);
         BotonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonBuscarMouseClicked(evt);
@@ -471,6 +472,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 110, 40));
 
         BotonAgregarPlatoCC.setBorder(null);
+        BotonAgregarPlatoCC.setContentAreaFilled(false);
         BotonAgregarPlatoCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonAgregarPlatoCCMouseClicked(evt);
@@ -517,6 +519,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(EscribirConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 320, 40));
 
         BotonVerRestaurante.setBorder(null);
+        BotonVerRestaurante.setContentAreaFilled(false);
         BotonVerRestaurante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonVerRestauranteMouseClicked(evt);
@@ -525,6 +528,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(BotonVerRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 230, 40));
 
         BotonRealizarOtra.setBorder(null);
+        BotonRealizarOtra.setContentAreaFilled(false);
         BotonRealizarOtra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonRealizarOtraMouseClicked(evt);
@@ -534,11 +538,11 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
         getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
 
-        FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
-        getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AgregarCarrito.png"))); // NOI18N
         getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        FondoMostrarOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR2.png"))); // NOI18N
+        getContentPane().add(FondoMostrarOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/BusquedaPR.png"))); // NOI18N
         getContentPane().add(FondoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

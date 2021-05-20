@@ -71,7 +71,8 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
 
         Pedidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Pedidos.setForeground(new java.awt.Color(255, 255, 255));
-        Pedidos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Pedidos.setBorder(null);
+        Pedidos.setContentAreaFilled(false);
         Pedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PedidosActionPerformed(evt);
@@ -85,6 +86,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 290, 30));
 
         jButtonCerrarSesion.setBorder(null);
+        jButtonCerrarSesion.setContentAreaFilled(false);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
@@ -97,6 +99,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(L_bienvenidoNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 290, 30));
 
         BotonCaritoCompra.setBorder(null);
+        BotonCaritoCompra.setContentAreaFilled(false);
         BotonCaritoCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCaritoCompraActionPerformed(evt);
@@ -105,6 +108,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(BotonCaritoCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 170, 170));
 
         BotonBuscarAlgoParaPedir.setBorder(null);
+        BotonBuscarAlgoParaPedir.setContentAreaFilled(false);
         BotonBuscarAlgoParaPedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonBuscarAlgoParaPedirActionPerformed(evt);
@@ -113,6 +117,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(BotonBuscarAlgoParaPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 170, 170));
 
         jButtonVerRestaurantesFavoritos.setBorder(null);
+        jButtonVerRestaurantesFavoritos.setContentAreaFilled(false);
         jButtonVerRestaurantesFavoritos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerRestaurantesFavoritosActionPerformed(evt);
@@ -121,6 +126,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(jButtonVerRestaurantesFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 310, 60));
 
         B_IrAPerfilCliente.setBorder(null);
+        B_IrAPerfilCliente.setContentAreaFilled(false);
         B_IrAPerfilCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_IrAPerfilClienteActionPerformed(evt);
@@ -129,6 +135,7 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         getContentPane().add(B_IrAPerfilCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, 110, 90));
 
         B_realizarUtlimoPedido.setBorder(null);
+        B_realizarUtlimoPedido.setContentAreaFilled(false);
         B_realizarUtlimoPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_realizarUtlimoPedidoActionPerformed(evt);
