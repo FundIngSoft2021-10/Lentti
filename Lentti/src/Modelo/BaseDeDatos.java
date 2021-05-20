@@ -2220,4 +2220,72 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return nRest;
     }
+    
+    public boolean agregarPedidoAFavoritos(String pUsuario, String pPedido) {
+        boolean sePudo = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "INSERT INTO pedidoFavorito VALUES ('" + pUsuario + "','" + pPedido +  "');";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo = true;
+
+        } catch (Exception e) {
+            System.out.println("Errorx:" + e.getMessage());
+            sePudo = false;
+        }
+
+        return sePudo;
+    }
+    
+    public ArrayList<String> darPlatoSegunPedido(String pPedido) {
+        
+        ArrayList<String> nRest = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT plato FROM pedidoxplato WHERE pedido_id = '" + pPedido + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                nRest.add(result.getString("plato"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        
+        return nRest;
+    }
+    
+    public ArrayList<String> darPedidoAFavoritos(String pUsuario) {
+        
+        ArrayList<String> nRest = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT IDpedido FROM pedidoFavorito WHERE cliente = '" + pUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                nRest.add(result.getString("IDpedido"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        
+        return nRest;
+    }
 }

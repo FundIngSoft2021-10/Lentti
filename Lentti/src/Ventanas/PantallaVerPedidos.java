@@ -76,6 +76,8 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         jLabelPedidosEnCurso1 = new javax.swing.JLabel();
         jButtonAtras = new javax.swing.JButton();
         jButtonCalificar = new javax.swing.JButton();
+        BotonAgregarFavorito = new javax.swing.JButton();
+        BotonVerPedidosFavoritos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 690));
@@ -122,24 +124,24 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
             }
         });
 
+        BotonAgregarFavorito.setText("Agregar a favoritos");
+        BotonAgregarFavorito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAgregarFavoritoActionPerformed(evt);
+            }
+        });
+
+        BotonVerPedidosFavoritos.setText("Ver pedidos Favoritos");
+        BotonVerPedidosFavoritos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVerPedidosFavoritosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(231, 231, 231))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelPedidosEnCurso)
-                        .addGap(265, 265, 265))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelPedidosEnCurso1)
-                        .addGap(249, 249, 249))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -152,10 +154,29 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
                         .addGap(363, 363, 363)
                         .addComponent(jButtonCalificar)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(241, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelPedidosEnCurso)
+                        .addGap(265, 265, 265))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelPedidosEnCurso1)
+                        .addGap(249, 249, 249))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BotonVerPedidosFavoritos)
+                        .addGap(154, 154, 154)
+                        .addComponent(BotonAgregarFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonAtras)
                 .addGap(84, 84, 84)
@@ -170,7 +191,11 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonCalificar)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonAgregarFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonVerPedidosFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -213,6 +238,36 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonCalificarActionPerformed
 
+    private void BotonAgregarFavoritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarFavoritoActionPerformed
+        // TODO add your handling code here:
+        
+        if(this.jListPedidosEnCurso.getSelectedValue() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        }
+        else {
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            if(consulta.agregarPedidoAFavoritos(cliente,this.jListPedidosEnCurso.getSelectedValue().toString() )){
+                JOptionPane.showMessageDialog(null, "Se agrego correctamente");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "error al agregar a favoritos");
+            }
+        
+        
+        }
+        
+    }//GEN-LAST:event_BotonAgregarFavoritoActionPerformed
+
+    private void BotonVerPedidosFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerPedidosFavoritosActionPerformed
+        // TODO add your handling code here:
+        PedidosFavoritos p = new PedidosFavoritos(cliente);
+        p.setVisible(true);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_BotonVerPedidosFavoritosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +304,8 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAgregarFavorito;
+    private javax.swing.JButton BotonVerPedidosFavoritos;
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonCalificar;
     private javax.swing.JButton jButtonEstadoPedido;
