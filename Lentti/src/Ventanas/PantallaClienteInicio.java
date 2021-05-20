@@ -57,6 +57,8 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         BotonCaritoCompra = new javax.swing.JButton();
         BotonBuscarAlgoParaPedir = new javax.swing.JButton();
         jButtonVerRestaurantesFavoritos = new javax.swing.JButton();
+        B_IrAPerfilCliente = new javax.swing.JButton();
+        B_realizarUtlimoPedido = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,6 +117,22 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonVerRestaurantesFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 310, 60));
 
+        B_IrAPerfilCliente.setBorder(null);
+        B_IrAPerfilCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_IrAPerfilClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_IrAPerfilCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, 110, 90));
+
+        B_realizarUtlimoPedido.setBorder(null);
+        B_realizarUtlimoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_realizarUtlimoPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B_realizarUtlimoPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 300, 60));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UltimaModif.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
@@ -156,6 +174,18 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonVerRestaurantesFavoritosActionPerformed
 
+    private void B_IrAPerfilClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_IrAPerfilClienteActionPerformed
+        // TODO add your handling code here:
+        
+        PantallaPerfilCliente pantalla = new PantallaPerfilCliente(L_bienvenidoNombreUsuario.getText());
+                    pantalla.setVisible(true);
+                    this.dispose();
+    }//GEN-LAST:event_B_IrAPerfilClienteActionPerformed
+
+    private void B_realizarUtlimoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_realizarUtlimoPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_realizarUtlimoPedidoActionPerformed
+
 
     
     
@@ -175,6 +205,12 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         
         jButtonCerrarSesion.setOpaque(false);
         jButtonCerrarSesion.setBackground(new Color(0,0,0,0));
+        
+        B_IrAPerfilCliente.setOpaque(false);
+        B_IrAPerfilCliente.setBackground(new Color(0,0,0,0));
+        
+        B_realizarUtlimoPedido.setOpaque(false);
+        B_realizarUtlimoPedido.setBackground(new Color(0,0,0,0));
     }
     
     
@@ -217,6 +253,8 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_IrAPerfilCliente;
+    private javax.swing.JButton B_realizarUtlimoPedido;
     private javax.swing.JButton BotonBuscarAlgoParaPedir;
     private javax.swing.JButton BotonCaritoCompra;
     private javax.swing.JLabel Direccion;

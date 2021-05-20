@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import java.awt.Color;
+
 /**
  *
  * @author gato
@@ -14,10 +16,21 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
     /**
      * Creates new form PantallaPerfilCliente
      */
+    String usuarioCliente;
+    
     public PantallaPerfilCliente() {
         initComponents();
     }
-
+    public PantallaPerfilCliente(String pUsuario)
+    {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        usuarioCliente = pUsuario;
+       // LabelNombreUsuario.setText(pUsuario);
+        transparenciaDelBoton();
+    
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +48,19 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        B_ModificarperfilCliente.setBorder(null);
         getContentPane().add(B_ModificarperfilCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 370, 60));
+
+        B_CerrarSesionCliente.setBorder(null);
         getContentPane().add(B_CerrarSesionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 610, 120, 80));
+
+        B_VolverPantallaInicioCliente.setBorder(null);
+        B_VolverPantallaInicioCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_VolverPantallaInicioClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(B_VolverPantallaInicioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 100, 90));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -49,6 +73,14 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void B_VolverPantallaInicioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_VolverPantallaInicioClienteActionPerformed
+        // TODO add your handling code here:
+        PantallaClienteInicio pantalla = new PantallaClienteInicio(usuarioCliente);
+                    pantalla.setVisible(true);
+                    this.dispose();
+        
+    }//GEN-LAST:event_B_VolverPantallaInicioClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,6 +115,20 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
                 new PantallaPerfilCliente().setVisible(true);
             }
         });
+    }
+    
+    public void transparenciaDelBoton()
+    {
+        B_CerrarSesionCliente.setOpaque(false);
+        B_CerrarSesionCliente.setBackground(new Color(0,0,0,0));
+        
+        B_ModificarperfilCliente.setOpaque(false);
+        B_ModificarperfilCliente.setBackground(new Color(0,0,0,0));
+        
+        B_VolverPantallaInicioCliente.setOpaque(false);
+        B_VolverPantallaInicioCliente.setBackground(new Color(0,0,0,0));
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
