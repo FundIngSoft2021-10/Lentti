@@ -77,8 +77,11 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicioRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+
+        jButtonVerResenaDeUsuario.setBorder(null);
         getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 170));
 
+        jButtonCerrarSesion.setBorder(null);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
@@ -86,14 +89,20 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 90, 70));
 
+        jButtonGestionarPlatos.setBorder(null);
         jButtonGestionarPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarPlatosActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 190, 180));
+
+        jButtonVerPedidosDeClientes.setBorder(null);
+        jButtonVerPedidosDeClientes.setBorderPainted(false);
         getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 180));
 
+        jButtonGestionarDomiciliario.setBorder(null);
+        jButtonGestionarDomiciliario.setBorderPainted(false);
         jButtonGestionarDomiciliario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionarDomiciliarioActionPerformed(evt);

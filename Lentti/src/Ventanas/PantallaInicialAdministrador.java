@@ -49,6 +49,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelMensajeInicial = new javax.swing.JLabel();
         jButtonEliminarAdministracion = new javax.swing.JButton();
@@ -56,12 +57,14 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
         jButtonModificarRestaurante = new javax.swing.JButton();
         jButtonEliminarRestaurante = new javax.swing.JButton();
         jButtonGestionarPerfil = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicialAdmon.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
 
         jButtonCerrarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -69,38 +72,39 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 110, 60));
 
-        jLabelMensajeInicial.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        getContentPane().add(jLabelMensajeInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 140, 30));
+        jLabelMensajeInicial.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        jLabelMensajeInicial.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabelMensajeInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 410, 40));
 
         jButtonEliminarAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarAdministracionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 415, 200, 50));
+        getContentPane().add(jButtonEliminarAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 200, 170));
 
         jButtonCrearRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCrearRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 200, 50));
+        getContentPane().add(jButtonCrearRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 200, 170));
 
         jButtonModificarRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModificarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 275, 200, 50));
+        getContentPane().add(jButtonModificarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 190, 180));
 
         jButtonEliminarRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEliminarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 200, 50));
+        getContentPane().add(jButtonEliminarRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 200, 170));
 
         jButtonGestionarPerfil.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonGestionarPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -108,10 +112,7 @@ public class PantallaInicialAdministrador extends javax.swing.JFrame {
                 jButtonGestionarPerfilActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 190, 50));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaInicialAdministrador_1.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
+        getContentPane().add(jButtonGestionarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 230, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

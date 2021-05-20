@@ -42,15 +42,26 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonVerPlato = new javax.swing.JButton();
         scrollPanePlatos = new java.awt.ScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListPlatos = new javax.swing.JList<>();
         jButtonAtras = new javax.swing.JButton();
-        jButtonVerPlato = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonVerPlato.setBackground(new java.awt.Color(38, 75, 109));
+        jButtonVerPlato.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        jButtonVerPlato.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonVerPlato.setText("Ver plato");
+        jButtonVerPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonVerPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 620, -1, -1));
 
         jListPlatos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -61,25 +72,17 @@ public class PantallaVerPlatos extends javax.swing.JFrame {
 
         scrollPanePlatos.add(jScrollPane1);
 
-        getContentPane().add(scrollPanePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 97, 460, 460));
+        getContentPane().add(scrollPanePlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 460, 460));
 
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 60));
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 130, 60));
 
-        jButtonVerPlato.setText("Ver plato");
-        jButtonVerPlato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVerPlatoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonVerPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 580, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IpantallaVerPlatos.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 860, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaVerPlatos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
