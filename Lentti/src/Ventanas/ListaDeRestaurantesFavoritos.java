@@ -102,7 +102,7 @@ public class ListaDeRestaurantesFavoritos extends javax.swing.JFrame
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
-        PantallaInicialCliente iniciador = new PantallaInicialCliente(usuario);
+        PantallaClienteInicio iniciador = new PantallaClienteInicio(usuario);
         iniciador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed

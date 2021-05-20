@@ -302,7 +302,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     private void BotonAtrasCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasCCActionPerformed
         // TODO add your handling code here:
         
-        PantallaInicialCliente pantalla = new PantallaInicialCliente(nUsuario);
+        PantallaClienteInicio pantalla = new PantallaClienteInicio(nUsuario);
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonAtrasCCActionPerformed

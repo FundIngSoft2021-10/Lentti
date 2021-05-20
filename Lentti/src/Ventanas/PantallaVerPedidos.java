@@ -191,7 +191,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
        
-        PantallaInicialCliente p = new PantallaInicialCliente(cliente);
+        PantallaClienteInicio p = new PantallaClienteInicio(cliente);
         p.setVisible(true);
         this.dispose();
         

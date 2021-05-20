@@ -695,7 +695,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
 
     private void BotonAtrasP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasP1ActionPerformed
         // TODO add your handling code here:
-        PantallaInicialCliente pantalla = new PantallaInicialCliente(usuario);
+        PantallaClienteInicio pantalla = new PantallaClienteInicio(usuario);
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonAtrasP1ActionPerformed
