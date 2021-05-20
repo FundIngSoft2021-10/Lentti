@@ -940,6 +940,46 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return sePudo;
     }
+    
+    public boolean ModificarCorreoCliente(String pUsuario, String pCorreo) {
+        boolean sePudo = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE lenttiusuario SET correo = '" + pCorreo + "' WHERE usuario = '" + pUsuario + "';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo = true;
+
+        } catch (Exception e) {
+            System.out.println("Errorx:" + e.getMessage());
+            sePudo = false;
+        }
+
+        return sePudo;
+    }
+    
+    public boolean ModificarTarjetaCliente(String pUsuario, String pTarjeta) {
+        boolean sePudo = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE cliente SET tarjetaCredito = '" + pTarjeta + "' WHERE usuario = '" + pUsuario + "';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            sePudo = true;
+
+        } catch (Exception e) {
+            System.out.println("Errorx:" + e.getMessage());
+            sePudo = false;
+        }
+
+        return sePudo;
+    }
 
     public DefaultListModel BuscarPalabrasClave(String pClave) {
         DefaultListModel listRestaurantes = new DefaultListModel();

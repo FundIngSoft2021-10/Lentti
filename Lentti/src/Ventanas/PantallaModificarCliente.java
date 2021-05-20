@@ -55,6 +55,10 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         BotonModificarApellidoCliente = new javax.swing.JButton();
         TF_ModificarDireccionCliente = new javax.swing.JTextField();
         BotonModificarDireccionCliente = new javax.swing.JButton();
+        TF_modificarCorreoCliente = new javax.swing.JTextField();
+        BotonModificarCorreooCliente = new javax.swing.JButton();
+        BotonModificarTarjetaCliente = new javax.swing.JButton();
+        TF_modificarTarjetaCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         BotonEliminarCliente = new javax.swing.JButton();
 
@@ -80,7 +84,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 TF_ModificarNombreClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(TF_ModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 180, 450, 50));
+        getContentPane().add(TF_ModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 450, 50));
 
         BotonModificarNombreCliente.setBorder(null);
         BotonModificarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +92,8 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarNombreClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 173, 120, 60));
-        getContentPane().add(TF_ModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 270, 450, 60));
+        getContentPane().add(BotonModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 120, 60));
+        getContentPane().add(TF_ModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 450, 60));
 
         BotonModificarApellidoCliente.setBorder(null);
         BotonModificarApellidoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -97,8 +101,8 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarApellidoClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 273, 120, 60));
-        getContentPane().add(TF_ModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 370, 450, 60));
+        getContentPane().add(BotonModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 120, 60));
+        getContentPane().add(TF_ModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 450, 60));
 
         BotonModificarDireccionCliente.setBorder(null);
         BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +110,25 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 373, 120, 60));
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 120, 60));
+        getContentPane().add(TF_modificarCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 450, 60));
+
+        BotonModificarCorreooCliente.setBorder(null);
+        BotonModificarCorreooCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarCorreooClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonModificarCorreooCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 120, 60));
+
+        BotonModificarTarjetaCliente.setBorder(null);
+        BotonModificarTarjetaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarTarjetaClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonModificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 120, 60));
+        getContentPane().add(TF_modificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 370, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarCliente.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -124,7 +146,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
 
     private void BotonRegresarPantallaInicialCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarPantallaInicialCliente
         // TODO add your handling code here:
-        PantallaClienteInicio pantalla = new PantallaClienteInicio(LabelNombreUsuario.getText());
+        PantallaPerfilCliente pantalla = new PantallaPerfilCliente(LabelNombreUsuario.getText());
                     pantalla.setVisible(true);
                     this.dispose();
         
@@ -252,6 +274,75 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotonEliminarClienteActionPerformed
 
+    private void BotonModificarCorreooClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarCorreooClienteActionPerformed
+        // TODO add your handling code here:
+        
+        if(TF_modificarCorreoCliente.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Error al Modificar él correo del cliente");
+            return;
+        }
+        
+        if(!correoCorrecto())
+        {
+            JOptionPane.showMessageDialog(null, "el correo no es valido");
+            return;
+        }
+        
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        
+        
+        if(consulta.ModificarCorreoCliente(LabelNombreUsuario.getText(), TF_modificarCorreoCliente.getText()))
+        {
+                    JOptionPane.showMessageDialog(null, "Se modifico el correo del cliente con exito");
+                    TF_modificarCorreoCliente.setText("");
+        }
+        else
+        {
+            TF_modificarCorreoCliente.setText("");
+            JOptionPane.showMessageDialog(null, "Error al Modificar el correo del cliente");
+        }
+        
+    }//GEN-LAST:event_BotonModificarCorreooClienteActionPerformed
+
+    private void BotonModificarTarjetaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarTarjetaClienteActionPerformed
+        // TODO add your handling code here:
+        
+        
+        if(TF_modificarTarjetaCliente.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Error al Modificar la tarjeta del cliente");
+            return;
+        }
+        
+        if(TF_modificarTarjetaCliente.getText().length() < 13 || TF_modificarTarjetaCliente.getText().length() > 19){
+                     JOptionPane.showMessageDialog(null, "la tarjeta no es valida (min 13 digitos)");
+                     return;
+                }
+                
+                if(!tarjetaCorrecta()){
+                    JOptionPane.showMessageDialog(null, "la tarjeta no es valida");
+                    return;
+                }
+        
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        
+        
+        if(consulta.ModificarCorreoCliente(LabelNombreUsuario.getText(), TF_modificarTarjetaCliente.getText()))
+        {
+                    JOptionPane.showMessageDialog(null, "Se modifico la tarjeta del cliente con exito");
+                    TF_modificarTarjetaCliente.setText("");
+        }
+        else
+        {
+            TF_modificarTarjetaCliente.setText("");
+            JOptionPane.showMessageDialog(null, "Error al Modificar la tarjeta del cliente");
+        }
+        
+    }//GEN-LAST:event_BotonModificarTarjetaClienteActionPerformed
+
     public void transparenciaDelBoton(){
         BotonModificarNombreCliente.setOpaque(false);
         BotonModificarNombreCliente.setBackground(new Color(0,0,0,0));
@@ -268,7 +359,55 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
         BotonEliminarCliente.setOpaque(false);
         BotonEliminarCliente.setBackground(new Color(0,0,0,0));
         
+        BotonModificarCorreooCliente.setOpaque(false);
+        BotonModificarCorreooCliente.setBackground(new Color(0,0,0,0));
+        
+        BotonModificarTarjetaCliente.setOpaque(false);
+        BotonModificarTarjetaCliente.setBackground(new Color(0,0,0,0));
+        
      
+    }
+    
+    public boolean correoCorrecto()
+    {
+        boolean correcto =false;
+        String correo = TF_modificarCorreoCliente.getText();
+        String [] partes;
+        partes = correo.split("@");
+        
+        if(partes.length == 2)
+        {
+            if(partes[1].equals("hotmail.com") ||partes[1].equals("gmail.com") )
+            {
+                correcto = true;
+            }
+        }
+        
+        
+        return correcto;
+    }
+    
+     public boolean tarjetaCorrecta(){
+     //verificar tarjeta digitos
+            
+            String str = TF_modificarTarjetaCliente.getText();
+            String reg = "\\s*([0-9])*";
+            String[] res = str.split(reg);
+            Boolean bien =true;
+            for (String out : res) {
+                if (!"".equals(out)) {
+                   // System.out.print(out);
+                   // System.out.println("");
+                    bien =false;
+                    
+                }
+            }
+            if(!bien)
+            {
+                JOptionPane.showMessageDialog(null, "la tarjeta no es valida (solo numeros)");
+                return bien;
+            }
+            return bien;
     }
     
     
@@ -310,12 +449,16 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonEliminarCliente;
     private javax.swing.JButton BotonModificarApellidoCliente;
+    private javax.swing.JButton BotonModificarCorreooCliente;
     private javax.swing.JButton BotonModificarDireccionCliente;
     private javax.swing.JButton BotonModificarNombreCliente;
+    private javax.swing.JButton BotonModificarTarjetaCliente;
     private javax.swing.JLabel LabelNombreUsuario;
     private javax.swing.JTextField TF_ModificarApellidoCliente;
     private javax.swing.JTextField TF_ModificarDireccionCliente;
     private javax.swing.JTextField TF_ModificarNombreCliente;
+    private javax.swing.JTextField TF_modificarCorreoCliente;
+    private javax.swing.JTextField TF_modificarTarjetaCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
