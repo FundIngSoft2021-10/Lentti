@@ -5,7 +5,10 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,6 +31,7 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         usuarioCliente = pUsuario;
        // LabelNombreUsuario.setText(pUsuario);
         transparenciaDelBoton();
+        mostrarInformacionCliente();
     
     
     }
@@ -43,16 +47,27 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         B_ModificarperfilCliente = new javax.swing.JButton();
         B_CerrarSesionCliente = new javax.swing.JButton();
         B_VolverPantallaInicioCliente = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TA_informacionCliente = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         B_ModificarperfilCliente.setBorder(null);
+        B_ModificarperfilCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ModificarperfilClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(B_ModificarperfilCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 370, 60));
 
         B_CerrarSesionCliente.setBorder(null);
+        B_CerrarSesionCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_CerrarSesionClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(B_CerrarSesionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 610, 120, 80));
 
         B_VolverPantallaInicioCliente.setBorder(null);
@@ -63,10 +78,11 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         });
         getContentPane().add(B_VolverPantallaInicioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 100, 90));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("info cliente");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 740, 430));
+        TA_informacionCliente.setColumns(20);
+        TA_informacionCliente.setRows(5);
+        jScrollPane1.setViewportView(TA_informacionCliente);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 760, 460));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pantallaPerfilCliente.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -81,6 +97,20 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
                     this.dispose();
         
     }//GEN-LAST:event_B_VolverPantallaInicioClienteActionPerformed
+
+    private void B_CerrarSesionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CerrarSesionClienteActionPerformed
+        // TODO add your handling code here:
+        InicioSesion pantalla = new InicioSesion();
+        pantalla.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_B_CerrarSesionClienteActionPerformed
+
+    private void B_ModificarperfilClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ModificarperfilClienteActionPerformed
+        // TODO add your handling code here:
+        PantallaModificarCliente pantalla = new PantallaModificarCliente(usuarioCliente);
+        pantalla.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_B_ModificarperfilClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,12 +160,30 @@ public class PantallaPerfilCliente extends javax.swing.JFrame {
         
         
     }
+    
+    
+    private void mostrarInformacionCliente()
+    {
+        //revisar verificar usuario
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<String> datosCliente = consulta.darCliente(usuarioCliente);
+        int tam = datosCliente.size();
+        for(int i = 0; i < tam; i++)
+        {
+            TA_informacionCliente.append(datosCliente.get(i));
+            TA_informacionCliente.append("\n");
+            
+        }
+        
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_CerrarSesionCliente;
     private javax.swing.JButton B_ModificarperfilCliente;
     private javax.swing.JButton B_VolverPantallaInicioCliente;
+    private javax.swing.JTextArea TA_informacionCliente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

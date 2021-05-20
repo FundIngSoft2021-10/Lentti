@@ -124,7 +124,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
 
     private void BotonRegresarPantallaInicialCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarPantallaInicialCliente
         // TODO add your handling code here:
-        PantallaInicialCliente pantalla = new PantallaInicialCliente(LabelNombreUsuario.getText());
+        PantallaClienteInicio pantalla = new PantallaClienteInicio(LabelNombreUsuario.getText());
                     pantalla.setVisible(true);
                     this.dispose();
         

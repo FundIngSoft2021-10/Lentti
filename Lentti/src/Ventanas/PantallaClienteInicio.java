@@ -18,6 +18,7 @@ import java.util.ArrayList;
  */
 public class PantallaClienteInicio extends javax.swing.JFrame {
 
+    String usuarioA;
     /**
      * Creates new form PantallaInicialCliente
      */
@@ -31,8 +32,10 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
         initComponents();
         String usuario = pUsuario;
         L_bienvenidoNombreUsuario.setText(usuario);
+        usuarioA = pUsuario;
         this.setLocationRelativeTo(null);
         transparenciaDelBoton();
+        colocarDireccion();
     }
     
      public Image getIconImage()
@@ -141,9 +144,9 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
 
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
+        InicioSesion pantalla = new InicioSesion();
+        pantalla.setVisible(true);
         this.dispose();
-        InicioSesion iniciador= new InicioSesion();
-        iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void BotonBuscarAlgoParaPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarAlgoParaPedirActionPerformed
@@ -251,6 +254,14 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void colocarDireccion()
+    {
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<String> datos = consulta.darCliente(usuarioA);
+        Direccion.setText(datos.get(2));
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_IrAPerfilCliente;
