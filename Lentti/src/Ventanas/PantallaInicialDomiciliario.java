@@ -38,9 +38,14 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
 
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonVerPerfil = new javax.swing.JButton();
+        jButtonVerPedidosDisponibles = new javax.swing.JButton();
+        jButtonVerReseñas = new javax.swing.JButton();
+        jButtonVerPedidosEnCurso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(800, 690));
         setUndecorated(true);
 
         jButtonCerrarSesion.setText("Cerrar Sesión");
@@ -50,27 +55,71 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Pantalla Inicial Domiciliario");
+        jLabel1.setText("DomUser");
+
+        jButtonVerPerfil.setText("Perfil");
+        jButtonVerPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPerfilActionPerformed(evt);
+            }
+        });
+
+        jButtonVerPedidosDisponibles.setText("Pedidos disponibles");
+        jButtonVerPedidosDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPedidosDisponiblesActionPerformed(evt);
+            }
+        });
+
+        jButtonVerReseñas.setText("Reseñas");
+        jButtonVerReseñas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerReseñasActionPerformed(evt);
+            }
+        });
+
+        jButtonVerPedidosEnCurso.setText("Mis pedidos en curso");
+        jButtonVerPedidosEnCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPedidosEnCursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion))
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(jLabel1)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(266, 266, 266)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonVerPedidosEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVerReseñas, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVerPedidosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVerPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 320, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButtonCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(0, 252, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addComponent(jButtonVerPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVerPedidosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVerReseñas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVerPedidosEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(313, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,6 +131,22 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         InicioSesion iniciador= new InicioSesion();
         iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
+
+    private void jButtonVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerPerfilActionPerformed
+
+    private void jButtonVerPedidosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDisponiblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerPedidosDisponiblesActionPerformed
+
+    private void jButtonVerReseñasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerReseñasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerReseñasActionPerformed
+
+    private void jButtonVerPedidosEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosEnCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerPedidosEnCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +185,10 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonVerPedidosDisponibles;
+    private javax.swing.JButton jButtonVerPedidosEnCurso;
+    private javax.swing.JButton jButtonVerPerfil;
+    private javax.swing.JButton jButtonVerReseñas;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
