@@ -114,13 +114,15 @@ public class PedidosFavoritos extends javax.swing.JFrame {
      
     }
     
-    public void mostrarInformacion()
+    public void mostrarInformacion() //     ACA ESTA EL ERROR
     {
         consultasBaseDeDatos consulta = new BaseDeDatos();
         
         for (String pedido : consulta.darPedidoAFavoritos(usuarioActual)) 
        {
+           System.out.println("primer for");
            for (String plato : consulta.darPlatoSegunPedido(pedido)) {
+               System.out.println("segundofor");
                listapedidosfavoritps.addElement(plato);
            }
            
