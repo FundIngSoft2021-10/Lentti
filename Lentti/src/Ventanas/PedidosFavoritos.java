@@ -8,6 +8,7 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -18,7 +19,7 @@ public class PedidosFavoritos extends javax.swing.JFrame {
 
     
     String usuarioActual;
-    DefaultListModel listapedidosfavoritps = new DefaultListModel();
+   
     /**
      * Creates new form PedidosFavoritos
      */
@@ -47,30 +48,39 @@ public class PedidosFavoritos extends javax.swing.JFrame {
     private void initComponents() {
 
         BotonRegresarAVerPedidos = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        JListPedidosFavoritos = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TA_informacion = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BotonRegresarAVerPedidos.setBorder(null);
+        BotonRegresarAVerPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarAVerPedidosActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonRegresarAVerPedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 40, 110, 40));
 
-        JListPedidosFavoritos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(JListPedidosFavoritos);
+        TA_informacion.setColumns(20);
+        TA_informacion.setRows(5);
+        jScrollPane1.setViewportView(TA_informacion);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 180, 450, 450));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 440, 440));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pantallaPedidosFavoritos.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonRegresarAVerPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarAVerPedidosActionPerformed
+        // TODO add your handling code here:
+       PantallaClienteInicio vp = new PantallaClienteInicio(usuarioActual);
+            vp.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_BotonRegresarAVerPedidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,24 +127,40 @@ public class PedidosFavoritos extends javax.swing.JFrame {
     public void mostrarInformacion() //     ACA ESTA EL ERROR
     {
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        
-        for (String pedido : consulta.darPedidoAFavoritos(usuarioActual)) 
+        System.out.println("antes de la consulta");
+       int [] pedidos = consulta.darPedidoAFavoritos(usuarioActual);
+       System.out.println("despues de la consulta");
+       if(pedidos.length != 0 || pedidos != null)
        {
-           System.out.println("primer for");
-           for (String plato : consulta.darPlatoSegunPedido(pedido)) {
-               System.out.println("segundofor");
-               listapedidosfavoritps.addElement(plato);
-           }
-           
+           for(int i = 0; i < pedidos.length; i++)
+            {
+                if(pedidos[i] == 0)
+                {
+                    break;
+                }
+                TA_informacion.append("Pedido: " + Integer.toString(pedidos[i]));
+               
+                /*System.out.println("antes de la consulta");
+                ArrayList<String> platos = consulta.darPlatoSegunPedido(Integer.toString(pedidos[i]));
+                System.out.println("despues de la consulta");
+                for(int j = 0; j < platos.size(); j++ )
+                {
+                    TA_informacion.append(platos.get(j));
+                }
+*/
+                
+                TA_informacion.append("\n");
+            }
        }
        
-       this.JListPedidosFavoritos.setModel(listapedidosfavoritps);
+       
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegresarAVerPedidos;
-    private javax.swing.JList<String> JListPedidosFavoritos;
+    private javax.swing.JTextArea TA_informacion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

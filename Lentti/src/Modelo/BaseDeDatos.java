@@ -2265,9 +2265,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return nRest;
     }
     
-    public ArrayList<String> darPedidoAFavoritos(String pUsuario) {
+    public int[] darPedidoAFavoritos(String pUsuario) {
         
-        ArrayList<String> nRest = null;
+        int[] nRest = new int[100];
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -2275,8 +2275,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             String consulta = "SELECT IDpedido FROM pedidoFavorito WHERE cliente = '" + pUsuario + "'";
             ResultSet result = st.executeQuery(consulta);
 
+            int i = 0;
             while (result.next()) {
-                nRest.add(result.getString("IDpedido"));
+                nRest[i] = (result.getInt("IDpedido"));
+                i++;
             }
 
             result.close();
