@@ -74,8 +74,8 @@ public interface consultasBaseDeDatos {
     public abstract boolean VaciarCarrito ( String nombreUsuario);
     public abstract boolean EliminarPedido( String pUsuario, String pRestaurante, String pPlato);
     public abstract boolean EliminarCliente( String pUsuario);
-    public abstract boolean calificarRestaurante(String pUsuario, int calif, String comentario);
-    public abstract boolean calificarDomiciliario(String pUsuario, int calif, String comentario);
+    public boolean calificarRestaurante(String pPedido,String pCliente, String pRestaurante, int calif, String comentario, String pFecha);
+    public boolean calificarDomiciliario(String pPedido,String pCliente, String pDomiciliario, int calif, String comentario, String pFecha);
     public abstract boolean CrearPedido(String cliente, String domiciliario, float Total, String estado);
     public abstract DefaultListModel BuscarPedidosEnCurso(String Pusuario);
     public abstract DefaultListModel BuscarPedidosAnteriores(String Pusuario);
@@ -118,4 +118,6 @@ public interface consultasBaseDeDatos {
     public abstract ArrayList<String> darPlatoSegunPedido(String pPedido);
     
     public abstract ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario);
+    
+    public abstract String darHoraResena(String idPedido);
 }

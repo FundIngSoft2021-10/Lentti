@@ -231,7 +231,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         consultasBaseDeDatos consulta = new BaseDeDatos();
         rest = consulta.ObternerRestauranteDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
         domdoc = consulta.ObternerDomiciliarioDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
-        PantallaSatisfacción p = new PantallaSatisfacción(rest, domdoc, cliente);
+        PantallaSatisfacción p = new PantallaSatisfacción(rest, domdoc, cliente, this.jListPedidosEntregados.getSelectedValue().toString() );
         p.setVisible(true);
         this.dispose();
         }

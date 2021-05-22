@@ -1372,14 +1372,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean calificarRestaurante(String pUsuario, int calif, String comentario) {
+    public boolean calificarRestaurante(String pPedido,String pCliente, String pRestaurante, int calif, String comentario, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta
-                    = "insert into resenharestaurante values('" + pUsuario + "' , " + calif + ", '" + comentario + "')";
+            String consulta = "insert into resenhapedidorestaurante values('" + pPedido + "' ,'" + pCliente + "' ,'" + pRestaurante + "' , '" + calif + "', '" + comentario + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1390,14 +1389,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean calificarDomiciliario(String pUsuario, int calif, String comentario) {
+    public boolean calificarDomiciliario(String pPedido,String pCliente, String pDomiciliario, int calif, String comentario, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta
-                    = "insert into resenhadomiciliario values('" + pUsuario + "' , " + calif + ", '" + comentario + "')";
+            String consulta = "insert into resenhapedidodomiciliario values('" + pPedido + "' ,'" + pCliente + "' ,'" + pDomiciliario + "' , '" + calif + "', '" + comentario + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -2332,18 +2330,18 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
     }
     
-     public String darFechaResena(String nRestaurante) {
+     public String darHoraResena(String npedido) {
         String horario = null;
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT Horario FROM restaurante WHERE nombreRestaurante = '" + nRestaurante + "'";
+            String consulta = "SELECT fecha FROM resenhapedidorestaurante WHERE idpedido = '" + npedido + "'";
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
-                horario = result.getString("Horario");
+                horario = result.getString("fecha");
             }
 
             result.close();

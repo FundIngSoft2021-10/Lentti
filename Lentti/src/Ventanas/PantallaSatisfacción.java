@@ -20,6 +20,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
     String prestaurante;
     String pdomiciliario;
     String clientep;
+    String pedido;
 
     /**
      * Creates new form PantallaSatisfacción
@@ -35,6 +36,16 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         this.prestaurante = restaurante;
         this.pdomiciliario = domiDoc;
         this.clientep = cliente;
+    }
+    
+    public PantallaSatisfacción(String restaurante, String domiDoc, String cliente, String idPedido) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.prestaurante = restaurante;
+        this.pdomiciliario = domiDoc;
+        this.clientep = cliente;
+        this.pedido = idPedido;
+        
     }
 
     /**
@@ -249,13 +260,42 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             
             consultasBaseDeDatos consulta = new BaseDeDatos();
             
+            //ver si tiene fecha el pedido, si no tiene se pone la fecha actual, si tiene se comparan
+            String fechaResena = consulta.darHoraResena(pedido);
             
-            consulta.calificarRestaurante(this.prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()), this.jTextArea2.getText());
-            consulta.calificarDomiciliario(this.pdomiciliario, Integer.parseInt(this.jComboBox4.getSelectedItem().toString()), this.jTextArea1.getText());
-            JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
-            PantallaVerPedidos p = new PantallaVerPedidos(clientep);
-            p.setVisible(true);
-            this.dispose();
+            if (fechaResena == null)
+            {
+              // se crea normalmente
+                consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
+                PantallaVerPedidos p = new PantallaVerPedidos(clientep);
+                p.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                String[] partes = fechaResena.split("/");
+                if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(dia)  ) && partes[2].equals(  Integer.toString(dia)  )   ){
+                    consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
+                    PantallaVerPedidos p = new PantallaVerPedidos(clientep);
+                    p.setVisible(true);
+                    this.dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "ya no puede modificar su calificacion");
+                    PantallaVerPedidos p = new PantallaVerPedidos(clientep);
+                    p.setVisible(true);
+                    this.dispose();
+                }
+            }
+            
+
+            
+            
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
