@@ -46,10 +46,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonIniciarSesion = new javax.swing.JButton();
-        jToggleBotonUsuarioCliente = new javax.swing.JToggleButton();
-        jToggleBotonUsuarioAdmin = new javax.swing.JToggleButton();
-        jToggleBotonUsuarioRestaurante = new javax.swing.JToggleButton();
-        jToggleBotonUsuarioDomiciliario = new javax.swing.JToggleButton();
         jTextFieldCampoUsuario = new javax.swing.JTextField();
         jButtonSalirApp = new javax.swing.JButton();
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
@@ -71,38 +67,6 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 200, 50));
-
-        jToggleBotonUsuarioCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleBotonUsuarioClienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 170, 30));
-
-        jToggleBotonUsuarioAdmin.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleBotonUsuarioAdminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 160, 30));
-
-        jToggleBotonUsuarioRestaurante.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioRestaurante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleBotonUsuarioRestauranteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 160, 40));
-
-        jToggleBotonUsuarioDomiciliario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jToggleBotonUsuarioDomiciliario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleBotonUsuarioDomiciliarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 160, 40));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 170, 40));
@@ -147,8 +111,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        
-        //si es esta
         String seleccion=this.jComboBoxTipoPerfil.getSelectedItem().toString();
         if(seleccion.equals("Cliente"))
         {
@@ -205,82 +167,6 @@ public class InicioSesion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
             }
         }
-        //quitar lo de abajo
-        
-        //si inicia sesión un cliente
-        /*if(this.jToggleBotonUsuarioCliente.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
-        {
-            
-            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
-            {
-                PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(this.jTextFieldCampoUsuario.getText());
-                nuevoCliente.setVisible(true);
-                this.dispose();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
-            }
-
-        }
-        //si inicia sesión un administrador
-        else if (this.jToggleBotonUsuarioAdmin.isSelected()&& !(this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
-        {
-            
-            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A"))
-            {
-                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(this.jTextFieldCampoUsuario.getText());
-                nuevoAdmin.setVisible(true);
-                this.dispose();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
-            }
-            
-        }
-        //si inicia sesión un restaurante
-        else if (this.jToggleBotonUsuarioRestaurante.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
-        {
-           
-            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
-            {
-                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(this.jTextFieldCampoUsuario.getText());
-                nuevoResturante.setVisible(true);
-                this.dispose();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
-            }
-            
-        }
-        //si inicia sesión un domiciliario
-        else if (this.jToggleBotonUsuarioDomiciliario.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioCliente.isSelected() ))
-        {
-            
-            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
-            {
-                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(this.jTextFieldCampoUsuario.getText());
-                nuevoDomiciliario.setVisible(true);
-                this.dispose();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
-            }
-            
-        }
-        //si no selecciona algun tipo de usuario
-        else if(!this.jToggleBotonUsuarioAdmin.isSelected() && !this.jToggleBotonUsuarioRestaurante.isSelected() && !this.jToggleBotonUsuarioCliente.isSelected() && !this.jToggleBotonUsuarioDomiciliario.isSelected() )
-        {
-            JOptionPane.showMessageDialog(null, "Seleccione algun tipo de usuario");
-        }
-        //si selecciona mas de un tipo de usuario
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Seleccione un solo tipo de usuario");
-        }*/
             
         
         
@@ -288,23 +174,10 @@ public class InicioSesion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
-    private void jToggleBotonUsuarioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioClienteActionPerformed
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_jToggleBotonUsuarioClienteActionPerformed
-
     private void jButtonSalirAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirAppActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirAppActionPerformed
-
-    private void jToggleBotonUsuarioAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleBotonUsuarioAdminActionPerformed
-
-    private void jToggleBotonUsuarioRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioRestauranteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleBotonUsuarioRestauranteActionPerformed
 
     private void BotonCrearCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearCliente
             // TODO add your handling code here:
@@ -316,10 +189,6 @@ public class InicioSesion extends javax.swing.JFrame {
             
             
     }//GEN-LAST:event_BotonCrearCliente
-
-    private void jToggleBotonUsuarioDomiciliarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleBotonUsuarioDomiciliarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleBotonUsuarioDomiciliarioActionPerformed
 
     private void jButtonOlvidoContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOlvidoContraActionPerformed
         // TODO add your handling code here:
@@ -342,18 +211,6 @@ public class InicioSesion extends javax.swing.JFrame {
         this.jButtonOlvidoContra.setOpaque(false);
         this.jButtonOlvidoContra.setBackground(new Color(0, 0, 0, 0));
         this.jButtonOlvidoContra.setBorderPainted(false);
-        this.jToggleBotonUsuarioAdmin.setOpaque(false);
-        this.jToggleBotonUsuarioAdmin.setBackground(new Color(0, 0, 0, 0));
-        this.jToggleBotonUsuarioAdmin.setBorderPainted(false);
-        this.jToggleBotonUsuarioCliente.setOpaque(false);
-        this.jToggleBotonUsuarioCliente.setBackground(new Color(0, 0, 0, 0));
-        this.jToggleBotonUsuarioCliente.setBorderPainted(false);
-        this.jToggleBotonUsuarioDomiciliario.setOpaque(false);
-        this.jToggleBotonUsuarioDomiciliario.setBackground(new Color(0, 0, 0, 0));
-        this.jToggleBotonUsuarioDomiciliario.setBorderPainted(false);
-        this.jToggleBotonUsuarioRestaurante.setOpaque(false);
-        this.jToggleBotonUsuarioRestaurante.setBackground(new Color(0, 0, 0, 0));
-        this.jToggleBotonUsuarioRestaurante.setBorderPainted(false);
     }
     /**
      * @param args the command line arguments
@@ -403,9 +260,5 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;
-    private javax.swing.JToggleButton jToggleBotonUsuarioAdmin;
-    private javax.swing.JToggleButton jToggleBotonUsuarioCliente;
-    private javax.swing.JToggleButton jToggleBotonUsuarioDomiciliario;
-    private javax.swing.JToggleButton jToggleBotonUsuarioRestaurante;
     // End of variables declaration//GEN-END:variables
 }
