@@ -46,6 +46,9 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         this.clientep = cliente;
         this.pedido = idPedido;
         
+        System.out.println("restaurante: " + this.prestaurante);
+        System.out.println("domiciliaroi: " + this.pdomiciliario);
+        
     }
 
     /**
@@ -256,6 +259,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             mes = registro.getMonthValue();
             year = registro.getYear();
             fecha = dia+"/"+mes+"/"+year;
+            System.out.println("fecha actual  "+ fecha);
             
             
             consultasBaseDeDatos consulta = new BaseDeDatos();
@@ -266,6 +270,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             if (fechaResena == null)
             {
               // se crea normalmente
+                System.out.println("se crea normalmente");
                 consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                 consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                 JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
@@ -277,6 +282,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             {
                 String[] partes = fechaResena.split("/");
                 if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(dia)  ) && partes[2].equals(  Integer.toString(dia)  )   ){
+                    System.out.println("se crea por la fecha");
                     consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                     consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                     JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
@@ -286,6 +292,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                 }
                 else
                 {
+                    System.out.println("no se pudo");
                     JOptionPane.showMessageDialog(null, "ya no puede modificar su calificacion");
                     PantallaVerPedidos p = new PantallaVerPedidos(clientep);
                     p.setVisible(true);

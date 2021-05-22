@@ -1378,7 +1378,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into resenhapedidorestaurante values('" + pPedido + "' ,'" + pCliente + "' ,'" + pRestaurante + "' , '" + calif + "', '" + comentario + "')";
+            String consulta = "insert into resenhapedidorestaurante values('" + pPedido + "' ,'" + pCliente + "' ,'" + pRestaurante + "' , '" + calif + "', '" + comentario + "','" + pFecha + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1395,7 +1395,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into resenhapedidodomiciliario values('" + pPedido + "' ,'" + pCliente + "' ,'" + pDomiciliario + "' , '" + calif + "', '" + comentario + "')";
+            String consulta = "insert into resenhapedidodomiciliario values('" + pPedido + "' ,'" + pCliente + "' ,'" + pDomiciliario + "' , '" + calif + "', '" + comentario + "','" + pFecha + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
