@@ -197,7 +197,7 @@ public class InicioSesion extends javax.swing.JFrame {
             
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
             {
-                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario();
+                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(this.jTextFieldCampoUsuario.getText());
                 nuevoDomiciliario.setVisible(true);
                 this.dispose();
             }

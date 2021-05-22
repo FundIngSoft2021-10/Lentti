@@ -5,6 +5,10 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
+import java.util.ArrayList;
+
 /**
  *
  * @author Tony
@@ -16,6 +20,40 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
      */
     public PantallaPerfilDomiciliario() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public PantallaPerfilDomiciliario(String pUsuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<Object> datosDomi = consulta.ObtenerDatosDomiciliario(pUsuario);
+        int tam = datosDomi.size();
+        for(int i = 0; i < tam; i++)
+        {
+            
+            if(i == 0) {
+                jTextFieldNombre.setText((String)datosDomi.get(i));
+            }
+            
+            if(i == 1) {
+                jTextFieldDocumento.setText((String)datosDomi.get(i));
+            }
+            
+            if(i == 2) {
+                jTextFieldTeléfono.setText((String)datosDomi.get(i));
+            }
+            
+            if(i == 3) {
+                jTextFieldDomiciliosEntregados.setText((String)datosDomi.get(i));
+            }
+            
+            if(i == 4) {
+                jTextFieldPlacaVehículo.setText((String)datosDomi.get(i));
+            }
+            
+        }
+        
     }
 
     /**

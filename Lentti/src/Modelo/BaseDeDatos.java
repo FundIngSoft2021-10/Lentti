@@ -2288,4 +2288,45 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         
         return nRest;
     }
+    
+    public ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario) {
+        
+        ArrayList<Object> InformacionDomiciliario = new ArrayList<>();
+        String sNombre;
+        String sDocumento;
+        String sTelefono;
+        Double sDomiEntregados;
+        String sPlacaVehiculo;
+        
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT nombre, documento, telefono, domiciliosentregados, placavehiculo FROM domiciliario WHERE nombre = '" + pUsuario + "' ";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                sNombre = result.getString("nombre");
+                sDocumento = result.getString("documento");
+                sTelefono = result.getString("telefono");
+                sDomiEntregados = result.getDouble("domiciliosentregados");
+                sPlacaVehiculo = result.getString("placavehiculo");
+                InformacionDomiciliario.add(sNombre);
+                InformacionDomiciliario.add(sDocumento);
+                InformacionDomiciliario.add(sTelefono);
+                InformacionDomiciliario.add(sDomiEntregados);
+                InformacionDomiciliario.add(sPlacaVehiculo);
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return InformacionDomiciliario;
+        
+    }
 }

@@ -21,6 +21,14 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    public PantallaInicialDomiciliario(String pUsuario) {
+        initComponents();
+        String users = pUsuario;
+        jLabelDomUser.setText(users);
+        this.setLocationRelativeTo(null);
+    }
+    
      public Image getIconImage()
     {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
@@ -37,7 +45,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonCerrarSesion = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelDomUser = new javax.swing.JLabel();
         jButtonVerPerfil = new javax.swing.JButton();
         jButtonVerPedidosDisponibles = new javax.swing.JButton();
         jButtonVerReseñas = new javax.swing.JButton();
@@ -55,7 +63,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("DomUser");
+        jLabelDomUser.setText("DomUser");
 
         jButtonVerPerfil.setText("Perfil");
         jButtonVerPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +99,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel1)
+                .addComponent(jLabelDomUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCerrarSesion))
             .addGroup(layout.createSequentialGroup()
@@ -110,7 +118,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLabelDomUser)
                 .addGap(93, 93, 93)
                 .addComponent(jButtonVerPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -189,6 +197,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerPedidosEnCurso;
     private javax.swing.JButton jButtonVerPerfil;
     private javax.swing.JButton jButtonVerReseñas;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelDomUser;
     // End of variables declaration//GEN-END:variables
 }

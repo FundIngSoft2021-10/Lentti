@@ -116,4 +116,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean agregarPedidoAFavoritos(String pUsuario, String pPedido);
     public abstract ArrayList<String> darPedidoAFavoritos(String pUsuario);
     public abstract ArrayList<String> darPlatoSegunPedido(String pPedido);
+    
+    public abstract ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario);
 }
