@@ -91,7 +91,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         jTextAreaCampoDescripcion.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaCampoDescripcion);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 450, 60));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 390, 60));
 
         jTextFieldCampoNIT.setBorder(null);
         jTextFieldCampoNIT.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
                 jTextFieldCampoPalabrasClaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 602, 450, 30));
+        getContentPane().add(jTextFieldCampoPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 602, 380, 30));
 
         jTextFieldCampoNombre.setBorder(null);
         jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -164,14 +164,14 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 50, 50));
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 110, 60));
 
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 60, 60));
+        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 140, 30));
         getContentPane().add(jLabelCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
 
         jButtonAgregarImagen.setText("Agregar Imagen");
@@ -182,7 +182,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         });
         getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 160, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaRestauranteCreacion.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();

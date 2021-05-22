@@ -188,7 +188,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
                 jButtonAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 50, 50));
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
