@@ -8,6 +8,8 @@ package Ventanas;
 import javax.swing.JOptionPane;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -235,7 +237,19 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor seleccione la calificacion para restaurante y domiciliario");
         }
         if (this.jComboBox1.getSelectedItem() != "Seleccionar" && this.jComboBox4.getSelectedItem() != "Seleccionar") {
+            
+            String fecha;
+            LocalDateTime registro = LocalDateTime.now();
+            int dia,mes,year;
+            dia = registro.getDayOfMonth();
+            mes = registro.getMonthValue();
+            year = registro.getYear();
+            fecha = dia+"/"+mes+"/"+year;
+            
+            
             consultasBaseDeDatos consulta = new BaseDeDatos();
+            
+            
             consulta.calificarRestaurante(this.prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()), this.jTextArea2.getText());
             consulta.calificarDomiciliario(this.pdomiciliario, Integer.parseInt(this.jComboBox4.getSelectedItem().toString()), this.jTextArea1.getText());
             JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");

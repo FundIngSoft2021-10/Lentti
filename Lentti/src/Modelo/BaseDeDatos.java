@@ -2331,4 +2331,28 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return InformacionDomiciliario;
         
     }
+    
+     public String darFechaResena(String nRestaurante) {
+        String horario = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT Horario FROM restaurante WHERE nombreRestaurante = '" + nRestaurante + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                horario = result.getString("Horario");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return horario;
+    }
 }
