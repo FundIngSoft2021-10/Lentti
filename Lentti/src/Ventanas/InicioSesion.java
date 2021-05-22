@@ -55,6 +55,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jPasswordFieldCampoContrasena = new javax.swing.JPasswordField();
         jButtonCrearCliente = new javax.swing.JButton();
         jButtonOlvidoContra = new javax.swing.JButton();
+        jComboBoxTipoPerfil = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +70,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jButtonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, 150, 40));
+        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 200, 50));
 
         jToggleBotonUsuarioCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +78,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jToggleBotonUsuarioClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 567, 170, 30));
+        getContentPane().add(jToggleBotonUsuarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 170, 30));
 
         jToggleBotonUsuarioAdmin.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +86,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jToggleBotonUsuarioAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 567, 160, 30));
+        getContentPane().add(jToggleBotonUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 160, 30));
 
         jToggleBotonUsuarioRestaurante.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioRestaurante.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +94,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jToggleBotonUsuarioRestauranteActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 560, 160, 40));
+        getContentPane().add(jToggleBotonUsuarioRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 160, 40));
 
         jToggleBotonUsuarioDomiciliario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jToggleBotonUsuarioDomiciliario.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +102,10 @@ public class InicioSesion extends javax.swing.JFrame {
                 jToggleBotonUsuarioDomiciliarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 560, 160, 40));
+        getContentPane().add(jToggleBotonUsuarioDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 160, 40));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 170, 40));
+        getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 170, 40));
 
         jButtonSalirApp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonSalirApp.setBorderPainted(false);
@@ -116,7 +117,7 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
 
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 170, 40));
+        getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 170, 40));
 
         jButtonCrearCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jButtonCrearCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -124,16 +125,19 @@ public class InicioSesion extends javax.swing.JFrame {
                 BotonCrearCliente(evt);
             }
         });
-        getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, 160, 40));
+        getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 170, 40));
 
         jButtonOlvidoContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOlvidoContraActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonOlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 625, 160, 30));
+        getContentPane().add(jButtonOlvidoContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 620, 170, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IInicioSesion.png"))); // NOI18N
+        jComboBoxTipoPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Restaurante", "Administrador", "Domiciliario" }));
+        getContentPane().add(jComboBoxTipoPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 170, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicioSesion.png"))); // NOI18N
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
@@ -143,8 +147,68 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        
+        //si es esta
+        String seleccion=this.jComboBoxTipoPerfil.getSelectedItem().toString();
+        if(seleccion.equals("Cliente"))
+        {
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
+            {
+                PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(this.jTextFieldCampoUsuario.getText());
+                nuevoCliente.setVisible(true);
+                this.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+        }
+        else if(seleccion.equals("Restaurante"))
+        {
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
+            {
+                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(this.jTextFieldCampoUsuario.getText());
+                nuevoResturante.setVisible(true);
+                this.dispose();
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+        }
+        else if(seleccion.equals("Administrador"))
+        {
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A"))
+            {
+                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(this.jTextFieldCampoUsuario.getText());
+                nuevoAdmin.setVisible(true);
+                this.dispose();
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+        }
+        else if(seleccion.equals("Domiciliario"))
+        {
+            if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
+            {
+                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(this.jTextFieldCampoUsuario.getText());
+                nuevoDomiciliario.setVisible(true);
+                this.dispose();
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario, Contraseña o Tipo de usuario incorrecto");
+            }
+        }
+        //quitar lo de abajo
+        
         //si inicia sesión un cliente
-        if(this.jToggleBotonUsuarioCliente.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
+        /*if(this.jToggleBotonUsuarioCliente.isSelected() && !(this.jToggleBotonUsuarioAdmin.isSelected() || this.jToggleBotonUsuarioRestaurante.isSelected() || this.jToggleBotonUsuarioDomiciliario.isSelected() ))
         {
             
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
@@ -216,7 +280,7 @@ public class InicioSesion extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(null, "Seleccione un solo tipo de usuario");
-        }
+        }*/
             
         
         
@@ -335,6 +399,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonOlvidoContra;
     private javax.swing.JButton jButtonSalirApp;
+    private javax.swing.JComboBox<String> jComboBoxTipoPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPasswordFieldCampoContrasena;
     private javax.swing.JTextField jTextFieldCampoUsuario;
