@@ -2243,7 +2243,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     
     public ArrayList<String> darPlatoSegunPedido(String pPedido) {
         
-        ArrayList<String> nRest = null;
+        ArrayList<String> nRest = new ArrayList<String>();
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);

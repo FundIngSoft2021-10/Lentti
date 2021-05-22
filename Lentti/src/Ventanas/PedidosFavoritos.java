@@ -127,9 +127,9 @@ public class PedidosFavoritos extends javax.swing.JFrame {
     public void mostrarInformacion() //     ACA ESTA EL ERROR
     {
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        System.out.println("antes de la consulta");
+        System.out.println("antes de la consulta1");
        int [] pedidos = consulta.darPedidoAFavoritos(usuarioActual);
-       System.out.println("despues de la consulta");
+       System.out.println("despues de la consulta1");
        if(pedidos.length != 0 || pedidos != null)
        {
            for(int i = 0; i < pedidos.length; i++)
@@ -140,14 +140,16 @@ public class PedidosFavoritos extends javax.swing.JFrame {
                 }
                 TA_informacion.append("Pedido: " + Integer.toString(pedidos[i]));
                
-                /*System.out.println("antes de la consulta");
+                System.out.println("antes de la consulta " + i);
                 ArrayList<String> platos = consulta.darPlatoSegunPedido(Integer.toString(pedidos[i]));
-                System.out.println("despues de la consulta");
+                System.out.println("despues de la consulta "+ i);
                 for(int j = 0; j < platos.size(); j++ )
                 {
-                    TA_informacion.append(platos.get(j));
+                    System.out.println("en el for "+ j);
+                    System.out.println(platos.get(j));
+                    TA_informacion.append(platos.get(j).toString());
                 }
-*/
+
                 
                 TA_informacion.append("\n");
             }
