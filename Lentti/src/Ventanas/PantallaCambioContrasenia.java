@@ -11,6 +11,7 @@ import Modelo.CorreoElectronico;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -80,6 +81,7 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
         getContentPane().add(ContraNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 300, 40));
 
         GuardarIniciar.setBorder(null);
+        GuardarIniciar.setContentAreaFilled(false);
         GuardarIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 GuardarIniciarMouseClicked(evt);
@@ -89,6 +91,7 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
 
         BotonAtras.setActionCommand("BotonAtras");
         BotonAtras.setBorder(null);
+        BotonAtras.setContentAreaFilled(false);
         BotonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAtrasActionPerformed(evt);
@@ -111,15 +114,21 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAtrasActionPerformed
 
     private void GuardarIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarIniciarMouseClicked
-        // TODO add your handling code here:
-        
+                
         //Validacion
         consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resp = false;
+        LocalDate fecha = LocalDate.now();
+        String fechaModi = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getYear());
         
         if(rol == "C"){
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "C")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
                    consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
+                   resp = consulta.ModificarUltimaFecha(usuario, fechaModi);
+                   if(resp==false){
+                       JOptionPane.showMessageDialog(null, "No se pudo cambiar correctamente");
+                   }
                    PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(usuario); //Se muestra pantalla
                    nuevoCliente.setVisible(true);
                    this.dispose();
@@ -137,6 +146,10 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "R")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
                    consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
+                   resp = consulta.ModificarUltimaFecha(usuario, fechaModi);
+                   if(resp==false){
+                       JOptionPane.showMessageDialog(null, "No se pudo cambiar correctamente");
+                   }
                    PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(usuario);
                    nuevoResturante.setVisible(true);
                    this.dispose();
@@ -154,6 +167,10 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "D")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
                     consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
+                    resp = consulta.ModificarUltimaFecha(usuario, fechaModi);
+                    if(resp==false){
+                        JOptionPane.showMessageDialog(null, "No se pudo cambiar correctamente");
+                    }
                     PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(usuario);
                     nuevoDomiciliario.setVisible(true);
                     this.dispose();
@@ -171,6 +188,11 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "A")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
                    consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
+                   consulta.ModificarUltimaFecha(usuario, fechaModi);
+                   resp = consulta.ModificarUltimaFecha(usuario, fechaModi);
+                   if(resp==false){
+                       JOptionPane.showMessageDialog(null, "No se pudo cambiar correctamente");
+                   }
                    PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(usuario);
                    nuevoAdmin.setVisible(true);
                    this.dispose();
@@ -184,6 +206,7 @@ public class PantallaCambioContrasenia extends javax.swing.JFrame {
            }
 
         }
+        
         
         
     }//GEN-LAST:event_GuardarIniciarMouseClicked

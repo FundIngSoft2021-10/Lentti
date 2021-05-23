@@ -166,7 +166,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         
         consultasBaseDeDatos consulta = new BaseDeDatos();
         LocalDate fecha = LocalDate.now();
-        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
         //ACA ESTEFANIA 
             if( consulta.CrearUsuario(TF_nombreUsuario.getText(), TF_contraseñaUsuario.getText(), "C", "correoparacambiar@hotmail.com",fechaCreacion) == true )
             {

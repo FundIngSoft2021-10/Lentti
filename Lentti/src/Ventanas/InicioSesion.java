@@ -63,6 +63,8 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonIniciarSesion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonIniciarSesion.setBorder(null);
+        jButtonIniciarSesion.setContentAreaFilled(false);
         jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIniciarSesionActionPerformed(evt);
@@ -74,13 +76,15 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 170, 40));
 
         jButtonSalirApp.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonSalirApp.setBorder(null);
         jButtonSalirApp.setBorderPainted(false);
+        jButtonSalirApp.setContentAreaFilled(false);
         jButtonSalirApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirAppActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
+        getContentPane().add(jButtonSalirApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 100, 50));
 
         jPasswordFieldCampoContrasena.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 170, 40));
@@ -114,7 +118,7 @@ public class InicioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Validacion cambio contra
         
-        String[] partes;
+         String[] partes;
         String dia, mes, anio;
         long diasComp = 0, diasMax = 0;
         consultasBaseDeDatos consulta = new BaseDeDatos();

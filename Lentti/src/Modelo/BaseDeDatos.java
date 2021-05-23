@@ -209,7 +209,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
         boolean resultado = false;
         LocalDate fecha = LocalDate.now();
-        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -383,7 +383,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario) {
         boolean resultado = false;
         LocalDate fecha = LocalDate.now();
-        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
         boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com",fechaCreacion);
         FileInputStream imagen = null;
         try {
@@ -2451,19 +2451,17 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
     
-    public String darFechaCreacionLenttiUsuario(String nUsuario) {
+        public String darFechaCreacionLenttiUsuario(String nUsuario) {
         String fecha = null;
-        System.out.println("obviamente entro");
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT ultimaContrasena FROM lenttiusuario WHERE usuario = '" + nUsuario + "'";
+            String consulta = "SELECT ultimacontrasena FROM lenttiusuario WHERE usuario = '" + nUsuario + "'";
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
-                fecha = result.getString("ultimaContrasena");
-                System.out.println("miraaaa "+fecha+"\n");
+                fecha = result.getString("ultimacontrasena");
             }
 
             result.close();
@@ -2474,5 +2472,23 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
 
         return fecha;
+    }
+    
+    public boolean ModificarUltimaFecha(String pUsuario, String fecha) {
+        boolean resultado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "UPDATE lenttiusuario  SET ultimacontrasena= '" + fecha + "' WHERE usuario='" + pUsuario + "';";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            resultado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+            resultado = false;
+        }
+        return resultado;
     }
 }

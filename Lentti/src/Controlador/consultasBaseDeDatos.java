@@ -36,6 +36,7 @@ public interface consultasBaseDeDatos {
     public abstract DefaultListModel BuscarNombrePlato (String nombre,String usuario);
     public abstract DefaultListModel BuscarPrecioPlato (String nombre,String usuario);
     public abstract DefaultListModel BuscarDescripcionPlato (String nombre,String usuario);
+    public abstract boolean ModificarUltimaFecha(String pUsuario, String fecha);
     
     public abstract DefaultListModel BuscarDomiciliariosRestaurante (String usuario);
     public abstract boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre);
