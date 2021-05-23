@@ -68,7 +68,7 @@ public class PantallaPedido extends javax.swing.JFrame {
         BotonModificarDireccionCliente = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
-        platos = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -169,7 +169,9 @@ public class PantallaPedido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(platos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,13 +180,32 @@ public class PantallaPedido extends javax.swing.JFrame {
 //Confirmar pedido
  consultasBaseDeDatos consulta = new BaseDeDatos();
  float precio = Float.parseFloat(costo.getText());  
-int id=0;
+int id;
 
- if ( consulta.CrearPedido(nusuario.getText(), "1000900800", precio , "en curso"))
+ if ( consulta.CrearPedido(nusuario.getText(), "0", precio , "en curso"))
          {
+                
             JOptionPane.showMessageDialog(null, "Se recibió tu pedido");
-          /*  id = consulta.DarIdPedido(nusuario.getText(), "en curso", precio , "1000900800");
-            relacionarpxp(id); */
+            id = consulta.DarIdPedido(nusuario.getText()); //Tengo el ID
+            restaurante.getText(); //Tengo el nombre del restaurante
+           // 
+            
+        ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
+  
+    for(int i=1;i<datosCarrito.size();i++){
+    String[] nr = datosCarrito.get(i).split(",");
+       int q = (int) consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);
+       float costo = consulta.darPrecioPlato(restaurante.getText(),nr[1]);
+       consulta.CrearPxP(id,nr[0],nr[1],q,costo);    
+       System.out.println(id + nr[0] + nr[1] + q + costo);
+
+    
+    
+}
+
+            
+            
+            
             PantallaVerPedidos vp = new PantallaVerPedidos(nusuario.getText(),restaurante.getText()); 
             vp.setVisible(true);
             this.dispose();
@@ -278,14 +299,12 @@ int id=0;
         ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
         
         String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
-        restaurante.setText(nrestaurante[0]);
-        platos.setText(nrestaurante[1]);
+        restaurante.setText(nrestaurante[0]); //Nombre del restaurante
         float presio = consulta.darCostoEnvioRest(restaurante.getText());
         inforest.setText(consulta.darDireccionRest(restaurante.getText()));
         descripcion.append(consulta.darDescripcionPlato(nrestaurante[0], nrestaurante[1]));
         String cantidad = String.valueOf(consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]));
-      /* float f= consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]);
-       int quantity = (int)f;*/
+      
         descripcion.append(" cantidad " + cantidad + "\n");
         presio += calcularCosto(nrestaurante[0], nrestaurante[1]);
       
@@ -309,35 +328,7 @@ if(nrestaurante[0].equals(nr[0])){
         
     }
    
-   private void relacionarpxp(int id)
-    {
-        int serial = id;
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
-        
-        String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
-    
-      
-        
-       float f= consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]);
-       int quantity = (int)f;
-    
-       System.out.println(serial + nrestaurante[0] + nrestaurante[1] + quantity + calcularCosto(nrestaurante[0], nrestaurante[1]));
-       System.out.println(consulta.CrearPxP(serial, nrestaurante[0], nrestaurante[1], quantity, calcularCosto(nrestaurante[0], nrestaurante[1]))); //pedidoxplato
-                 
-     
-for(int i=1;i<datosCarrito.size();i++){
-String[] nr = datosCarrito.get(i).split(",");
-if(nrestaurante[0].equals(nr[0])){
-        platos.setText(nr[1]);
-       int q= (int)consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);  
-       consulta.CrearPxP(serial, nr[0], nr[1], q, calcularCosto(nr[0], nr[1])); //Pedidoxplato
-
-}
-    
-}
-
-}
+   
    
   
   private float calcularCosto(String rest, String plato){
@@ -397,8 +388,8 @@ if(nrestaurante[0].equals(nr[0])){
     private javax.swing.JTextField direccion;
     private javax.swing.JCheckBox efectivo;
     private javax.swing.JLabel inforest;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nusuario;
-    private javax.swing.JLabel platos;
     private java.awt.TextArea restaurante;
     private javax.swing.JScrollPane resumen;
     private javax.swing.JButton salir;

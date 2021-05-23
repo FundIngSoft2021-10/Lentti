@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaSatisfacción.java</file>
-            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaVerPedidos.java</file>
-            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Controlador/consultasBaseDeDatos.java</file>
-            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaPerfilCliente.java</file>
-            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Modelo/BaseDeDatos.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaPedido.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Modelo/BaseDeDatos.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaVerPedidos.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/InicioSesion.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/EstadoPedido.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/PedidosFavoritos.java</file>
+            <file>file:/D:/Escobar/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaVerDomiciliarios.java</file>
         </group>
     </open-files>
 </project-private>

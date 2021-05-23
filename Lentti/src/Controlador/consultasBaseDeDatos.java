@@ -87,7 +87,7 @@ public interface consultasBaseDeDatos {
     public abstract String DarNombreDomiciliario(String documento);
     public abstract float DarTotalPedido(int id);
     public abstract boolean CrearPxP(int id,String restaurante, String plato, int cantidad, float total);
-    public abstract int DarIdPedido(String Pusuario, String estado, float total, String domiciliario);
+    public abstract int DarIdPedido(String Pusuario);
     public boolean CrearPxP2(String restaurante, String plato, int cantidad, float total);
     public boolean ModificarPxP(int id);
     public String DarRestPedido(int id);
@@ -98,6 +98,7 @@ public interface consultasBaseDeDatos {
     public abstract String ObtenerCorreo(String pUsuario);
     public abstract boolean ValidarDifRest(String nUsuario);
     public abstract String darRestaurantePedido(String nUsuario);
+    public boolean RelacionarPedidoDomiciliario(int id,String doc);
     
     public abstract String darHorarioRest(String nRestaurante);
     //public abstract ArrayList<String> darPedido(int serial);
@@ -122,4 +123,6 @@ public interface consultasBaseDeDatos {
     public void VincularVehiculo(String pUsuario, String placa);
     
     public abstract String darHoraResena(int idPedido);
+    public abstract String darNombrePlato(String nRest, String desc);
+
 }
