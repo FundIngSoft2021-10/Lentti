@@ -74,8 +74,8 @@ public interface consultasBaseDeDatos {
     public abstract boolean VaciarCarrito ( String nombreUsuario);
     public abstract boolean EliminarPedido( String pUsuario, String pRestaurante, String pPlato);
     public abstract boolean EliminarCliente( String pUsuario);
-    public boolean calificarRestaurante(String pPedido,String pCliente, String pRestaurante, int calif, String comentario, String pFecha);
-    public boolean calificarDomiciliario(String pPedido,String pCliente, String pDomiciliario, int calif, String comentario, String pFecha);
+    public abstract boolean calificarRestaurante(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha);
+    public abstract boolean calificarDomiciliario(int idPedido, String clienteUsuario, String domiciliarioUsuario, int calif, String comentario, String pFecha);
     public abstract boolean CrearPedido(String cliente, String domiciliario, float Total, String estado);
     public abstract DefaultListModel BuscarPedidosEnCurso(String Pusuario);
     public abstract DefaultListModel BuscarPedidosAnteriores(String Pusuario);
@@ -91,8 +91,8 @@ public interface consultasBaseDeDatos {
     public boolean CrearPxP2(String restaurante, String plato, int cantidad, float total);
     public boolean ModificarPxP(int id);
     public String DarRestPedido(int id);
-    public abstract String ObternerRestauranteDomicilio(int domid);
-    public abstract String ObternerDomiciliarioDomicilio(int domid);
+    public abstract String ObtenerRestauranteDomicilio(int domid);
+    public abstract String ObtenerDomiciliarioDomicilio(int domid);
     public abstract ImageIcon ImagenRestaurante (String nombreRestaurante);
     public abstract ImageIcon ImagenPlato (String plato, String nombreRestaurante);
     public abstract String ObtenerCorreo(String pUsuario);
@@ -119,5 +119,7 @@ public interface consultasBaseDeDatos {
     
     public abstract ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario);
     
-    public abstract String darHoraResena(String idPedido);
+    public void VincularVehiculo(String pUsuario, String placa);
+    
+    public abstract String darHoraResena(int idPedido);
 }

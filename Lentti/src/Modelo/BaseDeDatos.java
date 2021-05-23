@@ -79,7 +79,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '"+ pCorreo +"' );";
+            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '" + pCorreo + "' );";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -128,9 +128,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
+
     @Override
-    public boolean ModificarCorreo(String pUsuario, String nuevoCorreo)
-    {
+    public boolean ModificarCorreo(String pUsuario, String nuevoCorreo) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
@@ -147,18 +147,18 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
-    public String ObtenerCorreo(String pUsuario)
-    {
-        String resultado="";
+
+    public String ObtenerCorreo(String pUsuario) {
+        String resultado = "";
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta= "SELECT correo FROM lenttiusuario WHERE usuario='"+ pUsuario +"';";
+            String consulta = "SELECT correo FROM lenttiusuario WHERE usuario='" + pUsuario + "';";
             ResultSet result = st.executeQuery(consulta);
             while (result.next()) {
 
-                resultado=result.getString("correo");
+                resultado = result.getString("correo");
 
             }
             result.close();
@@ -173,21 +173,21 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public boolean CrearPlato(String restaurante, String nombrePlato, String descripcion, float precio, JFileChooser archivo) {
         boolean resultado = false;
-        FileInputStream imagen=null;
+        FileInputStream imagen = null;
         try {
-            imagen= new FileInputStream(archivo.getSelectedFile());
-            
-        } catch (FileNotFoundException ex){
-             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            imagen = new FileInputStream(archivo.getSelectedFile());
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-        
+
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            
-            String consulta ="INSERT INTO plato (restaurante ,nombrePlato ,precio,descripcion, imagen)  VALUES (?,?,?,?,?);";
+
+            String consulta = "INSERT INTO plato (restaurante ,nombrePlato ,precio,descripcion, imagen)  VALUES (?,?,?,?,?);";
             PreparedStatement st = conexion.prepareStatement(consulta);
-            
+
             st.setString(1, restaurante);
             st.setString(2, nombrePlato);
             st.setFloat(3, precio);
@@ -203,8 +203,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
-    
- 
 
     @Override
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
@@ -382,9 +380,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario) {
         boolean resultado = false;
         boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com");
-        FileInputStream imagen=null;
+        FileInputStream imagen = null;
         try {
-            imagen= new FileInputStream(archivo.getSelectedFile());
+            imagen = new FileInputStream(archivo.getSelectedFile());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -393,7 +391,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             String consulta = "INSERT INTO restaurante (nombreRestaurante,NIT,direccion,descripcion,costoEnvio,imagen, Horario)  VALUES (?,?,?,?,?,?,?);";
-            PreparedStatement st= conexion.prepareStatement(consulta);
+            PreparedStatement st = conexion.prepareStatement(consulta);
             st.setString(1, nombreRestaurante);
             st.setString(2, NIT);
             st.setString(3, direccion);
@@ -474,7 +472,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public ArrayList<String> BuscarRestaurante(String pTipo, String pUsurioActual) {
         //DefaultListModel lista = new DefaultListModel();
-        ArrayList<String>lista = new ArrayList<>();
+        ArrayList<String> lista = new ArrayList<>();
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -521,8 +519,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+
     @Override
-    public DefaultListModel BuscarNombrePlato (String nombre,String rusuario) {
+    public DefaultListModel BuscarNombrePlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();
         System.out.println(usuario + nombre);
         try {
@@ -546,8 +545,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+
     @Override
-    public DefaultListModel BuscarPrecioPlato (String nombre,String rusuario) {
+    public DefaultListModel BuscarPrecioPlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();
 
         try {
@@ -570,8 +570,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+
     @Override
-    public DefaultListModel BuscarDescripcionPlato (String nombre,String rusuario) {
+    public DefaultListModel BuscarDescripcionPlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();
 
         try {
@@ -594,8 +595,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
-    
-    
+
     @Override
     public DefaultListModel BuscarDomiciliariosRestaurante(String rUsuario) {
         DefaultListModel lista = new DefaultListModel();
@@ -710,9 +710,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public boolean ModificarImagenRestaurante(String nombreRestaurante, JFileChooser nuevaImagen) {
         boolean resultado = false;
-        FileInputStream archivo=null;
+        FileInputStream archivo = null;
         try {
-            archivo= new FileInputStream(nuevaImagen.getSelectedFile());
+            archivo = new FileInputStream(nuevaImagen.getSelectedFile());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -722,7 +722,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             //java.sql.Statement st = conexion.createStatement();
             String consulta = "UPDATE restaurante SET imagen = ? WHERE nombreRestaurante = '" + nombreRestaurante + "';";
-            PreparedStatement st= conexion.prepareStatement(consulta);
+            PreparedStatement st = conexion.prepareStatement(consulta);
             st.setBinaryStream(1, archivo, nuevaImagen.getSelectedFile().length());
             st.execute();
             st.close();
@@ -756,7 +756,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
+
     public boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevoHorario) {
         boolean resultado = false;
 
@@ -940,7 +940,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return sePudo;
     }
-    
+
     public boolean ModificarCorreoCliente(String pUsuario, String pCorreo) {
         boolean sePudo = false;
         try {
@@ -960,7 +960,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return sePudo;
     }
-    
+
     public boolean ModificarTarjetaCliente(String pUsuario, String pTarjeta) {
         boolean sePudo = false;
         try {
@@ -1175,7 +1175,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         ArrayList<String> listPedidos = new ArrayList<>();
         String var, rest, plat;
 
-
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -1372,13 +1371,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean calificarRestaurante(String pPedido,String pCliente, String pRestaurante, int calif, String comentario, String pFecha) {
+    public boolean calificarRestaurante(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into resenhapedidorestaurante values('" + pPedido + "' ,'" + pCliente + "' ,'" + pRestaurante + "' , '" + calif + "', '" + comentario + "','" + pFecha + "')";
+            String consulta = "insert into resenhapedidorestaurante values(" + idPedido + ", '" + clienteUsuario + "' , '" + restauranteUsuario + "', " + calif + ", '" + comentario + "', '" + pFecha + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1389,13 +1388,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean calificarDomiciliario(String pPedido,String pCliente, String pDomiciliario, int calif, String comentario, String pFecha) {
+    public boolean calificarDomiciliario(int idPedido, String clienteUsuario, String domiciliarioUsuario, int calif, String comentario, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into resenhapedidodomiciliario values('" + pPedido + "' ,'" + pCliente + "' ,'" + pDomiciliario + "' , '" + calif + "', '" + comentario + "','" + pFecha + "')";
+            String consulta = "insert into resenhapedidodomiciliario values(" + idPedido + ", '" + clienteUsuario + "' , '" + domiciliarioUsuario + "', " + calif + ", '" + comentario + "', '" + pFecha + "')";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -1410,7 +1409,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         boolean sePudo = false;
         Date date = new Date();
         int hora = date.getMinutes();
-        
+
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -1498,7 +1497,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
 
     }
-    
+
     public boolean EliminarPedido(String Pusuario) {
 
         boolean resultado = false;
@@ -1519,13 +1518,12 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     }
 
-    public boolean ModificarEstadoPedido(String estado, int id) 
-    {
+    public boolean ModificarEstadoPedido(String estado, int id) {
         boolean resultado = false;
         Date date = new Date();
         int horaActual = date.getMinutes();
         int horaAlmacenada;
-        
+
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -1533,30 +1531,25 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
             st.execute(consulta);
             st.close();
-            
-            if (estado == "cancelado")
-            {
+
+            if (estado == "cancelado") {
                 java.sql.Statement s = conexion.createStatement();
                 String c = "SELECT hora FROM pedido WHERE pedido_id = '" + id + "'";
                 ResultSet result = s.executeQuery(c);
-                
-                while (result.next()) 
-                {
+
+                while (result.next()) {
                     horaAlmacenada = result.getInt("hora");
-                    
-                    if (horaActual - horaAlmacenada <= 1)
-                    {
+
+                    if (horaActual - horaAlmacenada <= 1) {
                         resultado = true;
                     }
                 }
-         
+
                 s.close();
-            }
-            else
-            {
+            } else {
                 resultado = true;
             }
-            
+
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
@@ -1608,7 +1601,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public String ObternerRestauranteDomicilio(int domid) {
+    public String ObtenerRestauranteDomicilio(int domid) {
         String resultado = "";
         try {
             Class.forName("org.postgresql.Driver");
@@ -1715,7 +1708,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public String ObternerDomiciliarioDomicilio(int domid) {
+    public String ObtenerDomiciliarioDomicilio(int domid) {
         String resultado = "";
         try {
             Class.forName("org.postgresql.Driver");
@@ -1800,53 +1793,53 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     @Override
     public boolean GuardarImagen(int id, JFileChooser Imagen) {
-        boolean resultado=false;
-        FileInputStream archivo=null;
+        boolean resultado = false;
+        FileInputStream archivo = null;
         try {
-            archivo= new FileInputStream(Imagen.getSelectedFile());
+            archivo = new FileInputStream(Imagen.getSelectedFile());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(BaseDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-         try {
+
+        try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             //java.sql.Statement st = conexion.createStatement();
-            
+
             String consulta = "INSERT INTO imagenTabla (numero,imagen) VALUES (?,?);";
-            PreparedStatement st= conexion.prepareStatement(consulta);
+            PreparedStatement st = conexion.prepareStatement(consulta);
             st.setInt(1, 1);
             st.setBinaryStream(2, archivo, Imagen.getSelectedFile().length());
             st.execute();
             st.close();
             conexion.close();
             resultado = true;
-            
+
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
         }
-        
+
         return resultado;
     }
 
     @Override
     public ImageIcon PedirImagen(int id) {
-        ImageIcon archivo=null;
+        ImageIcon archivo = null;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
             String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = 'hola'";
             //PreparedStatement st=conexion.prepareStatement(consulta);
-            
+
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
                 //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
-                InputStream is= result.getBinaryStream("imagen");
+                InputStream is = result.getBinaryStream("imagen");
                 BufferedImage img = ImageIO.read(is);
-                archivo = new ImageIcon(img) ;
+                archivo = new ImageIcon(img);
             }
 
             result.close();
@@ -1860,21 +1853,21 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     @Override
     public ImageIcon ImagenRestaurante(String nombreRestaurante) {
-        ImageIcon archivo=null;
+        ImageIcon archivo = null;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = '"+nombreRestaurante+"';";
+            String consulta = "SELECT imagen FROM restaurante WHERE nombrerestaurante = '" + nombreRestaurante + "';";
             //PreparedStatement st=conexion.prepareStatement(consulta);
-            
+
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
                 //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
-                InputStream is= result.getBinaryStream("imagen");
+                InputStream is = result.getBinaryStream("imagen");
                 BufferedImage img = ImageIO.read(is);
-                archivo = new ImageIcon(img) ;
+                archivo = new ImageIcon(img);
             }
 
             result.close();
@@ -1885,25 +1878,25 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return archivo;
     }
-    
-        @Override
-    public ImageIcon ImagenPlato(String plato ,String rusuario) {
-        ImageIcon archivo=null;
+
+    @Override
+    public ImageIcon ImagenPlato(String plato, String rusuario) {
+        ImageIcon archivo = null;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT imagen FROM plato WHERE restaurante = '"+ rusuario +"' AND nombreplato = '" + plato +"' ";
+            String consulta = "SELECT imagen FROM plato WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + plato + "' ";
             //WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + plato + "' ";
             //PreparedStatement st=conexion.prepareStatement(consulta);
-            
+
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
                 //System.out.println("lo que trae el archivo ->" +result.getBlob("imagen").getBinaryStream().toString() );
-                InputStream is= result.getBinaryStream("imagen");
+                InputStream is = result.getBinaryStream("imagen");
                 BufferedImage img = ImageIO.read(is);
-                archivo = new ImageIcon(img) ;
+                archivo = new ImageIcon(img);
             }
 
             result.close();
@@ -1914,9 +1907,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return archivo;
     }
-    
+
     public boolean ValidarDifRest(String nUsuario) {
-        ArrayList<String> listP= new ArrayList<>();
+        ArrayList<String> listP = new ArrayList<>();
         boolean respuesta = false;
 
         try {
@@ -1937,28 +1930,26 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
         }
         String nombreR = null;
-        if(listP.size()>0) nombreR = listP.get(0);
-            
-        
-        for(int i = 1; i < listP.size();i++){
- 
-            if(!(nombreR.equals(listP.get(i)))){
-              respuesta = true;
-            }  
-            
+        if (listP.size() > 0) {
+            nombreR = listP.get(0);
+        }
+
+        for (int i = 1; i < listP.size(); i++) {
+
+            if (!(nombreR.equals(listP.get(i)))) {
+                respuesta = true;
+            }
+
         }
 
         return respuesta;
     }
-    
-    
+
     @Override
-    public boolean AgregarRestauranteFavorito (String cliente, String restaurante) 
-    {
+    public boolean AgregarRestauranteFavorito(String cliente, String restaurante) {
         boolean resultado = false;
-        
-        try 
-        {
+
+        try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             String consulta = "INSERT INTO restaurantesFavoritos (cliente, restaurante)  VALUES (?, ?);";
@@ -1973,17 +1964,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
         }
-        
+
         return resultado;
     }
 
     @Override
-    public boolean EliminarRestauranteFavorito (String cliente, String restaurante) 
-    {
+    public boolean EliminarRestauranteFavorito(String cliente, String restaurante) {
         boolean resultado = false;
-        
-        try 
-        {
+
+        try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
@@ -1996,25 +1985,22 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
         }
-        
+
         return resultado;
     }
-    
-    @Override
-    public ArrayList <String> MostrarRestaurantesFavoritos (String cliente) 
-    {
-        ArrayList <String> lista = new ArrayList<>();
 
-        try 
-        {
+    @Override
+    public ArrayList<String> MostrarRestaurantesFavoritos(String cliente) {
+        ArrayList<String> lista = new ArrayList<>();
+
+        try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
             String consulta = "SELECT restaurante FROM restaurantesFavoritos WHERE cliente = '" + cliente + "'";
             ResultSet result = st.executeQuery(consulta);
 
-            while (result.next()) 
-            {
+            while (result.next()) {
                 lista.add(result.getString("restaurante"));
             }
 
@@ -2027,8 +2013,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
-    
-        /*public boolean EliminarPedido(int id, String Pusuario) {
+
+    /*public boolean EliminarPedido(int id, String Pusuario) {
 
         boolean resultado = false;
         try {
@@ -2067,13 +2053,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
 
     }*/
-    
-    
     public ArrayList<String> darClientesActivos(String nRestaurante) {
-        
-        
+
         ArrayList listaClientes = new ArrayList();
-        ArrayList <String> listaNombres = new ArrayList<>();
+        ArrayList<String> listaNombres = new ArrayList<>();
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -2092,66 +2075,60 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
-        
-        for(int i=0;i<listaClientes.size();i++){
-           try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT cliente FROM pedido WHERE pedido_id = '" + listaClientes.get(i) + "'";
-            ResultSet result = st.executeQuery(consulta);
 
-            while (result.next()) {
-                listaNombres.add(result.getString("cliente"));
-            }
+        for (int i = 0; i < listaClientes.size(); i++) {
+            try {
+                Class.forName("org.postgresql.Driver");
+                Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                java.sql.Statement st = conexion.createStatement();
+                String consulta = "SELECT cliente FROM pedido WHERE pedido_id = '" + listaClientes.get(i) + "'";
+                ResultSet result = st.executeQuery(consulta);
 
-            result.close();
-            st.close();
-            conexion.close();
+                while (result.next()) {
+                    listaNombres.add(result.getString("cliente"));
+                }
+
+                result.close();
+                st.close();
+                conexion.close();
             } catch (Exception exc) {
                 System.out.println("Errorx:" + exc.getMessage());
             }
-         
+
         }
-        
-         return listaNombres;
+
+        return listaNombres;
     }
 
-    public boolean flagearCliente (String cliente, String restaurante)
-    {
+    public boolean flagearCliente(String cliente, String restaurante) {
         boolean flageado = false;
         int cancelados = 0;
         boolean primerPedido = true;
-        
-        try 
-        {
+
+        try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
             String consulta = "SELECT cancelados FROM bandera WHERE cliente = '" + cliente + "' AND restaurante = '" + restaurante + "'";
             ResultSet result = st.executeQuery(consulta);
-            
-            while (result.next()) 
-            {
-                 cancelados = result.getInt("cancelados");
-                 primerPedido = false;
-                 System.out.println("Cancelados si si encontro datos en la tabla bandera pero antes de sumar: " + cancelados);
+
+            while (result.next()) {
+                cancelados = result.getInt("cancelados");
+                primerPedido = false;
+                System.out.println("Cancelados si si encontro datos en la tabla bandera pero antes de sumar: " + cancelados);
             }
-            
+
             result.close();
             st.close();
-            
-            if (primerPedido == true)
-            {
+
+            if (primerPedido == true) {
                 java.sql.Statement s = conexion.createStatement();
                 System.out.println("Cancelados si no encontro datos en la tabla bandera: " + cancelados);
                 String c = "INSERT INTO bandera VALUES ('" + cliente + "' , '" + restaurante + "', '" + cancelados + "');";
                 s.execute(c);
                 s.close();
                 flageado = true;
-            }
-            else
-            {
+            } else {
                 cancelados = cancelados + 1;
                 System.out.println("Cancelados si si encontro datos en la tabla bandera pero despues de sumar: " + cancelados);
                 java.sql.Statement s2 = conexion.createStatement();
@@ -2160,16 +2137,15 @@ public class BaseDeDatos implements consultasBaseDeDatos {
                 s2.close();
                 flageado = true;
             }
-            
+
             conexion.close();
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
-        
+
         return flageado;
-    }  
-    
-    
+    }
+
     public String darHorarioRest(String nRestaurante) {
         String horario = null;
 
@@ -2193,10 +2169,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return horario;
     }
-    
-    
+
     public String darRestaurantePedido(String nUsuario) {
-        
+
         String nRest = null;
         try {
             Class.forName("org.postgresql.Driver");
@@ -2215,17 +2190,17 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
-        
+
         return nRest;
     }
-    
+
     public boolean agregarPedidoAFavoritos(String pUsuario, String pPedido) {
         boolean sePudo = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO pedidoFavorito VALUES ('" + pUsuario + "','" + pPedido +  "');";
+            String consulta = "INSERT INTO pedidoFavorito VALUES ('" + pUsuario + "','" + pPedido + "');";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -2238,9 +2213,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return sePudo;
     }
-    
+
     public ArrayList<String> darPlatoSegunPedido(String pPedido) {
-        
         ArrayList<String> nRest = new ArrayList<String>();
         try {
             Class.forName("org.postgresql.Driver");
@@ -2259,12 +2233,12 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
-        
+
         return nRest;
     }
-    
+
     public int[] darPedidoAFavoritos(String pUsuario) {
-        
+
         int[] nRest = new int[100];
         try {
             Class.forName("org.postgresql.Driver");
@@ -2285,19 +2259,18 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
-        
+
         return nRest;
     }
-    
+
     public ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario) {
-        
+
         ArrayList<Object> InformacionDomiciliario = new ArrayList<>();
         String sNombre;
         String sDocumento;
         String sTelefono;
         Double sDomiEntregados;
         String sPlacaVehiculo;
-        
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -2327,17 +2300,31 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
 
         return InformacionDomiciliario;
-        
+
+    }
+
+    public void VincularVehiculo(String pUsuario, String placa) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "Update domiciliario set placavehiculo = " + placa + " where nombre = " + pUsuario;
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
     }
     
-     public String darHoraResena(String npedido) {
+     public String darHoraResena(int npedido) {
         String horario = null;
 
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT fecha FROM resenhapedidorestaurante WHERE idpedido = '" + npedido + "'";
+            String consulta = "SELECT fecha FROM resenhapedidorestaurante WHERE idpedido = " + npedido;
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {

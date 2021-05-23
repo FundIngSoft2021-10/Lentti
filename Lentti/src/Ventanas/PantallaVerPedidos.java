@@ -228,10 +228,11 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
         }
         else {
+        int pedidoid = Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString());
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        rest = consulta.ObternerRestauranteDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
-        domdoc = consulta.ObternerDomiciliarioDomicilio(Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString()));
-        PantallaSatisfacción p = new PantallaSatisfacción(rest, domdoc, cliente, this.jListPedidosEntregados.getSelectedValue().toString() );
+        rest = consulta.ObtenerRestauranteDomicilio(pedidoid);
+        domdoc = consulta.ObtenerDomiciliarioDomicilio(pedidoid);
+        PantallaSatisfacción p = new PantallaSatisfacción(pedidoid, rest, domdoc, cliente);
         p.setVisible(true);
         this.dispose();
         }

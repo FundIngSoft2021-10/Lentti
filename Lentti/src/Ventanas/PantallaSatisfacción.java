@@ -20,7 +20,7 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
     String prestaurante;
     String pdomiciliario;
     String clientep;
-    String pedido;
+    int pedidoid;
 
     /**
      * Creates new form PantallaSatisfacción
@@ -30,25 +30,13 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public PantallaSatisfacción(String restaurante, String domiDoc, String cliente) {
+    public PantallaSatisfacción(int idpedido, String restaurante, String domi, String cliente) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.prestaurante = restaurante;
-        this.pdomiciliario = domiDoc;
+        this.pdomiciliario = domi;
         this.clientep = cliente;
-    }
-    
-    public PantallaSatisfacción(String restaurante, String domiDoc, String cliente, String idPedido) {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        this.prestaurante = restaurante;
-        this.pdomiciliario = domiDoc;
-        this.clientep = cliente;
-        this.pedido = idPedido;
-        
-        System.out.println("restaurante: " + this.prestaurante);
-        System.out.println("domiciliaroi: " + this.pdomiciliario);
-        
+        this.pedidoid = idpedido;
     }
 
     /**
@@ -265,14 +253,14 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             consultasBaseDeDatos consulta = new BaseDeDatos();
             
             //ver si tiene fecha el pedido, si no tiene se pone la fecha actual, si tiene se comparan
-            String fechaResena = consulta.darHoraResena(pedido);
+            String fechaResena = consulta.darHoraResena(pedidoid);
             
             if (fechaResena == null)
             {
               // se crea normalmente
                 System.out.println("se crea normalmente");
-                consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
-                consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                consulta.calificarRestaurante(pedidoid, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                consulta.calificarDomiciliario(pedidoid, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                 JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
                 PantallaVerPedidos p = new PantallaVerPedidos(clientep);
                 p.setVisible(true);
@@ -283,8 +271,8 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                 String[] partes = fechaResena.split("/");
                 if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(dia)  ) && partes[2].equals(  Integer.toString(dia)  )   ){
                     System.out.println("se crea por la fecha");
-                    consulta.calificarRestaurante(pedido, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
-                    consulta.calificarDomiciliario(pedido, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    consulta.calificarRestaurante(pedidoid, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    consulta.calificarDomiciliario(pedidoid, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                     JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
                     PantallaVerPedidos p = new PantallaVerPedidos(clientep);
                     p.setVisible(true);
@@ -299,10 +287,6 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                     this.dispose();
                 }
             }
-            
-
-            
-            
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
