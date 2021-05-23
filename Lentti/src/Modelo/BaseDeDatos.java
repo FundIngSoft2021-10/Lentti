@@ -2350,6 +2350,30 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return horario;
     }
+    
+    public String darHoraResena2(int npedido) {
+        String horario = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT fecha FROM resenhapedidodomiciliario WHERE idpedido = " + npedido;
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                horario = result.getString("fecha");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return horario;
+    }
 
     @Override
     public boolean RelacionarPedidoDomiciliario(int id, String doc) {

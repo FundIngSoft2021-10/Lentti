@@ -254,8 +254,10 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             
             //ver si tiene fecha el pedido, si no tiene se pone la fecha actual, si tiene se comparan
             String fechaResena = consulta.darHoraResena(pedidoid);
-            
-            if (fechaResena == null)
+            String fechaResena2 = consulta.darHoraResena2(pedidoid);
+            System.out.println("fecha reseña " +  fechaResena);
+            System.out.println("fecha reseña 2 " +  fechaResena2);
+            if (fechaResena == null && fechaResena2 == null)
             {
               // se crea normalmente
                 System.out.println("se crea normalmente");
@@ -268,8 +270,11 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
             }
             else
             {
+                System.out.println("antes de verificar diferencia de fechas");
                 String[] partes = fechaResena.split("/");
-                if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(dia)  ) && partes[2].equals(  Integer.toString(dia)  )   ){
+                String[] partes2 = fechaResena2.split("/");
+                if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(mes)  ) && partes[2].equals(  Integer.toString(year)  ) &&
+                    partes2[0].equals(  Integer.toString(dia)  ) && partes2[1].equals(  Integer.toString(mes)  ) && partes2[2].equals(  Integer.toString(year)  )    ){
                     System.out.println("se crea por la fecha");
                     consulta.calificarRestaurante(pedidoid, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                     consulta.calificarDomiciliario(pedidoid, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);

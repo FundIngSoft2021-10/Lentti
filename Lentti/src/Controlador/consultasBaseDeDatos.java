@@ -124,6 +124,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean VincularVehiculo(String pUsuario, String placa);
     
     public abstract String darHoraResena(int idPedido);
+    public abstract String darHoraResena2(int idPedido);
 
     public abstract String darNombrePlato(String nRest, String desc);
 
