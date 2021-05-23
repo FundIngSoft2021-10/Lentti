@@ -21,16 +21,15 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     public PantallaInicialDomiciliario(String pUsuario) {
         initComponents();
         String users = pUsuario;
         jLabelDomUser.setText(users);
         this.setLocationRelativeTo(null);
     }
-    
-     public Image getIconImage()
-    {
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
         return retValue;
     }
@@ -136,12 +135,15 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private void jButtonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarSesionActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        InicioSesion iniciador= new InicioSesion();
+        InicioSesion iniciador = new InicioSesion();
         iniciador.setVisible(true);
     }//GEN-LAST:event_jButtonCerrarSesionActionPerformed
 
     private void jButtonVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPerfilActionPerformed
         // TODO add your handling code here:
+        PantallaPerfilDomiciliario p = new PantallaPerfilDomiciliario(jLabelDomUser.getText());
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonVerPerfilActionPerformed
 
     private void jButtonVerPedidosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDisponiblesActionPerformed

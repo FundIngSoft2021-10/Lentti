@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
 
+    String usuariodom;
+
     /**
      * Creates new form PantallaPerfilDomiciliario
      */
@@ -22,38 +24,47 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     public PantallaPerfilDomiciliario(String pUsuario) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.usuariodom = pUsuario;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<Object> datosDomi = consulta.ObtenerDatosDomiciliario(pUsuario);
         int tam = datosDomi.size();
-        for(int i = 0; i < tam; i++)
-        {
-            
-            if(i == 0) {
-                jTextFieldNombre.setText((String)datosDomi.get(i));
+        for (int i = 0; i < tam; i++) {
+
+            if (i == 0) {
+                jTextFieldNombre.setText((String) datosDomi.get(i));
             }
-            
-            if(i == 1) {
-                jTextFieldDocumento.setText((String)datosDomi.get(i));
+
+            if (i == 1) {
+                jTextFieldDocumento.setText((String) datosDomi.get(i));
             }
-            
-            if(i == 2) {
-                jTextFieldTeléfono.setText((String)datosDomi.get(i));
+
+            if (i == 2) {
+                jTextFieldTeléfono.setText((String) datosDomi.get(i));
             }
-            
-            if(i == 3) {
-                jTextFieldDomiciliosEntregados.setText((String)datosDomi.get(i));
+
+            if (i == 3) {
+                jTextFieldDomiciliosEntregados.setText(String.valueOf(datosDomi.get(i)));
             }
-            
-            if(i == 4) {
-                jTextFieldPlacaVehículo.setText((String)datosDomi.get(i));
+
+            if (i == 4) {
+                jTextFieldPlacaVehículo.setText((String) datosDomi.get(i));
             }
-            
+
         }
         
+        System.out.println(jTextFieldPlacaVehículo.getText());
+        
+        if(jTextFieldPlacaVehículo.getText().isEmpty() == true) {
+            jButtonSolicitarVehículo.setVisible(true);
+        }
+        else {
+            jButtonSolicitarVehículo.setVisible(false);
+        }
+
     }
 
     /**
@@ -129,6 +140,11 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
         });
 
         jButtonSolicitarVehículo.setText("Solicitar vehículo");
+        jButtonSolicitarVehículo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSolicitarVehículoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +225,17 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
 
     private void jButtonAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrásActionPerformed
         // TODO add your handling code here:
+        PantallaInicialDomiciliario p = new PantallaInicialDomiciliario(usuariodom);
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonAtrásActionPerformed
+
+    private void jButtonSolicitarVehículoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarVehículoActionPerformed
+        // TODO add your handling code here:
+        PantallaSolicitarVehículo p = new PantallaSolicitarVehículo(usuariodom);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonSolicitarVehículoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1700,9 +1700,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             String consulta = "SELECT MAX(pedido_id) as idpedido FROM pedido WHERE cliente = '" + Pusuario + "' ;";
             ResultSet result = st.executeQuery(consulta);
             while (result.next()) {
-            id = result.getInt("idpedido");            
+                id = result.getInt("idpedido");
             }
-            
+
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
@@ -2305,21 +2305,24 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     }
 
-    public void VincularVehiculo(String pUsuario, String placa) {
+    public boolean VincularVehiculo(String pUsuario, String placa) {
+        boolean estado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "Update domiciliario set placavehiculo = " + placa + " where nombre = " + pUsuario;
+            String consulta = "Update domiciliario set placavehiculo = '" + placa + "' where nombre = '" + pUsuario + "'";
             st.execute(consulta);
             st.close();
             conexion.close();
+            estado = true;
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
+        return estado;
     }
-    
-     public String darHoraResena(int npedido) {
+
+    public String darHoraResena(int npedido) {
         String horario = null;
 
         try {
@@ -2342,7 +2345,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return horario;
     }
-     @Override
+
+    @Override
     public boolean RelacionarPedidoDomiciliario(int id, String doc) {
         boolean resultado = false;
 
@@ -2362,10 +2366,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
-     public String darNombrePlato(String nRest, String desc) {
-        String descripcion = null;
 
+    public String darNombrePlato(String nRest, String desc) {
+        String descripcion = null;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -2376,6 +2379,38 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             while (result.next()) {
                 descripcion = result.getString("descripcion");
             }
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return descripcion;
+    }
+
+    public ArrayList<ArrayList<Object>> ObtenerVehiculosDisponibles() {
+
+        ArrayList<ArrayList<Object>> resultado = new ArrayList<>();
+        String placa;
+        String tipo;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT placavehiculo, tipovehiculo FROM vehiculo WHERE estado = 'disponible'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+
+                placa = result.getString("placavehiculo");
+                tipo = result.getString("tipovehiculo");
+                ArrayList<Object> Aux = new ArrayList<>();
+                Aux.add(placa);
+                Aux.add(tipo);
+                resultado.add(Aux);
+
+            }
 
             result.close();
             st.close();
@@ -2384,6 +2419,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
         }
 
-        return descripcion;
+        return resultado;
     }
 }

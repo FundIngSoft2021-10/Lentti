@@ -120,9 +120,12 @@ public interface consultasBaseDeDatos {
     
     public abstract ArrayList<Object> ObtenerDatosDomiciliario(String pUsuario);
     
-    public void VincularVehiculo(String pUsuario, String placa);
+    public abstract boolean VincularVehiculo(String pUsuario, String placa);
     
     public abstract String darHoraResena(int idPedido);
+
     public abstract String darNombrePlato(String nRest, String desc);
+
+    public abstract ArrayList<ArrayList<Object>> ObtenerVehiculosDisponibles();
 
 }

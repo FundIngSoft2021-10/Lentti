@@ -5,17 +5,48 @@
  */
 package Ventanas;
 
+import javax.swing.JOptionPane;
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Tony
  */
 public class PantallaSolicitarVehículo extends javax.swing.JFrame {
 
+    String usuarioDomi;
+
     /**
      * Creates new form PantallaInconveniente
      */
     public PantallaSolicitarVehículo() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    public PantallaSolicitarVehículo(String pUsuario) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.usuarioDomi = pUsuario;
+        DefaultTableModel model = (DefaultTableModel) jTableVehículosDisponibles.getModel();
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<ArrayList<Object>> data = consulta.ObtenerVehiculosDisponibles();
+        int cont = data.size();
+        int cont2 = data.get(0).size();
+        Object[] data2 = new Object[cont2];
+
+        for (int i = 0; i < cont; i++) {
+            for (int j = 0; j < cont2; j++) {
+                data2[j] = data.get(i).get(j);
+            }
+            model.addRow(data2);
+        }
+
+        jTableVehículosDisponibles.setModel(model);
+
     }
 
     /**
@@ -61,6 +92,11 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
         });
 
         jButtonSolicitar.setText("Solicitar");
+        jButtonSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSolicitarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,7 +133,29 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
 
     private void jButtonAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrásActionPerformed
         // TODO add your handling code here:
+        PantallaPerfilDomiciliario p = new PantallaPerfilDomiciliario(usuarioDomi);
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonAtrásActionPerformed
+
+    private void jButtonSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitarActionPerformed
+        // TODO add your handling code here:
+        if (jTableVehículosDisponibles.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un vehiculo");
+        } else {
+            int column = 0;
+            int row = jTableVehículosDisponibles.getSelectedRow();
+            String plaquita = (String) jTableVehículosDisponibles.getModel().getValueAt(row, column);
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            boolean pasar = consulta.VincularVehiculo(usuarioDomi, plaquita);
+            if (pasar == true) {
+                JOptionPane.showMessageDialog(null, "Se le ha asignado correctamente el vehiculo, por favor no olvide pasar a recogerlo lo mas pronto posible.");
+                PantallaPerfilDomiciliario p = new PantallaPerfilDomiciliario(usuarioDomi);
+                p.setVisible(true);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_jButtonSolicitarActionPerformed
 
     /**
      * @param args the command line arguments
