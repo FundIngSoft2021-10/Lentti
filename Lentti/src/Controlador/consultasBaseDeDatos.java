@@ -21,6 +21,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario);
     public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
     public abstract boolean ModificarCorreo(String pUsuario,String nuevoCorreo);
+    public abstract boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevaHora);
     public abstract boolean CrearPlato(String restaurante, String nombrePlato,  String descripcion, float precio, JFileChooser archivo );
     public abstract boolean EliminarPlato(String nombrePlato);
     public abstract boolean ModificarNombrePlato(String nombrePlato, String nuevoNombre);
@@ -46,7 +47,6 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarImagenRestaurante (String nombreRestaurante, JFileChooser nuevaImagen);
     public abstract boolean ModificarNITRestaurante (String nombreRestaurante, String nuevoNIT);
     public abstract boolean ModificarPalabrasClaveRestaurante (String nombreRestaurante, String nuevasPalabrasClave);
-    public abstract boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevoHorario);
     public abstract boolean ValidarExistenciaRestaurante (String nombreRestaurante);
     public abstract boolean CrearCliente(String pUsuario, String pNombre, String pApellido, String pDireccion);
     public abstract boolean ModificarNombreCliente(String pUsuario, String pNombre);

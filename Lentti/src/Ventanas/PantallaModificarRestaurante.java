@@ -27,7 +27,8 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     String usuario = "";
     File Imagen;
     JFileChooser buscador;
-    
+    String apertura = null;
+    String cierre = null;
     public PantallaModificarRestaurante() 
     {
         initComponents();
@@ -65,6 +66,8 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         jTextFieldModNIT = new javax.swing.JTextField();
         jTextFieldModPalabrasClave = new javax.swing.JTextField();
         jButtonCargarImagen = new javax.swing.JButton();
+        Cierre = new javax.swing.JComboBox<>();
+        Apertura = new javax.swing.JComboBox<>();
         jLabelImagen = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonModDireccion = new javax.swing.JButton();
@@ -75,6 +78,7 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         jButtonModPalabrasClave = new javax.swing.JButton();
         jButtonModNombre = new javax.swing.JButton();
         jButtonAtras = new javax.swing.JButton();
+        ModificarHoras = new javax.swing.JButton();
 
         jButtonModImagen1.setText("Modificar costo de envío");
         jButtonModImagen1.setToolTipText("");
@@ -88,48 +92,77 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextFieldNombreRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 200, 30));
 
+        jTextFieldNombreRestaurante.setBorder(null);
+        getContentPane().add(jTextFieldNombreRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 380, 40));
+
+        jTextFieldModNombre.setBorder(null);
         jTextFieldModNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 190, 20));
-        getContentPane().add(jTextFieldModDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 190, 20));
-        getContentPane().add(jTextFieldModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 460, 50));
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 290, 30));
 
+        jTextFieldModDireccion.setBorder(null);
+        getContentPane().add(jTextFieldModDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 380, 40));
+
+        jTextFieldModDescripcion.setBorder(null);
+        getContentPane().add(jTextFieldModDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 360, 50));
+
+        jTextFieldModCostoDeEnvio.setBorder(null);
         jTextFieldModCostoDeEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModCostoDeEnvioActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldModCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 200, 20));
+        getContentPane().add(jTextFieldModCostoDeEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 340, 40));
 
+        jTextFieldModNIT.setBorder(null);
         jTextFieldModNIT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModNITActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldModNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 190, 20));
+        getContentPane().add(jTextFieldModNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 380, 30));
 
+        jTextFieldModPalabrasClave.setBorder(null);
         jTextFieldModPalabrasClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldModPalabrasClaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldModPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 460, 30));
+        getContentPane().add(jTextFieldModPalabrasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, 370, 40));
 
+        jButtonCargarImagen.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
         jButtonCargarImagen.setText("Cargar Imagen");
         jButtonCargarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCargarImagenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCargarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
+        getContentPane().add(jButtonCargarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 160, 30));
+
+        Cierre.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        Cierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Cierre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CierreMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Cierre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, 110, 30));
+
+        Apertura.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        Apertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Apertura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AperturaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Apertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 110, 30));
         getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 110, 120));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaModificarRestaurante.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaModifRest.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButtonModDireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +222,14 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 60));
+
+        ModificarHoras.setText("jButton1");
+        ModificarHoras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ModificarHorasMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ModificarHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 100, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -382,6 +423,39 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonCargarImagenActionPerformed
 
+    private void AperturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AperturaMouseClicked
+        // TODO add your handling code here:
+        //Almacenar apertura
+        apertura = Apertura.getSelectedItem().toString();
+    }//GEN-LAST:event_AperturaMouseClicked
+
+    private void CierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CierreMouseClicked
+        // TODO add your handling code here:
+        cierre = Cierre.getSelectedItem().toString();
+    }//GEN-LAST:event_CierreMouseClicked
+
+    private void ModificarHorasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarHorasMouseClicked
+        // TODO add your handling code here:
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado = false;
+        
+        if(apertura == null || cierre == null)
+        {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado nada en apertura o cierre.");
+        }
+        else
+        {
+            String horarios;
+            horarios = apertura+"/"+cierre;
+            resultado = consulta.ModificarHorarioRestaurante(this.jTextFieldNombreRestaurante.getText(), horarios);
+            if (resultado == true)
+            {
+                JOptionPane.showMessageDialog(null, "Horario modificado correctamente");
+            }
+        }
+    }//GEN-LAST:event_ModificarHorasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -459,6 +533,9 @@ public class PantallaModificarRestaurante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Apertura;
+    private javax.swing.JComboBox<String> Cierre;
+    private javax.swing.JButton ModificarHoras;
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonCargarImagen;
     private javax.swing.JButton jButtonModCostoDeEnvio;
