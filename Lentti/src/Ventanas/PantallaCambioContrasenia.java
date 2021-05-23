@@ -19,20 +19,20 @@ import javax.swing.JOptionPane;
  *
  * @author samyf
  */
-public class PantallaCambioContraseña extends javax.swing.JFrame {
+public class PantallaCambioContrasenia extends javax.swing.JFrame {
     /**
      * Creates new form InicioSecion
      */
     
     String usuario, rol;
-    public PantallaCambioContraseña() {
+    public PantallaCambioContrasenia() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.Transparencia();
         
     }
     
-    public PantallaCambioContraseña(String usuario, String rol) {
+    public PantallaCambioContrasenia(String usuario, String rol) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.Transparencia();
@@ -105,6 +105,9 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
 
     private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
         // TODO add your handling code here:
+        InicioSesion pantalla = new InicioSesion();
+        pantalla.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BotonAtrasActionPerformed
 
     private void GuardarIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarIniciarMouseClicked
@@ -116,12 +119,13 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
         if(rol == "C"){
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "C")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
-                   PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(usuario);
+                   consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
+                   PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(usuario); //Se muestra pantalla
                    nuevoCliente.setVisible(true);
                    this.dispose();
                } 
                else{
-                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada");
+                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada correctamente");
                }
            }
            else{
@@ -132,12 +136,13 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
         else if(rol == "R"){
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "R")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
+                   consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
                    PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(usuario);
                    nuevoResturante.setVisible(true);
                    this.dispose();
                } 
                else{
-                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada");
+                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada correctamente");
                }
            }
            else{
@@ -148,12 +153,13 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
         else if(rol == "D"){
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "D")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
+                    consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
                     PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(usuario);
                     nuevoDomiciliario.setVisible(true);
                     this.dispose();
                } 
                else{
-                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada");
+                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada correctamente");
                }
            }
            else{
@@ -164,12 +170,13 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
         else if(rol == "A"){
             if(consulta.ValidarInicioSesion(usuario, this.ContraActual.getText(), "A")){
                if(ContraNueva.getText().equals(ConfirmarContra.getText())){
+                   consulta.ModificarContrasena(usuario, ContraNueva.getText()); //Se modifica 
                    PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(usuario);
                    nuevoAdmin.setVisible(true);
                    this.dispose();
                } 
                else{
-                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada");
+                   JOptionPane.showMessageDialog(null, "La contraseña nueva no ha sido confirmada correctamente");
                }
            }
            else{
@@ -207,14 +214,18 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaCambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaCambioContrasenia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaCambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaCambioContrasenia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaCambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaCambioContrasenia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaCambioContraseña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaCambioContrasenia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -223,7 +234,7 @@ public class PantallaCambioContraseña extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaCambioContraseña().setVisible(true);
+                new PantallaCambioContrasenia().setVisible(true);
             }
         });
         

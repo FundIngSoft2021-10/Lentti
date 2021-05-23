@@ -65,6 +65,7 @@ public interface consultasBaseDeDatos {
     public abstract String darDescripcionPlato(String nRest, String nPlato);
     public abstract float darPrecioPlato(String nRest, String nPlato);
     public abstract float darCantidad(String nUsuario, String nRest, String nPlato);
+    public abstract String darFechaCreacionLenttiUsuario(String nUsuario);
     public abstract boolean ModificarApellidoCliente(String pUsuario, String pApellido);
     public abstract boolean ModificarDireccionCliente(String pUsuario, String pDireccion);
     public abstract boolean ModificarCorreoCliente(String pUsuario, String pDireccion);
@@ -127,5 +128,6 @@ public interface consultasBaseDeDatos {
     public abstract String darNombrePlato(String nRest, String desc);
 
     public abstract ArrayList<ArrayList<Object>> ObtenerVehiculosDisponibles();
+    
 
 }

@@ -11,6 +11,8 @@ import Modelo.CorreoElectronico;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.DAYS;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -114,22 +116,40 @@ public class InicioSesion extends javax.swing.JFrame {
         
         String[] partes;
         String dia, mes, anio;
+        long diasComp = 0, diasMax = 0;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         String seleccion=this.jComboBoxTipoPerfil.getSelectedItem().toString();
-        String fecha =  null;
-        partes = fecha.split("/");
-        dia = partes[0];
-        mes = partes[1];
-        anio =  partes[2];
+        String fechaCreacion =  consulta.darFechaCreacionLenttiUsuario(this.jTextFieldCampoUsuario.getText());
+        if(fechaCreacion != null){
+            partes = fechaCreacion.split("/");
+            dia = partes[0];
+            mes = partes[1];
+            anio =  partes[2];  
+            //Fecha creacion
+            LocalDate fechaCre = LocalDate.of(Integer.parseInt(anio),Integer.parseInt(mes),Integer.parseInt(dia));
+            //fechaActual
+            LocalDate fechaActual = LocalDate.now();
+            diasComp = DAYS.between(fechaCre, fechaActual);
+            diasMax = 99; 
+        }
         
         
+       
         if(seleccion.equals("Cliente"))
         {
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))
             {
-                PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(this.jTextFieldCampoUsuario.getText());
-                nuevoCliente.setVisible(true);
-                this.dispose();
+                if(diasComp > diasMax){ //100 dias
+                  PantallaCambioContrasenia cambioContra= new PantallaCambioContrasenia(this.jTextFieldCampoUsuario.getText(),"C");
+                  cambioContra.setVisible(true);
+                  this.dispose();   
+                }
+                else{
+                   PantallaClienteInicio nuevoCliente= new PantallaClienteInicio(this.jTextFieldCampoUsuario.getText());
+                   nuevoCliente.setVisible(true);
+                   this.dispose(); 
+                }
+                
             }
             else
             {
@@ -140,9 +160,17 @@ public class InicioSesion extends javax.swing.JFrame {
         {
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "R"))
             {
-                PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(this.jTextFieldCampoUsuario.getText());
-                nuevoResturante.setVisible(true);
-                this.dispose();
+                if(diasComp > diasMax){
+                  PantallaCambioContrasenia cambioContra= new PantallaCambioContrasenia(this.jTextFieldCampoUsuario.getText(),"R");
+                  cambioContra.setVisible(true);
+                  this.dispose();   
+                }
+                else{
+                  PantallaInicialRestaurante nuevoResturante= new PantallaInicialRestaurante(this.jTextFieldCampoUsuario.getText());
+                  nuevoResturante.setVisible(true);
+                  this.dispose();  
+                }
+                
                 
             }
             else
@@ -154,9 +182,17 @@ public class InicioSesion extends javax.swing.JFrame {
         {
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A"))
             {
-                PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(this.jTextFieldCampoUsuario.getText());
-                nuevoAdmin.setVisible(true);
-                this.dispose();
+                if(diasComp > diasMax){
+                  PantallaCambioContrasenia cambioContra= new PantallaCambioContrasenia(this.jTextFieldCampoUsuario.getText(),"A");
+                  cambioContra.setVisible(true);
+                  this.dispose();   
+                }
+                else{
+                  PantallaInicialAdministrador nuevoAdmin = new PantallaInicialAdministrador(this.jTextFieldCampoUsuario.getText());
+                  nuevoAdmin.setVisible(true);
+                  this.dispose();  
+                }
+                
                 
             }
             else
@@ -168,9 +204,17 @@ public class InicioSesion extends javax.swing.JFrame {
         {
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "D"))
             {
-                PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(this.jTextFieldCampoUsuario.getText());
-                nuevoDomiciliario.setVisible(true);
-                this.dispose();
+                if(diasComp > diasMax){
+                  PantallaCambioContrasenia cambioContra= new PantallaCambioContrasenia(this.jTextFieldCampoUsuario.getText(),"D");
+                  cambioContra.setVisible(true);
+                  this.dispose();   
+                }
+                else{
+                  PantallaInicialDomiciliario nuevoDomiciliario = new PantallaInicialDomiciliario(this.jTextFieldCampoUsuario.getText());
+                  nuevoDomiciliario.setVisible(true);
+                  this.dispose();  
+                }
+                
                 
             }
             else

@@ -2426,4 +2426,29 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
+    
+    public String darFechaCreacionLenttiUsuario(String nUsuario) {
+        String fecha = null;
+        System.out.println("obviamente entro");
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT ultimaContrasena FROM lenttiusuario WHERE usuario = '" + nUsuario + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                fecha = result.getString("ultimaContrasena");
+                System.out.println("miraaaa "+fecha+"\n");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return fecha;
+    }
 }
