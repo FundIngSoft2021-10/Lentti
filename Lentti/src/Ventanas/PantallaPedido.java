@@ -192,7 +192,7 @@ int id;
             
         ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
   
-    for(int i=1;i<datosCarrito.size();i++){
+    for(int i=0;i<datosCarrito.size();i++){
     String[] nr = datosCarrito.get(i).split(",");
        int q = (int) consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);
        float costo = consulta.darPrecioPlato(restaurante.getText(),nr[1]);
