@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,14 +73,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
 
-    @Override
-    public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo, String pCorreo) {
+  
+    public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo, String pCorreo, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '" + pCorreo + "' );";
+            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '" + pCorreo + "', '" + pFecha+ "' );";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -207,11 +208,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
         boolean resultado = false;
+        LocalDate fecha = LocalDate.now();
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st1 = conexion.createStatement();
-            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "'," + "'D'" + ");";
+            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "'," + "'D'" + ",'" + fechaCreacion + "');";
             st1.execute(consulta1);
             st1.close();
             java.sql.Statement st = conexion.createStatement();
@@ -379,7 +382,9 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario) {
         boolean resultado = false;
-        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com");
+        LocalDate fecha = LocalDate.now();
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
+        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com",fechaCreacion);
         FileInputStream imagen = null;
         try {
             imagen = new FileInputStream(archivo.getSelectedFile());

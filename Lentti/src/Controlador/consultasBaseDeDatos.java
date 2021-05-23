@@ -17,7 +17,7 @@ import javax.swing.JFileChooser;
  */
 public interface consultasBaseDeDatos {
     public abstract boolean ValidarInicioSesion(String pUsuario,String pContrasena, String pTipo);
-    public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo,String pCorreo);
+    public abstract boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo, String pCorreo, String pFecha);
     public abstract boolean ModificarUsuario(String anteriorUsuario, String nuevoUsuario);
     public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
     public abstract boolean ModificarCorreo(String pUsuario,String nuevoCorreo);

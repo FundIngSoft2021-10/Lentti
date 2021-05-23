@@ -66,7 +66,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 jButtonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 200, 50));
+        getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 220, 50));
 
         jTextFieldCampoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         getContentPane().add(jTextFieldCampoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 170, 40));
@@ -110,8 +110,19 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
+        //Validacion cambio contra
+        
+        String[] partes;
+        String dia, mes, anio;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         String seleccion=this.jComboBoxTipoPerfil.getSelectedItem().toString();
+        String fecha =  null;
+        partes = fecha.split("/");
+        dia = partes[0];
+        mes = partes[1];
+        anio =  partes[2];
+        
+        
         if(seleccion.equals("Cliente"))
         {
             if(consulta.ValidarInicioSesion(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "C"))

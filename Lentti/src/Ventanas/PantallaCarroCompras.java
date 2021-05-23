@@ -395,7 +395,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             String horario = consulta.darHorarioRest(nRestaurante);
             
             if(horario!=null){
-                int horaRA, minRA, horaRC, minRC;
+              int horaRA, minRA, horaRC, minRC;
               String[] partes;
               String apertura, cierre;
               partes = horario.split("/");

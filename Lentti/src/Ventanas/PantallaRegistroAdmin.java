@@ -10,6 +10,7 @@ import Modelo.BaseDeDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -101,7 +102,9 @@ public class PantallaRegistroAdmin extends javax.swing.JFrame {
         boolean resultado=false;
         if((!this.jTextFieldCampoUsuario.getText().isEmpty() && !this.jPasswordFieldCampoContrasena.getText().isEmpty()) && !this.jTextCorreo.getText().isEmpty() )
         {
-            resultado=consulta.CrearUsuario(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A", this.jTextCorreo.getText());
+            LocalDate fecha = LocalDate.now();
+            String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonth())+"/"+String.valueOf(fecha.getYear());
+            resultado=consulta.CrearUsuario(this.jTextFieldCampoUsuario.getText(), this.jPasswordFieldCampoContrasena.getText(), "A", this.jTextCorreo.getText(),fechaCreacion);
             if(resultado)
             {
                 JOptionPane.showMessageDialog(null, "Usuario se registro correctamente.");
