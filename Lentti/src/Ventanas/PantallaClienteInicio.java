@@ -205,15 +205,15 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
            while(i < infoUltimoPedido.size())
            {
                //public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad);
-               int a = Integer.parseInt(infoUltimoPedido.get(i+2));
+               float a = Float.parseFloat(infoUltimoPedido.get(i+2));
                consulta.agregarPedidoCC(usuarioA, infoUltimoPedido.get(i),infoUltimoPedido.get(i+1) , a  );
-               i += 1;
+               i += 3;
            }
            
             System.out.println("se logro");
-            PantallaPedido p = new PantallaPedido();
+            PantallaCarroCompras p = new PantallaCarroCompras(usuarioA);
             p.setVisible(true);
-                    this.dispose();
+            this.dispose();
             
         }
         else

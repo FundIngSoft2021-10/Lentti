@@ -265,7 +265,7 @@ public class PantallaPedido extends javax.swing.JFrame {
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
-        PantallaInicialCliente pantalla = new PantallaInicialCliente(nusuario.getText());
+        PantallaClienteInicio pantalla = new PantallaClienteInicio(nusuario.getText());
         pantalla.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
