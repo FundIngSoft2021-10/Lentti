@@ -55,7 +55,7 @@ public class PantallaPedido extends javax.swing.JFrame {
         resumen = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
         direccion = new javax.swing.JTextField();
-        efectivo = new javax.swing.JCheckBox();
+        jCheckBoxefectivo = new javax.swing.JCheckBox();
         restaurante = new java.awt.TextArea();
         atras = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
@@ -67,8 +67,10 @@ public class PantallaPedido extends javax.swing.JFrame {
         total = new javax.swing.JLabel();
         BotonModificarDireccionCliente = new javax.swing.JButton();
         salir = new javax.swing.JButton();
-        Fondo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jCheckBoxTarjetaLentti = new javax.swing.JCheckBox();
+        jCheckBoxTarjeta = new javax.swing.JCheckBox();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,13 +99,13 @@ public class PantallaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 240, 30));
 
-        efectivo.setText("Efectivo");
-        efectivo.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxefectivo.setText("Efectivo");
+        jCheckBoxefectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                efectivoActionPerformed(evt);
+                jCheckBoxefectivoActionPerformed(evt);
             }
         });
-        getContentPane().add(efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 70, 20));
+        getContentPane().add(jCheckBoxefectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 80, 20));
 
         restaurante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 300, 30));
@@ -162,6 +164,15 @@ public class PantallaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
 
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, -1, -1));
+
+        jCheckBoxTarjetaLentti.setText("Tarjeta Lentti");
+        getContentPane().add(jCheckBoxTarjetaLentti, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 430, 110, 20));
+
+        jCheckBoxTarjeta.setText("Tarjeta");
+        getContentPane().add(jCheckBoxTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoPedido800x600.png"))); // NOI18N
         Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,61 +181,54 @@ public class PantallaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
 //Confirmar pedido
- consultasBaseDeDatos consulta = new BaseDeDatos();
- float precio = Float.parseFloat(costo.getText());  
-int id;
-
- if ( consulta.CrearPedido(nusuario.getText(), "0", precio , "en curso"))
-         {
-                
-            JOptionPane.showMessageDialog(null, "Se recibió tu pedido");
-            id = consulta.DarIdPedido(nusuario.getText()); //Tengo el ID
-            restaurante.getText(); //Tengo el nombre del restaurante
-           // 
-            
-        ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
-  
-    for(int i=0;i<datosCarrito.size();i++){
-    String[] nr = datosCarrito.get(i).split(",");
-       int q = (int) consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);
-       float costo = consulta.darPrecioPlato(restaurante.getText(),nr[1]);
-       consulta.CrearPxP(id,nr[0],nr[1],q,costo);    
-       System.out.println(id + nr[0] + nr[1] + q + costo);
-
-    
-    
-}
-
-            
-            
-            
-            PantallaVerPedidos vp = new PantallaVerPedidos(nusuario.getText(),restaurante.getText()); 
-            vp.setVisible(true);
-            this.dispose();
-
-         } else {
-     
-              JOptionPane.showMessageDialog(null, "No se ha podido crear tu pedido");
-
-    }
-
-
-
-
-
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        float precio = Float.parseFloat(costo.getText());  
+        int id;
+        boolean metodoPagoAceptado = false;
+        if( !(jCheckBoxTarjeta.isSelected() || jCheckBoxTarjetaLentti.isSelected() || jCheckBoxefectivo.isSelected()))
+        {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado un método de pago");
+        }
+        else if( (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected()) || (jCheckBoxTarjetaLentti.isSelected() && jCheckBoxefectivo.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected() &&jCheckBoxefectivo.isSelected() ) )
+        {
+            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un medio de pago");
+        }
+        else
+            metodoPagoAceptado = true;
+        if(metodoPagoAceptado)
+        {
+            if ( consulta.CrearPedido(nusuario.getText(), "0", precio , "en curso"))
+            {                
+                JOptionPane.showMessageDialog(null, "Se recibió tu pedido");
+                id = consulta.DarIdPedido(nusuario.getText()); //Tengo el ID
+                restaurante.getText(); //Tengo el nombre del restaurante         
+                ArrayList<String> datosCarrito = consulta.darCarroCompras(nusuario.getText());
+                for(int i=0;i<datosCarrito.size();i++)
+                {
+                    String[] nr = datosCarrito.get(i).split(",");
+                    int q = (int) consulta.darCantidad(nusuario.getText(), nr[0], nr[1]);
+                    float costo = consulta.darPrecioPlato(restaurante.getText(),nr[1]);
+                    consulta.CrearPxP(id,nr[0],nr[1],q,costo);    
+                    System.out.println(id + nr[0] + nr[1] + q + costo);
+                }
+                PantallaVerPedidos vp = new PantallaVerPedidos(nusuario.getText(),restaurante.getText()); 
+                vp.setVisible(true);
+                this.dispose();
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "No se ha podido crear tu pedido");
+            }
+        }
     }//GEN-LAST:event_confirmarActionPerformed
 
-    private void efectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efectivoActionPerformed
+    private void jCheckBoxefectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxefectivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_efectivoActionPerformed
+    }//GEN-LAST:event_jCheckBoxefectivoActionPerformed
 
     private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
         // TODO add your handling code here:
@@ -386,8 +390,10 @@ if(nrestaurante[0].equals(nr[0])){
     private javax.swing.JLabel costo;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JTextField direccion;
-    private javax.swing.JCheckBox efectivo;
     private javax.swing.JLabel inforest;
+    private javax.swing.JCheckBox jCheckBoxTarjeta;
+    private javax.swing.JCheckBox jCheckBoxTarjetaLentti;
+    private javax.swing.JCheckBox jCheckBoxefectivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nusuario;
     private java.awt.TextArea restaurante;
