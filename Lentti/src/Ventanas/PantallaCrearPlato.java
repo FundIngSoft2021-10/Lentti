@@ -61,8 +61,10 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
         jButtonAgregarImagen = new javax.swing.JButton();
-        jLabelCampoImagen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaIngredientes = new javax.swing.JTextArea();
+        jLabelCampoImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -105,13 +107,17 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
+
+        jTextAreaIngredientes.setColumns(20);
+        jTextAreaIngredientes.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaIngredientes);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 430, 70));
 
         jLabelCampoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearPlato.png"))); // NOI18N
         jLabelCampoImagen.setText("Nombre");
         getContentPane().add(jLabelCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
-
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,14 +135,13 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         consultasBaseDeDatos consulta = new BaseDeDatos();
         boolean resultado= false;
-        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoPrecio.getText().isEmpty() || this.imagen==null){
+        if(this.jTextFieldCampoNombre.getText().isEmpty() || this.jTextAreaCampoDescripcion.getText().isEmpty() || this.jTextFieldCampoPrecio.getText().isEmpty() || this.imagen==null || this.jTextAreaIngredientes.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
         }
         else{
-            float precio= Float.parseFloat(this.jTextFieldCampoPrecio.getText());
-            resultado = consulta.CrearPlato(usuario, this.jTextFieldCampoNombre.getText(), this.jTextAreaCampoDescripcion.getText(), precio, this.buscador);
-            
-        }
+                float precio= Float.parseFloat(this.jTextFieldCampoPrecio.getText());
+                resultado = consulta.CrearPlato(usuario, this.jTextFieldCampoNombre.getText(), this.jTextAreaCampoDescripcion.getText(), precio, this.buscador, this.jTextAreaIngredientes.getText());
+            }
         PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(usuario);
         pantallaGestion.setVisible(true);
         this.dispose();
@@ -217,7 +222,9 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCampoImagen;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextAreaCampoDescripcion;
+    private javax.swing.JTextArea jTextAreaIngredientes;
     private javax.swing.JTextField jTextFieldCampoNombre;
     private javax.swing.JTextField jTextFieldCampoPrecio;
     // End of variables declaration//GEN-END:variables

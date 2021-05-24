@@ -21,6 +21,7 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
     DefaultListModel nombrePlato = new DefaultListModel();
     DefaultListModel precioPlato = new DefaultListModel();
     DefaultListModel descripcionPlato = new DefaultListModel();
+    DefaultListModel ingredientesPlato = new DefaultListModel();
     /**
      * Creates new form PantallaVerPlatoSeleccionado
      */
@@ -34,6 +35,8 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
         this.nombrePlato = consulta.BuscarNombrePlato(nombrePlato ,usuario);
         this.precioPlato = consulta.BuscarPrecioPlato(nombrePlato ,usuario);
         this.descripcionPlato = consulta.BuscarDescripcionPlato(nombrePlato ,usuario);
+        this.ingredientesPlato = consulta.BuscarIngredientesPlato(nombrePlato, usuario);
+        this.jListIngredientes.setModel(ingredientesPlato);
         this.jListNombrePlato.setModel(this.nombrePlato);
         this.jListPrecio.setModel(precioPlato);
         this.jListDescripcion.setModel(descripcionPlato);
@@ -59,6 +62,8 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jListDescripcion = new javax.swing.JList<>();
         jLabelImagenPlato = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jListIngredientes = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +90,13 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jListDescripcion);
 
+        jListIngredientes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jListIngredientes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,28 +107,32 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jLabelImagenPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(251, Short.MAX_VALUE))
+                        .addGap(236, 236, 236)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1)
+                                .addComponent(jScrollPane3)
+                                .addComponent(jLabelImagenPlato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jLabelImagenPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,10 +177,12 @@ public class PantallaVerPlatoSeleccionado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelImagenPlato;
     private javax.swing.JList<String> jListDescripcion;
+    private javax.swing.JList<String> jListIngredientes;
     private javax.swing.JList<String> jListNombrePlato;
     private javax.swing.JList<String> jListPrecio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

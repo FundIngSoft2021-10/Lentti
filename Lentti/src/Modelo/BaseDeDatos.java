@@ -172,7 +172,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearPlato(String restaurante, String nombrePlato, String descripcion, float precio, JFileChooser archivo) {
+    public boolean CrearPlato(String restaurante, String nombrePlato, String descripcion, float precio, JFileChooser archivo, String ingredientes) {
         boolean resultado = false;
         FileInputStream imagen = null;
         try {
@@ -186,7 +186,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
 
-            String consulta = "INSERT INTO plato (restaurante ,nombrePlato ,precio,descripcion, imagen)  VALUES (?,?,?,?,?);";
+            String consulta = "INSERT INTO plato (restaurante ,nombrePlato ,precio,descripcion, imagen, ingredientes)  VALUES (?,?,?,?,?,?);";
             PreparedStatement st = conexion.prepareStatement(consulta);
 
             st.setString(1, restaurante);
@@ -194,6 +194,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             st.setFloat(3, precio);
             st.setString(4, descripcion);
             st.setBinaryStream(5, imagen, archivo.getSelectedFile().length());
+            st.setString(6, ingredientes);
             st.execute();
             st.close();
             conexion.close();
@@ -575,7 +576,30 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+    @Override
+    public DefaultListModel BuscarIngredientesPlato(String nombre, String rusuario) {
+        DefaultListModel lista = new DefaultListModel();
 
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT ingredientes FROM plato WHERE restaurante = '" + rusuario + "' AND nombreplato = '" + nombre + "' ";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                lista.addElement(result.getString("ingredientes"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return lista;
+    }
     @Override
     public DefaultListModel BuscarDescripcionPlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();

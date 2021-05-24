@@ -194,7 +194,7 @@ public class PantallaPedido extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado un método de pago");
         }
-        else if( (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected()) || (jCheckBoxTarjetaLentti.isSelected() && jCheckBoxefectivo.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected() &&jCheckBoxefectivo.isSelected() ) )
+        else if( (jCheckBoxTarjeta.isSelected() && jCheckBoxefectivo.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected()) || (jCheckBoxTarjetaLentti.isSelected() && jCheckBoxefectivo.isSelected()) || (jCheckBoxTarjeta.isSelected() && jCheckBoxTarjetaLentti.isSelected() &&jCheckBoxefectivo.isSelected() ) )
         {
             JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un medio de pago");
         }

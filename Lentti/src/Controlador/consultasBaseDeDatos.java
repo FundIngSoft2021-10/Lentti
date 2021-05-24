@@ -22,7 +22,7 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarContrasena(String pUsuario, String nuevaContrasena);
     public abstract boolean ModificarCorreo(String pUsuario,String nuevoCorreo);
     public abstract boolean ModificarHorarioRestaurante(String nombreRestaurante, String nuevaHora);
-    public abstract boolean CrearPlato(String restaurante, String nombrePlato,  String descripcion, float precio, JFileChooser archivo );
+    public abstract boolean CrearPlato(String restaurante, String nombrePlato,  String descripcion, float precio, JFileChooser archivo, String ingredientes );
     public abstract boolean EliminarPlato(String nombrePlato);
     public abstract boolean ModificarNombrePlato(String nombrePlato, String nuevoNombre);
     public abstract boolean ModificarPrecioPlato(String nombrePlato, String nuevoPrecio);
@@ -37,6 +37,7 @@ public interface consultasBaseDeDatos {
     public abstract DefaultListModel BuscarNombrePlato (String nombre,String usuario);
     public abstract DefaultListModel BuscarPrecioPlato (String nombre,String usuario);
     public abstract DefaultListModel BuscarDescripcionPlato (String nombre,String usuario);
+    public abstract DefaultListModel BuscarIngredientesPlato (String nombre,String usuario);
     public abstract boolean ModificarUltimaFecha(String pUsuario, String fecha);
     
     public abstract DefaultListModel BuscarDomiciliariosRestaurante (String usuario);
