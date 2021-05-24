@@ -2305,6 +2305,31 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return nRest;
     }
+    
+     public ArrayList<String> darInfoPlatoSegunPedido(String pPedido) {
+        ArrayList<String> nRest = new ArrayList<String>();
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT restaurante, plato, cantidad FROM pedidoxplato WHERE pedido_id = '" + pPedido + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                nRest.add(result.getString("restaurante"));
+                nRest.add(result.getString("plato"));
+                nRest.add(result.getString("cantidad"));
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return nRest;
+    }
 
     public int[] darPedidoAFavoritos(String pUsuario) {
 

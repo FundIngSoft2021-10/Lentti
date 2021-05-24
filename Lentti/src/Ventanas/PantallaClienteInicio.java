@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -194,6 +195,33 @@ public class PantallaClienteInicio extends javax.swing.JFrame {
 
     private void B_realizarUtlimoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_realizarUtlimoPedidoActionPerformed
         // TODO add your handling code here:
+        
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        int ultimoPedido = consulta.DarIdPedido(usuarioA);
+        if(ultimoPedido != 0)
+        {
+            ArrayList<String> infoUltimoPedido = consulta.darInfoPlatoSegunPedido(Integer.toString(ultimoPedido));
+            int i = 0;
+           while(i < infoUltimoPedido.size())
+           {
+               //public abstract boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad);
+               int a = Integer.parseInt(infoUltimoPedido.get(i+2));
+               consulta.agregarPedidoCC(usuarioA, infoUltimoPedido.get(i),infoUltimoPedido.get(i+1) , a  );
+               i += 1;
+           }
+           
+            System.out.println("se logro");
+            PantallaPedido p = new PantallaPedido();
+            p.setVisible(true);
+                    this.dispose();
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "no ha realizado ningun pedido anteriormente");
+        }
+        
+        
     }//GEN-LAST:event_B_realizarUtlimoPedidoActionPerformed
 
 
