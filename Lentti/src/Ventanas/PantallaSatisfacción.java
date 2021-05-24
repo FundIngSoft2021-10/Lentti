@@ -276,8 +276,8 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
                 if( partes[0].equals(  Integer.toString(dia)  ) && partes[1].equals(  Integer.toString(mes)  ) && partes[2].equals(  Integer.toString(year)  ) &&
                     partes2[0].equals(  Integer.toString(dia)  ) && partes2[1].equals(  Integer.toString(mes)  ) && partes2[2].equals(  Integer.toString(year)  )    ){
                     System.out.println("se crea por la fecha");
-                    consulta.calificarRestaurante(pedidoid, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
-                    consulta.calificarDomiciliario(pedidoid, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    consulta.calificarRestauranteAc(pedidoid, clientep, prestaurante, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
+                    consulta.calificarDomiciliarioAc(pedidoid, clientep, pdomiciliario, Integer.parseInt(this.jComboBox1.getSelectedItem().toString()),this.jTextArea2.getText() , fecha);
                     JOptionPane.showMessageDialog(null, "Gracias por sus calificaciones");
                     PantallaVerPedidos p = new PantallaVerPedidos(clientep);
                     p.setVisible(true);

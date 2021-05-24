@@ -131,5 +131,8 @@ public interface consultasBaseDeDatos {
 
     public abstract ArrayList<ArrayList<Object>> ObtenerVehiculosDisponibles();
     
+    public boolean calificarRestauranteAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha);
+    public boolean calificarDomiciliarioAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha);
+    
 
 }
