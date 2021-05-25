@@ -116,7 +116,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         getContentPane().add(jButtonVerPedidosEnCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 230, 220));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicialDomiciliario.png"))); // NOI18N
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
