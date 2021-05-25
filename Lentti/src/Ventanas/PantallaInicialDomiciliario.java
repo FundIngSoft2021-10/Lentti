@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -20,6 +21,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     public PantallaInicialDomiciliario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Transparencia();
     }
 
     public PantallaInicialDomiciliario(String pUsuario) {
@@ -27,11 +29,27 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         String users = pUsuario;
         jLabelDomUser.setText(users);
         this.setLocationRelativeTo(null);
+        this.Transparencia();
     }
 
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/lentti.png"));
         return retValue;
+    }
+    
+    public void Transparencia ()
+    {
+        this.jButtonCerrarSesion.setOpaque(false);
+        this.jButtonCerrarSesion.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerPerfil.setOpaque(false);
+        this.jButtonVerPerfil.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerPedidosDisponibles.setOpaque(false);
+        this.jButtonVerPedidosDisponibles.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerReseñas.setOpaque(false);
+        this.jButtonVerReseñas.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerPedidosEnCurso.setOpaque(false);        
+        this.jButtonVerPedidosEnCurso.setBackground(new Color(0, 0, 0, 0));      
+        
     }
 
     /**
@@ -49,85 +67,56 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         jButtonVerPedidosDisponibles = new javax.swing.JButton();
         jButtonVerReseñas = new javax.swing.JButton();
         jButtonVerPedidosEnCurso = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(800, 690));
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonCerrarSesion.setText("Cerrar Sesión");
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 90));
 
+        jLabelDomUser.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabelDomUser.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDomUser.setText("DomUser");
+        getContentPane().add(jLabelDomUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
-        jButtonVerPerfil.setText("Perfil");
         jButtonVerPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPerfilActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonVerPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 210));
 
-        jButtonVerPedidosDisponibles.setText("Pedidos disponibles");
         jButtonVerPedidosDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPedidosDisponiblesActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonVerPedidosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 180, 220, 210));
 
-        jButtonVerReseñas.setText("Reseñas");
         jButtonVerReseñas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerReseñasActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonVerReseñas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 220));
 
-        jButtonVerPedidosEnCurso.setText("Mis pedidos en curso");
         jButtonVerPedidosEnCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPedidosEnCursoActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonVerPedidosEnCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 230, 220));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabelDomUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCerrarSesion))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonVerPedidosEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonVerReseñas, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonVerPedidosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonVerPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 320, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonCerrarSesion)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelDomUser)
-                .addGap(93, 93, 93)
-                .addComponent(jButtonVerPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVerPedidosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVerReseñas, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonVerPedidosEnCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(313, Short.MAX_VALUE))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicialDomiciliario.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,5 +192,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerPerfil;
     private javax.swing.JButton jButtonVerReseñas;
     private javax.swing.JLabel jLabelDomUser;
+    private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables
 }
