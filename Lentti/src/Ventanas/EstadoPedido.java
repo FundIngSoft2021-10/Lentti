@@ -198,12 +198,12 @@ public class EstadoPedido extends javax.swing.JFrame {
         int id=Integer.parseInt(ID.getText());  
        //ID.setText(String.valueOf(consulta.darSerialPedido(user.getText())));
        Estado.setText(consulta.DarEstado(id));
+       if(consulta.DarDomiciliario(id).equals("0")){
+       Domiciliario.setText("Esperando a que alguien tome el pedido.");
+       } else {
        Domiciliario.setText(consulta.DarNombreDomiciliario(consulta.DarDomiciliario(id)));
-      
-       
-    
-
-    
+       }       
+ 
         
     }
 
