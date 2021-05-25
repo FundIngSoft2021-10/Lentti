@@ -79,37 +79,38 @@ public class PruebasLentti {
    }*/
     
    @Test 
-     public void AgregarPlatoAlCarroCompras() throws MessagingException
+   public void IniciarSesion() throws MessagingException
    {
-        
-        String u = "estefaniaAristizabal";
-        String r= "Dominos";
-        String p = "Pizza pepperoni mediana";
-        float cantidad = 1;
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado= consulta.agregarPedidoCC(u, r, p, cantidad);
-        System.out.println("result" + resultado);
-        boolean expResult = true;
-        assertEquals(expResult, resultado);
-   }
-     
-     @Test 
-     public void ValidacionCorreoPrueba() throws MessagingException
-   {
-        
-        String a = "correoPrueba@lentti.com.co";
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado= consulta.correoCorrecto(a);
-        System.out.println("result" + resultado);
+        String a = "a'OR'1'='1";
         boolean expResult = false;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado = consulta.ValidarInicioSesion(a, "a", "C");
+        System.out.println("result" + resultado);
         assertEquals(expResult, resultado);
+   }    
+   
+   @Test 
+   public void AgregarPlatoAlCarroCompras() throws MessagingException
+   {
+       String u = "estefaniaAristizabal";
+       String r= "Dominos";
+       String p = "Pizza pepperoni mediana";
+       float cantidad = 1;
+       consultasBaseDeDatos consulta = new BaseDeDatos();
+       boolean resultado= consulta.agregarPedidoCC(u, r, p, cantidad);
+       System.out.println("result" + resultado);
+       boolean expResult = true;
+       assertEquals(expResult, resultado);
    }
-    
-    
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+   
+   @Test 
+   public void ValidacionCorreoPrueba() throws MessagingException
+   {
+       String a = "correoPrueba@lentti.com.co";
+       consultasBaseDeDatos consulta = new BaseDeDatos();
+       boolean resultado= consulta.correoCorrecto(a);
+       System.out.println("result" + resultado);
+       boolean expResult = false;
+       assertEquals(expResult, resultado);
+   }
 }
