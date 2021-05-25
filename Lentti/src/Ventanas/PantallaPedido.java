@@ -170,7 +170,8 @@ public class PantallaPedido extends javax.swing.JFrame {
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
 //Confirmar pedido
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        float precio = Float.parseFloat(costo.getText());  
+        float precio = consulta.darCostoEnvioRest(restaurante.getText());
+                precio += Float.parseFloat(costo.getText());  
         int id;
         boolean metodoPagoAceptado = false;
         if( !(jCheckBoxTarjeta.isSelected() || jCheckBoxTarjetaLentti.isSelected() || jCheckBoxefectivo.isSelected()))
