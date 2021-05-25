@@ -81,10 +81,12 @@ public class PruebasLentti {
    @Test 
    public void IniciarSesion() throws MessagingException
    {
-        String a = "a'OR'1'='1";
+        String usuario = "a'OR'1'='1"; //Intento de inyección SQL en el usuario "a".
+        String contrasena = "bcde"; //Contraseña aleatoria, la contraseña real es "a".
+        String tipo = "C"; //El usuario es de tipo cliente.
         boolean expResult = false;
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado = consulta.ValidarInicioSesion(a, "a", "C");
+        boolean resultado = consulta.ValidarInicioSesion(usuario, contrasena, tipo);
         System.out.println("result" + resultado);
         assertEquals(expResult, resultado);
    }    
