@@ -39,6 +39,8 @@ public interface consultasBaseDeDatos {
     public abstract DefaultListModel BuscarDescripcionPlato (String nombre,String usuario);
     public abstract DefaultListModel BuscarIngredientesPlato (String nombre,String usuario);
     public abstract boolean ModificarUltimaFecha(String pUsuario, String fecha);
+    public abstract float obtenerCantidadPedido(String nUsuario, String nRestaurante, String nPlato);
+    public abstract boolean ValidarExistenciaProductoCC(String nUsuario, String nRestaurante, String nPlato);
     
     public abstract DefaultListModel BuscarDomiciliariosRestaurante (String usuario);
     public abstract boolean ModificarNombreRestaurante (String nombreRestaurante, String nuevoNombre);

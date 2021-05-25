@@ -1182,6 +1182,14 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad) {
         boolean resultado = false;
+        
+        boolean validacion = ValidarExistenciaProductoCC(nUsuario, nRestaurante, nPlato);
+        if(validacion == true){
+          nCantidad += darCantidad(nUsuario, nRestaurante, nPlato);
+          resultado = ModificarCantidad(nUsuario, nRestaurante, nPlato, nCantidad);
+        }
+        else{
+            
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -1195,7 +1203,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             System.out.println("Errorx:" + exc.getMessage());
             resultado = false;
         }
-
+        
+        }
         return resultado;
 
     }
@@ -2674,6 +2683,56 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             }
             result1.close();
             result2.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
+    }
+    
+    public boolean ValidarExistenciaProductoCC(String nUsuario, String nRestaurante, String nPlato) {
+        boolean resultado = false;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT usuario,nombreRestaurante,nombrePlato FROM carritoCompras";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                if (nUsuario.equals(result.getString("usuario")) && nRestaurante.equals(result.getString("nombreRestaurante")) && nPlato.equals(result.getString("nombrePlato")) ) {
+                    resultado = true;
+                }
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
+    }
+    
+    public float obtenerCantidadPedido(String nUsuario, String nRestaurante, String nPlato) {
+        float resultado = 0;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT cantidad FROM carritoCompras WHERE usuario = '" + nUsuario + "' and nombreRestaurante = '" + nRestaurante + "' and  nombrePlato = '" + nPlato + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                resultado = result.getFloat("cantidad");
+            }
+
+            result.close();
             st.close();
             conexion.close();
         } catch (Exception exc) {

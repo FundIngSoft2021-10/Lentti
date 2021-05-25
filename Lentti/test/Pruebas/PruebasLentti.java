@@ -42,7 +42,7 @@ public class PruebasLentti {
     }
     
     //test de ValidarUsuarioCorreo
-    @Test 
+  /*  @Test 
    public void ValidarUsuarioCorreo() throws MessagingException
    {
         System.out.println("ValidarUsuarioCorreo");
@@ -74,6 +74,21 @@ public class PruebasLentti {
             resultado= true;
             
         }
+        boolean expResult = true;
+        assertEquals(expResult, resultado);
+   }*/
+    
+   @Test 
+     public void AgregarPlatoAlCarroCompras() throws MessagingException
+   {
+        
+        String u = "estefaniaAristizabal";
+        String r= "Dominos";
+        String p = "Pizza pepperoni mediana";
+        float cantidad = 1;
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado= consulta.agregarPedidoCC(u, r, p, cantidad);
+        System.out.println("result" + resultado);
         boolean expResult = true;
         assertEquals(expResult, resultado);
    }
