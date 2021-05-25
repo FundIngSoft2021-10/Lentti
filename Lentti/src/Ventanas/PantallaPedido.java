@@ -51,23 +51,20 @@ public class PantallaPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nusuario = new javax.swing.JLabel();
         confirmar = new javax.swing.JButton();
         resumen = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
         direccion = new javax.swing.JTextField();
         jCheckBoxefectivo = new javax.swing.JCheckBox();
+        inforest = new javax.swing.JLabel();
         restaurante = new java.awt.TextArea();
         atras = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
-        inforest = new javax.swing.JLabel();
-        user = new javax.swing.JLabel();
-        nusuario = new javax.swing.JLabel();
-        carrito = new javax.swing.JButton();
         costo = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         BotonModificarDireccionCliente = new javax.swing.JButton();
-        salir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        envio = new javax.swing.JLabel();
         jCheckBoxTarjetaLentti = new javax.swing.JCheckBox();
         jCheckBoxTarjeta = new javax.swing.JCheckBox();
         Fondo = new javax.swing.JLabel();
@@ -77,27 +74,31 @@ public class PantallaPedido extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        nusuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(nusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 270, 30));
+
         confirmar.setBackground(new java.awt.Color(204, 204, 255));
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 100, 30));
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 370, 60));
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         descripcion.setRows(5);
         resumen.setViewportView(descripcion);
 
-        getContentPane().add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 390, 130));
+        getContentPane().add(resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 410, 70));
 
+        direccion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 direccionActionPerformed(evt);
             }
         });
-        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 240, 30));
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 380, 50));
 
         jCheckBoxefectivo.setText("Efectivo");
         jCheckBoxefectivo.addActionListener(new java.awt.event.ActionListener() {
@@ -105,75 +106,57 @@ public class PantallaPedido extends javax.swing.JFrame {
                 jCheckBoxefectivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBoxefectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 80, 20));
+        getContentPane().add(jCheckBoxefectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 80, 20));
 
-        restaurante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 300, 30));
+        inforest.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(inforest, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 230, 30));
+
+        restaurante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 320, 30));
 
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
-        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 40, 50));
+        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 60));
 
-        usuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        usuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 330, 30));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 260, 40));
 
-        inforest.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(inforest, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 240, 20));
-
-        user.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        user.setText("Usuario:");
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 90, 30));
-
-        nusuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(nusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 250, 30));
-
-        carrito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carritoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(carrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 190, 50));
-
-        costo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 160, 30));
+        costo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 180, 50));
 
         total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        total.setText("Total del pedido:");
-        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 494, 210, 20));
+        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 210, 20));
 
-        BotonModificarDireccionCliente.setText("...");
         BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 180, 40, 30));
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 50, 60));
 
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, 30));
-
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, -1, -1));
+        envio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 190, 50));
 
         jCheckBoxTarjetaLentti.setText("Tarjeta Lentti");
-        getContentPane().add(jCheckBoxTarjetaLentti, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 430, 110, 20));
+        jCheckBoxTarjetaLentti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxTarjetaLenttiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBoxTarjetaLentti, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 90, 30));
 
         jCheckBoxTarjeta.setText("Tarjeta");
-        getContentPane().add(jCheckBoxTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
+        getContentPane().add(jCheckBoxTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, -1, -1));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FondoPedido800x600.png"))); // NOI18N
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoPro.png"))); // NOI18N
         Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FondoMouseClicked(evt);
@@ -242,14 +225,6 @@ public class PantallaPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
 
-    private void carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carritoActionPerformed
-        // TODO add your handling code here:
-        //AL carrito
-        PantallaCarroCompras pantalla = new PantallaCarroCompras(nusuario.getText());
-        pantalla.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_carritoActionPerformed
-
     private void BotonModificarDireccionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarDireccionClienteActionPerformed
  consultasBaseDeDatos consulta = new BaseDeDatos();
  ArrayList<String> datosCliente = consulta.darCliente(nusuario.getText());
@@ -270,19 +245,18 @@ public class PantallaPedido extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+    private void jCheckBoxTarjetaLenttiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTarjetaLenttiActionPerformed
         // TODO add your handling code here:
-                System.exit(0);
-    }//GEN-LAST:event_salirActionPerformed
+    }//GEN-LAST:event_jCheckBoxTarjetaLenttiActionPerformed
   public void transparenciaDelBoton(){
        atras.setOpaque(false);
        atras.setBackground(new Color(0,0,0,0));
        confirmar.setOpaque(false);
        confirmar.setBackground(new Color(0,0,0,0));
-       carrito.setOpaque(false);
-       carrito.setBackground(new Color(0,0,0,0));
-       salir.setOpaque(false);
-       salir.setBackground(new Color(0,0,0,0));
+       BotonModificarDireccionCliente.setOpaque(false);
+       BotonModificarDireccionCliente.setBackground(new Color(0,0,0,0));
+       direccion.setOpaque(false);
+       direccion.setBackground(new Color(0,0,0,0));
        
        
   }
@@ -304,7 +278,8 @@ public class PantallaPedido extends javax.swing.JFrame {
         
         String[] nrestaurante = datosCarrito.get(0).split(","); // Separar por ","
         restaurante.setText(nrestaurante[0]); //Nombre del restaurante
-        float presio = consulta.darCostoEnvioRest(restaurante.getText());
+        float presio = 0;
+        envio.setText(String.valueOf(consulta.darCostoEnvioRest(restaurante.getText())));
         inforest.setText(consulta.darDireccionRest(restaurante.getText()));
         descripcion.append(consulta.darDescripcionPlato(nrestaurante[0], nrestaurante[1]));
         String cantidad = String.valueOf(consulta.darCantidad(nusuario.getText(), restaurante.getText(), nrestaurante[1]));
@@ -385,22 +360,19 @@ if(nrestaurante[0].equals(nr[0])){
     private javax.swing.JButton BotonModificarDireccionCliente;
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton atras;
-    private javax.swing.JButton carrito;
     private javax.swing.JButton confirmar;
     private javax.swing.JLabel costo;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JTextField direccion;
+    private javax.swing.JLabel envio;
     private javax.swing.JLabel inforest;
     private javax.swing.JCheckBox jCheckBoxTarjeta;
     private javax.swing.JCheckBox jCheckBoxTarjetaLentti;
     private javax.swing.JCheckBox jCheckBoxefectivo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nusuario;
     private java.awt.TextArea restaurante;
     private javax.swing.JScrollPane resumen;
-    private javax.swing.JButton salir;
     private javax.swing.JLabel total;
-    private javax.swing.JLabel user;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
