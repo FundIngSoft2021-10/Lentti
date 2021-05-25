@@ -206,7 +206,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, File imagen, String contrasenau) {
+    public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, File imagen, String contrasenau, String correo) {
         boolean resultado = false;
         String path = imagen.getAbsolutePath();      
         FileInputStream imgDom = null;
@@ -217,7 +217,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             imgDom = new FileInputStream(path);
             java.sql.Statement st = conexion.createStatement();
-            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "', 'D', '" + fechaCreacion + "')";
+            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "', 'D', '" + correo + "', '" + fechaCreacion + "')";
             st.execute(consulta1);
             String consulta = "INSERT INTO domiciliario VALUES ('" + restaurante + "','" + documento + "','" + nombre + "', '" + telefono + "', null, null, 0, Default, null)";
             st.execute(consulta);

@@ -18,10 +18,12 @@ public class PantallaGestionDomiciliarios extends javax.swing.JFrame {
      */
     public PantallaGestionDomiciliarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
     }
     public PantallaGestionDomiciliarios(String usuario) {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
         this.usuario=usuario;
     }

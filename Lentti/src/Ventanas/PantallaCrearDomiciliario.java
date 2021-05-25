@@ -50,6 +50,8 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextFieldCorreo = new javax.swing.JTextField();
+        jLabelCorreo = new javax.swing.JLabel();
         jButtonSeleccionarImagen = new javax.swing.JButton();
         jLabelImagen = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -69,6 +71,11 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 620, 280, 30));
+
+        jLabelCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelCorreo.setText("Correo:");
+        getContentPane().add(jLabelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
 
         jButtonSeleccionarImagen.setText("Seleccionar...");
         jButtonSeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +95,7 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 65, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
-        getContentPane().add(jTextFieldPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 430, 30));
+        getContentPane().add(jTextFieldPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 430, 30));
         getContentPane().add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 430, 30));
         getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 190, 30));
         getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 30));
@@ -138,15 +145,20 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
             String nombre = this.jTextFieldNombre.getText();
             String telefono = this.jTextFieldTelefono.getText();
             String contrasena = this.jTextFieldContrasena.getText();
-            resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, imagen, contrasena);
-
-            if (resultado == true) {
-                JOptionPane.showMessageDialog(null, "El domiciliario se creo correctamente");
-                PantallaGestionDomiciliarios pantalla = new PantallaGestionDomiciliarios(usuario);
-                pantalla.setVisible(true);
-                this.dispose();
+            String correo = this.jTextFieldCorreo.getText();
+            if (!consulta.correoCorrecto(correo)) {
+                JOptionPane.showMessageDialog(null, "el correo no es valido");
             } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error, por favor intentelo nuevamente");
+                resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, imagen, contrasena, correo);
+
+                if (resultado == true) {
+                    JOptionPane.showMessageDialog(null, "El domiciliario se creo correctamente");
+                    PantallaGestionDomiciliarios pantalla = new PantallaGestionDomiciliarios(usuario);
+                    pantalla.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Hubo un error, por favor intentelo nuevamente");
+                }
             }
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
@@ -226,8 +238,10 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelCorreo;
     private javax.swing.JLabel jLabelImagen;
     private javax.swing.JTextField jTextFieldContrasena;
+    private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldDocumento;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPlacaVehiculo;
