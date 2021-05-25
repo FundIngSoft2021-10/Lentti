@@ -43,7 +43,11 @@ public class CorreoElectronico {
         Session sesion = Session.getDefaultInstance(propiedad);
         String receptor = enviarA;
         String asunto = "Recuperación contraseña lentti ";
-        String mensaje="correo prueba \n este correo se codigo -> " + Integer.toString(codigo);
+        String mensaje="Hola, querido usuario.\n\n"+
+                       "Hemos recibido una confirmación de solicitud para cambio de contraseña en nuestros servidores. Su código de recuperación de cuenta es:\n" + 
+                       Integer.toString(codigo)+"\n "+
+                       "Debe ingresar este código en el espacio que le sigue en donde escribio su usuario. Después de ingresar al sistema se le pedirá que ingrese una nueva contraseña.\n\n"+
+                       "Atentamente,\n"+"Lentti App.";
         
         MimeMessage mail = new MimeMessage(sesion);
         try {
