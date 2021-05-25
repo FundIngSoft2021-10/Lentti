@@ -206,21 +206,27 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     }
 
     @Override
-    public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
+    public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, File imagen, String contrasenau) {
         boolean resultado = false;
+        String path = imagen.getAbsolutePath();      
+        FileInputStream imgDom = null;
         LocalDate fecha = LocalDate.now();
         String fechaCreacion = String.valueOf(fecha.getDayOfMonth()) + "/" + String.valueOf(fecha.getMonthValue()) + "/" + String.valueOf(fecha.getYear());
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st1 = conexion.createStatement();
-            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "'," + "'D'" + ",'" + fechaCreacion + "');";
-            st1.execute(consulta1);
-            st1.close();
+            imgDom = new FileInputStream(path);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO domiciliario VALUES ('" + restaurante + "','" + documento + "','" + nombre + "', '" + telefono + "', '" + placaVehiculo + "', " + puntuacion + "," + domiciliosEntregados + ");";
+            String consulta1 = "INSERT INTO lenttiusuario VALUES ('" + nombre + "', '" + contrasenau + "', 'D', '" + fechaCreacion + "')";
+            st.execute(consulta1);
+            String consulta = "INSERT INTO domiciliario VALUES ('" + restaurante + "','" + documento + "','" + nombre + "', '" + telefono + "', null, null, 0, Default, null)";
             st.execute(consulta);
             st.close();
+            String consulta2 = "UPDATE domiciliario SET imagen = ? WHERE documento = '" + documento + "'";
+            PreparedStatement st2 = conexion.prepareStatement(consulta2);
+            st2.setBinaryStream(1, imgDom);
+            st2.execute();
+            st2.close();
             conexion.close();
             resultado = true;
         } catch (Exception exc) {
@@ -2735,6 +2741,50 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             result.close();
             st.close();
             conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
+    }
+    
+    public ImageIcon VerImagenDomiciliario(String userDomi) {
+        ImageIcon imagen = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT imagen FROM domiciliario WHERE nombre = '" + userDomi + "'";
+            ResultSet result = st.executeQuery(consulta);
+            while (result.next()) {
+                InputStream is = result.getBinaryStream("imagen");
+                BufferedImage img = ImageIO.read(is);
+                imagen = new ImageIcon(img);
+            }
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return imagen;
+    }
+    
+    public boolean ModificarImagenDomiciliario(String docDomi, File imagen) {
+        boolean resultado = false;
+        String path = imagen.getAbsolutePath();      
+        FileInputStream imgDom = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            imgDom = new FileInputStream(path);
+            String consulta = "UPDATE domiciliario SET imagen = ? WHERE documento = '" + docDomi + "'";
+            PreparedStatement st = conexion.prepareStatement(consulta);
+            st.setBinaryStream(1, imgDom);
+            st.execute();
+            st.close();
+            conexion.close();
+            resultado = true;
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }

@@ -8,6 +8,11 @@ package Ventanas;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,15 +21,20 @@ import javax.swing.JOptionPane;
  */
 public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     String usuario = "";
+    JFileChooser seleccionador;
+    File imagen;
+    
     /**
      * Creates new form PantallaModificarDomiciliario
      */
     public PantallaModificarDomiciliario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
     }
     public PantallaModificarDomiciliario(String usuario) {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
         this.usuario=usuario;
     }
@@ -37,6 +47,10 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        jButtonModificarImagen = new javax.swing.JButton();
+        jButtonSeleccionador = new javax.swing.JButton();
+        jLabelImagenSeleccionada = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldDocumentoDomiciliario = new javax.swing.JTextField();
         jTextFieldModDocumento = new javax.swing.JTextField();
@@ -52,11 +66,34 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
-        getContentPane().add(jTextFieldDocumentoDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 260, 40));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("Imagen:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
+
+        jButtonModificarImagen.setText("Modificar");
+        jButtonModificarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonModificarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
+
+        jButtonSeleccionador.setText("Seleccionar imagen");
+        jButtonSeleccionador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionadorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSeleccionador, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, -1));
+
+        jLabelImagenSeleccionada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabelImagenSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, 90, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 60, 80));
+        getContentPane().add(jTextFieldDocumentoDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 270, 50));
         getContentPane().add(jTextFieldModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 270, 50));
-        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 270, 50));
-        getContentPane().add(jTextFieldModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 270, 50));
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 270, 50));
+        getContentPane().add(jTextFieldModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 270, 50));
         getContentPane().add(jTextFieldModPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 270, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarDomiciliario.png"))); // NOI18N
@@ -158,6 +195,51 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonModPlacaVehiculoActionPerformed
 
+    private void jButtonSeleccionadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionadorActionPerformed
+        // TODO add your handling code here:
+        this.seleccionador = new JFileChooser();
+        this.seleccionador.setMultiSelectionEnabled(false);
+        this.seleccionador.setDialogTitle("Buscar Imagen del domiciliario");
+        if(this.seleccionador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !this.seleccionador.isDirectorySelectionEnabled())
+        {   
+            if(this.seleccionador.getSelectedFile().toString().endsWith(".jpg") || this.seleccionador.getSelectedFile().toString().endsWith(".png") )
+            {
+                System.out.println("archivo -> "+ this.seleccionador.getSelectedFile().toString());
+                this.imagen = new File (this.seleccionador.getSelectedFile().toString());
+                ImageIcon imagenIcono = new ImageIcon(this.imagen.toString());
+                Icon icono = new ImageIcon(imagenIcono.getImage().getScaledInstance(this.jLabelImagenSeleccionada.getWidth(), this.jLabelImagenSeleccionada.getHeight(), Image.SCALE_SMOOTH));
+                this.jLabelImagenSeleccionada.setIcon(icono);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "No es un formato aceptado, debe ser jpg o png");
+            }
+        }
+    }//GEN-LAST:event_jButtonSeleccionadorActionPerformed
+
+    private void jButtonModificarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarImagenActionPerformed
+        // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado = false;
+        
+        if(this.seleccionador.getSelectedFile() == null)
+        {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una imagen");
+        }
+        else
+        {
+            resultado = consulta.ModificarImagenDomiciliario(this.jTextFieldDocumentoDomiciliario.getText(), this.imagen);
+            
+            if (resultado == true)
+            {
+                JOptionPane.showMessageDialog(null, "La imagen se modifico correctamente");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error, por favor intentelo de nuevo");
+            }
+        }
+    }//GEN-LAST:event_jButtonModificarImagenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,8 +294,12 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModNombre;
     private javax.swing.JButton jButtonModPlacaVehiculo;
     private javax.swing.JButton jButtonModTelefono;
+    private javax.swing.JButton jButtonModificarImagen;
+    private javax.swing.JButton jButtonSeleccionador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelImagenSeleccionada;
     private javax.swing.JTextField jTextFieldDocumentoDomiciliario;
     private javax.swing.JTextField jTextFieldModDocumento;
     private javax.swing.JTextField jTextFieldModNombre;

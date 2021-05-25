@@ -9,24 +9,36 @@ import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
  * @author juank
  */
 public class PantallaCrearDomiciliario extends javax.swing.JFrame {
+
     String usuario = "";
+    JFileChooser seleccionador;
+    File imagen;
+
     /**
      * Creates new form PantallaCrearDomiciliario
      */
     public PantallaCrearDomiciliario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
     }
+
     public PantallaCrearDomiciliario(String usuario) {
         initComponents();
+        this.setLocationRelativeTo(null);
         Transparencia();
-        this.usuario=usuario;
+        this.usuario = usuario;
     }
 
     /**
@@ -38,6 +50,9 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonSeleccionarImagen = new javax.swing.JButton();
+        jLabelImagen = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,6 +69,21 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonSeleccionarImagen.setText("Seleccionar...");
+        jButtonSeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionarImagenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSeleccionarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 100, 30));
+
+        jLabelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, 110));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setText("Imagen");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 110, 40));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 50, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 65, -1));
@@ -100,43 +130,59 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado= false;
-        if(this.jTextFieldDocumento.getText().isEmpty() || this.jTextFieldNombre.getText().isEmpty() || this.jTextFieldPlacaVehiculo.getText().isEmpty() || this.jTextFieldTelefono.getText().isEmpty())
-        {
+        boolean resultado = false;
+        if (this.jTextFieldDocumento.getText().isEmpty() || this.jTextFieldNombre.getText().isEmpty() || this.jTextFieldTelefono.getText().isEmpty() || this.jTextFieldContrasena.getText().isEmpty() || this.seleccionador.getSelectedFile() == null) {
             JOptionPane.showMessageDialog(null, "Hay un campo vacio.");
-        }
-        else
-        {
+        } else {
             String documento = this.jTextFieldDocumento.getText();
             String nombre = this.jTextFieldNombre.getText();
-            String placa = this.jTextFieldPlacaVehiculo.getText();
             String telefono = this.jTextFieldTelefono.getText();
-            Float puntuacion = Float.parseFloat("0");
-            Float numDomiciliosEntregados = Float.parseFloat("0");
             String contrasena = this.jTextFieldContrasena.getText();
-            resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, placa, puntuacion, numDomiciliosEntregados, contrasena);
-        }
-        PantallaGestionDomiciliarios pantalla = new PantallaGestionDomiciliarios(usuario);
-        pantalla.setVisible(true);
-        this.dispose();       
+            resultado = consulta.CrearDomiciliario(usuario, documento, nombre, telefono, imagen, contrasena);
 
-        
+            if (resultado == true) {
+                JOptionPane.showMessageDialog(null, "El domiciliario se creo correctamente");
+                PantallaGestionDomiciliarios pantalla = new PantallaGestionDomiciliarios(usuario);
+                pantalla.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error, por favor intentelo nuevamente");
+            }
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jTextFieldContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldContrasenaActionPerformed
 
+    private void jButtonSeleccionarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarImagenActionPerformed
+        // TODO add your handling code here:
+        this.seleccionador = new JFileChooser();
+        this.seleccionador.setMultiSelectionEnabled(false);
+        this.seleccionador.setDialogTitle("Buscar Imagen del domiciliario");
+        if (this.seleccionador.showOpenDialog(this) == JFileChooser.APPROVE_OPTION && !this.seleccionador.isDirectorySelectionEnabled()) {
+            if (this.seleccionador.getSelectedFile().toString().endsWith(".jpg") || this.seleccionador.getSelectedFile().toString().endsWith(".png")) {
+                System.out.println("archivo -> " + this.seleccionador.getSelectedFile().toString());
+                this.imagen = new File(this.seleccionador.getSelectedFile().toString());
+                ImageIcon imagenIcono = new ImageIcon(this.imagen.toString());
+                Icon icono = new ImageIcon(imagenIcono.getImage().getScaledInstance(this.jLabelImagen.getWidth(), this.jLabelImagen.getHeight(), Image.SCALE_SMOOTH));
+                this.jLabelImagen.setIcon(icono);
+            } else {
+                JOptionPane.showMessageDialog(null, "No es un formato aceptado, debe ser jpg o png");
+            }
+        }
+    }//GEN-LAST:event_jButtonSeleccionarImagenActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public void Transparencia ()
-    {
+    public void Transparencia() {
         jButtonAceptar.setOpaque(false);
         jButtonAceptar.setBackground(new Color(0, 0, 0, 0));
         jButtonCancelar.setOpaque(false);
-        jButtonCancelar.setBackground(new Color(0, 0, 0, 0));     
+        jButtonCancelar.setBackground(new Color(0, 0, 0, 0));
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -172,12 +218,15 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSeleccionarImagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelImagen;
     private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldDocumento;
     private javax.swing.JTextField jTextFieldNombre;
