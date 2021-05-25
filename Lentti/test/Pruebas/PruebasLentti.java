@@ -92,6 +92,18 @@ public class PruebasLentti {
         boolean expResult = true;
         assertEquals(expResult, resultado);
    }
+     
+     @Test 
+     public void ValidacionCorreoPrueba() throws MessagingException
+   {
+        
+        String a = "correoPrueba@lentti.com.co";
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        boolean resultado= consulta.correoCorrecto(a);
+        System.out.println("result" + resultado);
+        boolean expResult = false;
+        assertEquals(expResult, resultado);
+   }
     
     
 

@@ -2791,5 +2791,24 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
+    
+    public boolean correoCorrecto(String pCorreo)
+    {
+        boolean correcto =false;
+        String correo = pCorreo;
+        String [] partes;
+        partes = correo.split("@");
+        
+        if(partes.length == 2)
+        {
+            if(partes[1].equals("hotmail.com") ||partes[1].equals("gmail.com") )
+            {
+                correcto = true;
+            }
+        }
+        
+        
+        return correcto;
+    }
 
 }

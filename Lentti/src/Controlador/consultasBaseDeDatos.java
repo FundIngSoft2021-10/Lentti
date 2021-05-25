@@ -148,4 +148,5 @@ public interface consultasBaseDeDatos {
     
     public abstract boolean ModificarImagenDomiciliario(String docDomi, File imagen);
     
+    public boolean correoCorrecto(String pCorreo);
 }

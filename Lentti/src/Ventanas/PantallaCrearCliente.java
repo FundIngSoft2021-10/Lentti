@@ -155,16 +155,16 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
             //verificar tarjeta digitos
             
             
-            
+            consultasBaseDeDatos consulta = new BaseDeDatos();
             //
             //verificar correo
-            if(!correoCorrecto()){
+            if(!consulta.correoCorrecto(TF_correoCliente.getText())){
                 JOptionPane.showMessageDialog(null, "el correo no es valido");
             return;
             }
             
         
-        consultasBaseDeDatos consulta = new BaseDeDatos();
+        
         LocalDate fecha = LocalDate.now();
         String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
         //ACA ESTEFANIA 
@@ -220,24 +220,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
      
     }
     
-    public boolean correoCorrecto()
-    {
-        boolean correcto =false;
-        String correo = TF_correoCliente.getText();
-        String [] partes;
-        partes = correo.split("@");
-        
-        if(partes.length == 2)
-        {
-            if(partes[1].equals("hotmail.com") ||partes[1].equals("gmail.com") )
-            {
-                correcto = true;
-            }
-        }
-        
-        
-        return correcto;
-    }
+    
     
     public boolean tarjetaCorrecta(){
      //verificar tarjeta digitos
