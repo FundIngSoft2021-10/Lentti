@@ -5,17 +5,32 @@
  */
 package Ventanas;
 
+import javax.swing.JOptionPane;
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
+
 /**
  *
  * @author Tony
  */
 public class PantallaInconveniente extends javax.swing.JFrame {
 
+    int pedidoid;
+    String userdomi;
+
     /**
      * Creates new form PantallaSolicitarVehículo
      */
     public PantallaInconveniente() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    public PantallaInconveniente(int pedido, String userdom) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.pedidoid = pedido;
+        this.userdomi = userdom;
     }
 
     /**
@@ -88,10 +103,30 @@ public class PantallaInconveniente extends javax.swing.JFrame {
 
     private void jButtonAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrásActionPerformed
         // TODO add your handling code here:
+        PantallaPedidosEnCursoDomiciliario p = new PantallaPedidosEnCursoDomiciliario(this.userdomi);
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonAtrásActionPerformed
 
     private void jButtonReportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportarActionPerformed
         // TODO add your handling code here:
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        String cliente = consulta.ObtenerClienteDomicilio(pedidoid);
+        String restaurante = consulta.ObtenerRestauranteDomicilio(pedidoid);
+        String mensaje = this.jTextAreaTextoInconveniente.getText();
+        if (mensaje == null) {
+            JOptionPane.showMessageDialog(null, "Por favor describa el inconveniente");
+        } else {
+            boolean validar = consulta.CrearInconveniente(cliente, restaurante, mensaje, this.pedidoid, this.userdomi);
+            if (validar == true) {
+                JOptionPane.showMessageDialog(null, "El inconveniente fue reportado correctamente");
+                PantallaPedidosEnCursoDomiciliario p = new PantallaPedidosEnCursoDomiciliario(this.userdomi);
+                p.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ha ocurrido un error, por favor intentelo de nuevo");
+            }
+        }
     }//GEN-LAST:event_jButtonReportarActionPerformed
 
     /**

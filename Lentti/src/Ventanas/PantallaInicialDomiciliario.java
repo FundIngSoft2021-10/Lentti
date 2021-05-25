@@ -156,6 +156,9 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
 
     private void jButtonVerPedidosEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosEnCursoActionPerformed
         // TODO add your handling code here:
+        PantallaPedidosEnCursoDomiciliario p = new PantallaPedidosEnCursoDomiciliario(jLabelDomUser.getText());
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonVerPedidosEnCursoActionPerformed
 
     /**

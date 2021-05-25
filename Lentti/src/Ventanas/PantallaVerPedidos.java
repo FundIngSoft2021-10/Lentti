@@ -78,6 +78,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         jButtonCalificar = new javax.swing.JButton();
         BotonAgregarFavorito = new javax.swing.JButton();
         BotonVerPedidosFavoritos = new javax.swing.JButton();
+        jButtonVerInconvenientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 690));
@@ -138,22 +139,12 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerInconvenientes.setText("Inconvenientes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(357, 357, 357)
-                        .addComponent(jButtonEstadoPedido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAtras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(jButtonCalificar)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(241, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,6 +164,20 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
                         .addGap(154, 154, 154)
                         .addComponent(BotonAgregarFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonAtras))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(363, 363, 363)
+                        .addComponent(jButtonCalificar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(jButtonEstadoPedido)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonVerInconvenientes)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +189,9 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonEstadoPedido)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEstadoPedido)
+                    .addComponent(jButtonVerInconvenientes))
                 .addGap(49, 49, 49)
                 .addComponent(jLabelPedidosEnCurso1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -310,6 +317,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonCalificar;
     private javax.swing.JButton jButtonEstadoPedido;
+    private javax.swing.JButton jButtonVerInconvenientes;
     private javax.swing.JLabel jLabelPedidosEnCurso;
     private javax.swing.JLabel jLabelPedidosEnCurso1;
     private javax.swing.JList jListPedidosEnCurso;

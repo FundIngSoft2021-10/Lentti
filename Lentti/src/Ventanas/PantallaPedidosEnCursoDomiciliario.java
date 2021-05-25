@@ -5,17 +5,48 @@
  */
 package Ventanas;
 
+import Controlador.consultasBaseDeDatos;
+import Modelo.BaseDeDatos;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Tony
  */
 public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
 
+    String userdomi;
+    int pedidoid;
+
     /**
      * Creates new form PantallaPedidosEnCursoDomiciliario
      */
     public PantallaPedidosEnCursoDomiciliario() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    public PantallaPedidosEnCursoDomiciliario(String userdom) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.userdomi = userdom;
+        DefaultTableModel model = (DefaultTableModel) jTablePedidos.getModel();
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        ArrayList<ArrayList<Object>> data = consulta.ObtenerTablaDomiciliosEnCursoDomiciliario(userdomi);
+        int cont = data.size();
+        int cont2 = data.get(0).size();
+        Object[] data2 = new Object[cont2];
+
+        for (int i = 0; i < cont; i++) {
+            for (int j = 0; j < cont2; j++) {
+                data2[j] = data.get(i).get(j);
+            }
+            model.addRow(data2);
+        }
+
+        jTablePedidos.setModel(model);
     }
 
     /**
@@ -103,10 +134,24 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
 
     private void jButtonAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrásActionPerformed
         // TODO add your handling code here:
+        PantallaInicialDomiciliario p = new PantallaInicialDomiciliario(this.userdomi);
+        p.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonAtrásActionPerformed
 
     private void jButtonReportarInconvenienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportarInconvenienteActionPerformed
         // TODO add your handling code here:
+        if (jTablePedidos.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            int column = 0;
+            int row = jTablePedidos.getSelectedRow();
+            this.pedidoid = (int) jTablePedidos.getModel().getValueAt(row, column);
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            PantallaInconveniente p = new PantallaInconveniente(this.pedidoid, this.userdomi);
+            p.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonReportarInconvenienteActionPerformed
 
     /**

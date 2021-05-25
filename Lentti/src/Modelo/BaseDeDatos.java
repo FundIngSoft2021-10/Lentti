@@ -73,14 +73,13 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
     }
 
-  
     public boolean CrearUsuario(String pUsuario, String pContrasena, String pTipo, String pCorreo, String pFecha) {
         boolean resultado = false;
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
             java.sql.Statement st = conexion.createStatement();
-            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '" + pCorreo + "', '" + pFecha+ "' );";
+            String consulta = "insert into lenttiUsuario values ( '" + pUsuario + "' , '" + pContrasena + "', '" + pTipo + "', '" + pCorreo + "', '" + pFecha + "' );";
             st.execute(consulta);
             st.close();
             conexion.close();
@@ -210,7 +209,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, String placaVehiculo, Float puntuacion, Float domiciliosEntregados, String contrasenau) {
         boolean resultado = false;
         LocalDate fecha = LocalDate.now();
-        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth()) + "/" + String.valueOf(fecha.getMonthValue()) + "/" + String.valueOf(fecha.getYear());
         try {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
@@ -384,8 +383,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     public boolean CrearRestaurante(String nombreRestaurante, String password, String NIT, String direccion, String descripcion, float costoDeEnvio, JFileChooser archivo, String horario) {
         boolean resultado = false;
         LocalDate fecha = LocalDate.now();
-        String fechaCreacion = String.valueOf(fecha.getDayOfMonth())+"/"+String.valueOf(fecha.getMonthValue())+"/"+String.valueOf(fecha.getYear());
-        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com",fechaCreacion);
+        String fechaCreacion = String.valueOf(fecha.getDayOfMonth()) + "/" + String.valueOf(fecha.getMonthValue()) + "/" + String.valueOf(fecha.getYear());
+        boolean cuenta = CrearUsuario(nombreRestaurante, password, "R", "Correoparacambiar@correo.com", fechaCreacion);
         FileInputStream imagen = null;
         try {
             imagen = new FileInputStream(archivo.getSelectedFile());
@@ -576,6 +575,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+
     @Override
     public DefaultListModel BuscarIngredientesPlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();
@@ -600,6 +600,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
+
     @Override
     public DefaultListModel BuscarDescripcionPlato(String nombre, String rusuario) {
         DefaultListModel lista = new DefaultListModel();
@@ -1415,7 +1416,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
-    
+
     public boolean calificarRestauranteAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha) {
         boolean sePudo = false;
         try {
@@ -1434,7 +1435,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return sePudo;
     }
-    
+
     public boolean calificarDomiciliarioAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha) {
         boolean sePudo = false;
         try {
@@ -2305,8 +2306,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return nRest;
     }
-    
-     public ArrayList<String> darInfoPlatoSegunPedido(String pPedido) {
+
+    public ArrayList<String> darInfoPlatoSegunPedido(String pPedido) {
         ArrayList<String> nRest = new ArrayList<String>();
         try {
             Class.forName("org.postgresql.Driver");
@@ -2437,7 +2438,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return horario;
     }
-    
+
     public String darHoraResena2(int npedido) {
         String horario = null;
 
@@ -2537,8 +2538,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
-        public String darFechaCreacionLenttiUsuario(String nUsuario) {
+
+    public String darFechaCreacionLenttiUsuario(String nUsuario) {
         String fecha = null;
         try {
             Class.forName("org.postgresql.Driver");
@@ -2560,7 +2561,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return fecha;
     }
-    
+
     public boolean ModificarUltimaFecha(String pUsuario, String fecha) {
         boolean resultado = false;
         try {
@@ -2578,7 +2579,108 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return resultado;
     }
-    
-   
-   
+
+    public boolean CrearInconveniente(String cliente, String rest, String mensaje, int pedidoid, String domiuser) {
+        boolean estado = false;
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "Insert into inconvenientes values('" + cliente + "', '" + rest + "', '" + mensaje + "', " + pedidoid + ", '" + domiuser + "')";
+            st.execute(consulta);
+            st.close();
+            conexion.close();
+            estado = true;
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+        return estado;
+    }
+
+    public String ObtenerClienteDomicilio(int domid) {
+        String resultado = "";
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "select cliente from pedido where pedido_id =" + domid;
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+                resultado = result.getString("cliente");
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
+    }
+
+    public ArrayList<ArrayList<Object>> ObtenerTablaDomiciliosEnCursoDomiciliario(String domi) {
+
+        ArrayList<ArrayList<Object>> resultado = new ArrayList<>();
+        int pedidoid;
+        String platos = "";
+        String cliente;
+        String domidoc = "";
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String consulta = "SELECT documento FROM domiciliario WHERE nombre = '" + domi + "'";
+            ResultSet result1 = st.executeQuery(consulta);
+            while (result1.next()) {
+
+                domidoc = result1.getString("documento");
+
+            }
+            result1.close();
+            String consulta1 = "SELECT pedido_id, cliente FROM pedido WHERE estado = 'en curso' and domiciliario_documento = '" + domidoc + "'";
+            ResultSet result2 = st.executeQuery(consulta1);
+            while (result2.next()) {
+
+                pedidoid = result2.getInt("pedido_id");
+                cliente = result2.getString("cliente");
+                String consulta2 = "SELECT plato FROM pedidoxplato WHERE pedido_id = '" + pedidoid + "'";
+                ResultSet result3 = st.executeQuery(consulta2);
+                String aux = "";
+                int cont = 0;
+                int size;
+                result3.last();    // moves cursor to the last row
+                size = result3.getRow(); // get row id 
+                result3.beforeFirst();   // moves cursor to the first row
+                while (result3.next()) {
+
+                    cont++;
+                    if (cont == size) {
+                        platos = aux + result3.getString("plato");
+                    } else {
+                        aux = aux + result3.getString("plato") + ", ";
+                        platos = aux;
+                    }
+
+                }
+                ArrayList<Object> Aux = new ArrayList<>();
+                Aux.add(pedidoid);
+                Aux.add(platos);
+                Aux.add(cliente);
+                resultado.add(Aux);
+
+            }
+            result1.close();
+            result2.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
+    }
+
 }

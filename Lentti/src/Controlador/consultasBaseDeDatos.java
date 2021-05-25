@@ -136,5 +136,11 @@ public interface consultasBaseDeDatos {
     public boolean calificarRestauranteAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha);
     public boolean calificarDomiciliarioAc(int idPedido, String clienteUsuario, String restauranteUsuario, int calif, String comentario, String pFecha);
     
+    public abstract boolean CrearInconveniente(String cliente, String rest, String mensaje, int pedidoid, String domiuser);
+    
+    public abstract String ObtenerClienteDomicilio(int domid);
+    
+    public abstract ArrayList<ArrayList<Object>> ObtenerTablaDomiciliosEnCursoDomiciliario(String domi);
+    
 
 }
