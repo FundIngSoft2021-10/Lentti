@@ -32,21 +32,27 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.userdomi = userdom;
+        this.DarModelo();
+    }
+
+    public void DarModelo() {
         DefaultTableModel model = (DefaultTableModel) jTablePedidos.getModel();
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<ArrayList<Object>> data = consulta.ObtenerTablaDomiciliosEnCursoDomiciliario(userdomi);
-        int cont = data.size();
-        int cont2 = data.get(0).size();
-        Object[] data2 = new Object[cont2];
-
-        for (int i = 0; i < cont; i++) {
-            for (int j = 0; j < cont2; j++) {
-                data2[j] = data.get(i).get(j);
+        if (data.size() == 0) {
+            jTablePedidos.setModel(model);
+        } else {
+            int cont = data.size();
+            int cont2 = data.get(0).size();
+            Object[] data2 = new Object[cont2];
+            for (int i = 0; i < cont; i++) {
+                for (int j = 0; j < cont2; j++) {
+                    data2[j] = data.get(i).get(j);
+                }
+                model.addRow(data2);
             }
-            model.addRow(data2);
+            jTablePedidos.setModel(model);
         }
-
-        jTablePedidos.setModel(model);
     }
 
     /**
@@ -65,7 +71,8 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 690));
-        setPreferredSize(new java.awt.Dimension(800, 690));
+
+        jScrollPane1.setBorder(null);
 
         jTablePedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

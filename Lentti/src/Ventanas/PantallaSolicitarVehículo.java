@@ -31,22 +31,27 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.usuarioDomi = pUsuario;
+        this.DarModelo();
+    }
+
+    public void DarModelo() {
         DefaultTableModel model = (DefaultTableModel) jTableVehículosDisponibles.getModel();
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<ArrayList<Object>> data = consulta.ObtenerVehiculosDisponibles();
-        int cont = data.size();
-        int cont2 = data.get(0).size();
-        Object[] data2 = new Object[cont2];
-
-        for (int i = 0; i < cont; i++) {
-            for (int j = 0; j < cont2; j++) {
-                data2[j] = data.get(i).get(j);
+        if (data.size() == 0) {
+            jTableVehículosDisponibles.setModel(model);
+        } else {
+            int cont = data.size();
+            int cont2 = data.get(0).size();
+            Object[] data2 = new Object[cont2];
+            for (int i = 0; i < cont; i++) {
+                for (int j = 0; j < cont2; j++) {
+                    data2[j] = data.get(i).get(j);
+                }
+                model.addRow(data2);
             }
-            model.addRow(data2);
+            jTableVehículosDisponibles.setModel(model);
         }
-
-        jTableVehículosDisponibles.setModel(model);
-
     }
 
     /**

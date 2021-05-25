@@ -2421,6 +2421,8 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             java.sql.Statement st = conexion.createStatement();
             String consulta = "Update domiciliario set placavehiculo = '" + placa + "' where nombre = '" + pUsuario + "'";
             st.execute(consulta);
+            String consulta2 = "Update vehiculo set estado = 'Uso' where placavehiculo = '" + placa + "'";
+            st.execute(consulta2);
             st.close();
             conexion.close();
             estado = true;
