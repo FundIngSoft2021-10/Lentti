@@ -45,9 +45,9 @@ public class EstadoPedido extends javax.swing.JFrame {
         Restaurante = new javax.swing.JLabel();
         Producto = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
-        Cancelar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,8 +87,13 @@ public class EstadoPedido extends javax.swing.JFrame {
         user.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 310, 30));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/d (1).png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
 
         Cancelar.setForeground(new java.awt.Color(255, 0, 0));
         Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -99,13 +104,8 @@ public class EstadoPedido extends javax.swing.JFrame {
         });
         getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 120, 40));
 
-        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/d (1).png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -66,8 +66,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        subTotal = new javax.swing.JTextField();
         Tapar = new javax.swing.JTextField();
+        subTotal = new javax.swing.JTextField();
         TextRestUnid = new javax.swing.JTextField();
         precioPlato = new javax.swing.JTextField();
         BotonRestUnid = new javax.swing.JButton();
@@ -94,6 +94,11 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Tapar.setEditable(false);
+        Tapar.setBackground(new java.awt.Color(255, 254, 251));
+        Tapar.setBorder(null);
+        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
+
         subTotal.setEditable(false);
         subTotal.setBackground(new java.awt.Color(114, 203, 131));
         subTotal.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
@@ -105,11 +110,6 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(subTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, 160, -1));
-
-        Tapar.setEditable(false);
-        Tapar.setBackground(new java.awt.Color(255, 254, 251));
-        Tapar.setBorder(null);
-        getContentPane().add(Tapar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 200, 70));
 
         TextRestUnid.setEditable(false);
         TextRestUnid.setBackground(new java.awt.Color(235, 235, 235));
@@ -390,11 +390,14 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
         }
         else{ //Revisa los horarios 
            
-            
+            System.out.println("revisando horarios");
             String nRestaurante = consulta.darRestaurantePedido(nUsuario);
             String horario = consulta.darHorarioRest(nRestaurante);
             
-            if(horario!=null){
+            PantallaPedido p = new PantallaPedido(nUsuario);
+                  p.setVisible(true);
+                  this.dispose(); 
+            /*if(horario!=null){
               int horaRA, minRA, horaRC, minRC;
               String[] partes;
               String apertura, cierre;
@@ -417,7 +420,8 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null, "El restaurante no esta disponible en este momento, intenta despues!");
               } 
               
-            }    
+            }  */  
+            System.out.println("no entro");
         }
     
         

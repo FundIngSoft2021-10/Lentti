@@ -142,19 +142,29 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 190, 40));
 
         Cierre.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        Cierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Cierre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00" }));
         Cierre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CierreMouseClicked(evt);
             }
         });
+        Cierre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CierreActionPerformed(evt);
+            }
+        });
         getContentPane().add(Cierre, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 110, 30));
 
         Apertura.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
-        Apertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
+        Apertura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00" }));
         Apertura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AperturaMouseClicked(evt);
+            }
+        });
+        Apertura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AperturaActionPerformed(evt);
             }
         });
         getContentPane().add(Apertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 110, 30));
@@ -280,6 +290,16 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         // TODO add your handling code here:
         cierre = Cierre.getSelectedItem().toString();
     }//GEN-LAST:event_CierreMouseClicked
+
+    private void CierreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CierreActionPerformed
+        // TODO add your handling code here:
+        cierre = Cierre.getSelectedItem().toString();
+    }//GEN-LAST:event_CierreActionPerformed
+
+    private void AperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AperturaActionPerformed
+        // TODO add your handling code here:
+        apertura = Apertura.getSelectedItem().toString();
+    }//GEN-LAST:event_AperturaActionPerformed
 
     /**
      * @param args the command line arguments

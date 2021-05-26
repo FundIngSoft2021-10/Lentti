@@ -64,10 +64,10 @@ public class PantallaPedido extends javax.swing.JFrame {
         envio = new javax.swing.JLabel();
         jCheckBoxTarjetaLentti = new javax.swing.JCheckBox();
         jCheckBoxTarjeta = new javax.swing.JCheckBox();
-        Fondo = new javax.swing.JLabel();
-        BotonModificarDireccionCliente = new javax.swing.JButton();
-        confirmar = new javax.swing.JButton();
         atras = new javax.swing.JButton();
+        confirmar = new javax.swing.JButton();
+        BotonModificarDireccionCliente = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -134,20 +134,12 @@ public class PantallaPedido extends javax.swing.JFrame {
         jCheckBoxTarjeta.setText("Tarjeta");
         getContentPane().add(jCheckBoxTarjeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, -1, -1));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoPro.png"))); // NOI18N
-        Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FondoMouseClicked(evt);
-            }
-        });
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
+        atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarDireccionClienteActionPerformed(evt);
+                atrasActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 50, 60));
+        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 60));
 
         confirmar.setBackground(new java.awt.Color(204, 204, 255));
         confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,12 +149,20 @@ public class PantallaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 370, 60));
 
-        atras.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
+                BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 60));
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 50, 60));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PedidoPro.png"))); // NOI18N
+        Fondo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FondoMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
