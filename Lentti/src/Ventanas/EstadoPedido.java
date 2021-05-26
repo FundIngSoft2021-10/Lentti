@@ -35,17 +35,16 @@ public class EstadoPedido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        infop = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resumen = new javax.swing.JTextArea();
+        direccion = new javax.swing.JLabel();
         ID = new javax.swing.JLabel();
         Cancelar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         MetodoPago = new javax.swing.JLabel();
         Domiciliario = new javax.swing.JLabel();
-        dom = new javax.swing.JLabel();
         Estado = new javax.swing.JLabel();
-        Tiempo = new javax.swing.JLabel();
         Restaurante = new javax.swing.JLabel();
-        Cantidad = new javax.swing.JLabel();
         Producto = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -53,64 +52,60 @@ public class EstadoPedido extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        infop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(infop, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 190, 30));
+        resumen.setColumns(20);
+        resumen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        resumen.setRows(5);
+        jScrollPane1.setViewportView(resumen);
 
-        ID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 40, 30));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 550, 150));
+
+        direccion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 510, 60));
+
+        ID.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 110, 40));
 
         Cancelar.setForeground(new java.awt.Color(255, 0, 0));
-        Cancelar.setText("Cancelar");
         Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 100, 30));
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 120, 40));
 
-        Atras.setText("Volver");
         Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 100, 30));
+        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
 
-        MetodoPago.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 250, 50));
+        MetodoPago.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 600, 340, 60));
 
-        Domiciliario.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(Domiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 260, 40));
+        Domiciliario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(Domiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 500, 40));
 
-        dom.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        dom.setText("Domiciliario que entregará su pedido:");
-        getContentPane().add(dom, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 260, 40));
+        Estado.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 390, 40));
 
-        Estado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(Estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 110, 30));
-
-        Tiempo.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        Tiempo.setText("Tiempo de espera: 30-45 Minutos");
-        getContentPane().add(Tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 210, 20));
-
-        Restaurante.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        getContentPane().add(Restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 210, 30));
-
-        Cantidad.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
-        Cantidad.setForeground(new java.awt.Color(51, 0, 204));
-        getContentPane().add(Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 70, 30));
+        Restaurante.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Restaurante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(Restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 180, 40));
 
         Producto.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
         Producto.setForeground(new java.awt.Color(51, 0, 204));
-        Producto.setText("*IMAGEN del producto BACKLOG 2*");
         Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 220, 60));
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, 20));
+        getContentPane().add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 170, 150));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/output-onlinepngtools (1).png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        user.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        user.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 310, 30));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/d (1).png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,13 +172,13 @@ public class EstadoPedido extends javax.swing.JFrame {
         });
     }
 
-
+    
     
     public EstadoPedido(int idpedido, String usuario, String restaurante) {
        initComponents();
+       transparenciaDelBoton();
         int id = idpedido;
         user.setText(usuario);
-        infop.setText("Este es el código de su pedido: " );
         ID.setText(String.valueOf(id));
          Restaurante.setText(restaurante);
         this.setLocationRelativeTo(null);
@@ -191,6 +186,15 @@ public class EstadoPedido extends javax.swing.JFrame {
 
             
     }
+    public void transparenciaDelBoton(){
+       Atras.setOpaque(false);
+       Atras.setBackground(new Color(0,0,0,0));
+       Cancelar.setOpaque(false);
+       Cancelar.setBackground(new Color(0,0,0,0));
+       
+       
+       
+  }
     
     private void mostrarInformacionPedido()
     {
@@ -203,7 +207,20 @@ public class EstadoPedido extends javax.swing.JFrame {
        } else {
        Domiciliario.setText(consulta.DarNombreDomiciliario(consulta.DarDomiciliario(id)));
        }       
- 
+       ArrayList<String> datosCliente = consulta.darCliente(user.getText());
+       direccion.setText(datosCliente.get(2));
+       Restaurante.setText(consulta.DarRestPedido(id));
+       ArrayList<String> datosCarrito = consulta.darCarroCompras(user.getText());
+
+                     
+        for(int i=0;i<datosCarrito.size();i++){
+        String[] nr = datosCarrito.get(i).split(",");
+        resumen.append( consulta.darDescripcionPlato(nr[0], nr[1]));
+        resumen.append(" x " + String.valueOf(consulta.darCantidad(user.getText(), nr[0], nr[1])) + "\n" );
+        }
+
+        MetodoPago.setText(String.valueOf(consulta.DarTotalPedido(id)));
+       
         
     }
 
@@ -211,17 +228,16 @@ public class EstadoPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JLabel Cantidad;
     private javax.swing.JLabel Domiciliario;
     private javax.swing.JLabel Estado;
     private javax.swing.JLabel ID;
     private javax.swing.JLabel MetodoPago;
     private javax.swing.JLabel Producto;
     private javax.swing.JLabel Restaurante;
-    private javax.swing.JLabel Tiempo;
-    private javax.swing.JLabel dom;
+    private javax.swing.JLabel direccion;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel infop;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea resumen;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }
