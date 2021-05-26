@@ -216,6 +216,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonOk = new javax.swing.JButton();
         MensajeError = new javax.swing.JTextField();
         Confirmacion = new javax.swing.JTextField();
+        FotoPlato = new javax.swing.JLabel();
         Tapar2 = new javax.swing.JTextField();
         Tapar = new javax.swing.JTextField();
         NombrePlato = new javax.swing.JTextField();
@@ -234,7 +235,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         BotonVerRestaurante = new javax.swing.JButton();
         BotonRealizarOtra = new javax.swing.JButton();
         FotoRestaurante = new javax.swing.JLabel();
-        FotoPlato = new javax.swing.JLabel();
         FondoAgregarCarrito = new javax.swing.JLabel();
         FondoMostrarOpciones = new javax.swing.JLabel();
         FondoBuscador = new javax.swing.JLabel();
@@ -405,6 +405,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Confirmacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 600, 150));
+        getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
 
         Tapar2.setEditable(false);
         Tapar2.setBackground(new java.awt.Color(246, 243, 243));
@@ -536,7 +537,6 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         });
         getContentPane().add(BotonRealizarOtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 390, 50));
         getContentPane().add(FotoRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 180, 150));
-        getContentPane().add(FotoPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 230, 240));
 
         FondoAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AgregarCarrito.png"))); // NOI18N
         getContentPane().add(FondoAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -603,7 +603,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
        //A medida que se van seleccionando opciones de la lista se cambia la informacion
-      
+       FotoRestaurante.setVisible(true);
        textDireccion.setVisible(true);
        textCostoEnvio.setVisible(true);
        NombreRestaurante.setText(jList1.getSelectedValue().toString());
@@ -669,6 +669,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         //Hasta que le de click a algun plato no muestra la información
         TextPrecio.setVisible(true);
+        FotoPlato.setVisible(true);
         PrecioPlato.setVisible(true);
         NombrePlato.setVisible(true);
         DescripcionPlato.setVisible(true);
@@ -682,7 +683,7 @@ public class PantallaBusquedaPR extends javax.swing.JFrame {
         if(imagenPlat != null){
            FotoPlato.setVisible(true);
            Icon Etiqueta = new ImageIcon(imagenPlat.getImage().getScaledInstance(this.FotoPlato.getWidth(), this.FotoPlato.getHeight(), Image.SCALE_SMOOTH));
-           this.FotoRestaurante.setIcon(Etiqueta);
+           this.FotoPlato.setIcon(Etiqueta);
        }
                 
         //Se pide la informacion del plato
