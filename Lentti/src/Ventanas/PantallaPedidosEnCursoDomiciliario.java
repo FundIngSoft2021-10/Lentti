@@ -76,6 +76,7 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePedidos = new javax.swing.JTable();
         jButtonAtrás = new javax.swing.JButton();
+        Entregado = new javax.swing.JButton();
         jButtonReportarInconveniente = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -112,6 +113,17 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 70, 90));
 
+        Entregado.setBackground(new java.awt.Color(255, 255, 255));
+        Entregado.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Entregado.setText("Entregado");
+        Entregado.setBorder(null);
+        Entregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntregadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 510, 120, 30));
+
         jButtonReportarInconveniente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportarInconvenienteActionPerformed(evt);
@@ -146,6 +158,23 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButtonReportarInconvenienteActionPerformed
+
+    private void EntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadoActionPerformed
+
+     if (jTablePedidos.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            int column = 0;
+            int row = jTablePedidos.getSelectedRow();
+            this.pedidoid = (int) jTablePedidos.getModel().getValueAt(row, column);
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            consulta.ModificarEstadoEntregado("entregado", pedidoid);
+            JOptionPane.showMessageDialog(null, "Se confirmó la entrega del pedido");
+            PantallaPedidosEnCursoDomiciliario p = new PantallaPedidosEnCursoDomiciliario(userdomi);
+            p.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_EntregadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +212,7 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Entregado;
     private javax.swing.JButton jButtonAtrás;
     private javax.swing.JButton jButtonReportarInconveniente;
     private javax.swing.JLabel jLabelFondo;
