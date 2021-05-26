@@ -135,8 +135,8 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
 
     private void verdisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdisponiblesActionPerformed
         // TODO add your handling code here:
-        PantallaDisnopible disponibles = new PantallaDisnopible(jLabelDomUser.getText());
-        disponibles.setVisible(true);
+         PantallaPerfilDomiciliario p = new PantallaPerfilDomiciliario(jLabelDomUser.getText());
+        p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_verdisponiblesActionPerformed
 
