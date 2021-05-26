@@ -80,6 +80,11 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         jButtonVerResenaDeUsuario.setBorder(null);
+        jButtonVerResenaDeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerResenaDeUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 180, 150));
 
         jButtonCerrarSesion.setBorder(null);
@@ -158,6 +163,13 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
         pantallaActivos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButtonVerResenaDeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerResenaDeUsuarioActionPerformed
+        // TODO add your handling code here:
+        PantallaVerResenhasRestaurante p = new PantallaVerResenhasRestaurante(this.usuario);
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVerResenaDeUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

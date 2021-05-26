@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaClienteInicio.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/test/Pruebas/PruebasLentti.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PedidosFavoritos.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaSatisfacción.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaCrearCliente.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaPedido.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaBusquedaPR.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaCarroCompras.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Modelo/BaseDeDatos.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Controlador/consultasBaseDeDatos.java</file>
-            <file>file:/D:/Github/ingesoft/Lentti/Lentti/src/Ventanas/PantallaVerPedidos.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaSolicitarVehículo.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaDisponible.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaInicialDomiciliario.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Controlador/consultasBaseDeDatos.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Ventanas/PantallaVerResenhasRestaurante.java</file>
+            <file>file:/C:/Users/Tony/Documents/GitHub/Lentti/Lentti/src/Modelo/BaseDeDatos.java</file>
         </group>
     </open-files>
 </project-private>

@@ -208,7 +208,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
     @Override
     public boolean CrearDomiciliario(String restaurante, String documento, String nombre, String telefono, File imagen, String contrasenau, String correo) {
         boolean resultado = false;
-        String path = imagen.getAbsolutePath();      
+        String path = imagen.getAbsolutePath();
         FileInputStream imgDom = null;
         LocalDate fecha = LocalDate.now();
         String fechaCreacion = String.valueOf(fecha.getDayOfMonth()) + "/" + String.valueOf(fecha.getMonthValue()) + "/" + String.valueOf(fecha.getYear());
@@ -1188,28 +1188,27 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
     public boolean agregarPedidoCC(String nUsuario, String nRestaurante, String nPlato, float nCantidad) {
         boolean resultado = false;
-        
+
         boolean validacion = ValidarExistenciaProductoCC(nUsuario, nRestaurante, nPlato);
-        if(validacion == true){
-          nCantidad += darCantidad(nUsuario, nRestaurante, nPlato);
-          resultado = ModificarCantidad(nUsuario, nRestaurante, nPlato, nCantidad);
-        }
-        else{
-            
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "INSERT INTO carritoCompras VALUES ('" + nUsuario + "', '" + nRestaurante + "', '" + nPlato + "', '" + nCantidad + "');";
-            st.execute(consulta);
-            st.close();
-            conexion.close();
-            resultado = true;
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-            resultado = false;
-        }
-        
+        if (validacion == true) {
+            nCantidad += darCantidad(nUsuario, nRestaurante, nPlato);
+            resultado = ModificarCantidad(nUsuario, nRestaurante, nPlato, nCantidad);
+        } else {
+
+            try {
+                Class.forName("org.postgresql.Driver");
+                Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+                java.sql.Statement st = conexion.createStatement();
+                String consulta = "INSERT INTO carritoCompras VALUES ('" + nUsuario + "', '" + nRestaurante + "', '" + nPlato + "', '" + nCantidad + "');";
+                st.execute(consulta);
+                st.close();
+                conexion.close();
+                resultado = true;
+            } catch (Exception exc) {
+                System.out.println("Errorx:" + exc.getMessage());
+                resultado = false;
+            }
+
         }
         return resultado;
 
@@ -2742,7 +2741,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
+
     public boolean ValidarExistenciaProductoCC(String nUsuario, String nRestaurante, String nPlato) {
         boolean resultado = false;
 
@@ -2754,7 +2753,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             ResultSet result = st.executeQuery(consulta);
 
             while (result.next()) {
-                if (nUsuario.equals(result.getString("usuario")) && nRestaurante.equals(result.getString("nombreRestaurante")) && nPlato.equals(result.getString("nombrePlato")) ) {
+                if (nUsuario.equals(result.getString("usuario")) && nRestaurante.equals(result.getString("nombreRestaurante")) && nPlato.equals(result.getString("nombrePlato"))) {
                     resultado = true;
                 }
             }
@@ -2768,7 +2767,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
+
     public float obtenerCantidadPedido(String nUsuario, String nRestaurante, String nPlato) {
         float resultado = 0;
 
@@ -2792,7 +2791,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
+
     public ImageIcon VerImagenDomiciliario(String userDomi) {
         ImageIcon imagen = null;
         try {
@@ -2814,10 +2813,10 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
         return imagen;
     }
-    
+
     public boolean ModificarImagenDomiciliario(String docDomi, File imagen) {
         boolean resultado = false;
-        String path = imagen.getAbsolutePath();      
+        String path = imagen.getAbsolutePath();
         FileInputStream imgDom = null;
         try {
             Class.forName("org.postgresql.Driver");
@@ -2836,23 +2835,19 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
-    public boolean correoCorrecto(String pCorreo)
-    {
-        boolean correcto =false;
+
+    public boolean correoCorrecto(String pCorreo) {
+        boolean correcto = false;
         String correo = pCorreo;
-        String [] partes;
+        String[] partes;
         partes = correo.split("@");
-        
-        if(partes.length == 2)
-        {
-            if(partes[1].equals("hotmail.com") ||partes[1].equals("gmail.com") )
-            {
+
+        if (partes.length == 2) {
+            if (partes[1].equals("hotmail.com") || partes[1].equals("gmail.com")) {
                 correcto = true;
             }
         }
-        
-        
+
         return correcto;
     }
     
@@ -2878,6 +2873,46 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
 
         return documento;
+    }
+
+    public ArrayList<ArrayList<Object>> ObtenerResenhasRestaurante(String userRes) {
+
+        ArrayList<ArrayList<Object>> resultado = new ArrayList<>();
+        int idpedido;
+        String cliente;
+        int calif;
+        String resenha;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
+            java.sql.Statement st = conexion.createStatement();
+            String consulta = "SELECT idpedido, usuariocliente, calificacion, comentario FROM resenhapedidorestaurante WHERE restaurante = '" + userRes + "'";
+            ResultSet result = st.executeQuery(consulta);
+
+            while (result.next()) {
+
+                idpedido = result.getInt("idpedido");
+                cliente = result.getString("usuariocliente");
+                calif = result.getInt("calificacion");
+                resenha = result.getString("comentario");
+                ArrayList<Object> Aux = new ArrayList<>();
+                Aux.add(idpedido);
+                Aux.add(cliente);
+                Aux.add(calif);
+                Aux.add(resenha);
+                resultado.add(Aux);
+
+            }
+
+            result.close();
+            st.close();
+            conexion.close();
+        } catch (Exception exc) {
+            System.out.println("Errorx:" + exc.getMessage());
+        }
+
+        return resultado;
     }
 
 }

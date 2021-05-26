@@ -151,5 +151,9 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarImagenDomiciliario(String docDomi, File imagen);
     
     public boolean correoCorrecto(String pCorreo);
+
     public String DarDomiciliarioDoc(String nombre);
+
+    public abstract ArrayList<ArrayList<Object>> ObtenerResenhasRestaurante(String userRes);
+
 }
