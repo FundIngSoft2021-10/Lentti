@@ -1534,30 +1534,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return lista;
     }
-@Override
-    public DefaultListModel BuscarPedidosEnCurso2(String doc) {
-        DefaultListModel lista = new DefaultListModel();
 
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT pedido_id FROM pedido WHERE domiciliario_documento = '" + doc + "' and estado = 'en curso'";
-            ResultSet result = st.executeQuery(consulta);
-
-            while (result.next()) {
-                lista.addElement(result.getString("pedido_id"));
-            }
-
-            result.close();
-            st.close();
-            conexion.close();
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-        }
-
-        return lista;
-    }
     @Override
     public DefaultListModel BuscarPedidosAnteriores(String Usuario) {
         DefaultListModel lista = new DefaultListModel();
@@ -1622,24 +1599,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         return resultado;
 
     }
-    
-    public boolean ModificarEstadoEntregado(String estado, int id) {
-        boolean resultado = false;
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "UPDATE pedido SET estado = '" + estado + "' WHERE pedido_id = '" + id + "';";
-            st.execute(consulta);
-            st.close();
-            conexion.close();
-            resultado = true;
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-            resultado = false;
-        }
-        return resultado;
-    }
 
     public boolean ModificarEstadoPedido(String estado, int id) {
         boolean resultado = false;
@@ -1703,8 +1662,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return documento;
     }
-    
-    
 
     public String DarEstado(int id) {
         String estado = null;
@@ -2849,30 +2806,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
         }
 
         return correcto;
-    }
-    
-    public String DarDomiciliarioDoc(String nombre) {
-        String documento = null;
-
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement();
-            String consulta = "SELECT documento FROM domiciliario WHERE nombre = '" + nombre + "'";
-            ResultSet result = st.executeQuery(consulta);
-
-            while (result.next()) {
-                documento = result.getString("documento");
-            }
-
-            result.close();
-            st.close();
-            conexion.close();
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-        }
-
-        return documento;
     }
 
     public ArrayList<ArrayList<Object>> ObtenerResenhasRestaurante(String userRes) {

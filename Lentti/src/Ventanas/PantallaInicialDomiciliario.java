@@ -43,8 +43,8 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         this.jButtonCerrarSesion.setBackground(new Color(0, 0, 0, 0));
         this.jButtonVerPerfil.setOpaque(false);
         this.jButtonVerPerfil.setBackground(new Color(0, 0, 0, 0));
-        this.verdisponibles.setOpaque(false);
-        this.verdisponibles.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerPedidosDisponibles.setOpaque(false);
+        this.jButtonVerPedidosDisponibles.setBackground(new Color(0, 0, 0, 0));
         this.jButtonVerPedidosEnCurso.setOpaque(false);        
         this.jButtonVerPedidosEnCurso.setBackground(new Color(0, 0, 0, 0));      
         
@@ -62,7 +62,7 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         jButtonCerrarSesion = new javax.swing.JButton();
         jLabelDomUser = new javax.swing.JLabel();
         jButtonVerPerfil = new javax.swing.JButton();
-        verdisponibles = new javax.swing.JButton();
+        jButtonVerPedidosDisponibles = new javax.swing.JButton();
         jButtonVerPedidosEnCurso = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -95,14 +95,14 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonVerPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 210));
 
-        verdisponibles.setBorder(null);
-        verdisponibles.setContentAreaFilled(false);
-        verdisponibles.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVerPedidosDisponibles.setBorder(null);
+        jButtonVerPedidosDisponibles.setContentAreaFilled(false);
+        jButtonVerPedidosDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verdisponiblesActionPerformed(evt);
+                jButtonVerPedidosDisponiblesActionPerformed(evt);
             }
         });
-        getContentPane().add(verdisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 180, 220, 210));
+        getContentPane().add(jButtonVerPedidosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 180, 220, 210));
 
         jButtonVerPedidosEnCurso.setBorder(null);
         jButtonVerPedidosEnCurso.setContentAreaFilled(false);
@@ -133,12 +133,9 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonVerPerfilActionPerformed
 
-    private void verdisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdisponiblesActionPerformed
+    private void jButtonVerPedidosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDisponiblesActionPerformed
         // TODO add your handling code here:
-        PantallaDisnopible disponibles = new PantallaDisnopible(jLabelDomUser.getText());
-        disponibles.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_verdisponiblesActionPerformed
+    }//GEN-LAST:event_jButtonVerPedidosDisponiblesActionPerformed
 
     private void jButtonVerPedidosEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosEnCursoActionPerformed
         // TODO add your handling code here:
@@ -184,10 +181,10 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrarSesion;
+    private javax.swing.JButton jButtonVerPedidosDisponibles;
     private javax.swing.JButton jButtonVerPedidosEnCurso;
     private javax.swing.JButton jButtonVerPerfil;
     private javax.swing.JLabel jLabelDomUser;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JButton verdisponibles;
     // End of variables declaration//GEN-END:variables
 }
