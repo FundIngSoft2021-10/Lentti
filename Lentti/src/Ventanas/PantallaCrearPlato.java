@@ -77,28 +77,28 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
                 jTextFieldCampoNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 200, 40));
-        getContentPane().add(jTextFieldCampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 210, 40));
+        getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 460, 50));
+        getContentPane().add(jTextFieldCampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 460, 60));
 
         jTextAreaCampoDescripcion.setColumns(20);
         jTextAreaCampoDescripcion.setRows(5);
         jScrollPane1.setViewportView(jTextAreaCampoDescripcion);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 440, 69));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 460, 69));
 
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 630, 50, 50));
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 50));
 
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 60, 60));
+        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 100, 50));
 
         jButtonAgregarImagen.setText("Agregar imagen");
         jButtonAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -106,14 +106,14 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
                 jButtonAgregarImagenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 510, -1, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
+        getContentPane().add(jButtonAgregarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 130, 120));
 
         jTextAreaIngredientes.setColumns(20);
         jTextAreaIngredientes.setRows(5);
         jScrollPane2.setViewportView(jTextAreaIngredientes);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, 430, 70));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 470, 70));
 
         jLabelCampoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearPlato.png"))); // NOI18N
         jLabelCampoImagen.setText("Nombre");

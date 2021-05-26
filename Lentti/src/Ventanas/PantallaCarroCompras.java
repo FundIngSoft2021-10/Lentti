@@ -417,13 +417,7 @@ public class PantallaCarroCompras extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(null, "El restaurante no esta disponible en este momento, intenta despues!");
               } 
               
-            }
-            
-            //BORRARRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-            PantallaPedido p = new PantallaPedido(nUsuario);
-            p.setVisible(true);
-            this.dispose();
-            
+            }    
         }
     
         

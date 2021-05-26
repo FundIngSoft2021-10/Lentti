@@ -45,16 +45,16 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        BotonRegistrarUsuario = new javax.swing.JButton();
         TF_nombreUsuario = new javax.swing.JTextField();
         TF_contraseñaUsuario = new javax.swing.JTextField();
         TF_nombreDelCliente = new javax.swing.JTextField();
         TF_apellidoCliente = new javax.swing.JTextField();
         TF_direccionCliente = new javax.swing.JTextField();
-        BotonRegresarAPantallaInico = new javax.swing.JButton();
         TF_correoCliente = new javax.swing.JTextField();
         TF_tarjetaCliente = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        BotonRegistrarUsuario = new javax.swing.JButton();
+        BotonRegresarAPantallaInico = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,14 +73,6 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotonRegistrarUsuario.setBorder(null);
-        BotonRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegistrarCliente(evt);
-            }
-        });
-        getContentPane().add(BotonRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 593, 200, 60));
-
         TF_nombreUsuario.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         TF_nombreUsuario.setToolTipText("");
         TF_nombreUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -88,11 +80,24 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                 TF_nombreUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(TF_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 206, 30));
-        getContentPane().add(TF_contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 206, 30));
-        getContentPane().add(TF_nombreDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 206, 30));
-        getContentPane().add(TF_apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 206, 30));
-        getContentPane().add(TF_direccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 206, 30));
+        getContentPane().add(TF_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 420, 40));
+        getContentPane().add(TF_contraseñaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 420, 40));
+        getContentPane().add(TF_nombreDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 420, 40));
+        getContentPane().add(TF_apellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 420, 40));
+        getContentPane().add(TF_direccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 420, 40));
+        getContentPane().add(TF_correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 420, 40));
+        getContentPane().add(TF_tarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 420, 40));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registroCliente.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        BotonRegistrarUsuario.setBorder(null);
+        BotonRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarCliente(evt);
+            }
+        });
+        getContentPane().add(BotonRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 170, 60));
 
         BotonRegresarAPantallaInico.setBorder(null);
         BotonRegresarAPantallaInico.addActionListener(new java.awt.event.ActionListener() {
@@ -100,12 +105,7 @@ public class PantallaCrearCliente extends javax.swing.JFrame {
                 BotonRegresarAPantallaInicoActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonRegresarAPantallaInico, new org.netbeans.lib.awtextra.AbsoluteConstraints(669, 23, 120, 60));
-        getContentPane().add(TF_correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 206, 30));
-        getContentPane().add(TF_tarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 206, 30));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registroCliente.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(BotonRegresarAPantallaInico, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

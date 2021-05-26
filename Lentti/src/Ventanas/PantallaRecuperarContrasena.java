@@ -50,11 +50,11 @@ public class PantallaRecuperarContrasena extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextFieldUsuario = new javax.swing.JTextField();
-        jButtonEnviarCorreo = new javax.swing.JButton();
         jTextFieldCodigo = new javax.swing.JTextField();
-        jButtonVerificar = new javax.swing.JButton();
-        jButtonSalir = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
+        jButtonEnviarCorreo = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
+        jButtonVerificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -63,14 +63,25 @@ public class PantallaRecuperarContrasena extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 201, 30));
+        getContentPane().add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 201, 30));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRecuperarContrasena.png"))); // NOI18N
+        jLabelFondo.setText("jLabel1");
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButtonEnviarCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEnviarCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 295, 180, 50));
-        getContentPane().add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 201, 30));
+        getContentPane().add(jButtonEnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 200, 50));
+
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 130, 60));
 
         jButtonVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,17 +89,6 @@ public class PantallaRecuperarContrasena extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 525, 200, 50));
-
-        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 120, 50));
-
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaRecuperarContrasena.png"))); // NOI18N
-        jLabelFondo.setText("jLabel1");
-        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

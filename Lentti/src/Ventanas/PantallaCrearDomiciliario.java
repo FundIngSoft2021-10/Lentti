@@ -50,32 +50,36 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldCorreo = new javax.swing.JTextField();
-        jLabelCorreo = new javax.swing.JLabel();
-        jButtonSeleccionarImagen = new javax.swing.JButton();
         jLabelImagen = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jTextFieldCorreo = new javax.swing.JTextField();
+        jButtonSeleccionarImagen = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldPlacaVehiculo = new javax.swing.JTextField();
         jTextFieldDocumento = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
-        jTextFieldNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldContrasena = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButtonCancelar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jButtonAceptar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 620, 280, 30));
 
-        jLabelCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelCorreo.setText("Correo:");
-        getContentPane().add(jLabelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
+        jLabelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 130, 120));
+
+        jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCorreoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 480, 40));
 
         jButtonSeleccionarImagen.setText("Seleccionar...");
         jButtonSeleccionarImagen.addActionListener(new java.awt.event.ActionListener() {
@@ -83,48 +87,43 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
                 jButtonSeleccionarImagenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSeleccionarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 100, 30));
-
-        jLabelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, 110));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel7.setText("Imagen");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 110, 40));
+        getContentPane().add(jButtonSeleccionarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, 100, 30));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 50, -1));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 65, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
-        getContentPane().add(jTextFieldPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 430, 30));
-        getContentPane().add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 430, 30));
-        getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 190, 30));
-        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 210, 30));
+        getContentPane().add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 480, 40));
+        getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 480, 40));
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 480, 40));
 
         jTextFieldContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldContrasenaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 200, 30));
+        getContentPane().add(jTextFieldContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 480, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearDomiciliario.png"))); // NOI18N
-        jLabel1.setText("Creación de nuevo domiciliario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
-
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 635, 50, 50));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaCrearDomiciliario.png"))); // NOI18N
+        jLabel8.setText("Creación de nuevo domiciliario");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
 
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(737, 10, 50, 60));
+        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 90, 50));
+
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 50));
+
+        jLabel1.setText("Creación de nuevo domiciliario");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +184,10 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSeleccionarImagenActionPerformed
 
+    private void jTextFieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCorreoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,14 +240,12 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabelCorreo;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelImagen;
     private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldDocumento;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldPlacaVehiculo;
     private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
 }

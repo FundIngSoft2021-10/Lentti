@@ -48,18 +48,18 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         LabelNombreUsuario = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         TF_ModificarNombreCliente = new javax.swing.JTextField();
-        BotonModificarNombreCliente = new javax.swing.JButton();
         TF_ModificarApellidoCliente = new javax.swing.JTextField();
-        BotonModificarApellidoCliente = new javax.swing.JButton();
         TF_ModificarDireccionCliente = new javax.swing.JTextField();
-        BotonModificarDireccionCliente = new javax.swing.JButton();
         TF_modificarCorreoCliente = new javax.swing.JTextField();
-        BotonModificarCorreooCliente = new javax.swing.JButton();
-        BotonModificarTarjetaCliente = new javax.swing.JButton();
         TF_modificarTarjetaCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        BotonModificarNombreCliente = new javax.swing.JButton();
+        BotonModificarApellidoCliente = new javax.swing.JButton();
+        BotonModificarDireccionCliente = new javax.swing.JButton();
+        BotonModificarCorreooCliente = new javax.swing.JButton();
+        BotonModificarTarjetaCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         BotonEliminarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,22 +69,21 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
 
         LabelNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LabelNombreUsuario.setText("Nombre de usuario");
-        getContentPane().add(LabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 400, 30));
-
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegresarPantallaInicialCliente(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(677, 623, 110, 60));
+        getContentPane().add(LabelNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 180, 30));
 
         TF_ModificarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TF_ModificarNombreClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(TF_ModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 450, 50));
+        getContentPane().add(TF_ModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 450, 50));
+        getContentPane().add(TF_ModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 450, 50));
+        getContentPane().add(TF_ModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 450, 50));
+        getContentPane().add(TF_modificarCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 450, 50));
+        getContentPane().add(TF_modificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 360, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarCliente.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         BotonModificarNombreCliente.setBorder(null);
         BotonModificarNombreCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +91,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarNombreClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 120, 60));
-        getContentPane().add(TF_ModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 450, 60));
+        getContentPane().add(BotonModificarNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 120, 60));
 
         BotonModificarApellidoCliente.setBorder(null);
         BotonModificarApellidoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -101,8 +99,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarApellidoClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 120, 60));
-        getContentPane().add(TF_ModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 450, 60));
+        getContentPane().add(BotonModificarApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 120, 70));
 
         BotonModificarDireccionCliente.setBorder(null);
         BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +107,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarDireccionClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 120, 60));
-        getContentPane().add(TF_modificarCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 450, 60));
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 120, 70));
 
         BotonModificarCorreooCliente.setBorder(null);
         BotonModificarCorreooCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +115,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarCorreooClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarCorreooCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 120, 60));
+        getContentPane().add(BotonModificarCorreooCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 120, 70));
 
         BotonModificarTarjetaCliente.setBorder(null);
         BotonModificarTarjetaCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -127,11 +123,15 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonModificarTarjetaClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonModificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 120, 60));
-        getContentPane().add(TF_modificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 370, 60));
+        getContentPane().add(BotonModificarTarjetaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 120, 70));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarCliente.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegresarPantallaInicialCliente(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 620, 110, 60));
 
         BotonEliminarCliente.setBorder(null);
         BotonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +139,7 @@ public class PantallaModificarCliente extends javax.swing.JFrame {
                 BotonEliminarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(BotonEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 613, 180, 60));
+        getContentPane().add(BotonEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 623, 140, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

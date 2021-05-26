@@ -73,11 +73,11 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
         jTextFieldCampoNombre = new javax.swing.JTextField();
         Cierre = new javax.swing.JComboBox<>();
         Apertura = new javax.swing.JComboBox<>();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonAceptar = new javax.swing.JButton();
         jLabelCampoImagen = new javax.swing.JLabel();
         jButtonAgregarImagen = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -158,20 +158,6 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
             }
         });
         getContentPane().add(Apertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 110, 30));
-
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 110, 60));
-
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 140, 30));
         getContentPane().add(jLabelCampoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 130, 120));
 
         jButtonAgregarImagen.setText("Agregar Imagen");
@@ -184,6 +170,20 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaCrearRestaurante.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 620, 120, 60));
+
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

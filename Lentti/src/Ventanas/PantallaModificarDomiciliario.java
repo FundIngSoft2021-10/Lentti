@@ -47,18 +47,15 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jButtonModificarImagen = new javax.swing.JButton();
-        jButtonSeleccionador = new javax.swing.JButton();
         jLabelImagenSeleccionada = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldDocumentoDomiciliario = new javax.swing.JTextField();
         jTextFieldModDocumento = new javax.swing.JTextField();
         jTextFieldModNombre = new javax.swing.JTextField();
         jTextFieldModTelefono = new javax.swing.JTextField();
-        jTextFieldModPlacaVehiculo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButtonModPlacaVehiculo = new javax.swing.JButton();
+        jButtonSeleccionador = new javax.swing.JButton();
+        jButtonModificarImagen = new javax.swing.JButton();
         jButtonModTelefono = new javax.swing.JButton();
         jButtonModNombre = new javax.swing.JButton();
         jButtonModDocumento = new javax.swing.JButton();
@@ -67,17 +64,16 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Imagen:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, -1, -1));
+        jLabelImagenSeleccionada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabelImagenSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 110, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 60, 80));
+        getContentPane().add(jTextFieldDocumentoDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 390, 40));
+        getContentPane().add(jTextFieldModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 370, 50));
+        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 370, 50));
+        getContentPane().add(jTextFieldModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 370, 50));
 
-        jButtonModificarImagen.setText("Modificar");
-        jButtonModificarImagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarImagenActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonModificarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarDomiciliario.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
 
         jButtonSeleccionador.setText("Seleccionar imagen");
         jButtonSeleccionador.addActionListener(new java.awt.event.ActionListener() {
@@ -85,54 +81,43 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
                 jButtonSeleccionadorActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSeleccionador, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, -1));
+        getContentPane().add(jButtonSeleccionador, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, 200, 50));
 
-        jLabelImagenSeleccionada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabelImagenSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, 90, 110));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 60, 80));
-        getContentPane().add(jTextFieldDocumentoDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 270, 50));
-        getContentPane().add(jTextFieldModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 270, 50));
-        getContentPane().add(jTextFieldModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 270, 50));
-        getContentPane().add(jTextFieldModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 270, 50));
-        getContentPane().add(jTextFieldModPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 270, 50));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IPantallaModificarDomiciliario.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 700));
-
-        jButtonModPlacaVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        jButtonModificarImagen.setText("Modificar");
+        jButtonModificarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModPlacaVehiculoActionPerformed(evt);
+                jButtonModificarImagenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModPlacaVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 490, 100, 30));
+        getContentPane().add(jButtonModificarImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 140, 40));
 
         jButtonModTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModTelefonoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 400, 110, 30));
+        getContentPane().add(jButtonModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 390, 140, 40));
 
         jButtonModNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 305, 110, 30));
+        getContentPane().add(jButtonModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 140, 50));
 
         jButtonModDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModDocumentoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 110, 40));
+        getContentPane().add(jButtonModDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 140, 50));
 
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 140, 60));
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,19 +166,6 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
             resultado = consulta.ModificarTelefonoDomiciliario(this.jTextFieldDocumentoDomiciliario.getText(), this.jTextFieldModTelefono.getText());
         }
     }//GEN-LAST:event_jButtonModTelefonoActionPerformed
-
-    private void jButtonModPlacaVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModPlacaVehiculoActionPerformed
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean resultado= false;
-        if(this.jTextFieldDocumentoDomiciliario.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "El campo está vacio.");
-        }
-        else
-        {
-            resultado = consulta.ModificarPlacaVehiculoDomiciliario(this.jTextFieldDocumentoDomiciliario.getText(), this.jTextFieldModPlacaVehiculo.getText());
-        }
-    }//GEN-LAST:event_jButtonModPlacaVehiculoActionPerformed
 
     private void jButtonSeleccionadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionadorActionPerformed
         // TODO add your handling code here:
@@ -251,8 +223,6 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
         jButtonModDocumento.setBackground(new Color(0, 0, 0, 0));     
         jButtonModNombre.setOpaque(false);
         jButtonModNombre.setBackground(new Color(0, 0, 0, 0));
-        jButtonModPlacaVehiculo.setOpaque(false);
-        jButtonModPlacaVehiculo.setBackground(new Color(0, 0, 0, 0));
         jButtonModTelefono.setOpaque(false);
         jButtonModTelefono.setBackground(new Color(0, 0, 0, 0));
     }
@@ -292,18 +262,15 @@ public class PantallaModificarDomiciliario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtras;
     private javax.swing.JButton jButtonModDocumento;
     private javax.swing.JButton jButtonModNombre;
-    private javax.swing.JButton jButtonModPlacaVehiculo;
     private javax.swing.JButton jButtonModTelefono;
     private javax.swing.JButton jButtonModificarImagen;
     private javax.swing.JButton jButtonSeleccionador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelImagenSeleccionada;
     private javax.swing.JTextField jTextFieldDocumentoDomiciliario;
     private javax.swing.JTextField jTextFieldModDocumento;
     private javax.swing.JTextField jTextFieldModNombre;
-    private javax.swing.JTextField jTextFieldModPlacaVehiculo;
     private javax.swing.JTextField jTextFieldModTelefono;
     // End of variables declaration//GEN-END:variables
 }
