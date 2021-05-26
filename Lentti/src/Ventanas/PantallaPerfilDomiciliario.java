@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 /**
  *
@@ -27,11 +28,15 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
     public PantallaPerfilDomiciliario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
     }
 
     public PantallaPerfilDomiciliario(String pUsuario) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
         this.usuariodom = pUsuario;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         ArrayList<Object> datosDomi = consulta.ObtenerDatosDomiciliario(pUsuario);
@@ -83,11 +88,6 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldDocumento = new javax.swing.JTextField();
         jTextFieldTeléfono = new javax.swing.JTextField();
@@ -96,19 +96,11 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
         jButtonAtrás = new javax.swing.JButton();
         jButtonSolicitarVehículo = new javax.swing.JButton();
         jLabelImagenDomi = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 690));
-
-        jLabel1.setText("Nombre:");
-
-        jLabel2.setText("Documento:");
-
-        jLabel3.setText("Teléfono:");
-
-        jLabel4.setText("Placa del vehículo:");
-
-        jLabel5.setText("Domicilios entregados:");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldNombre.setEditable(false);
         jTextFieldNombre.setFocusable(false);
@@ -117,9 +109,11 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
                 jTextFieldNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 250, 30));
 
         jTextFieldDocumento.setEditable(false);
         jTextFieldDocumento.setFocusable(false);
+        getContentPane().add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 250, 30));
 
         jTextFieldTeléfono.setEditable(false);
         jTextFieldTeléfono.setFocusable(false);
@@ -128,9 +122,11 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
                 jTextFieldTeléfonoActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldTeléfono, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 250, 30));
 
         jTextFieldDomiciliosEntregados.setEditable(false);
         jTextFieldDomiciliosEntregados.setFocusable(false);
+        getContentPane().add(jTextFieldDomiciliosEntregados, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 250, 30));
 
         jTextFieldPlacaVehículo.setEditable(false);
         jTextFieldPlacaVehículo.setFocusable(false);
@@ -139,13 +135,14 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
                 jTextFieldPlacaVehículoActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldPlacaVehículo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 250, 30));
 
-        jButtonAtrás.setText("Atrás");
         jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrásActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 20, 70, 90));
 
         jButtonSolicitarVehículo.setText("Solicitar vehículo");
         jButtonSolicitarVehículo.addActionListener(new java.awt.event.ActionListener() {
@@ -153,73 +150,11 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
                 jButtonSolicitarVehículoActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSolicitarVehículo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, -1, 30));
+        getContentPane().add(jLabelImagenDomi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 90, 110));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAtrás)
-                .addGap(153, 153, 153)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldDomiciliosEntregados, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldPlacaVehículo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelImagenDomi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextFieldDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonSolicitarVehículo)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAtrás)
-                        .addGap(90, 90, 90))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelImagenDomi, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldTeléfono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldDomiciliosEntregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldPlacaVehículo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSolicitarVehículo))
-                .addContainerGap(394, Short.MAX_VALUE))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaPerfilDomiciliario.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,11 +223,7 @@ public class PantallaPerfilDomiciliario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtrás;
     private javax.swing.JButton jButtonSolicitarVehículo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelImagenDomi;
     private javax.swing.JTextField jTextFieldDocumento;
     private javax.swing.JTextField jTextFieldDomiciliosEntregados;

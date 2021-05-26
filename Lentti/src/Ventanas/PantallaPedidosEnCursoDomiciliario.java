@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,11 +27,19 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
     public PantallaPedidosEnCursoDomiciliario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonReportarInconveniente.setOpaque(false);
+        this.jButtonReportarInconveniente.setBackground(new Color(0, 0, 0, 0));
     }
 
     public PantallaPedidosEnCursoDomiciliario(String userdom) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonReportarInconveniente.setOpaque(false);
+        this.jButtonReportarInconveniente.setBackground(new Color(0, 0, 0, 0));
         this.userdomi = userdom;
         this.DarModelo();
     }
@@ -68,9 +77,11 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
         jTablePedidos = new javax.swing.JTable();
         jButtonAtrás = new javax.swing.JButton();
         jButtonReportarInconveniente = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 690));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBorder(null);
 
@@ -92,49 +103,24 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablePedidos);
 
-        jButtonAtrás.setText("Atrás");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 654, 250));
+
         jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrásActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 70, 90));
 
-        jButtonReportarInconveniente.setText("Reportar un inconveniente al cliente");
         jButtonReportarInconveniente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportarInconvenienteActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonReportarInconveniente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 340, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAtrás)))
-                .addContainerGap(76, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonReportarInconveniente)
-                .addGap(296, 296, 296))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAtrás)
-                .addGap(112, 112, 112)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jButtonReportarInconveniente)
-                .addContainerGap(111, Short.MAX_VALUE))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaPedidosEnCursoDomiciliario.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -199,6 +185,7 @@ public class PantallaPedidosEnCursoDomiciliario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtrás;
     private javax.swing.JButton jButtonReportarInconveniente;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePedidos;
     // End of variables declaration//GEN-END:variables

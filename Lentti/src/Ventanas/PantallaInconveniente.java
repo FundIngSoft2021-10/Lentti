@@ -8,6 +8,7 @@ package Ventanas;
 import javax.swing.JOptionPane;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 
 /**
  *
@@ -24,11 +25,20 @@ public class PantallaInconveniente extends javax.swing.JFrame {
     public PantallaInconveniente() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonReportar.setOpaque(false);
+        this.jButtonReportar.setBackground(new Color(0, 0, 0, 0));
     }
 
     public PantallaInconveniente(int pedido, String userdom) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonReportar.setOpaque(false);
+        this.jButtonReportar.setBackground(new Color(0, 0, 0, 0));
         this.pedidoid = pedido;
         this.userdomi = userdom;
     }
@@ -42,61 +52,38 @@ public class PantallaInconveniente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonReportar = new javax.swing.JButton();
         jButtonAtrás = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaTextoInconveniente = new javax.swing.JTextArea();
-        jButtonReportar = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 690));
-        setPreferredSize(new java.awt.Dimension(800, 690));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonAtrás.setText("Atrás");
-        jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtrásActionPerformed(evt);
-            }
-        });
-
-        jTextAreaTextoInconveniente.setColumns(20);
-        jTextAreaTextoInconveniente.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaTextoInconveniente);
-
-        jButtonReportar.setText("Reportar al cliente");
         jButtonReportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonReportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 260, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAtrás))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(jButtonReportar)))
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAtrás)
-                .addGap(128, 128, 128)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jButtonReportar)
-                .addContainerGap(243, Short.MAX_VALUE))
-        );
+        jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtrásActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 70));
+
+        jTextAreaTextoInconveniente.setColumns(20);
+        jTextAreaTextoInconveniente.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaTextoInconveniente);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 489, 240));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInconveniente.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,6 +157,7 @@ public class PantallaInconveniente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtrás;
     private javax.swing.JButton jButtonReportar;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaTextoInconveniente;
     // End of variables declaration//GEN-END:variables

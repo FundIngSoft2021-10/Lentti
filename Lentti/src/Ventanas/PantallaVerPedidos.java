@@ -7,6 +7,7 @@ package Ventanas;
 
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -21,32 +22,37 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     String domdoc;
     DefaultListModel listaPedidosActivos = new DefaultListModel();
     DefaultListModel listaPedidosAnteriores = new DefaultListModel();
+
     /**
      * Creates new form PantallaVerPedidos
      */
     public PantallaVerPedidos() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        this.transparencia();
+
     }
+
     public PantallaVerPedidos(String Usuario) {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
+        this.transparencia();
         this.cliente = Usuario;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         this.listaPedidosActivos = consulta.BuscarPedidosEnCurso(Usuario);
         this.jListPedidosEnCurso.setModel(listaPedidosActivos);
         this.listaPedidosAnteriores = consulta.BuscarPedidosAnteriores(cliente);
         this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
-        
-        
+
     }
+
     public PantallaVerPedidos(String Usuario, String rest) {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
+        this.transparencia();
         this.cliente = Usuario;
         consultasBaseDeDatos consulta = new BaseDeDatos();
         this.listaPedidosActivos = consulta.BuscarPedidosEnCurso(Usuario);
@@ -54,7 +60,22 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         this.listaPedidosAnteriores = consulta.BuscarPedidosAnteriores(cliente);
         this.jListPedidosEntregados.setModel(listaPedidosAnteriores);
         res.setText(rest);
-        
+
+    }
+
+    public void transparencia() {
+        this.jButtonAtras.setOpaque(false);
+        this.jButtonAtras.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonCalificar.setOpaque(false);
+        this.jButtonCalificar.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonEstadoPedido.setOpaque(false);
+        this.jButtonEstadoPedido.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonVerInconvenientes.setOpaque(false);
+        this.jButtonVerInconvenientes.setBackground(new Color(0, 0, 0, 0));
+        this.BotonAgregarFavorito.setOpaque(false);
+        this.BotonAgregarFavorito.setBackground(new Color(0, 0, 0, 0));
+        this.BotonVerPedidosFavoritos.setOpaque(false);
+        this.BotonVerPedidosFavoritos.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -69,20 +90,20 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         res = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListPedidosEnCurso = new javax.swing.JList();
-        jButtonEstadoPedido = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPedidosEntregados = new javax.swing.JList();
-        jLabelPedidosEnCurso = new javax.swing.JLabel();
-        jLabelPedidosEnCurso1 = new javax.swing.JLabel();
+        jButtonEstadoPedido = new javax.swing.JButton();
         jButtonAtras = new javax.swing.JButton();
         jButtonCalificar = new javax.swing.JButton();
         BotonAgregarFavorito = new javax.swing.JButton();
         BotonVerPedidosFavoritos = new javax.swing.JButton();
         jButtonVerInconvenientes = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 690));
         setMinimumSize(new java.awt.Dimension(800, 690));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jListPedidosEnCurso.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -91,12 +112,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListPedidosEnCurso);
 
-        jButtonEstadoPedido.setText("Ver estado");
-        jButtonEstadoPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEstadoPedidoActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 280, 170));
 
         jListPedidosEntregados.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -105,166 +121,101 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListPedidosEntregados);
 
-        jLabelPedidosEnCurso.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        jLabelPedidosEnCurso.setText("Pedidos en curso");
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 280, 160));
 
-        jLabelPedidosEnCurso1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        jLabelPedidosEnCurso1.setText("Pedidos anteriores");
+        jButtonEstadoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEstadoPedidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEstadoPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 233, 120, 40));
 
-        jButtonAtras.setText("Atrás");
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 70, 90));
 
-        jButtonCalificar.setText("Calificar");
         jButtonCalificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCalificarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonCalificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 100, 30));
 
-        BotonAgregarFavorito.setText("Agregar a favoritos");
         BotonAgregarFavorito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAgregarFavoritoActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonAgregarFavorito, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 629, 210, 40));
 
-        BotonVerPedidosFavoritos.setText("Ver pedidos Favoritos");
         BotonVerPedidosFavoritos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonVerPedidosFavoritosActionPerformed(evt);
             }
         });
+        getContentPane().add(BotonVerPedidosFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 230, 40));
+        getContentPane().add(jButtonVerInconvenientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 210, 40));
 
-        jButtonVerInconvenientes.setText("Inconvenientes");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(231, 231, 231))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelPedidosEnCurso)
-                        .addGap(265, 265, 265))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelPedidosEnCurso1)
-                        .addGap(249, 249, 249))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BotonVerPedidosFavoritos)
-                        .addGap(154, 154, 154)
-                        .addComponent(BotonAgregarFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAtras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(jButtonCalificar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(jButtonEstadoPedido)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonVerInconvenientes)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAtras)
-                .addGap(84, 84, 84)
-                .addComponent(jLabelPedidosEnCurso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEstadoPedido)
-                    .addComponent(jButtonVerInconvenientes))
-                .addGap(49, 49, 49)
-                .addComponent(jLabelPedidosEnCurso1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCalificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonAgregarFavorito, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonVerPedidosFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaVerPedidos.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEstadoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstadoPedidoActionPerformed
-        
-        if(this.jListPedidosEnCurso.getSelectedValue() == null) {
+
+        if (this.jListPedidosEnCurso.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente, res.getText());
+            p.setVisible(true);
+            this.dispose();
         }
-        else {
-        EstadoPedido p = new EstadoPedido(Integer.parseInt(this.jListPedidosEnCurso.getSelectedValue().toString()), cliente, res.getText());
-        p.setVisible(true);
-        this.dispose();
-        }
-        
+
     }//GEN-LAST:event_jButtonEstadoPedidoActionPerformed
 
     private void jButtonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrasActionPerformed
-       
+
         PantallaClienteInicio p = new PantallaClienteInicio(cliente);
         p.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButtonAtrasActionPerformed
 
     private void jButtonCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalificarActionPerformed
-        
-        if(this.jListPedidosEntregados.getSelectedValue() == null) {
+
+        if (this.jListPedidosEntregados.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            int pedidoid = Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString());
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            rest = consulta.ObtenerRestauranteDomicilio(pedidoid);
+            domdoc = consulta.ObtenerDomiciliarioDomicilio(pedidoid);
+            PantallaSatisfacción p = new PantallaSatisfacción(pedidoid, rest, domdoc, cliente);
+            p.setVisible(true);
+            this.dispose();
         }
-        else {
-        int pedidoid = Integer.parseInt(this.jListPedidosEntregados.getSelectedValue().toString());
-        consultasBaseDeDatos consulta = new BaseDeDatos();
-        rest = consulta.ObtenerRestauranteDomicilio(pedidoid);
-        domdoc = consulta.ObtenerDomiciliarioDomicilio(pedidoid);
-        PantallaSatisfacción p = new PantallaSatisfacción(pedidoid, rest, domdoc, cliente);
-        p.setVisible(true);
-        this.dispose();
-        }
-        
+
     }//GEN-LAST:event_jButtonCalificarActionPerformed
 
     private void BotonAgregarFavoritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarFavoritoActionPerformed
         // TODO add your handling code here:
-        
-        if(this.jListPedidosEnCurso.getSelectedValue() == null) {
+
+        if (this.jListPedidosEnCurso.getSelectedValue() == null) {
             JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
-        }
-        else {
+        } else {
             consultasBaseDeDatos consulta = new BaseDeDatos();
-            if(consulta.agregarPedidoAFavoritos(cliente,this.jListPedidosEnCurso.getSelectedValue().toString() )){
+            if (consulta.agregarPedidoAFavoritos(cliente, this.jListPedidosEnCurso.getSelectedValue().toString())) {
                 JOptionPane.showMessageDialog(null, "Se agrego correctamente");
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "error al agregar a favoritos");
             }
-        
-        
+
         }
-        
+
     }//GEN-LAST:event_BotonAgregarFavoritoActionPerformed
 
     private void BotonVerPedidosFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerPedidosFavoritosActionPerformed
@@ -272,8 +223,8 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
         PedidosFavoritos p = new PedidosFavoritos(cliente);
         p.setVisible(true);
         this.dispose();
-        
-        
+
+
     }//GEN-LAST:event_BotonVerPedidosFavoritosActionPerformed
 
     /**
@@ -318,8 +269,7 @@ public class PantallaVerPedidos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCalificar;
     private javax.swing.JButton jButtonEstadoPedido;
     private javax.swing.JButton jButtonVerInconvenientes;
-    private javax.swing.JLabel jLabelPedidosEnCurso;
-    private javax.swing.JLabel jLabelPedidosEnCurso1;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JList jListPedidosEnCurso;
     private javax.swing.JList jListPedidosEntregados;
     private javax.swing.JScrollPane jScrollPane1;

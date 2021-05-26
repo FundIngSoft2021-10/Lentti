@@ -8,6 +8,7 @@ package Ventanas;
 import javax.swing.JOptionPane;
 import Controlador.consultasBaseDeDatos;
 import Modelo.BaseDeDatos;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,11 +26,19 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
     public PantallaSolicitarVehículo() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSolicitar.setOpaque(false);
+        this.jButtonSolicitar.setBackground(new Color(0, 0, 0, 0));
     }
 
     public PantallaSolicitarVehículo(String pUsuario) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.jButtonAtrás.setOpaque(false);
+        this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
+        this.jButtonSolicitar.setOpaque(false);
+        this.jButtonSolicitar.setBackground(new Color(0, 0, 0, 0));
         this.usuarioDomi = pUsuario;
         this.DarModelo();
     }
@@ -67,9 +76,11 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
         jTableVehículosDisponibles = new javax.swing.JTable();
         jButtonAtrás = new javax.swing.JButton();
         jButtonSolicitar = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 690));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBorder(null);
 
@@ -91,49 +102,24 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableVehículosDisponibles);
 
-        jButtonAtrás.setText("Atrás");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 602, 250));
+
         jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrásActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 70));
 
-        jButtonSolicitar.setText("Solicitar");
         jButtonSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSolicitarActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 503, 160, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonAtrás)))
-                .addContainerGap(101, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonSolicitar)
-                .addGap(360, 360, 360))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAtrás)
-                .addGap(88, 88, 88)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButtonSolicitar)
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaSolicitarVehiculos.png"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,6 +189,7 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAtrás;
     private javax.swing.JButton jButtonSolicitar;
+    private javax.swing.JLabel jLabelFondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableVehículosDisponibles;
     // End of variables declaration//GEN-END:variables
