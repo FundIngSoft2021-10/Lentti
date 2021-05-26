@@ -52,22 +52,22 @@ public class PantallaPedido extends javax.swing.JFrame {
     private void initComponents() {
 
         nusuario = new javax.swing.JLabel();
-        confirmar = new javax.swing.JButton();
         resumen = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
         direccion = new javax.swing.JTextField();
         jCheckBoxefectivo = new javax.swing.JCheckBox();
         inforest = new javax.swing.JLabel();
         restaurante = new java.awt.TextArea();
-        atras = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
         costo = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
-        BotonModificarDireccionCliente = new javax.swing.JButton();
         envio = new javax.swing.JLabel();
         jCheckBoxTarjetaLentti = new javax.swing.JCheckBox();
         jCheckBoxTarjeta = new javax.swing.JCheckBox();
         Fondo = new javax.swing.JLabel();
+        BotonModificarDireccionCliente = new javax.swing.JButton();
+        confirmar = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,14 +76,6 @@ public class PantallaPedido extends javax.swing.JFrame {
 
         nusuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(nusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 270, 30));
-
-        confirmar.setBackground(new java.awt.Color(204, 204, 255));
-        confirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 370, 60));
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -114,13 +106,6 @@ public class PantallaPedido extends javax.swing.JFrame {
         restaurante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(restaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 320, 30));
 
-        atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 60));
-
         usuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,13 +119,6 @@ public class PantallaPedido extends javax.swing.JFrame {
 
         total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 210, 20));
-
-        BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarDireccionClienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 50, 60));
 
         envio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 190, 50));
@@ -163,6 +141,28 @@ public class PantallaPedido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        BotonModificarDireccionCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarDireccionClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BotonModificarDireccionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 50, 60));
+
+        confirmar.setBackground(new java.awt.Color(204, 204, 255));
+        confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 370, 60));
+
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 120, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -39,8 +39,6 @@ public class EstadoPedido extends javax.swing.JFrame {
         resumen = new javax.swing.JTextArea();
         direccion = new javax.swing.JLabel();
         ID = new javax.swing.JLabel();
-        Cancelar = new javax.swing.JButton();
-        Atras = new javax.swing.JButton();
         MetodoPago = new javax.swing.JLabel();
         Domiciliario = new javax.swing.JLabel();
         Estado = new javax.swing.JLabel();
@@ -48,6 +46,8 @@ public class EstadoPedido extends javax.swing.JFrame {
         Producto = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,23 +64,6 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         ID.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 110, 40));
-
-        Cancelar.setForeground(new java.awt.Color(255, 0, 0));
-        Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 120, 40));
-
-        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
 
         MetodoPago.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         getContentPane().add(MetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 600, 340, 60));
@@ -106,6 +89,23 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/d (1).png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
+
+        Cancelar.setForeground(new java.awt.Color(255, 0, 0));
+        Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 120, 40));
+
+        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -99,6 +99,11 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
 
         jButtonVerPedidosDeClientes.setBorder(null);
         jButtonVerPedidosDeClientes.setBorderPainted(false);
+        jButtonVerPedidosDeClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPedidosDeClientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 180));
 
         jButtonGestionarDomiciliario.setBorder(null);
@@ -131,6 +136,10 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
        pantallaGestionarDomiciliarios.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButtonGestionarDomiciliarioActionPerformed
+
+    private void jButtonVerPedidosDeClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDeClientesActionPerformed
+//XD        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVerPedidosDeClientesActionPerformed
 
     /**
      * @param args the command line arguments
