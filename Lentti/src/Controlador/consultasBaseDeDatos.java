@@ -83,9 +83,11 @@ public interface consultasBaseDeDatos {
     public abstract boolean calificarDomiciliario(int idPedido, String clienteUsuario, String domiciliarioUsuario, int calif, String comentario, String pFecha);
     public abstract boolean CrearPedido(String cliente, String domiciliario, float Total, String estado);
     public abstract DefaultListModel BuscarPedidosEnCurso(String Pusuario);
+    public abstract DefaultListModel BuscarPedidosEnCurso2(String doc);
     public abstract DefaultListModel BuscarPedidosAnteriores(String Pusuario);
     public abstract boolean EliminarPedido(int id, String Pusuario);
     public abstract boolean EliminarPedido(String Pusuario);
+    public boolean ModificarEstadoEntregado(String estado, int id);
     public boolean ModificarEstadoPedido(String estado, int id);
     public abstract String DarDomiciliario(int id);
     public abstract String DarEstado(int id);
@@ -149,4 +151,5 @@ public interface consultasBaseDeDatos {
     public abstract boolean ModificarImagenDomiciliario(String docDomi, File imagen);
     
     public boolean correoCorrecto(String pCorreo);
+    public String DarDomiciliarioDoc(String nombre);
 }
