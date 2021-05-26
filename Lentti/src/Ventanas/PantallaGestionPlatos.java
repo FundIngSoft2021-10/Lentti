@@ -57,6 +57,7 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
 
         jButtonVerPlatos.setBorder(null);
         jButtonVerPlatos.setBorderPainted(false);
+        jButtonVerPlatos.setContentAreaFilled(false);
         jButtonVerPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPlatosActionPerformed(evt);
@@ -66,15 +67,17 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
 
         jButtonCrearPlato.setBorder(null);
         jButtonCrearPlato.setBorderPainted(false);
+        jButtonCrearPlato.setContentAreaFilled(false);
         jButtonCrearPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearPlatoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCrearPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 280, 80));
+        getContentPane().add(jButtonCrearPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 280, 70));
 
         jButtonEliminarPlato.setBorder(null);
         jButtonEliminarPlato.setBorderPainted(false);
+        jButtonEliminarPlato.setContentAreaFilled(false);
         jButtonEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarPlatoActionPerformed(evt);
@@ -84,15 +87,17 @@ public class PantallaGestionPlatos extends javax.swing.JFrame {
 
         jButtonAtras.setBorder(null);
         jButtonAtras.setBorderPainted(false);
+        jButtonAtras.setContentAreaFilled(false);
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, 60));
+        getContentPane().add(jButtonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 100, 40));
 
         jButtonModificarPlato.setBorder(null);
         jButtonModificarPlato.setBorderPainted(false);
+        jButtonModificarPlato.setContentAreaFilled(false);
         jButtonModificarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarPlatoActionPerformed(evt);

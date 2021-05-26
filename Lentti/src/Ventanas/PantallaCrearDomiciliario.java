@@ -70,10 +70,9 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelImagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(jLabelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 130, 120));
 
+        jTextFieldCorreo.setBorder(null);
         jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCorreoActionPerformed(evt);
@@ -93,10 +92,13 @@ public class PantallaCrearDomiciliario extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 65, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
         getContentPane().add(jTextFieldDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 480, 40));
+
+        jTextFieldTelefono.setBorder(null);
         getContentPane().add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 480, 40));
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
         getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 480, 40));
 
+        jTextFieldContrasena.setBorder(null);
         jTextFieldContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldContrasenaActionPerformed(evt);

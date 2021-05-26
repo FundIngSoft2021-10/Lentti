@@ -62,6 +62,8 @@ public class PantallaInconveniente extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 690));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonReportar.setBorder(null);
+        jButtonReportar.setContentAreaFilled(false);
         jButtonReportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportarActionPerformed(evt);
@@ -69,6 +71,8 @@ public class PantallaInconveniente extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonReportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 260, 50));
 
+        jButtonAtrás.setBorder(null);
+        jButtonAtrás.setContentAreaFilled(false);
         jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrásActionPerformed(evt);

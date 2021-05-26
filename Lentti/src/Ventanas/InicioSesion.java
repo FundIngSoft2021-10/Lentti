@@ -90,6 +90,8 @@ public class InicioSesion extends javax.swing.JFrame {
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 170, 40));
 
         jButtonCrearCliente.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonCrearCliente.setBorder(null);
+        jButtonCrearCliente.setContentAreaFilled(false);
         jButtonCrearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCrearCliente(evt);
@@ -97,6 +99,8 @@ public class InicioSesion extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 170, 40));
 
+        jButtonOlvidoContra.setBorder(null);
+        jButtonOlvidoContra.setContentAreaFilled(false);
         jButtonOlvidoContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOlvidoContraActionPerformed(evt);

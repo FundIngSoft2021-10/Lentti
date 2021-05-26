@@ -229,7 +229,7 @@ public class PantallaCrearRestaurante extends javax.swing.JFrame
             float costoDeEnvio = Float.parseFloat(this.jTextFieldCampoCostoDeEnvio.getText());
             resultado = consulta.CrearRestaurante(this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPassword.getText(), this.jTextFieldCampoNIT.getText(), this.jTextFieldCampoDireccion.getText(), this.jTextAreaCampoDescripcion.getText(), costoDeEnvio, this.buscador, horario);
             consulta.AlmacenarPalabrasClave (this.jTextFieldCampoNombre.getText(), this.jTextFieldCampoPalabrasClave.getText());
-            PantallaAgregarPlato pantallaGestion = new PantallaAgregarPlato(jTextFieldCampoNombre.getText());
+            PantallaGestionPlatos pantallaGestion = new PantallaGestionPlatos(jTextFieldCampoNombre.getText());
             pantallaGestion.setVisible(true);
             this.dispose();
         }

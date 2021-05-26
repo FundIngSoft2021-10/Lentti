@@ -72,12 +72,15 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 172, -1, -1));
 
+        jTextFieldCampoNombre.setBorder(null);
         jTextFieldCampoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCampoNombreActionPerformed(evt);
             }
         });
         getContentPane().add(jTextFieldCampoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 460, 50));
+
+        jTextFieldCampoPrecio.setBorder(null);
         getContentPane().add(jTextFieldCampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 460, 60));
 
         jTextAreaCampoDescripcion.setColumns(20);
@@ -86,13 +89,17 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 460, 69));
 
+        jButtonCancelar.setBorder(null);
+        jButtonCancelar.setContentAreaFilled(false);
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 50));
+        getContentPane().add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 50));
 
+        jButtonAceptar.setBorder(null);
+        jButtonAceptar.setContentAreaFilled(false);
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);

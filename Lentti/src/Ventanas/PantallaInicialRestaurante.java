@@ -55,31 +55,32 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelImagenRestaurante = new javax.swing.JLabel();
         nombreRest = new javax.swing.JLabel();
+        jLabelImagenRestaurante = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonVerResenaDeUsuario = new javax.swing.JButton();
         jButtonCerrarSesion = new javax.swing.JButton();
         jButtonGestionarPlatos = new javax.swing.JButton();
         jButtonVerPedidosDeClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButtonGestionarDomiciliario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 110));
 
         nombreRest.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         nombreRest.setForeground(new java.awt.Color(255, 255, 255));
         nombreRest.setText("jLabel2");
         getContentPane().add(nombreRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 370, -1));
+        getContentPane().add(jLabelImagenRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 110));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicioRestaurante.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaRestauranteInicio.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         jButtonVerResenaDeUsuario.setBorder(null);
-        getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 170));
+        getContentPane().add(jButtonVerResenaDeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 180, 150));
 
         jButtonCerrarSesion.setBorder(null);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +96,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
                 jButtonGestionarPlatosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 190, 180));
+        getContentPane().add(jButtonGestionarPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 170, 150));
 
         jButtonVerPedidosDeClientes.setBorder(null);
         jButtonVerPedidosDeClientes.setBorderPainted(false);
@@ -104,7 +105,17 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
                 jButtonVerPedidosDeClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 180));
+        getContentPane().add(jButtonVerPedidosDeClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 170, 150));
+
+        jButton1.setText("jButton1");
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 300, 50));
 
         jButtonGestionarDomiciliario.setBorder(null);
         jButtonGestionarDomiciliario.setBorderPainted(false);
@@ -113,7 +124,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
                 jButtonGestionarDomiciliarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonGestionarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 190, 170));
+        getContentPane().add(jButtonGestionarDomiciliario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 170, 150));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,6 +151,13 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     private void jButtonVerPedidosDeClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDeClientesActionPerformed
 //XD        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonVerPedidosDeClientesActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        PantallaClientesActivos pantallaActivos = new PantallaClientesActivos(usuario);
+        pantallaActivos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -192,6 +210,7 @@ public class PantallaInicialRestaurante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCerrarSesion;
     private javax.swing.JButton jButtonGestionarDomiciliario;
     private javax.swing.JButton jButtonGestionarPlatos;

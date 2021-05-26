@@ -45,8 +45,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         this.jButtonVerPerfil.setBackground(new Color(0, 0, 0, 0));
         this.jButtonVerPedidosDisponibles.setOpaque(false);
         this.jButtonVerPedidosDisponibles.setBackground(new Color(0, 0, 0, 0));
-        this.jButtonVerReseñas.setOpaque(false);
-        this.jButtonVerReseñas.setBackground(new Color(0, 0, 0, 0));
         this.jButtonVerPedidosEnCurso.setOpaque(false);        
         this.jButtonVerPedidosEnCurso.setBackground(new Color(0, 0, 0, 0));      
         
@@ -65,7 +63,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         jLabelDomUser = new javax.swing.JLabel();
         jButtonVerPerfil = new javax.swing.JButton();
         jButtonVerPedidosDisponibles = new javax.swing.JButton();
-        jButtonVerReseñas = new javax.swing.JButton();
         jButtonVerPedidosEnCurso = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -75,6 +72,8 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonCerrarSesion.setBorder(null);
+        jButtonCerrarSesion.setContentAreaFilled(false);
         jButtonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarSesionActionPerformed(evt);
@@ -87,6 +86,8 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         jLabelDomUser.setText("DomUser");
         getContentPane().add(jLabelDomUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
+        jButtonVerPerfil.setBorder(null);
+        jButtonVerPerfil.setContentAreaFilled(false);
         jButtonVerPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPerfilActionPerformed(evt);
@@ -94,6 +95,8 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonVerPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 200, 210));
 
+        jButtonVerPedidosDisponibles.setBorder(null);
+        jButtonVerPedidosDisponibles.setContentAreaFilled(false);
         jButtonVerPedidosDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPedidosDisponiblesActionPerformed(evt);
@@ -101,21 +104,16 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonVerPedidosDisponibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 180, 220, 210));
 
-        jButtonVerReseñas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVerReseñasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonVerReseñas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 200, 220));
-
+        jButtonVerPedidosEnCurso.setBorder(null);
+        jButtonVerPedidosEnCurso.setContentAreaFilled(false);
         jButtonVerPedidosEnCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVerPedidosEnCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVerPedidosEnCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 230, 220));
+        getContentPane().add(jButtonVerPedidosEnCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 200, 170));
 
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaInicialDomiciliario.png"))); // NOI18N
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaIniciaDomiciliario.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
@@ -138,10 +136,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private void jButtonVerPedidosDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosDisponiblesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonVerPedidosDisponiblesActionPerformed
-
-    private void jButtonVerReseñasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerReseñasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonVerReseñasActionPerformed
 
     private void jButtonVerPedidosEnCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPedidosEnCursoActionPerformed
         // TODO add your handling code here:
@@ -190,7 +184,6 @@ public class PantallaInicialDomiciliario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerPedidosDisponibles;
     private javax.swing.JButton jButtonVerPedidosEnCurso;
     private javax.swing.JButton jButtonVerPerfil;
-    private javax.swing.JButton jButtonVerReseñas;
     private javax.swing.JLabel jLabelDomUser;
     private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables

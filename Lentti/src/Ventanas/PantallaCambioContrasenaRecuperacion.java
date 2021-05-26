@@ -59,6 +59,8 @@ public class PantallaCambioContrasenaRecuperacion extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonSalir.setBorder(null);
+        jButtonSalir.setContentAreaFilled(false);
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
@@ -66,6 +68,8 @@ public class PantallaCambioContrasenaRecuperacion extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 110, 50));
 
+        jButtonCambiarContra.setBorder(null);
+        jButtonCambiarContra.setContentAreaFilled(false);
         jButtonCambiarContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCambiarContraActionPerformed(evt);

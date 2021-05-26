@@ -82,6 +82,7 @@ public class PantallaModificarAdmin extends javax.swing.JFrame {
         getContentPane().add(jPasswordFieldCampoContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 190, 30));
 
         jButtonModificarUsuario.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jButtonModificarUsuario.setBorder(null);
         jButtonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonModificarUsuarioActionPerformed(evt);

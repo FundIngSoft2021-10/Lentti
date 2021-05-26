@@ -55,6 +55,7 @@ public class EstadoPedido extends javax.swing.JFrame {
         resumen.setColumns(20);
         resumen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         resumen.setRows(5);
+        resumen.setBorder(null);
         jScrollPane1.setViewportView(resumen);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 550, 150));
@@ -80,14 +81,14 @@ public class EstadoPedido extends javax.swing.JFrame {
 
         Producto.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 14)); // NOI18N
         Producto.setForeground(new java.awt.Color(51, 0, 204));
-        Producto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 170, 150));
 
         user.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         user.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 310, 30));
 
-        Atras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Atras.setBorder(null);
+        Atras.setContentAreaFilled(false);
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
@@ -96,7 +97,8 @@ public class EstadoPedido extends javax.swing.JFrame {
         getContentPane().add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, 60));
 
         Cancelar.setForeground(new java.awt.Color(255, 0, 0));
-        Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Cancelar.setBorder(null);
+        Cancelar.setContentAreaFilled(false);
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
@@ -130,7 +132,7 @@ public class EstadoPedido extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Han pasado más de cinco minutos, el pedido ya no es cancelable.");
         }
-        PantallaInicialCliente vp = new PantallaInicialCliente(user.getText());
+        PantallaClienteInicio vp = new PantallaClienteInicio(user.getText());
             vp.setVisible(true);
             this.dispose();
             

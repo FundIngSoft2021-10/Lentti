@@ -133,6 +133,8 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         jButtonEnviar.setBackground(new java.awt.Color(240, 0, 0));
         jButtonEnviar.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         jButtonEnviar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEnviar.setBorder(null);
+        jButtonEnviar.setContentAreaFilled(false);
         jButtonEnviar.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +146,8 @@ public class PantallaSatisfacción extends javax.swing.JFrame {
         jButtonAtras.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAtras.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
         jButtonAtras.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAtras.setBorder(null);
+        jButtonAtras.setContentAreaFilled(false);
         jButtonAtras.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

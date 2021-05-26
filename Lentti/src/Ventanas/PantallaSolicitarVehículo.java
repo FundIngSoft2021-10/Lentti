@@ -104,6 +104,7 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 602, 250));
 
+        jButtonAtrás.setBorder(null);
         jButtonAtrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAtrásActionPerformed(evt);
@@ -111,6 +112,7 @@ public class PantallaSolicitarVehículo extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 70));
 
+        jButtonSolicitar.setBorder(null);
         jButtonSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSolicitarActionPerformed(evt);

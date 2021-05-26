@@ -71,7 +71,7 @@ public class PantallaClientesActivos extends javax.swing.JFrame {
               }  
             }
             
-            if(conta >= 2){ // Si ha realizado mas de dos pedidos en el restaurante
+            if(conta >= 1){ // Si ha realizado mas de dos pedidos en el restaurante
                 clientesActivos.add(nombres.get(i));
                 clientesA.addElement(nombres.get(i));
                 conta = 0;
@@ -129,7 +129,7 @@ public class PantallaClientesActivos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaClientesAct);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 410, 410));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 420, 410));
         getContentPane().add(BotonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 60));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ClientesActivosR.png"))); // NOI18N

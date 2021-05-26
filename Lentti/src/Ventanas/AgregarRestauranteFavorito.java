@@ -95,7 +95,7 @@ public class AgregarRestauranteFavorito extends javax.swing.JFrame
     }//GEN-LAST:event_jTextFieldNombreRestauranteActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        PantallaInicialCliente pantallaGestion = new PantallaInicialCliente(usuario);
+        PantallaClienteInicio pantallaGestion = new PantallaClienteInicio(usuario);
         pantallaGestion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
