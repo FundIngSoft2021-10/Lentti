@@ -159,7 +159,7 @@ public class PantallaCrearPlato extends javax.swing.JFrame {
                 this.imagen = new File ( buscador.getSelectedFile().toString());
                 ImageIcon imagenPoner = new ImageIcon( buscador.getSelectedFile().toString());
                 Icon Etiqueta = new ImageIcon(imagenPoner.getImage().getScaledInstance(this.jLabelCampoImagen.getWidth(), this.jLabelCampoImagen.getHeight(), Image.SCALE_SMOOTH));
-                this.jLabelCampoImagen.setIcon(Etiqueta);
+                this.jLabel1.setIcon(Etiqueta);
             }
             else
             {
