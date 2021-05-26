@@ -155,5 +155,5 @@ public interface consultasBaseDeDatos {
     public String DarDomiciliarioDoc(String nombre);
 
     public abstract ArrayList<ArrayList<Object>> ObtenerResenhasRestaurante(String userRes);
-    public ArrayList<ArrayList<Object>> ObtenerTablaDomiciliosEnCursoDomiciliario2(String rest);
+
 }

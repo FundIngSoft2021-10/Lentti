@@ -2741,69 +2741,6 @@ public class BaseDeDatos implements consultasBaseDeDatos {
 
         return resultado;
     }
-    
-    public ArrayList<ArrayList<Object>> ObtenerTablaDomiciliosEnCursoDomiciliario2(String rest) {
-
-        ArrayList<ArrayList<Object>> resultado = new ArrayList<>();
-        int pedidoid;
-        String platos = "";
-        String cliente;
-        String domidoc = "";
-
-        try {
-            Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection(host, usuario, contrasena);
-            java.sql.Statement st = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            String consulta = "SELECT pedido_id FROM pedidoxplato WHERE restaurante  = '" + rest + "'";
-            ResultSet result1 = st.executeQuery(consulta);
-            while (result1.next()) {
-
-                domidoc = result1.getString("pedido_id");
-
-            }
-            result1.close();
-            String consulta1 = "SELECT cliente FROM pedido WHERE estado = 'en curso' and pedido_id = '" + domidoc + "'";
-            ResultSet result2 = st.executeQuery(consulta1);
-            while (result2.next()) {
-
-                pedidoid = result2.getInt("cliente");
-   
-                String consulta2 = "SELECT plato FROM pedidoxplato WHERE pedido_id = '" + domidoc + "'";
-                ResultSet result3 = st.executeQuery(consulta2);
-                String aux = "";
-                int cont = 0;
-                int size;
-                result3.last();    // moves cursor to the last row
-                size = result3.getRow(); // get row id 
-                result3.beforeFirst();   // moves cursor to the first row
-                while (result3.next()) {
-
-                    cont++;
-                    if (cont == size) {
-                        platos = aux + result3.getString("plato");
-                    } else {
-                        aux = aux + result3.getString("plato") + ", ";
-                        platos = aux;
-                    }
-
-                }
-                ArrayList<Object> Aux = new ArrayList<>();
-                Aux.add(domidoc);
-                Aux.add(platos);
-                Aux.add(pedidoid);
-                resultado.add(Aux);
-
-            }
-            result1.close();
-            result2.close();
-            st.close();
-            conexion.close();
-        } catch (Exception exc) {
-            System.out.println("Errorx:" + exc.getMessage());
-        }
-
-        return resultado;
-    }
 
     public boolean ValidarExistenciaProductoCC(String nUsuario, String nRestaurante, String nPlato) {
         boolean resultado = false;

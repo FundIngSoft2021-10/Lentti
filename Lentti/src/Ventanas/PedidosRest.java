@@ -29,7 +29,8 @@ public class PedidosRest extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.jButtonAtrás.setOpaque(false);
         this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
-        
+        this.jButtonReportarInconveniente.setOpaque(false);
+        this.jButtonReportarInconveniente.setBackground(new Color(0, 0, 0, 0));
     }
 
     public PedidosRest(String userdom) {
@@ -37,7 +38,8 @@ public class PedidosRest extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.jButtonAtrás.setOpaque(false);
         this.jButtonAtrás.setBackground(new Color(0, 0, 0, 0));
-        
+        this.jButtonReportarInconveniente.setOpaque(false);
+        this.jButtonReportarInconveniente.setBackground(new Color(0, 0, 0, 0));
         this.userdomi = userdom;
         this.DarModelo();
     }
@@ -45,7 +47,7 @@ public class PedidosRest extends javax.swing.JFrame {
     public void DarModelo() {
         DefaultTableModel model = (DefaultTableModel) jTablePedidos.getModel();
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        ArrayList<ArrayList<Object>> data = consulta.ObtenerTablaDomiciliosEnCursoDomiciliario2(userdomi);
+        ArrayList<ArrayList<Object>> data = consulta.ObtenerTablaDomiciliosEnCursoDomiciliario(userdomi);
         if (data.size() == 0) {
             jTablePedidos.setModel(model);
         } else {
@@ -74,6 +76,8 @@ public class PedidosRest extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePedidos = new javax.swing.JTable();
         jButtonAtrás = new javax.swing.JButton();
+        Entregado = new javax.swing.JButton();
+        jButtonReportarInconveniente = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,9 +111,27 @@ public class PedidosRest extends javax.swing.JFrame {
                 jButtonAtrásActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 120, 70));
+        getContentPane().add(jButtonAtrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 70, 90));
 
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaModificarDomiciliario.png"))); // NOI18N
+        Entregado.setBackground(new java.awt.Color(255, 255, 255));
+        Entregado.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Entregado.setText("Entregado");
+        Entregado.setBorder(null);
+        Entregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntregadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Entregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 510, 120, 30));
+
+        jButtonReportarInconveniente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportarInconvenienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonReportarInconveniente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 340, 50));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PantallaPedidosEnCursoDomiciliario.png"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 690));
 
         pack();
@@ -117,10 +139,42 @@ public class PedidosRest extends javax.swing.JFrame {
 
     private void jButtonAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtrásActionPerformed
         // TODO add your handling code here:
-        PantallaInicialRestaurante p = new PantallaInicialRestaurante(this.userdomi);
+        PantallaInicialDomiciliario p = new PantallaInicialDomiciliario(this.userdomi);
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonAtrásActionPerformed
+
+    private void jButtonReportarInconvenienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportarInconvenienteActionPerformed
+        // TODO add your handling code here:
+        if (jTablePedidos.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            int column = 0;
+            int row = jTablePedidos.getSelectedRow();
+            this.pedidoid = (int) jTablePedidos.getModel().getValueAt(row, column);
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            PantallaInconveniente p = new PantallaInconveniente(this.pedidoid, this.userdomi);
+            p.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonReportarInconvenienteActionPerformed
+
+    private void EntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntregadoActionPerformed
+
+     if (jTablePedidos.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un pedido");
+        } else {
+            int column = 0;
+            int row = jTablePedidos.getSelectedRow();
+            this.pedidoid = (int) jTablePedidos.getModel().getValueAt(row, column);
+            consultasBaseDeDatos consulta = new BaseDeDatos();
+            consulta.ModificarEstadoEntregado("entregado", pedidoid);
+            JOptionPane.showMessageDialog(null, "Se confirmó la entrega del pedido");
+            PedidosRest p = new PedidosRest(userdomi);
+            p.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_EntregadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,7 +213,9 @@ public class PedidosRest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Entregado;
     private javax.swing.JButton jButtonAtrás;
+    private javax.swing.JButton jButtonReportarInconveniente;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePedidos;
