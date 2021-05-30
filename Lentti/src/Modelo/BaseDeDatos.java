@@ -1425,6 +1425,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             st.execute(consulta);
             st.close();
             conexion.close();
+            resultado = true;
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
@@ -1480,6 +1481,7 @@ public class BaseDeDatos implements consultasBaseDeDatos {
             st.execute(consulta);
             st.close();
             conexion.close();
+            resultado = true;
         } catch (Exception exc) {
             System.out.println("Errorx:" + exc.getMessage());
         }
