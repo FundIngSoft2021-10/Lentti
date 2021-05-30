@@ -180,13 +180,32 @@ public class PruebasLentti {
         assertEquals(expRes, res);
     }
     
+        @Test
+    public void PruebaPedidoDomiciliario() throws MessagingException {
+        boolean res = false; 
+        boolean expRes = true;
+                
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        String id = "2";
+        int doc = 2;
+        int pedidoId = 49;
+        consulta.RelacionarPedidoDomiciliario(doc, id);
+        res= consulta.ModificarEstadoPedido("entregado", pedidoId);
+        
+        assertEquals(expRes, res);
+    }
+    
          @Test
-    public void PruebaRelacionarDP() throws MessagingException {
+    public void crearCliente() throws MessagingException {
         
         boolean expRes = true;
        
         consultasBaseDeDatos consulta = new BaseDeDatos();
-        boolean res = consulta.RelacionarPedidoDomiciliario(0, "1001902877");
+        String pUsuario = "escobartc";
+        String pNombre = "Carlos";
+        String pApellido = "Escobar";
+        String pDireccion = "Calle 24 F";
+        boolean res = consulta.CrearCliente(pUsuario, pNombre, pApellido, pDireccion);
         assertEquals(expRes, res);
     }
     
