@@ -169,4 +169,22 @@ public class PruebasLentti {
         }
         assertEquals(expResultado, resultado);
     }
+    
+    @Test
+    public void PruebaPedidoDomiciliario() throws MessagingException {
+        boolean res = false; 
+        boolean expRes = true;
+                
+        consultasBaseDeDatos consulta = new BaseDeDatos();
+        String id = "2";
+        int doc = 2;
+        int pedidoId = 49;
+        consulta.RelacionarPedidoDomiciliario(doc, id);
+        res= consulta.ModificarEstadoPedido("entregado", pedidoId);
+        
+        assertEquals(expRes, res);
+    }
+    
+    
+    
 }
